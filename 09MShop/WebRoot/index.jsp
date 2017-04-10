@@ -19,8 +19,7 @@
 
 <body>
 	<jsp:include page="/pages/common/header.jsp"></jsp:include>
-	<h1>首页信息</h1>
-	
+	<h1>首页信息</h1> 
 	<jsp:include page="/pages/common/footer.jsp"></jsp:include>
 </body>
 </html>
