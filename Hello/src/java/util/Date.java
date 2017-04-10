@@ -4,6 +4,6 @@ public class Date
 {
 	public Date()
 	{
-		System.out.println("**********");
+		System.out.println("********** Hello World!!");
 	}
 }
