@@ -1,4 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@page import="java.util.*" %>
+<%@page import="java.text.*" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -21,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <h1>Jmeter NonStop 测试服务</h1>
+    <h1>当前时间:<%=new SimpleDateFormat("yyyy-MM-hh HH:mm:ss").format(new Date()) %></h1>
   </body>
 </html>
