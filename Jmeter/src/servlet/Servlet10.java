@@ -38,7 +38,7 @@ public class Servlet10 extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Servlet10:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-		response.getWriter().println("<h1>Servlet10</h1>");
+		response.getWriter().println("<h1>Servlet10</h1> ");
 	}
 
 }
