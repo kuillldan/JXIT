@@ -19,7 +19,8 @@
 
 <body>
 	<jsp:include page="/pages/common/header.jsp"></jsp:include>
-	<h1>首页信息</h1> 
+	<h1>首页信息</h1>
+	<h2>2017年4月11日11:11:42</h2> 
 	<jsp:include page="/pages/common/footer.jsp"></jsp:include>
 </body>
 </html>
