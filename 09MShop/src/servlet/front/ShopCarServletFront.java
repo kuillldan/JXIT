@@ -21,6 +21,8 @@ import factories.ServiceFrontFactory;
 import utils.CONST;
 import utils.General;
 import vo.Goods;
+import vo.Member;
+import vo.ShopCar;
 
 /**
  * Servlet implementation class ShopCarServletFront
@@ -83,7 +85,21 @@ public class ShopCarServletFront extends HttpServlet
 	{
 		try
 		{ 
-			ServiceFrontFactory.getIShopCarServiceFrontInstance().updateCart(request, response);
+			HttpSession session = request.getSession();
+			String mid = (String)session.getAttribute("mid");
+			if(mid == null)
+				throw new Exception("未找到登录信息(mid)");
+			
+			Map<Integer, Integer> cart = new HashMap<Integer, Integer>();
+			Enumeration<String> parameterNames = request.getParameterNames();
+			while (parameterNames.hasMoreElements())
+			{
+				Integer gid = Integer.parseInt(parameterNames.nextElement());
+				Integer amount = Integer.parseInt(request.getParameter(String.valueOf(gid)));
+				cart.put(gid,amount );
+			}
+			
+			ServiceFrontFactory.getIShopCarServiceFrontInstance().updateCart(mid, cart);
 			String msg = "购物车更新成功";
 			String url = CONST.pageCartServletListURL;
 			
@@ -102,7 +118,17 @@ public class ShopCarServletFront extends HttpServlet
 		{
 			String msg = null;
 			String url = null;
-			ServiceFrontFactory.getIShopCarServiceFrontInstance().removeFromCart(request, response);
+			HttpSession session = request.getSession();
+			String mid = (String)session.getAttribute("mid");
+			
+			String[] _ids = request.getParameter("ids").split("\\|");
+			Set<Integer> gids = new HashSet<Integer>();
+			for(String id : _ids)
+			{
+				gids.add(Integer.parseInt(id));
+			}
+			
+			ServiceFrontFactory.getIShopCarServiceFrontInstance().removeFromCart(mid,gids);
 			msg = "购物车更新成功";
 			url = CONST.pageCartServletListURL;
 			
@@ -121,7 +147,24 @@ public class ShopCarServletFront extends HttpServlet
 			String url = null;
 			String referer = request.getHeader("referer"); 
 			
-			ServiceFrontFactory.getIShopCarServiceFrontInstance().addToCart(request, response);
+			HttpSession session = request.getSession();
+			String mid = (String)session.getAttribute("mid");
+			if(mid == null)
+				throw new Exception("未找到登录信息(mid)");
+			
+			Integer gid = Integer.parseInt(request.getParameter("gid"));
+			
+			ShopCar shopCar = new ShopCar();
+			Member member = new Member();
+			member.setMid(mid);
+			
+			Goods goods = new Goods();
+			goods.setGid(gid);
+			
+			shopCar.setMember(member);
+			shopCar.setGoods(goods);
+			
+			ServiceFrontFactory.getIShopCarServiceFrontInstance().addToCart(shopCar);
 			
 			msg = "成功添加到购物车";
 			url = CONST.pageGoodsServletFontURL + referer.substring(referer.lastIndexOf("/") + 1);
@@ -136,7 +179,12 @@ public class ShopCarServletFront extends HttpServlet
 	{ 
 		try
 		{  
-			Map<String, Object> map = ServiceFrontFactory.getIShopCarServiceFrontInstance().listCart(request);
+			HttpSession session = (HttpSession)request.getSession();
+			String mid = (String)session.getAttribute("mid");
+			if(mid == null)
+				throw new Exception("未找到登录信息(mid)");
+			Map<String, Object> map = ServiceFrontFactory.getIShopCarServiceFrontInstance().listCart(mid);
+			
 			List<Goods> allGoods = (List<Goods>)map.get("allGoods"); 
 			Map<Integer, Integer> cart = (Map<Integer, Integer>)map.get("cart");
 			request.setAttribute("allGoods", allGoods);

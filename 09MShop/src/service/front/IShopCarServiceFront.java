@@ -8,11 +8,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vo.Goods;
+import vo.ShopCar;
 
 public interface IShopCarServiceFront
 {
-	public Map<String, Object> listCart(HttpServletRequest request) throws Exception;
-	public boolean addToCart(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public boolean removeFromCart(HttpServletRequest request,HttpServletResponse response) throws Exception;
-	public boolean updateCart(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	/**
+	 * 列出用户购物车中的所有商品
+	 * @param mid
+	 * @return
+	 * @throws Exception
+	 */
+	public Map<String, Object> listCart(String mid) throws Exception;
+	/**
+	 * 向购物车中增加一个商品,如果该商品已经在购物车中存在，则数量+1
+	 * @param shopCar
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean addToCart(ShopCar shopCar) throws Exception;
+	/**
+	 * 将特定商品从用户购物车中移除
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean removeFromCart(String mid, Set<Integer> gids) throws Exception;
+	/**
+	 * 更新用户购物车信息
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean updateCart(String mid, Map<Integer,Integer> cart)throws Exception;
 }
