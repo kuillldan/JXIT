@@ -235,6 +235,19 @@ public class MemberDAOImpl extends AbstractDAOImpl implements IMemberDAO
 		return 0;
 	}
 
+	@Override
+	public boolean doUpdateMember(Member vo) throws Exception
+	{
+		String sql = " UPDATE member SET name=?,phone=?,address=?,photo=? WHERE mid = ? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, vo.getName());
+		this.ps.setString(2, vo.getPhone());
+		this.ps.setString(3, vo.getAddress());
+		this.ps.setString(4, vo.getPhoto());
+		this.ps.setString(5, vo.getMid());
+		return this.ps.executeUpdate() == 1;
+	}
+
 	
  
 }

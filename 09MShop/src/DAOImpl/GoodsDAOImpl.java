@@ -348,4 +348,13 @@ public class GoodsDAOImpl extends AbstractDAOImpl implements IGoodsDAO
 		}
 		return allGoods;
 	}
+
+	@Override
+	public boolean doUpdateAmount(Integer gid, Integer amount) throws Exception
+	{
+		String sql = " UPDATE goods SET amount = amount+"+amount+" WHERE gid = ? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, gid);
+		return this.ps.executeUpdate() == 1;
+	}
 }

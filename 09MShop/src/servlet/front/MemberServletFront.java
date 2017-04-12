@@ -69,10 +69,10 @@ public class MemberServletFront extends HttpServlet
 		}else if("logout".equals(status))
 		{ 
 			path = this.logout(request, response);
-		} 
+		}
 		
 		request.getRequestDispatcher(path).forward(request, response);
-	}
+	} 
 	
 	private String logout(HttpServletRequest request, HttpServletResponse response)
 	{ 
@@ -121,7 +121,7 @@ public class MemberServletFront extends HttpServlet
 					Member vo = new Member();
 					vo.setMid(mid);
 					vo.setPassword(new MD5Code().getMD5ofStr(password));
-					if(ServiceFrontFactory.getMemberServiceFrontInstance().login(vo))
+					if(ServiceFrontFactory.getIMemberServiceFrontInstance().login(vo))
 					{
 						//System.out.println("[debug] 前台登录成功. mid = " + vo.getMid() + ",photo = " + vo.getPhoto());
 						msg = "登录成功!";
@@ -185,7 +185,7 @@ public class MemberServletFront extends HttpServlet
 			
 			try
 			{
-				if(ServiceFrontFactory.getMemberServiceFrontInstance().regist(vo))
+				if(ServiceFrontFactory.getIMemberServiceFrontInstance().regist(vo))
 				{
 					msg ="用户注册成功,请进行账户激活";
 					url = CONST.pageMemberIndex;
@@ -218,7 +218,7 @@ public class MemberServletFront extends HttpServlet
 		
 		try
 		{
-			if(ServiceFrontFactory.getMemberServiceFrontInstance().active(mid, code))
+			if(ServiceFrontFactory.getIMemberServiceFrontInstance().active(mid, code))
 			{
 				msg = "用户激活成功";
 				url = CONST.pageMemberIndex;

@@ -73,4 +73,42 @@ public class MemberServiceFrontImpl implements IMemberServiceFront
 		}
 	}
 
+	@Override
+	public Member updatePre(String mid) throws Exception
+	{
+		try
+		{ 
+			return DAOFactory.getIMemberDAOInstance(this.dbc.getConnection()).findById(mid);
+		}catch(Exception e)
+		{
+			throw e;
+		}
+		finally
+		{
+			this.dbc.close();
+		}
+	}
+
+	@Override
+	public boolean update(Member member) throws Exception
+	{
+		try
+		{ 
+			return DAOFactory.getIMemberDAOInstance(this.dbc.getConnection()).doUpdateMember(member);
+		}catch(Exception e)
+		{
+			throw e;
+		}
+		finally
+		{
+			this.dbc.close();
+		}
+	}
+
+	@Override
+	public Member findByMid(String mid) throws Exception
+	{
+		return this.updatePre(mid);
+	}
+
 }

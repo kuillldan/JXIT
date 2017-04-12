@@ -187,47 +187,48 @@ public class GoodsServletBack extends HttpServlet
 				return General.setMsgAndUrlInRequest(_request, msg, backUrl);
 			}
 			
-			SmartFiles files= smart.getFiles();
-			boolean hasNewPhoto = false;
-			if(files.getCount() > 0 && files.getSize() > 0 && files.getFile(0).getContentType().contains("image"))
-				hasNewPhoto = true;
-			
-			if(CONST.noPhoto.equals(oldPhoto))
-			{ 
-				if(hasNewPhoto)
-				{
-					//原来没有 现在有
-					photo = UUID.randomUUID() + "." + files.getFile(0).getFileExt();
-					//保存新照片
-					files.getFile(0).saveAs(_request.getServletContext().getRealPath("/photos/goods/" + photo));
-				}
-				else
-				{
-					//原来没有 现在也没有
-					photo = CONST.noPhoto;
-				}
-			}
-			else
-			{
-				if(hasNewPhoto)
-				{
-					//原来有 现在有
-					photo = UUID.randomUUID() + "." + files.getFile(0).getFileExt();
-					//保存新照片
-					files.getFile(0).saveAs(_request.getServletContext().getRealPath("/photos/goods/" + photo));
-					
-					//删掉旧照片
-					List<String> photos = new ArrayList<String>();
-					photos.add(_request.getServletContext().getRealPath("/photos/goods/" + oldPhoto));
-					General.removePhotos(photos);
-				}
-				else
-				{
-					//原来有 现在没有
-					photo = oldPhoto;
-				}
-			}
-			
+//			SmartFiles files= smart.getFiles();
+//			boolean hasNewPhoto = false;
+//			if(files.getCount() > 0 && files.getSize() > 0 && files.getFile(0).getContentType().contains("image"))
+//				hasNewPhoto = true;
+//			
+//			if(CONST.noPhoto.equals(oldPhoto))
+//			{ 
+//				if(hasNewPhoto)
+//				{
+//					//原来没有 现在有
+//					photo = UUID.randomUUID() + "." + files.getFile(0).getFileExt();
+//					//保存新照片
+//					files.getFile(0).saveAs(_request.getServletContext().getRealPath("/photos/goods/" + photo));
+//				}
+//				else
+//				{
+//					//原来没有 现在也没有
+//					photo = CONST.noPhoto;
+//				}
+//			}
+//			else
+//			{
+//				if(hasNewPhoto)
+//				{
+//					//原来有 现在有
+//					photo = UUID.randomUUID() + "." + files.getFile(0).getFileExt();
+//					//保存新照片
+//					files.getFile(0).saveAs(_request.getServletContext().getRealPath("/photos/goods/" + photo));
+//					
+//					//删掉旧照片
+//					List<String> photos = new ArrayList<String>();
+//					photos.add(_request.getServletContext().getRealPath("/photos/goods/" + oldPhoto));
+//					General.removePhotos(photos);
+//				}
+//				else
+//				{
+//					//原来有 现在没有
+//					photo = oldPhoto;
+//				}
+//			}
+//			
+			photo = General.updatePhoto(smart, oldPhoto, oldPhoto, _request, "/photos/goods/");
 			Goods vo = new Goods();
 			vo.setGid(gid);
 			Item item = new Item();

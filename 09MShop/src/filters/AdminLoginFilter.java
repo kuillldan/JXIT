@@ -44,18 +44,20 @@ public class AdminLoginFilter implements Filter
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException
 	{
-		HttpSession session = ((HttpServletRequest)request).getSession();
-		String aid = (String)session.getAttribute("aid");
-		if(StringUtils.isEmpty(aid))
+		HttpSession session = ((HttpServletRequest) request).getSession();
+		String aid = (String) session.getAttribute("aid");
+		if (StringUtils.isEmpty(aid))
 		{
 			String msg = "请先登录";
 			String url = CONST.pageAdminLogin;
-			((HttpServletRequest)request).setAttribute("msg", msg);
-			((HttpServletRequest)request).setAttribute("url", url);
-			
+			((HttpServletRequest) request).setAttribute("msg", msg);
+			((HttpServletRequest) request).setAttribute("url", url);
+
 			request.getRequestDispatcher(CONST.pageForward).forward(request, response);
+		} else
+		{
+			chain.doFilter(request, response);
 		}
-		chain.doFilter(request, response);
 	}
 
 	/**

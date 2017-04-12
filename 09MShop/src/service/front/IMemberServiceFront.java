@@ -15,4 +15,8 @@ public interface IMemberServiceFront
 	public boolean active(String mid, String code) throws Exception;
 	
 	public boolean login(Member vo) throws Exception;
+	
+	public Member updatePre(String mid) throws Exception;
+	public boolean update(Member member) throws Exception;
+	public Member findByMid(String mid) throws Exception;
 }

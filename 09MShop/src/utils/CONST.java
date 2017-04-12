@@ -27,6 +27,7 @@ public class CONST
 	public static final String pageGoodsServletFontURL = "/pages/front/goods/GoodsServletFront/";
 	public static final String pageCartListJSP = "/pages/front/shopCart/cart_list.jsp";
 	public static final String pageCartServletListURL = "/pages/front/shopCart/ShopCarServletFront/list";
+	public static final String pageMemberFrontShowJSP = "/pages/front/member/member_show.jsp";
 	
 	public enum MemberStatus
 	{
@@ -37,4 +38,5 @@ public class CONST
 	{
 		DOWN,UP,DELETED
 	}
+ 
 }

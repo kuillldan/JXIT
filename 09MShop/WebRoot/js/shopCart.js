@@ -62,3 +62,10 @@ function validateInsert()
 	
 	return  amountResult;
 }
+
+
+function gotoPay(url)
+{
+	
+	window.location = url;
+}
