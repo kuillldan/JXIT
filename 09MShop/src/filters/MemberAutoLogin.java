@@ -59,7 +59,7 @@ public class MemberAutoLogin implements Filter
 			vo.setPassword(password);
 			try
 			{
-				if(ServiceFrontFactory.getMemberServiceFrontInstance().login(vo))
+				if(ServiceFrontFactory.getIMemberServiceFrontInstance().login(vo))
 				{
 					HttpSession session = ((HttpServletRequest)request).getSession();
 					session.setAttribute("mid", vo.getMid());

@@ -38,5 +38,13 @@ public interface IMemberDAO extends IDAO<String, Member>
 	public List<Member> findAllSplitByStatus(Integer currentPage, Integer lineSize, String column, String keyWord, Integer status)throws Exception;
 	public Integer getAllCountByStatus(String column, String keyWord, Integer status)throws Exception;
 	
+	/**
+	 * 更新用户的信息: 真实姓名、电话、地址、照片
+	 * @param vo
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean doUpdateMember(Member vo) throws Exception;
+	
 	
 }

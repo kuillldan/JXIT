@@ -11,10 +11,9 @@
 		<a href="pages/member_regist.jsp">注册</a>
 	</c:if>
 	<c:if test="${mid!=null }">
-		<a href="">${mid }</a>
+		<a href="pages/front/member/MemberInfoServletFront/updatePre?mid=${mid }">${mid }</a>
 		<a href="pages/MemberServletFront/logout">退出登录</a>		
-		<img alt="" style="width:40px;height:40px" src="photos/${photo}">
-		
+		<img alt="" style="width:40px;height:40px" src="photos/member/${photo}">
 	</c:if>
 	
 </div>

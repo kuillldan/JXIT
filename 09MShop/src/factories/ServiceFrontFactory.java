@@ -9,7 +9,7 @@ import service.front.impl.ShopCarServiceFrontImpl;
 
 public class ServiceFrontFactory
 {
-	public static IMemberServiceFront getMemberServiceFrontInstance()
+	public static IMemberServiceFront getIMemberServiceFrontInstance()
 	{
 		return new MemberServiceFrontImpl();
 	}
