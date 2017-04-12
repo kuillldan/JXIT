@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS member ;
 DROP TABLE IF EXISTS goods ;
 DROP TABLE IF EXISTS item ;
 DROP TABLE IF EXISTS admin ;
-
+DROP TABLE IF EXISTS shopCar;
 -- 创建数据表
 -- 1、创建商品类型表
 CREATE TABLE item (
@@ -85,6 +85,15 @@ CREATE TABLE details(
   CONSTRAINT fk_oid2 FOREIGN KEY(oid) REFERENCES orders(oid) ON DELETE CASCADE ,
   CONSTRAINT fk_gid2 FOREIGN KEY(gid) REFERENCES goods(gid) ON DELETE SET NULL
 ) type=innodb ;
+
+CREATE TABLE shopCar
+(
+	mid VARCHAR(50),
+	gid INT,
+	amount INT,
+	CONSTRAINT fk_gid3 FOREIGN KEY(gid) REFERENCES goods(gid) ON DELETE CASCADE,
+	CONSTRAINT fk_mid3 FOREIGN KEY(mid) REFERENCES member(mid) ON DELETE CASCADE
+);
 
 -- 编写测试数据
 -- 增加商品分类信息
