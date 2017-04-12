@@ -15,7 +15,7 @@ public interface IShopCarServiceFront
 	/**
 	 * 列出用户购物车中的所有商品
 	 * @param mid
-	 * @return
+	 * @return allGoods(List<Goods>)/cart(Map<Integer,Integer>)
 	 * @throws Exception
 	 */
 	public Map<String, Object> listCart(String mid) throws Exception;

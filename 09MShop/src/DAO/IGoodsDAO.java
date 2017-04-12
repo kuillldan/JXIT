@@ -15,4 +15,12 @@ public interface IGoodsDAO extends IDAO<Integer, Goods>
 	public Integer getAllCountByItem(Integer iid, String column, String keyWord,Integer status) throws Exception;
 	public boolean doUpdateBow(Integer gid) throws Exception;
 	public List<Goods> findAllByIds(Set<Integer> ids) throws Exception;
+	/**
+	 * 商品库存量的变更
+	 * @param gid
+	 * @param amount
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean doUpdateAmount(Integer gid, Integer amount) throws Exception;
 }

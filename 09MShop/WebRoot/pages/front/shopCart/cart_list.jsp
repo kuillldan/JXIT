@@ -10,6 +10,7 @@
 <%
 	String deleteShopCarURL = "pages/front/shopCart/ShopCarServletFront/delete?p=1";
 	String updateShopCarURL = "pages/front/shopCart/ShopCarServletFront/update";
+	String payURL = "pages/front/shopCart/OrdersServletFront/insert";
 %>
 
 <html>
@@ -49,6 +50,7 @@
 			<td colspan="6">
 				<button onclick="deleteAll('<%=deleteShopCarURL%>', 'ids', 'gid')">删除选中</button>
 				<button onclick="updateShopCar('<%=updateShopCarURL%>')">更新购物车</button>
+				<button onclick="gotoPay('<%=payURL%>')">去结算</button>				
 			</td>
 		</tr>
 	</table>

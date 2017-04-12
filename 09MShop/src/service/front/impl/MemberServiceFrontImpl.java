@@ -105,4 +105,10 @@ public class MemberServiceFrontImpl implements IMemberServiceFront
 		}
 	}
 
+	@Override
+	public Member findByMid(String mid) throws Exception
+	{
+		return this.updatePre(mid);
+	}
+
 }

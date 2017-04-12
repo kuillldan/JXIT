@@ -18,4 +18,5 @@ public interface IMemberServiceFront
 	
 	public Member updatePre(String mid) throws Exception;
 	public boolean update(Member member) throws Exception;
+	public Member findByMid(String mid) throws Exception;
 }

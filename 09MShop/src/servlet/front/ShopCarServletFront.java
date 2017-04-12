@@ -63,7 +63,7 @@ public class ShopCarServletFront extends HttpServlet
 	{
 		String path = CONST.pageError;
 		String status = General.getStatus(request);
-		System.out.println("购物车Servlet status: " + status); 
+		//System.out.println("购物车Servlet status: " + status); 
 		
 		if ("add".equals(status))
 		{
