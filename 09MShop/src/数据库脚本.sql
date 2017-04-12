@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS goods ;
 DROP TABLE IF EXISTS item ;
 DROP TABLE IF EXISTS admin ;
 DROP TABLE IF EXISTS shopCar;
--- 创建数据表
+-- 创建数据表?
 -- 1、创建商品类型表
 CREATE TABLE item (
   iid       INT     AUTO_INCREMENT ,
