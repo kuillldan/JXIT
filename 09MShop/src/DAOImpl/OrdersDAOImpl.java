@@ -30,9 +30,9 @@ public class OrdersDAOImpl extends AbstractDAOImpl implements IOrdersDAO
 	public boolean doUpdate(Orders vo) throws Exception
 	{
 		// TODO Auto-generated method stub
-		return false;
+		return false; 
 	}
-
+ 
 	@Override
 	public boolean doRemoveBatch(Set<Integer> ids) throws Exception
 	{
@@ -43,8 +43,23 @@ public class OrdersDAOImpl extends AbstractDAOImpl implements IOrdersDAO
 	@Override
 	public Orders findById(Integer id) throws Exception
 	{
-		 
-		return null;
+		Orders vo = null;
+		String sql = " SELECT oid,mid,name,phone,address,credate,pay FROM orders WHERE oid=? ";
+		this.ps = this.conn.prepareStatement(sql); 
+		this.ps.setInt(1, id);
+		ResultSet rs = this.ps.executeQuery();
+		if (rs.next())
+		{
+			vo = new Orders();
+			vo.setOid(rs.getInt(1));
+			vo.setMid(rs.getString(2));
+			vo.setName(rs.getString(3));
+			vo.setPhone(rs.getString(4));
+			vo.setAddress(rs.getString(5));
+			vo.setCredate(rs.getDate(6));
+			vo.setPay(rs.getDouble(7));
+		}
+		return vo;
 	}
 
 	@Override
@@ -54,19 +69,50 @@ public class OrdersDAOImpl extends AbstractDAOImpl implements IOrdersDAO
 		return null;
 	}
 
+	/**
+	 * 管理员订单查询
+	 */
 	@Override
 	public List<Orders> findAllSplit(Integer currentPage, Integer lineSize, String column, String keyWord)
 			throws Exception
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<Orders> allOrders = new ArrayList<Orders>();
+		String sql = " SELECT oid,mid,name,phone,address,credate,pay FROM orders WHERE "+column+" LIKE ? LIMIT ?,? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, this.getKeyWork(keyWord));
+		this.ps.setInt(2, (currentPage - 1) * lineSize);
+		this.ps.setInt(3, lineSize);
+		//System.out.println("[debug]: "+sql);
+		ResultSet rs = this.ps.executeQuery();
+		while (rs.next())
+		{
+			Orders vo = new Orders();
+			vo.setOid(rs.getInt(1));
+			vo.setMid(rs.getString(2));
+			vo.setName(rs.getString(3));
+			vo.setPhone(rs.getString(4));
+			vo.setAddress(rs.getString(5));
+			vo.setCredate(rs.getDate(6));
+			vo.setPay(rs.getDouble(7));
+			allOrders.add(vo);
+		}
+		return allOrders;
 	}
 
 	@Override
 	public Integer getAllCount(String column, String keyWord) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return null;
+		String sql = " SELECT COUNT(*) FROM orders WHERE " + column + " LIKE ? ";
+		
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, this.getKeyWork(keyWord));
+		ResultSet rs = this.ps.executeQuery();
+		if (rs.next())
+		{
+			return rs.getInt(1);
+		}
+
+		return 0;
 	}
 
 	@Override
@@ -150,7 +196,7 @@ public class OrdersDAOImpl extends AbstractDAOImpl implements IOrdersDAO
 		{
 			vo = new Orders();
 			vo.setOid(rs.getInt(1));
-			vo.setMid(mid);
+			vo.setMid(rs.getString(2));
 			vo.setName(rs.getString(3));
 			vo.setPhone(rs.getString(4));
 			vo.setAddress(rs.getString(5));
