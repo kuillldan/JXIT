@@ -1,0 +1,14 @@
+package org.lyk.vo;
+
+public class LYKClassLoader extends ClassLoader
+{
+	public Class getMyClass(String className) throws ClassNotFoundException
+	{
+		return super.loadClass(className);
+	}
+	
+	public byte[] getClassBytes(String className)
+	{
+		
+	}
+}

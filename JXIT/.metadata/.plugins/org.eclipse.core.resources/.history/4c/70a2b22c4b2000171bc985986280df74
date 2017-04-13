@@ -1,0 +1,9 @@
+package java.util;
+
+public class Date
+{
+	public Date()
+	{
+		System.out.println("自定义的Date类");
+	}
+}

@@ -7,3 +7,4 @@ UIActivities.com.genuitec.eclipse.capability.emfetc=true
 UIActivities.secure.delivery.manage.p2.sites.page=true
 eclipse.preferences.version=1
 org.eclipse.debug.ui.consoleFont=1|Consolas|13.8|0|WINDOWS|1|-23|0|0|0|400|0|0|0|0|3|2|1|49|Consolas;
+org.eclipse.ui.commands=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<org.eclipse.ui.commands>\r\n<keyBinding contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="ALT+SHIFT+X J"/>\r\n<keyBinding commandId\="org.eclipse.jdt.debug.ui.localJavaShortcut.run" contextId\="org.eclipse.ui.contexts.window" keyConfigurationId\="org.eclipse.ui.defaultAcceleratorConfiguration" keySequence\="F5"/>\r\n</org.eclipse.ui.commands>

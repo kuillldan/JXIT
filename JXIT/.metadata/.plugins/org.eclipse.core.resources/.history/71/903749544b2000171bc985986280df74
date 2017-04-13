@@ -1,0 +1,6 @@
+package org.lyk.vo;
+
+public class LYKClassLoader extends ClassLoader
+{
+
+}

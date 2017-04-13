@@ -1,0 +1,20 @@
+package org.lyk.vo;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+public class LYKClassLoader extends ClassLoader
+{
+	public Class getMyClass(String className) throws ClassNotFoundException
+	{
+		return super.loadClass(className);
+	}
+	
+	public byte[] getClassBytes(String className) throws Exception
+	{
+		byte[] classInBytes = null;
+		InputStream is = new FileInputStream("C:" + File.separator + "D" + File.separator + className.substring(className.lastIndexOf("." + 1)) + ".class");
+		
+		return classInBytes;
+	}
+}
