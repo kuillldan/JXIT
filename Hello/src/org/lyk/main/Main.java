@@ -1,110 +1,37 @@
 package org.lyk.main;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-import java.util.Vector;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.sql.*;
+import java.text.*;
+import java.util.*;
 
-/**
- *
- * @author Producer
- */
-class VideoGame
-{
-
-	private String title;
-	private int year;
-	private String rating;
-	private String[] platforms;
-
-	public VideoGame()
-	{
-	}
-
-	public VideoGame(String title, int year, String rating, String[] platforms)
-	{
-		this.title = title;
-		this.year = year;
-		this.rating = rating;
-		this.platforms = platforms;
-	}
-
-	public String getTitle()
-	{
-		return title;
-	}
-
-	public void setTitle(String title)
-	{
-		this.title = title;
-	}
-
-	public int getYear()
-	{
-		return year;
-	}
-
-	public void setYear(int year)
-	{
-		this.year = year;
-	}
-
-	public String getRating()
-	{
-		return rating;
-	}
-
-	public void setRating(String rating)
-	{
-		this.rating = rating;
-	}
-
-	public String[] getPlatforms()
-	{
-		return platforms;
-	}
-
-	public void setPlatforms(String[] platforms)
-	{
-		this.platforms = platforms;
-	}
-
-	@Override
-	public String toString()
-	{
-		String result = "";
-		result += "\nTitle: " + getTitle() + "\nYear: " + getYear() + "\nRating: " + getRating()
-				+ "\nPlatforms: ";
-		for (String platform : getPlatforms())
-		{
-			result += platform + "  ";
-		}
-		return result;
-	}
-
-}
-
+import utils.StringUtils;
+ 
 public class Main
 {
 
-	public static void main(String[] args)
-	{ 
-		String[] allVideos = {};
-		for(String video : allVideos)
+	public static void main(String[] args) throws Exception
+	{   
+		Class cls = Class.forName("org.lyk.vo.Dept");
+		Object obj = cls.newInstance();
+		
+		String param = "dname:开发部|loc:北京";
+		String[] values = param.split("\\|");
+		for(String value : values)
 		{
-			System.out.println(video);
+			String fieldName = value.split(":")[0];
+			String fieldValue = value.split(":")[1];
+			Method setter = cls.getMethod("set" + StringUtils.initCap( fieldName), String.class);
+			setter.invoke(obj, fieldValue);
 		}
 		
+		System.out.println(obj);
 		
 		
-		System.out.println("///Main done~~");
+		
+		System.out.println("///Main done~~")  ;
 	}
 }
+    
