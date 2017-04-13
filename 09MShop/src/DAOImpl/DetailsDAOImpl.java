@@ -1,10 +1,14 @@
 package DAOImpl;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import vo.Details;
+import vo.Goods;
+import vo.Orders;
 import DAO.AbstractDAOImpl;
 import DAO.IDetailsDAO;
 
@@ -87,6 +91,36 @@ public class DetailsDAOImpl extends AbstractDAOImpl implements IDetailsDAO
 		}
 		this.ps.executeBatch();
 		return true;
+	}
+
+	@Override
+	public List<Details> findAllByOrders(Integer oid) throws Exception
+	{
+		List<Details> allDetails = new ArrayList<Details>();
+		String sql = " SELECT odid,oid,gid,title,price,amount FROM details WHERE oid =? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, oid);
+		ResultSet rs = this.ps.executeQuery();
+		while(rs.next())
+		{
+			Details vo = new Details();
+			vo.setOdid(rs.getInt(1));
+			
+			Orders orders = new Orders();
+			orders.setOid(rs.getInt(2));
+			vo.setOrder(orders);
+			
+			Goods goods = new Goods();
+			goods.setGid(rs.getInt(3));
+			vo.setGoods(goods);
+			
+			vo.setTitle(rs.getString(4));
+			vo.setPrice(rs.getDouble(5));
+			vo.setAmount(rs.getInt(6));
+			
+			allDetails.add(vo);
+		}
+		return allDetails;
 	}
 
 }

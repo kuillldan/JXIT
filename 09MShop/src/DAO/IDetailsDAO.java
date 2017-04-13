@@ -13,4 +13,6 @@ public interface IDetailsDAO extends IDAO<Integer, Details>
 	 * @throws Exception
 	 */
 	public boolean doCreateBatch(List<Details> vos) throws Exception;
+	
+	public List<Details> findAllByOrders(Integer oid) throws Exception;
 }
