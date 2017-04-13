@@ -2,11 +2,24 @@ package vo;
 
 public class Details
 { 
+	private Integer odid;
 	private Orders order ;
 	private Goods goods;
 	private String title;
 	private Double price;
 	private Integer amount;
+	
+	
+	
+	
+	public Integer getOdid()
+	{
+		return odid;
+	}
+	public void setOdid(Integer odid)
+	{
+		this.odid = odid;
+	}
 	public Orders getOrder()
 	{
 		return order;

@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="vo.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -204,11 +204,9 @@ H1 a {
 		  <li><a href="<%=basePath%>pages/back/admin/goods/GoodsServletBack/list?status=2" target="main">已删除商品列表</a></li> 
         </ul>
       </div>
-      
-      
-      
-      
-      <h1 class="type"><a href="javascript:void(0)">注册用户管理</a></h1>
+       
+    
+    <h1 class="type"><a href="javascript:void(0)">订单管理</a></h1>
       <div class="content">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -216,12 +214,7 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="#" target="main">会员管理</a></li>
-          <li><a href="#" target="main">留言管理</a></li>
-          <li><a href="#" target="main">回复管理</a></li>
-          <li><a href="#" target="main">订单管理</a></li>
-          <li><a href="#" target="main">举报管理</a></li>
-          <li><a href="#" target="main">评论管理</a></li>
+          <li><a href="<%=basePath%>pages/back/admin/orders/OrdersServletBack/list" target="main">查看订单</a></li>
         </ul>
       </div>
     </div>
