@@ -1,33 +1,26 @@
 package org.lyk.vo;
 
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+
 public class Company
 {
-	private String name;
-	private Integer companyCode;
- 
-	public Integer getCompanyCode()
+	private Double[] priceList;
+
+	public Double[] getPriceList()
 	{
-		return companyCode;
+		return priceList;
 	}
 
-	public void setCompanyCode(Integer companyCode)
+	public void setPriceList(Double[] priceList)
 	{
-		this.companyCode = companyCode;
-	}
-
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
+		this.priceList = priceList;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "Company [name=" + name + ", companyCode=" + companyCode + "]";
+		return "Company [priceList=" + Arrays.toString(priceList) + "]";
 	}
  }

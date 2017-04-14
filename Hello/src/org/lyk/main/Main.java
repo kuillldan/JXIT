@@ -32,14 +32,17 @@ public class Main
 	{
 		TestDemo td = new TestDemo();
 
-		String properties = "emp.dept.company.companyCode";
-		String value = "40";
-		BeanOperate bo = new BeanOperate(td, properties, value);
+		String properties = "emp.dept.company.priceList";
+		String[] arrayValues = {"10.6","2.0","31.2","42.2"};
+		BeanOperate bo = new BeanOperate(td, properties, arrayValues);
 		
 		System.out.println(td);
+		
+		
 		properties = "emp.name";
-		value = "刘文良";
+		String value = "刘文良";
 		bo = new BeanOperate(td, properties, value);
+		
 		System.out.println(td);
 		
 		System.out.println("///Main done~~");
