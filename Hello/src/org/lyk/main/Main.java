@@ -1,38 +1,47 @@
 package org.lyk.main;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.sql.*; 
+import java.lang.reflect.Proxy;
+import java.sql.*;
 import java.text.*;
 import java.util.*;
 import java.util.Date;
 
-import org.lyk.annotations.ClassInfo; 
+import org.lyk.annotations.ClassInfo;
+import org.lyk.dao.IDeptDAO;
+import org.lyk.dao.impl.DeptDAOImpl;
+import org.lyk.factory.DAOFactory;
+import org.lyk.vo.BeanOperate;
+import org.lyk.vo.Dept;
 import org.lyk.vo.InfoAccessible;
-import org.lyk.vo.LYKClassLoader;
-
+import org.lyk.vo.TestDemo;
+ 
 import utils.StringUtils;
 
-
-@ClassInfo(className="org.lyk.vo.Student")
 public class Main
 {
 	public static void main(String[] args) throws Exception
 	{
-		InfoAccessible ia = getInfoAccessible();
-		ia.showInfo();
+		TestDemo td = new TestDemo();
+
+		String properties = "emp.dept.company.companyCode";
+		String value = "40";
+		BeanOperate bo = new BeanOperate(td, properties, value);
+		
+		System.out.println(td);
+		properties = "emp.name";
+		value = "刘文良";
+		bo = new BeanOperate(td, properties, value);
+		System.out.println(td);
+		
 		System.out.println("///Main done~~");
-	}
-	
-	
-	public static InfoAccessible getInfoAccessible() throws Exception
-	{
-		 InfoAccessible ia = null;
-		 ClassInfo ci = (ClassInfo)Main.class.getAnnotation(ClassInfo.class);
-		 ia = (InfoAccessible)Class.forName(ci.className()).newInstance();
-		 return ia;
 	}
 }
