@@ -84,10 +84,7 @@ public abstract class DispatcherServlet extends HttpServlet
 					this.handleNormalHttpData();
 				}
 				else
-				{
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				{}
 			}
 
 			status = General.getRequestStatus(request);

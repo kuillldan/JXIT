@@ -56,7 +56,6 @@ public abstract class DispatcherServlet extends HttpServlet
 			this.request = request;
 			this.response = response;
 			String status = null;
-			String path = CONST.pageError;
 
 			boolean validationPassed = false;
 
@@ -72,8 +71,6 @@ public abstract class DispatcherServlet extends HttpServlet
 				else
 				{
 					//数据验证未通过
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
 				}
 
 			} else
@@ -84,10 +81,7 @@ public abstract class DispatcherServlet extends HttpServlet
 					this.handleNormalHttpData();
 				}
 				else
-				{
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				{}
 			}
 
 			status = General.getRequestStatus(request);

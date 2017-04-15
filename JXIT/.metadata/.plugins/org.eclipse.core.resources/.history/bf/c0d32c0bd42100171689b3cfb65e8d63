@@ -33,10 +33,9 @@ public abstract class DispatcherServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	private HttpServletRequest request;
-	private HttpServletResponse response;
-	private SmartUpload smartUpload;
-	private Map<String, String> errors = new HashMap<String, String>();
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
+	protected SmartUpload smartUpload;
 
 	public DispatcherServlet()
 	{
@@ -56,7 +55,6 @@ public abstract class DispatcherServlet extends HttpServlet
 			this.request = request;
 			this.response = response;
 			String status = null;
-			String path = CONST.pageError;
 
 			boolean validationPassed = false;
 
@@ -64,30 +62,12 @@ public abstract class DispatcherServlet extends HttpServlet
 			{
 				this.smartUpload = new SmartUpload();
 				validationPassed = this.validateRule(status, true);
-				if(validationPassed)
-				{
-					//数据验证通过
-					this.handleEncrypedHttpData();
-				}
-				else
-				{
-					//数据验证未通过
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				this.handleEncrypedHttpData();
 
 			} else
 			{
 				validationPassed = this.validateRule(status, false);
-				if(validationPassed)
-				{
-					this.handleNormalHttpData();
-				}
-				else
-				{
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				this.handleNormalHttpData();
 			}
 
 			status = General.getRequestStatus(request);
@@ -102,6 +82,7 @@ public abstract class DispatcherServlet extends HttpServlet
 
 	private boolean validateRule(String status, boolean isEncryed) throws Exception
 	{
+		Map<String, String> errors = new HashMap<String, String>();
 		try
 		{
 			Field validationRule = this.getClass().getDeclaredField(status + "Validation");
@@ -125,7 +106,8 @@ public abstract class DispatcherServlet extends HttpServlet
 					{
 						validationPassed = false;
 						errors.put(propertyName, propertyName + "不能为空");
-					} 
+					}
+
 				}
 			}
 

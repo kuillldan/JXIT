@@ -56,7 +56,6 @@ public abstract class DispatcherServlet extends HttpServlet
 			this.request = request;
 			this.response = response;
 			String status = null;
-			String path = CONST.pageError;
 
 			boolean validationPassed = false;
 
@@ -64,30 +63,12 @@ public abstract class DispatcherServlet extends HttpServlet
 			{
 				this.smartUpload = new SmartUpload();
 				validationPassed = this.validateRule(status, true);
-				if(validationPassed)
-				{
-					//数据验证通过
-					this.handleEncrypedHttpData();
-				}
-				else
-				{
-					//数据验证未通过
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				this.handleEncrypedHttpData();
 
 			} else
 			{
 				validationPassed = this.validateRule(status, false);
-				if(validationPassed)
-				{
-					this.handleNormalHttpData();
-				}
-				else
-				{
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
-				}
+				this.handleNormalHttpData();
 			}
 
 			status = General.getRequestStatus(request);
@@ -125,7 +106,8 @@ public abstract class DispatcherServlet extends HttpServlet
 					{
 						validationPassed = false;
 						errors.put(propertyName, propertyName + "不能为空");
-					} 
+					}
+
 				}
 			}
 
