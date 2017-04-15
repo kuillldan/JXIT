@@ -5,31 +5,30 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-class LYKClassLoader extends ClassLoader
+public class LYKClassLoader extends ClassLoader
 {
-	private static final String classPath = "C:" + File.separator + "D" + File.separator + "classes" + File.separator;
-	
-	public Class getMyClass(String className) throws Exception
+	public static final String CLASSPATH = "C:" + File.separator + "D" + File.separator + "classes" + File.separator;
+	public static final Integer BUFFERSIZE = 1024;//1024byte(1K) 
+	public Class loadMyClass(String className) throws Exception
 	{
-		byte[] classInBytes = this.getClassBytes(className);
-		return super.defineClass(className, classInBytes, 0, classInBytes.length);
+		byte[] classInByte = this.loadClassFile(className);
+		return super.defineClass(className, classInByte, 0, classInByte.length);
 	}
-	
-	private byte[] getClassBytes(String className) throws Exception
+	private byte[] loadClassFile(String className) throws Exception
 	{
-		byte[] classInBytes = null;
-		InputStream is = new FileInputStream(classPath + className.substring(className.lastIndexOf(".")  + 1) + ".class");
+		byte[] classInByte = null;
+		String classSimpleName = className.substring(className.lastIndexOf(".") + 1);
+		InputStream is = new FileInputStream(new File(CLASSPATH + classSimpleName + ".class"));
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
-		byte[] buffer = new byte[1024];
-		Integer len = 0;
-		while((len = is.read(buffer,0,1024)) > 0)
+		byte[] buffer = new byte[BUFFERSIZE];
+		Integer len = 0 ;
+		while((len = is.read(buffer, 0, BUFFERSIZE))>0)
 		{
 			bos.write(buffer, 0, len);
 		}
 		
+		classInByte = bos.toByteArray();
 		is.close();
-		classInBytes = bos.toByteArray();
-		
-		return classInBytes;
+		return classInByte;
 	}
 }

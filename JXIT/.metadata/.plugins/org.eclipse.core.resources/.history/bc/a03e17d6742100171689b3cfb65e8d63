@@ -1,0 +1,15 @@
+package org.lyk.factory;
+
+import java.lang.reflect.Proxy;
+
+import org.lyk.dao.DAOInvocationHandler;
+import org.lyk.dao.IDeptDAO;
+import org.lyk.dao.impl.DeptDAOImpl;
+
+public class DAOFactory
+{
+	public static IDeptDAO getIDeptDAOInstance()
+	{
+		return null;
+	}
+}

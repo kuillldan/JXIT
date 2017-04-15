@@ -1,0 +1,7 @@
+package utils;
+
+public class Const
+{
+	public static final String pageError = "/pages/common/error.jsp";
+	public static final String noPhoto = "nophoto.jpg";
+}

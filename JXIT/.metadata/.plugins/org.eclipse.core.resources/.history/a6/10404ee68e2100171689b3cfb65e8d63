@@ -1,0 +1,62 @@
+package servlet;
+
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import utils.BeanOperate;
+import utils.General;
+
+/**
+ * Servlet implementation class DispatcherServlet
+ */
+public abstract class DispatcherServlet extends HttpServlet
+{
+	private static final long serialVersionUID = 1L;
+
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
+	
+	public DispatcherServlet()
+	{
+		super();
+	}
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException
+	{
+		this.doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException
+	{ 
+		try
+		{
+			this.request = request;
+			this.response = response;
+			
+			
+			Enumeration<String> parameterNames = request.getParameterNames();
+			while(parameterNames.hasMoreElements())
+			{
+				String parameterName = parameterNames.nextElement();
+				BeanOperate.getField(parameterName, this);
+			}
+			
+			
+			String status = General.getStatus(request);
+			Method m = this.getClass().getMethod(status);
+			m.invoke(this);
+		}catch(Exception e)
+		{
+			General.setSystemError(e);
+		}
+	}
+
+}

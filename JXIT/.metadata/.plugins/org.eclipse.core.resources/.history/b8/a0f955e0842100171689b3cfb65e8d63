@@ -1,0 +1,7 @@
+package servlet;
+
+@WebServlet("/dept/*")
+public class DeptServlet extends DispatcherServlet
+{
+
+}

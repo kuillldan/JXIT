@@ -1,0 +1,22 @@
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+import vo.Dept;
+
+@SuppressWarnings("serial")
+@WebServlet("/dept/*")
+public class DeptServlet extends DispatcherServlet
+{
+	Dept dept = new Dept();
+	public Dept getDept()
+	{
+		return dept;
+	}
+	
+	public String insert()
+	{
+		System.out.println("dept insert --> " + this.dept);
+		return "";
+	}
+}

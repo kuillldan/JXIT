@@ -1,0 +1,11 @@
+package vo;
+
+public class Dept
+{
+	private String dname;
+	private String deptno;
+	private String[] locs;
+	private Company company;
+	
+	
+}

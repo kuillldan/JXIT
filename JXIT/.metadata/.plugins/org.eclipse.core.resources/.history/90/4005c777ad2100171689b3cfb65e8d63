@@ -1,0 +1,88 @@
+package servlet;
+
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import utils.BeanOperator;
+import utils.General;
+
+/**
+ * Servlet implementation class DispatcherServlet
+ */
+public abstract class DispatcherServlet extends HttpServlet
+{
+	private static final long serialVersionUID = 1L;
+
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
+	
+	public DispatcherServlet()
+	{
+		super();
+	}
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException
+	{
+		this.doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException
+	{ 
+		System.out.println("[debug] contentType: " + request.getContentType());
+		try
+		{
+			this.request = request;
+			this.response = response;
+			
+			Enumeration<String> parameterNames = request.getParameterNames();
+			while(parameterNames.hasMoreElements())
+			{
+				String propertyNames = parameterNames.nextElement();
+				Field propertyField = BeanOperator.getField(propertyNames, this);
+				
+				if(propertyNames.contains("."))
+				{
+					//自定义bean属性					
+					BeanOperator beanOperator = null; 
+					if(!propertyField.getType().getSimpleName().contains("[]"))
+					{
+						//普通属性
+						beanOperator = new BeanOperator(this, propertyNames, request.getParameter(propertyNames));
+					}
+					else
+					{
+						//数组属性
+						beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
+					}
+					
+					beanOperator.handleProperties();
+				}
+				else
+				{
+					//一般其它属性，此处不处理
+					//System.out.println();
+				}
+				
+				
+			}
+			
+			
+			String status = General.getStatus(request);
+			Method m = this.getClass().getMethod(status);
+			m.invoke(this);
+		}catch(Exception e)
+		{
+			General.setSystemError(e);
+		}
+	}
+
+}

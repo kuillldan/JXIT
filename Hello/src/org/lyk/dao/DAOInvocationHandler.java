@@ -16,22 +16,23 @@ public class DAOInvocationHandler implements InvocationHandler
 
 	private void prepare()
 	{
-		System.out.println("====prepareing====");
+		System.out.println("====prepareing connection ====");
 	}
 	
 	private void deStruct()
 	{
-		System.out.println("====desctruct====");
+		System.out.println("====closing connetionc =====");
 	}
 	@Override
-	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
+	public Object invoke(Object proxy, Method method, Object[] args)
+			throws Throwable
 	{
 		if(method.getName().startsWith("do"))
 		{
 			this.prepare();
-			Object retVal = method.invoke(this.realObject, args);
+			Object obj = method.invoke(this.realObject, args);
 			this.deStruct();
-			return retVal;
+			return obj;
 		}
 		else
 		{

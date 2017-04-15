@@ -1,0 +1,45 @@
+package servlet;
+
+import javax.servlet.annotation.WebServlet;
+
+import vo.Dept;
+
+@SuppressWarnings("serial")
+@WebServlet("/dept/*")
+public class DeptServlet extends DispatcherServlet
+{
+	Dept dept = new Dept();
+	public Dept getDept()
+	{
+		return dept;
+	}
+	
+	public String insert()
+	{
+		try
+		{
+			System.out.println("dept insert --> " + this.dept);
+			if(super.isUpload())
+			{
+				super.saveAllFiles();
+			}
+			return "";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	protected String getTitle()
+	{
+		return "部门";
+	}
+
+	@Override
+	protected String getUploadFolderName()
+	{
+		return "dept";
+	}
+}

@@ -10,7 +10,7 @@ public class DAOFactory
 {
 	public static IDeptDAO getIDeptDAOInstance()
 	{
-		DeptDAOImpl realObject = new DeptDAOImpl();
+		IDeptDAO realObject = new DeptDAOImpl();
 		DAOInvocationHandler h = new DAOInvocationHandler(realObject);
 		return (IDeptDAO)Proxy.newProxyInstance(realObject.getClass().getClassLoader(), realObject.getClass().getInterfaces(), h);
 	}
