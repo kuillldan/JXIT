@@ -55,7 +55,7 @@ public abstract class DispatcherServlet extends HttpServlet
 		{
 			this.request = request;
 			this.response = response;
-			String status = null;
+			String status = General.getRequestStatus(request);
 			String path = CONST.pageError;
 
 			boolean validationPassed = false;
@@ -64,6 +64,8 @@ public abstract class DispatcherServlet extends HttpServlet
 			{
 				this.smartUpload = new SmartUpload();
 				validationPassed = this.validateRule(status, true);
+				System.out.println("验证结果:" + validationPassed);
+				System.out.println("错误信息:" + this.errors);
 				if(validationPassed)
 				{
 					//数据验证通过
@@ -104,6 +106,7 @@ public abstract class DispatcherServlet extends HttpServlet
 	{
 		try
 		{
+			System.out.println("status : " + status);
 			Field validationRule = this.getClass().getDeclaredField(status + "Validation");
 			validationRule.setAccessible(true);
 			String rule = (String) validationRule.get(this);
@@ -133,6 +136,7 @@ public abstract class DispatcherServlet extends HttpServlet
 
 		} catch (NoSuchFieldException | SecurityException e)
 		{
+			System.out.println("未找到验证规则.");
 			return true;
 		} catch (Exception e)
 		{
@@ -162,7 +166,7 @@ public abstract class DispatcherServlet extends HttpServlet
 					beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
 				}
 
-				beanOperator.handleProperties();
+				beanOperator.handleProperties(this.errors);
 			} else
 			{
 				// 一般其它属性，此处不处理
@@ -198,7 +202,7 @@ public abstract class DispatcherServlet extends HttpServlet
 					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameterValues(propertyNames));
 				}
 
-				beanOperator.handleProperties();
+				beanOperator.handleProperties(this.errors);
 			} else
 			{
 				// 一般其它属性，此处不处理

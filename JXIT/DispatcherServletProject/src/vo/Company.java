@@ -19,7 +19,4 @@ public class Company
 	{
 		return "Company [name=" + name + "]";
 	}
-	
-	
-	
 }

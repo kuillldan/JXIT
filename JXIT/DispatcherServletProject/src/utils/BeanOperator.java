@@ -3,6 +3,7 @@ package utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import javax.faces.flow.builder.ReturnBuilder;
 
@@ -44,7 +45,7 @@ public class BeanOperator
 		return obj.getClass().getDeclaredField(allProperties[allProperties.length - 1]);
 	}
 
-	public void handleProperties() throws Exception
+	public void handleProperties(Map<String,String> errors) throws Exception
 	{
 		String[] allProperties = this.propertyNames.split("\\.");
 		 

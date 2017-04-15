@@ -8,6 +8,7 @@ import vo.Dept;
 @WebServlet("/dept/*")
 public class DeptServlet extends DispatcherServlet
 {
+	
 	private String insertValidation = "dept.dname|dept.deptno|dept.company.name";
 	private Dept dept = new Dept();
 	public Dept getDept()
