@@ -115,12 +115,87 @@ public abstract class DispatcherServlet extends HttpServlet
 			for (int i = 0; i < allProperties.length; i++)
 			{
 				String propertyName = allProperties[i];
+				Field field = BeanOperator.getField(propertyName, this);
+				String fieldType = field.getType().getSimpleName();
+				
 				if (isEncryed == false)
 				{
 					if (StringUtils.isEmpty(this.request.getParameter(propertyName)))
 					{
 						validationPassed = false;
 						errors.put(propertyName, propertyName + "不能为空");
+					}
+					else
+					{
+						if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(fieldType))
+						{
+							//是String 类型直接赋值
+						} else if (CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(fieldType)
+								|| CONST.DATATYPE.Int.getRealType().equals(fieldType))
+						{
+							if (StringUtils.validateRegex(this.value, "\\d+"))
+							{
+								setter.invoke(this.obj, Integer.parseInt(this.value));
+							}
+						} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(fieldType))
+						{
+							if (StringUtils.validateRegex(this.value, "\\d+(\\.\\d+)?"))
+							{
+								setter.invoke(this.obj, Double.parseDouble(this.value));
+							}
+
+						} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(fieldType))
+						{
+							if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2}"))
+							{
+								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd").parse(this.value));
+							} else if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
+							{
+								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.value));
+							} else if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
+							{
+								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(this.value));
+							}
+						} else if (CONST.DATATYPE.StringArray.getRealType().equalsIgnoreCase(fieldType))
+						{
+							String[] values = this.arrayValue;
+							setter.invoke(this.obj, new Object[] { values });
+						} else if (CONST.DATATYPE.IntArray.getRealType().equalsIgnoreCase(fieldType))
+						{
+							int[] values = new int[this.arrayValue.length];
+							for (int i = 0; i < values.length; i++)
+							{
+								values[i] = Integer.parseInt(this.arrayValue[i]);
+							}
+							setter.invoke(this.obj, new Object[] { values });
+						} else if (CONST.DATATYPE.IntegerArray.getRealType().equalsIgnoreCase(fieldType))
+						{
+							Integer[] values = new Integer[this.arrayValue.length];
+							for (int i = 0; i < this.arrayValue.length; i++)
+							{
+								values[i] = Integer.parseInt(this.arrayValue[i]);
+							}
+							setter.invoke(this.obj, new Object[] { values });
+						} else if (CONST.DATATYPE.doubleArray.getRealType().equals(fieldType))
+						{
+							double[] values = new double[this.arrayValue.length];
+							for (int i = 0; i < this.arrayValue.length; i++)
+							{
+								values[i] = Double.parseDouble(this.arrayValue[i]);
+							}
+							setter.invoke(this.obj, new Object[] { values });
+						} else if (CONST.DATATYPE.DoubleArray.getRealType().equals(fieldType))
+						{
+							Double[] values = new Double[this.arrayValue.length];
+							for (int i = 0; i < this.arrayValue.length; i++)
+							{
+								values[i] = Double.parseDouble(this.arrayValue[i]);
+							}
+							setter.invoke(this.obj, new Object[] { values });
+						} else
+						{
+							throw new Exception("unsupported data type: " + fieldType);
+						}
 					}
 				} else
 				{
