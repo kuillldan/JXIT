@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Dept
 {
 	private String dname;
-	private String deptno;
+	private Integer deptno;
 	private String[] locs;
 	private Company company = new Company();
 	
@@ -17,11 +17,14 @@ public class Dept
 	{
 		this.dname = dname;
 	}
-	public String getDeptno()
+	
+	
+	
+	public Integer getDeptno()
 	{
 		return deptno;
 	}
-	public void setDeptno(String deptno)
+	public void setDeptno(Integer deptno)
 	{
 		this.deptno = deptno;
 	}

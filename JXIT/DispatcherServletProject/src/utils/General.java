@@ -39,13 +39,13 @@ public class General
 	{
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		return CONST.pageForward;
+		return CONST.forwardPage;
 	}
 	
 	public static String setSystemError(Exception e)
 	{
 		e.printStackTrace();
-		return CONST.pageError;
+		return CONST.errorPage;
 	}
 	
 	public static String updatePhoto(SmartUpload smart, String oldPhoto, String photo, HttpServletRequest _request, String photoPath) throws Exception

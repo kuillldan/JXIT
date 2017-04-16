@@ -36,7 +36,7 @@ public abstract class DispatcherServlet extends HttpServlet
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private SmartUpload smartUpload;
-	private Map<String, String> errors = new HashMap<String, String>();
+	//private Map<String, String> errors = new HashMap<String, String>();
 
 	public DispatcherServlet()
 	{
@@ -56,39 +56,41 @@ public abstract class DispatcherServlet extends HttpServlet
 			this.request = request;
 			this.response = response;
 			String status = General.getRequestStatus(request);
-			String path = CONST.pageError;
+			String path = CONST.errorPage;
 
 			boolean validationPassed = false;
-
+			Map<String, String> errors = null;
+			
 			if (request.getContentType().contains("multipart/form-data"))
 			{
 				this.smartUpload = new SmartUpload();
-				validationPassed = this.validateRule(status, true);
-				System.out.println("验证结果:" + validationPassed);
-				System.out.println("错误信息:" + this.errors);
-				if(validationPassed)
+				this.smartUpload.initialize(super.getServletConfig(), this.request, response);
+				this.smartUpload.upload();
+				
+				errors = this.validateEncryptedHttpData(); 
+				if(errors.size() <= 0)
 				{
-					//数据验证通过
+					// 数据验证通过
 					this.handleEncrypedHttpData();
 				}
 				else
 				{
+					System.out.println("[debug] 数据验证未通过: " + errors );
 					//数据验证未通过
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
+					request.getRequestDispatcher(CONST.errorPage).forward(request, response);
 				}
 
 			} else
-			{
-				validationPassed = this.validateRule(status, false);
-				if(validationPassed)
+			{ 
+				errors = this.validateNormalHttpData(); 
+				if(errors.size() <= 0)
 				{
 					this.handleNormalHttpData();
 				}
 				else
-				{
-					request.setAttribute("errors", this.errors);
-					request.getRequestDispatcher(path).forward(request, response);
+				{//验证未通过
+					System.out.println("[debug] 数据验证未通过: " + errors );
+					request.getRequestDispatcher(CONST.errorPage).forward(request, response);
 				}
 			}
 
@@ -102,122 +104,78 @@ public abstract class DispatcherServlet extends HttpServlet
 		}
 	}
 
-	private boolean validateRule(String status, boolean isEncryed) throws Exception
+	private Map<String, String> validateNormalHttpData() throws Exception
 	{
-		try
+		Map<String, String> errors = new HashMap<String, String>();
+		Enumeration<String> parameterNames = request.getParameterNames();
+		while (parameterNames.hasMoreElements())
 		{
-			System.out.println("status : " + status);
-			Field validationRule = this.getClass().getDeclaredField(status + "Validation");
-			validationRule.setAccessible(true);
-			String rule = (String) validationRule.get(this);
-			boolean validationPassed = true;
-			String[] allProperties = rule.split("\\|");
-			for (int i = 0; i < allProperties.length; i++)
-			{
-				String propertyName = allProperties[i];
-				Field field = BeanOperator.getField(propertyName, this);
-				String fieldType = field.getType().getSimpleName();
-				
-				if (isEncryed == false)
-				{
-					if (StringUtils.isEmpty(this.request.getParameter(propertyName)))
-					{
-						validationPassed = false;
-						errors.put(propertyName, propertyName + "不能为空");
-					}
-					else
-					{
-						if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(fieldType))
-						{
-							//是String 类型直接赋值
-						} else if (CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(fieldType)
-								|| CONST.DATATYPE.Int.getRealType().equals(fieldType))
-						{
-							if (StringUtils.validateRegex(this.value, "\\d+"))
-							{
-								setter.invoke(this.obj, Integer.parseInt(this.value));
-							}
-						} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(fieldType))
-						{
-							if (StringUtils.validateRegex(this.value, "\\d+(\\.\\d+)?"))
-							{
-								setter.invoke(this.obj, Double.parseDouble(this.value));
-							}
+			String propertyNames = parameterNames.nextElement();
+			Field propertyField = BeanOperator.getField(propertyNames, this);
 
-						} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(fieldType))
-						{
-							if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2}"))
-							{
-								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd").parse(this.value));
-							} else if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
-							{
-								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(this.value));
-							} else if (StringUtils.validateRegex(this.value, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
-							{
-								setter.invoke(this.obj, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(this.value));
-							}
-						} else if (CONST.DATATYPE.StringArray.getRealType().equalsIgnoreCase(fieldType))
-						{
-							String[] values = this.arrayValue;
-							setter.invoke(this.obj, new Object[] { values });
-						} else if (CONST.DATATYPE.IntArray.getRealType().equalsIgnoreCase(fieldType))
-						{
-							int[] values = new int[this.arrayValue.length];
-							for (int i = 0; i < values.length; i++)
-							{
-								values[i] = Integer.parseInt(this.arrayValue[i]);
-							}
-							setter.invoke(this.obj, new Object[] { values });
-						} else if (CONST.DATATYPE.IntegerArray.getRealType().equalsIgnoreCase(fieldType))
-						{
-							Integer[] values = new Integer[this.arrayValue.length];
-							for (int i = 0; i < this.arrayValue.length; i++)
-							{
-								values[i] = Integer.parseInt(this.arrayValue[i]);
-							}
-							setter.invoke(this.obj, new Object[] { values });
-						} else if (CONST.DATATYPE.doubleArray.getRealType().equals(fieldType))
-						{
-							double[] values = new double[this.arrayValue.length];
-							for (int i = 0; i < this.arrayValue.length; i++)
-							{
-								values[i] = Double.parseDouble(this.arrayValue[i]);
-							}
-							setter.invoke(this.obj, new Object[] { values });
-						} else if (CONST.DATATYPE.DoubleArray.getRealType().equals(fieldType))
-						{
-							Double[] values = new Double[this.arrayValue.length];
-							for (int i = 0; i < this.arrayValue.length; i++)
-							{
-								values[i] = Double.parseDouble(this.arrayValue[i]);
-							}
-							setter.invoke(this.obj, new Object[] { values });
-						} else
-						{
-							throw new Exception("unsupported data type: " + fieldType);
-						}
-					}
+			if (propertyNames.contains("."))
+			{
+				// 自定义bean属性
+				BeanOperator beanOperator = null;
+				if (!propertyField.getType().getSimpleName().contains("[]"))
+				{
+					// 普通属性
+					beanOperator = new BeanOperator(this, propertyNames, request.getParameter(propertyNames));
 				} else
 				{
-					if (StringUtils.isEmpty(this.smartUpload.getRequest().getParameter(propertyName)))
-					{
-						validationPassed = false;
-						errors.put(propertyName, propertyName + "不能为空");
-					} 
+					// 数组属性
+					beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
 				}
+
+				beanOperator.validateProperties(errors);
+			} else
+			{
+				// 一般其它属性，此处不处理
+				// System.out.println();
 			}
-
-			return validationPassed;
-
-		} catch (NoSuchFieldException | SecurityException e)
-		{
-			System.out.println("未找到验证规则.");
-			return true;
-		} catch (Exception e)
-		{
-			throw e;
 		}
+		
+		return errors;
 	}
+	
+	
+	private Map<String, String> validateEncryptedHttpData() throws Exception
+	{ 
+		Map<String, String> errors = new HashMap<String, String>();
+		SmartRequest smartRequest = this.smartUpload.getRequest();
+		
+		Enumeration<String> parameterNames = smartRequest.getParameterNames();
+		while (parameterNames.hasMoreElements())
+		{
+			String propertyNames = parameterNames.nextElement();
+			Field propertyField = BeanOperator.getField(propertyNames, this);
+ 
+			if (propertyNames.contains("."))
+			{
+				// 自定义bean属性
+				BeanOperator beanOperator = null;
+				if (!propertyField.getType().getSimpleName().contains("[]"))
+				{
+					// 普通属性
+					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameter(propertyNames));
+				} else
+				{
+					// 数组属性
+					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameterValues(propertyNames));
+				}
+
+				beanOperator.validateProperties(errors);
+			} else
+			{
+				// 一般其它属性，此处不处理
+				// System.out.println();
+			}
+		}
+		
+		return errors;
+	}
+	
+	
 
 	private void handleNormalHttpData() throws Exception
 	{
@@ -241,20 +199,17 @@ public abstract class DispatcherServlet extends HttpServlet
 					beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
 				}
 
-				beanOperator.handleProperties(this.errors);
+				beanOperator.handleProperties();
 			} else
 			{
 				// 一般其它属性，此处不处理
 				// System.out.println();
 			}
-
 		}
 	}
 
 	private void handleEncrypedHttpData() throws Exception
 	{
-		this.smartUpload.initialize(super.getServletConfig(), this.request, response);
-		this.smartUpload.upload();
 		SmartRequest smartRequest = this.smartUpload.getRequest();
 
 		Enumeration<String> parameterNames = smartRequest.getParameterNames();
@@ -277,7 +232,7 @@ public abstract class DispatcherServlet extends HttpServlet
 					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameterValues(propertyNames));
 				}
 
-				beanOperator.handleProperties(this.errors);
+				beanOperator.handleProperties();
 			} else
 			{
 				// 一般其它属性，此处不处理
@@ -310,8 +265,7 @@ public abstract class DispatcherServlet extends HttpServlet
 	protected void saveFile(Integer fileIndex, String fileName) throws Exception
 	{
 		String filePath = super.getServletContext().getRealPath("/photos/" + this.getUploadFolderName() + "/")
-				+ fileName;
-		System.out.println("[debug] " + filePath);
+				+ fileName; 
 		File fileUploaded = new File(filePath);
 		if (!fileUploaded.getParentFile().exists())
 		{
@@ -374,5 +328,4 @@ public abstract class DispatcherServlet extends HttpServlet
 	 * @return
 	 */
 	protected abstract String getUploadFolderName();
-
 }

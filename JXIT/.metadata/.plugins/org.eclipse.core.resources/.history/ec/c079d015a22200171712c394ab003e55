@@ -1,0 +1,50 @@
+package servlet;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.nio.channels.IllegalSelectorException;
+import java.text.SimpleDateFormat;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
+
+import com.jspsmart.upload.SmartFile;
+import com.jspsmart.upload.SmartFiles;
+import com.jspsmart.upload.SmartRequest;
+import com.jspsmart.upload.SmartUpload;
+
+import utils.BeanOperator;
+import utils.CONST;
+import utils.General;
+import utils.StringUtils;
+
+public abstract class DispatcherServlet extends HttpServlet
+{
+	private static final long serialVersionUID = 1L;
+
+	private HttpServletRequest request;
+	private HttpServletResponse response;
+	private SmartUpload smartUpload;
+	private Map<String, String> errors = new HashMap<String, String>();
+
+	public DispatcherServlet()
+	{
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		this.doPost(request, response);
+	}
+}

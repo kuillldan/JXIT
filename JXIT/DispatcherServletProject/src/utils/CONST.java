@@ -2,9 +2,9 @@ package utils;
 
 public class CONST
 {
-	public static final String pageError = "/pages/common/error.jsp";
+	public static final String errorPage = "/pages/common/error.jsp";
 	public static final String noPhoto = "nophoto.jpg";
-	public static final String pageForward = "/pages/common/forward.jsp";
+	public static final String forwardPage = "/pages/common/forward.jsp";
 	
 	public enum DATATYPE
 	{
