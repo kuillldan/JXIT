@@ -6,9 +6,22 @@ public class Dept
 {
 	private String dname;
 	private Integer deptno;
+	private String address;
 	private String[] locs;
 	private Company company = new Company();
 	
+	
+	
+	
+	
+	public String getAddress()
+	{
+		return address;
+	}
+	public void setAddress(String address)
+	{
+		this.address = address;
+	}
 	public String getDname()
 	{
 		return dname;
@@ -47,7 +60,7 @@ public class Dept
 	@Override
 	public String toString()
 	{
-		return "Dept [dname=" + dname + ", deptno=" + deptno + ", locs="
+		return "Dept [dname=" + dname + ", deptno=" + deptno + ", address=" + address + ", locs="
 				+ Arrays.toString(locs) + ", company=" + company + "]";
 	}
 }

@@ -33,9 +33,16 @@ public abstract class DispatcherServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
-	private HttpServletRequest request;
-	private HttpServletResponse response;
-	private SmartUpload smartUpload;
+	protected HttpServletRequest request;
+	protected HttpServletResponse response;
+	protected SmartUpload smartUpload;
+	
+	protected Integer currentPage ;
+	protected Integer lineSize;
+	protected String columns ;
+	protected String column ;
+	protected String keyWord ;
+	
 	//private Map<String, String> errors = new HashMap<String, String>();
 
 	public DispatcherServlet()
@@ -58,10 +65,9 @@ public abstract class DispatcherServlet extends HttpServlet
 			String status = General.getRequestStatus(request);
 			String path = CONST.errorPage;
 
-			boolean validationPassed = false;
 			Map<String, String> errors = null;
 			
-			if (request.getContentType().contains("multipart/form-data"))
+			if ( request.getContentType() != null && request.getContentType().contains("multipart/form-data"))
 			{
 				this.smartUpload = new SmartUpload();
 				this.smartUpload.initialize(super.getServletConfig(), this.request, response);
@@ -96,12 +102,50 @@ public abstract class DispatcherServlet extends HttpServlet
 
 			status = General.getRequestStatus(request);
 			Method m = this.getClass().getMethod(status);
-			m.invoke(this);
+			path = (String)m.invoke(this);
+			System.out.println("[debug] path: " + path);
+			request.getRequestDispatcher(path).forward(request, response);
 
 		} catch (Exception e)
 		{
 			General.setSystemError(e);
 		}
+	}
+	
+	protected void handleSplit()
+	{
+		currentPage = 1;
+		lineSize = 5;
+		columns = this.getColumns();
+		column = this.getColumn();
+		keyWord = "";
+		
+		try
+		{
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		} catch (Exception e)
+		{
+		}
+		try
+		{
+			lineSize = Integer.parseInt(request.getParameter("lineSize"));
+		} catch (Exception e)
+		{
+		}
+		if (!StringUtils.isEmpty(request.getParameter("column")))
+		{
+			column = request.getParameter("column");
+		}
+		if (!StringUtils.isEmpty(request.getParameter("keyWord")))
+		{
+			keyWord = request.getParameter("keyWord");
+		}
+		
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("lineSize", lineSize);
+		request.setAttribute("columns", columns);
+		request.setAttribute("column", column);
+		request.setAttribute("keyWord", keyWord);
 	}
 
 	private Map<String, String> validateNormalHttpData() throws Exception
@@ -111,7 +155,15 @@ public abstract class DispatcherServlet extends HttpServlet
 		while (parameterNames.hasMoreElements())
 		{
 			String propertyNames = parameterNames.nextElement();
-			Field propertyField = BeanOperator.getField(propertyNames, this);
+			Field propertyField = null;
+			try
+			{
+				propertyField = BeanOperator.getField(propertyNames, this);
+			}
+			catch(NoSuchFieldException e)
+			{
+				continue;
+			}
 
 			if (propertyNames.contains("."))
 			{
@@ -148,7 +200,15 @@ public abstract class DispatcherServlet extends HttpServlet
 		while (parameterNames.hasMoreElements())
 		{
 			String propertyNames = parameterNames.nextElement();
-			Field propertyField = BeanOperator.getField(propertyNames, this);
+			Field propertyField = null;
+			try
+			{
+				propertyField = BeanOperator.getField(propertyNames, this);
+			}
+			catch(NoSuchFieldException e)
+			{
+				continue;
+			}
  
 			if (propertyNames.contains("."))
 			{
@@ -183,7 +243,15 @@ public abstract class DispatcherServlet extends HttpServlet
 		while (parameterNames.hasMoreElements())
 		{
 			String propertyNames = parameterNames.nextElement();
-			Field propertyField = BeanOperator.getField(propertyNames, this);
+			Field propertyField = null;
+			try
+			{
+				propertyField = BeanOperator.getField(propertyNames, this);
+			}
+			catch(NoSuchFieldException e)
+			{
+				continue;
+			}
 
 			if (propertyNames.contains("."))
 			{
@@ -216,7 +284,15 @@ public abstract class DispatcherServlet extends HttpServlet
 		while (parameterNames.hasMoreElements())
 		{
 			String propertyNames = parameterNames.nextElement();
-			Field propertyField = BeanOperator.getField(propertyNames, this);
+			Field propertyField = null;
+			try
+			{
+				propertyField = BeanOperator.getField(propertyNames, this);
+			}
+			catch(NoSuchFieldException e)
+			{
+				continue;
+			}
 
 			if (propertyNames.contains("."))
 			{
@@ -328,4 +404,15 @@ public abstract class DispatcherServlet extends HttpServlet
 	 * @return
 	 */
 	protected abstract String getUploadFolderName();
+	
+	/**
+	 * 从子类中获取分页中的所有查询列
+	 * @return
+	 */
+	protected abstract String getColumns();
+	/**
+	 * 从子类中获取默认查询咧
+	 * @return
+	 */
+	protected abstract String getColumn();
 }

@@ -45,4 +45,17 @@ public class DeptServlet extends DispatcherServlet
 	{
 		return "dept";
 	}
+
+	@Override
+	protected String getColumns()
+	{
+		return "部门名称:dname|地址:d";
+	}
+
+	@Override
+	protected String getColumn()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
