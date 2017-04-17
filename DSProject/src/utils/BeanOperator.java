@@ -5,7 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,172 +27,214 @@ public class BeanOperator
 
 	public void setValueAutomatic(HttpServletRequest request, SmartRequest smartRequest, boolean isEncryped)
 	{
+
 		Enumeration<String> allParameterNames = request.getParameterNames();
 		while (allParameterNames.hasMoreElements())
 		{
 			String eachParameterName = allParameterNames.nextElement();
-			String eachParameterValue = null;
-			String[] eachParameterValues = null;
-			Field lastField = this.getLastField(eachParameterName);
+			Map<String, Object> map = this.getLastField(eachParameterName);
+			Field lastField = (Field) map.get("lastField");
+			Object realObject = (Object) map.get("realObject");
+
 			lastField.setAccessible(true);
 			String lastFieldTypeName = lastField.getType().getSimpleName();
 
-			try
+			if (!isEncryped)
 			{
-				if (!lastFieldTypeName.contains("[]"))
+				try
 				{
-					eachParameterValue = request.getParameter(eachParameterName);
-					if (CONST.DATATYPE.Int.getRealType().equalsIgnoreCase(lastFieldTypeName)
-							|| CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(lastFieldTypeName))
-					{
-						if (!StringUtils.isEmpty(eachParameterValue)
-								&& StringUtils.validateRegex(eachParameterValue, "\\d+"))
-						{
-							lastField.set(this.servletObject, Integer.parseInt(eachParameterValue));
-						}
-					} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(lastFieldTypeName))
-					{
-						if (!StringUtils.isEmpty(eachParameterValue)
-								&& StringUtils.validateRegex(eachParameterValue, "\\d+(\\.\\d+)?"))
-						{
-							lastField.set(this.servletObject, Double.parseDouble(eachParameterValue));
-						}
-					} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(lastFieldTypeName))
-					{
-						if (!StringUtils.isEmpty(eachParameterValue)
-								&& (StringUtils.validateRegex(eachParameterValue, "\\d{4}-\\d{2}-\\d{2}")
-										|| StringUtils.validateRegex(eachParameterValue,
-												"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}") || StringUtils
-											.validateRegex(eachParameterValue,
-													"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{3}")))
-						{
-							lastField.set(this.servletObject,
-									new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(eachParameterValue));
-						}
-					} else if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(lastFieldTypeName))
-					{
-						if (!StringUtils.isEmpty(eachParameterValue))
-						{
-							lastField.set(this.servletObject, eachParameterValue);
-						}
-					}
-					else
-					{
-						System.out.println("******不支持的数据类型，无法完成自动赋值******");
-					}
-				} else
+					this.bindData(lastFieldTypeName, request, smartRequest, eachParameterName, lastField, realObject,
+							false);
+				} catch (IllegalArgumentException | IllegalAccessException | ParseException e)
 				{
-					// 数组
-					eachParameterValues = request.getParameterValues(eachParameterName);
-					if (eachParameterName != null)
+					e.printStackTrace();
+				}
+			} else
+			{
+				// 数据已经封装
+				try
+				{
+					this.bindData(lastFieldTypeName, request, smartRequest, eachParameterName, lastField, realObject,
+							true);
+				} catch (IllegalArgumentException | IllegalAccessException | ParseException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+	private void bindData(String lastFieldTypeName, HttpServletRequest request, SmartRequest smartRequest,
+			String eachParameterName, Field lastField, Object realObject, boolean isEncryped)
+			throws IllegalArgumentException, IllegalAccessException, ParseException
+	{
+		if (!lastFieldTypeName.contains("[]"))
+		{
+			System.out.println("[debug] 准备设置" + eachParameterName + "的值");
+			String eachParameterValue = null;
+			if (!isEncryped)
+			{
+				eachParameterValue = request.getParameter(eachParameterName);
+			} else
+			{
+				eachParameterValue = smartRequest.getParameter(eachParameterName);
+			}
+			if (CONST.DATATYPE.Int.getRealType().equalsIgnoreCase(lastFieldTypeName)
+					|| CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(lastFieldTypeName))
+			{
+				if (!StringUtils.isEmpty(eachParameterValue) && StringUtils.validateRegex(eachParameterValue, "\\d+"))
+				{
+					lastField.set(realObject, Integer.parseInt(eachParameterValue));
+				}
+			} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(lastFieldTypeName))
+			{
+				if (!StringUtils.isEmpty(eachParameterValue)
+						&& StringUtils.validateRegex(eachParameterValue, "\\d+(\\.\\d+)?"))
+				{
+					lastField.set(realObject, Double.parseDouble(eachParameterValue));
+				}
+			} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(lastFieldTypeName))
+			{
+				if (!StringUtils.isEmpty(eachParameterValue))
+				{
+					if (StringUtils.validateRegex(eachParameterValue, "\\d{4}-\\d{2}-\\d{2}"))
 					{
-						if (CONST.DATATYPE.IntArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
-						{
-
-							boolean arrayDataValid = true;
-							int[] acturalValues = new int[eachParameterValues.length];
-							for (int i = 0; i < eachParameterValues.length; i++)
-							{
-								try
-								{
-									acturalValues[i] = Integer.parseInt(eachParameterValues[i]);
-								} catch (Exception e)
-								{
-									arrayDataValid = false;
-									break;
-								}
-							}
-
-							if (arrayDataValid == true)
-							{
-								lastField.set(this.servletObject, new Object[]
-								{ acturalValues });
-							}
-						} else if (CONST.DATATYPE.IntegerArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
-						{
-
-							boolean arrayDataValid = true;
-							Integer[] acturalValues = new Integer[eachParameterValues.length];
-							for (int i = 0; i < eachParameterValues.length; i++)
-							{
-								try
-								{
-									acturalValues[i] = Integer.parseInt(eachParameterValues[i]);
-								} catch (Exception e)
-								{
-									arrayDataValid = false;
-									break;
-								}
-							}
-
-							if (arrayDataValid == true)
-							{
-								lastField.set(this.servletObject, new Object[]
-								{ acturalValues });
-							}
-						}else if (CONST.DATATYPE.DoubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
-						{
-
-							boolean arrayDataValid = true;
-							Double[] acturalValues = new Double[eachParameterValues.length];
-							for (int i = 0; i < eachParameterValues.length; i++)
-							{
-								try
-								{
-									acturalValues[i] = Double.parseDouble(eachParameterValues[i]);
-								} catch (Exception e)
-								{
-									arrayDataValid = false;
-									break;
-								}
-							}
-
-							if (arrayDataValid == true)
-							{
-								lastField.set(this.servletObject, new Object[]
-								{ acturalValues });
-							}
-						}
-						else if (CONST.DATATYPE.doubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
-						{
-
-							boolean arrayDataValid = true;
-							double[] acturalValues = new double[eachParameterValues.length];
-							for (int i = 0; i < eachParameterValues.length; i++)
-							{
-								try
-								{
-									acturalValues[i] = Double.parseDouble(eachParameterValues[i]);
-								} catch (Exception e)
-								{
-									arrayDataValid = false;
-									break;
-								}
-							}
-
-							if (arrayDataValid == true)
-							{
-								lastField.set(this.servletObject, new Object[]
-								{ acturalValues });
-							}
-						}
-						else if (CONST.DATATYPE.StringArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
-						{ 
-							String[] acturalValues = new String[eachParameterValues.length];
-							for (int i = 0; i < eachParameterValues.length; i++)
-							{
-								acturalValues[i] = eachParameterValues[i];
-							} 
-						}
-						else
-						{
-							System.out.println("******不支持的数据类型，无法完成数组的自动赋值******");
-						}
+						lastField.set(realObject, new SimpleDateFormat("yyyy-MM-dd").parse(eachParameterValue));
+					} else if (StringUtils.validateRegex(eachParameterValue,
+							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
+					{
+						lastField
+								.set(realObject, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eachParameterValue));
+					} else if (StringUtils.validateRegex(eachParameterValue,
+							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{3}"))
+					{
+						lastField.set(realObject,
+								new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(eachParameterValue));
 					}
 				}
-			} catch (IllegalArgumentException | IllegalAccessException | ParseException e)
+
+			} else if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(lastFieldTypeName))
 			{
-				e.printStackTrace();
+				if (!StringUtils.isEmpty(eachParameterValue))
+				{
+					System.out.println("[debug] 准备将值" + eachParameterValue + "设置到" + eachParameterName + "上");
+					lastField.set(realObject, eachParameterValue);
+				}
+			} else
+			{
+				System.out.println("******不支持的数据类型，无法完成自动赋值******");
+			}
+		} else
+		{
+			// 数组
+			String[] eachParameterValues = null;
+			if (!isEncryped)
+			{
+				eachParameterValues = request.getParameterValues(eachParameterName);
+			} else
+			{
+				eachParameterValues = smartRequest.getParameterValues(eachParameterName);
+			}
+
+			if (eachParameterName != null)
+			{
+				if (CONST.DATATYPE.IntArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+
+					boolean arrayDataValid = true;
+					int[] acturalValues = new int[eachParameterValues.length];
+					for (int i = 0; i < eachParameterValues.length; i++)
+					{
+						try
+						{
+							acturalValues[i] = Integer.parseInt(eachParameterValues[i]);
+						} catch (Exception e)
+						{
+							arrayDataValid = false;
+							break;
+						}
+					}
+
+					if (arrayDataValid == true)
+					{
+						lastField.set(realObject, new Object[] { acturalValues });
+					}
+				} else if (CONST.DATATYPE.IntegerArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+
+					boolean arrayDataValid = true;
+					Integer[] acturalValues = new Integer[eachParameterValues.length];
+					for (int i = 0; i < eachParameterValues.length; i++)
+					{
+						try
+						{
+							acturalValues[i] = Integer.parseInt(eachParameterValues[i]);
+						} catch (Exception e)
+						{
+							arrayDataValid = false;
+							break;
+						}
+					}
+
+					if (arrayDataValid == true)
+					{
+						lastField.set(realObject, acturalValues);
+
+					}
+				} else if (CONST.DATATYPE.DoubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+
+					boolean arrayDataValid = true;
+					Double[] acturalValues = new Double[eachParameterValues.length];
+					for (int i = 0; i < eachParameterValues.length; i++)
+					{
+						try
+						{
+							acturalValues[i] = Double.parseDouble(eachParameterValues[i]);
+						} catch (Exception e)
+						{
+							arrayDataValid = false;
+							break;
+						}
+					}
+
+					if (arrayDataValid == true)
+					{
+						lastField.set(realObject, acturalValues);
+					}
+				} else if (CONST.DATATYPE.doubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+
+					boolean arrayDataValid = true;
+					double[] acturalValues = new double[eachParameterValues.length];
+					for (int i = 0; i < eachParameterValues.length; i++)
+					{
+						try
+						{
+							acturalValues[i] = Double.parseDouble(eachParameterValues[i]);
+						} catch (Exception e)
+						{
+							arrayDataValid = false;
+							break;
+						}
+					}
+
+					if (arrayDataValid == true)
+					{
+						lastField.set(realObject, acturalValues);
+					}
+				} else if (CONST.DATATYPE.StringArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+					String[] acturalValues = new String[eachParameterValues.length];
+					for (int i = 0; i < eachParameterValues.length; i++)
+					{
+						acturalValues[i] = eachParameterValues[i];
+					}
+					lastField.set(realObject, acturalValues);
+				} else
+				{
+					System.out.println("******不支持的数据类型，无法完成数组的自动赋值******");
+				}
 			}
 		}
 	}
@@ -219,9 +263,8 @@ public class BeanOperator
 
 			for (String property : allProperties)
 			{
-				Field lastField = this.getLastField(property);
+				Field lastField = (Field) this.getLastField(property).get("lastField");
 				String lastFieldTypeName = lastField.getType().getSimpleName();
-				String lastFieldName = lastField.getName();
 
 				if (!isEncryped)
 				{
@@ -447,20 +490,19 @@ public class BeanOperator
 	 * @param parameters
 	 * @return
 	 */
-	private Field getLastField(String property)
+	private Map<String, Object> getLastField(String property)
 	{
+		Map<String, Object> map = new HashMap<String, Object>();
 		Field lastField = null;
-		System.out.println("[debug] 待验证的字段全名:" + property);
 		String[] propertyList = property.split("\\.");
-		System.out.println("[debug] 所有节点总长度:" + propertyList.length);
-		Object obj = this.servletObject;
+		Object realObject = this.servletObject;
 		for (int i = 0; i < propertyList.length - 1; i++)
 		{
 			// getter
 			try
 			{
-				Method getter = obj.getClass().getDeclaredMethod("get" + StringUtils.initCap(propertyList[i]));
-				obj = (Object) getter.invoke(obj);
+				Method getter = realObject.getClass().getDeclaredMethod("get" + StringUtils.initCap(propertyList[i]));
+				realObject = (Object) getter.invoke(realObject);
 			} catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
@@ -469,12 +511,13 @@ public class BeanOperator
 		}
 		try
 		{
-			lastField = obj.getClass().getDeclaredField(propertyList[propertyList.length - 1]);
+			lastField = realObject.getClass().getDeclaredField(propertyList[propertyList.length - 1]);
 		} catch (NoSuchFieldException | SecurityException e)
 		{
 			e.printStackTrace();
 		}
-
-		return lastField;
+		map.put("lastField", lastField);
+		map.put("realObject", realObject);
+		return map;
 	}
 }

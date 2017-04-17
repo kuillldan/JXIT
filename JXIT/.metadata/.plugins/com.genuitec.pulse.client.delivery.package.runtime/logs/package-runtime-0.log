@@ -1,4 +1,4 @@
-Apr 16, 2017 8:20:51 PM com.genuitec.pulse.client.deliverypackage.runtime.internal.Activator initializeLoggers
-信息: Package starting up at Sun Apr 16 20:20:51 CST 2017
-Apr 16, 2017 8:20:52 PM com.genuitec.pulse.client.deliverypackage.runtime.UpdatesService checkForWorkspaceUpdates
-信息: Latest version of package has already been enabled in the workspace; check finished in 0ms
+Apr 17, 2017 8:06:24 PM com.genuitec.pulse.client.deliverypackage.runtime.internal.Activator initializeLoggers
+信息: Package starting up at Mon Apr 17 20:06:24 CST 2017
+Apr 17, 2017 8:06:26 PM com.genuitec.pulse.client.deliverypackage.runtime.UpdatesService checkForWorkspaceUpdates
+信息: Latest version of package has already been enabled in the workspace; check finished in 16ms

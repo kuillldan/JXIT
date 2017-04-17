@@ -7,8 +7,7 @@ public class Item implements Serializable
 {
 	private Integer iid;
 	private String title;
-	private OtherInfo otherInfo = new OtherInfo();
-	private Goods goods;
+	private OtherInfo otherInfo = new OtherInfo(); 
 	 
 	public OtherInfo getOtherInfo()
 	{
@@ -18,14 +17,7 @@ public class Item implements Serializable
 	{
 		this.otherInfo = otherInfo;
 	}
-	public Goods getGoods()
-	{
-		return goods;
-	}
-	public void setGoods(Goods goods)
-	{
-		this.goods = goods;
-	}
+ 
 	public Integer getIid()
 	{
 		return iid;
@@ -45,6 +37,7 @@ public class Item implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Item [iid=" + iid + ", title=" + title + ", goods=" + goods + "]";
-	}  
+		return "Item [iid=" + iid + ", title=" + title + ", otherInfo=" + otherInfo + "]";
+	}
+	
 }

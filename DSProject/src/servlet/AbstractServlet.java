@@ -49,8 +49,11 @@ public class AbstractServlet extends HttpServlet
 		{
 			BeanOperator bo = new BeanOperator(this);
 			Map<String, String> errors = new HashMap<String, String>();
+			boolean isEncrypted = false; 
 			
 			if(this.request.getContentType() != null && this.request.getContentType().contains("multipart/form-data"))
+				isEncrypted = true; 
+			if(isEncrypted)
 			{
 				// 请求已封装
 				this.smartUpload = new SmartUpload();
@@ -58,37 +61,50 @@ public class AbstractServlet extends HttpServlet
 				this.smartUpload.upload();
 				SmartRequest smartRequest = smartUpload.getRequest();
 				bo.validateParameters(errors, status, request, smartRequest, true);
-				
+				if(errors.size() <=0 )
+				{
+					//验证通过 - 需要绑定数据 
+					bo.setValueAutomatic(request, smartRequest, true); 
+					Method method = this.getClass().getMethod(status);
+					path = (String)method.invoke(this);
+				}
+				else
+				{
+					//验证不通过
+					request.setAttribute("errors", errors);
+					path = CONST.errorPage;
+				} 
 			}
 			else
 			{
 				//请求未封装
 				bo.validateParameters(errors, status, request, null, false);
+				if(errors.size() <=0 )
+				{
+					//验证通过 - 需要绑定数据 
+					bo.setValueAutomatic(request, null, false); 
+					Method method = this.getClass().getMethod(status);
+					path = (String)method.invoke(this);
+				}
+				else
+				{
+					//验证不通过
+					request.setAttribute("errors", errors);
+					path = CONST.errorPage;
+				}
 			}
-			if(errors.size() <=0 )
-			{
-				//验证通过 - 需要绑定数据
-				
-			
-				
-				
-				System.out.println("[debug] " + errors);
-				Method method = this.getClass().getMethod(status);
-				path = (String)method.invoke(this);
-			}
-			else
-			{
-				//验证不通过
-				request.setAttribute("errors", errors);
-				path = CONST.errorPage;
-			}
-		}
+			 
+		} 
 		catch(Exception e)
 		{
 			e.printStackTrace();
 			path = CONST.errorPage;
-		}
-		System.out.println("[debug] path: " + path );
+		} 
 		this.request.getRequestDispatcher(path).forward(request, response);
+	}
+	
+	public void showA()
+	{
+		System.out.println("A hashCode:" + this.hashCode());
 	}
 }

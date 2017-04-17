@@ -21,7 +21,7 @@ public class GoodsServlet extends AbstractServlet
 	{
 		return goods;
 	}
-
+	 
  
 	public void setGoods(Goods goods)
 	{
@@ -29,7 +29,8 @@ public class GoodsServlet extends AbstractServlet
 	}
 	
 	public String insert()
-	{
+	{ 
+		System.out.println("[debug] " + this.goods);
 		return "/pages/front/goods/insertXX.jsp";
 	}
 

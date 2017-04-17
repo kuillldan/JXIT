@@ -15,7 +15,7 @@
   </head>
   
   <body>
-  <form action="pages/front/goods/GoodsServlet/insert">
+  <form action="pages/front/goods/GoodsServlet/insert" method="post">
   	<table border="1" bgcolor="F2F2F2" cellpadding="5" cellspacing="0">
   		<tr>
   			<td>操作员id</td>
