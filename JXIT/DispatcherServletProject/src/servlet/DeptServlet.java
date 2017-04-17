@@ -2,14 +2,21 @@ package servlet;
 
 import javax.servlet.annotation.WebServlet;
 
+import utils.General;
 import vo.Dept;
 
 @SuppressWarnings("serial")
 @WebServlet("/dept/*")
 public class DeptServlet extends DispatcherServlet
 {
+	//private String insertValidation = "dept.dname|dept.deptno|dept.company.name";
 	
-	private String insertValidation = "dept.dname|dept.deptno|dept.company.name";
+	
+	public DeptServlet()
+	{
+		System.out.println("[debug] DeptServlet创建...." + General.getCurrentTime() );
+	}
+	
 	private Dept dept = new Dept();
 	public Dept getDept()
 	{

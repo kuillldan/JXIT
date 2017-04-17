@@ -36,21 +36,22 @@ public abstract class DispatcherServlet extends HttpServlet
 	protected HttpServletRequest request;
 	protected HttpServletResponse response;
 	protected SmartUpload smartUpload;
-	
-	protected Integer currentPage ;
+
+	protected Integer currentPage;
 	protected Integer lineSize;
-	protected String columns ;
-	protected String column ;
-	protected String keyWord ;
-	
-	//private Map<String, String> errors = new HashMap<String, String>();
+	protected String columns;
+	protected String column;
+	protected String keyWord;
+
+	// private Map<String, String> errors = new HashMap<String, String>();
 
 	public DispatcherServlet()
 	{
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException
 	{
 		this.doPost(request, response);
 	}
@@ -66,52 +67,50 @@ public abstract class DispatcherServlet extends HttpServlet
 			String path = CONST.errorPage;
 
 			Map<String, String> errors = null;
-			
-			if ( request.getContentType() != null && request.getContentType().contains("multipart/form-data"))
+
+			if (request.getContentType() != null && request.getContentType().contains("multipart/form-data"))
 			{
 				this.smartUpload = new SmartUpload();
 				this.smartUpload.initialize(super.getServletConfig(), this.request, response);
 				this.smartUpload.upload();
-				
-				errors = this.validateEncryptedHttpData(); 
-				if(errors.size() <= 0)
+
+				errors = this.validateEncryptedHttpData(status);
+				if (errors.size() <= 0)
 				{
 					// 数据验证通过
 					this.handleEncrypedHttpData();
-				}
-				else
+				} else
 				{
-					System.out.println("[debug] 数据验证未通过: " + errors );
-					//数据验证未通过
+					System.out.println("[debug] 数据验证未通过: " + errors);
+					// 数据验证未通过
 					request.getRequestDispatcher(CONST.errorPage).forward(request, response);
 				}
 
 			} else
-			{ 
-				errors = this.validateNormalHttpData(); 
-				if(errors.size() <= 0)
+			{
+				errors = this.validateNormalHttpData(status);
+				if (errors.size() <= 0)
 				{
 					this.handleNormalHttpData();
-				}
-				else
-				{//验证未通过
-					System.out.println("[debug] 数据验证未通过: " + errors );
+				} else
+				{// 验证未通过
+					System.out.println("[debug] 数据验证未通过: " + errors);
 					request.getRequestDispatcher(CONST.errorPage).forward(request, response);
 				}
 			}
 
 			status = General.getRequestStatus(request);
 			Method m = this.getClass().getMethod(status);
-			path = (String)m.invoke(this);
+			path = (String) m.invoke(this);
 			System.out.println("[debug] path: " + path);
-			request.getRequestDispatcher(path).forward(request, response);
+			// request.getRequestDispatcher(path).forward(request, response);
 
 		} catch (Exception e)
 		{
 			General.setSystemError(e);
 		}
 	}
-	
+
 	protected void handleSplit()
 	{
 		currentPage = 1;
@@ -119,7 +118,7 @@ public abstract class DispatcherServlet extends HttpServlet
 		columns = this.getColumns();
 		column = this.getColumn();
 		keyWord = "";
-		
+
 		try
 		{
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -140,7 +139,7 @@ public abstract class DispatcherServlet extends HttpServlet
 		{
 			keyWord = request.getParameter("keyWord");
 		}
-		
+
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("lineSize", lineSize);
 		request.setAttribute("columns", columns);
@@ -148,94 +147,156 @@ public abstract class DispatcherServlet extends HttpServlet
 		request.setAttribute("keyWord", keyWord);
 	}
 
-	private Map<String, String> validateNormalHttpData() throws Exception
+	private Map<String, String> validateNormalHttpData(String status) throws Exception
 	{
 		Map<String, String> errors = new HashMap<String, String>();
-		Enumeration<String> parameterNames = request.getParameterNames();
-		while (parameterNames.hasMoreElements())
+		Field validationRule = null;
+		try
 		{
-			String propertyNames = parameterNames.nextElement();
-			Field propertyField = null;
-			try
-			{
-				propertyField = BeanOperator.getField(propertyNames, this);
-			}
-			catch(NoSuchFieldException e)
-			{
-				continue;
-			}
+			validationRule = this.getClass().getDeclaredField(status + "Validation");
+			validationRule.setAccessible(true);
+		} catch (NoSuchFieldException nsfe)
+		{
+			return errors;
+		}
 
-			if (propertyNames.contains("."))
+		String[] allProperties = ((String) validationRule.get(this)).split("\\|");
+		for (String propertyNames : allProperties)
+		{
+			Field propertyField = BeanOperator.getField(propertyNames, this);
+			// 自定义bean属性
+			BeanOperator beanOperator = null;
+			if (!propertyField.getType().getSimpleName().contains("[]"))
 			{
-				// 自定义bean属性
-				BeanOperator beanOperator = null;
-				if (!propertyField.getType().getSimpleName().contains("[]"))
-				{
-					// 普通属性
-					beanOperator = new BeanOperator(this, propertyNames, request.getParameter(propertyNames));
-				} else
-				{
-					// 数组属性
-					beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
-				}
-
-				beanOperator.validateProperties(errors);
+				// 普通属性
+				beanOperator = new BeanOperator(this, propertyNames, request.getParameter(propertyNames));
 			} else
 			{
-				// 一般其它属性，此处不处理
-				// System.out.println();
+				// 数组属性
+				beanOperator = new BeanOperator(this, propertyNames,
+						request.getParameterValues(propertyNames));
 			}
+
+			beanOperator.validateProperties(errors);
+
 		}
-		
+//
+//		Enumeration<String> parameterNames = request.getParameterNames();
+//		while (parameterNames.hasMoreElements())
+//		{
+//			String propertyNames = parameterNames.nextElement();
+//			Field propertyField = null;
+//			try
+//			{
+//				propertyField = BeanOperator.getField(propertyNames, this);
+//			} catch (NoSuchFieldException e)
+//			{
+//				continue;
+//			}
+//
+//			if (propertyNames.contains("."))
+//			{
+//				// 自定义bean属性
+//				BeanOperator beanOperator = null;
+//				if (!propertyField.getType().getSimpleName().contains("[]"))
+//				{
+//					// 普通属性
+//					beanOperator = new BeanOperator(this, propertyNames, request.getParameter(propertyNames));
+//				} else
+//				{
+//					// 数组属性
+//					beanOperator = new BeanOperator(this, propertyNames,
+//							request.getParameterValues(propertyNames));
+//				}
+//
+//				beanOperator.validateProperties(errors);
+//			} else
+//			{
+//				// 一般其它属性，此处不处理
+//				// System.out.println();
+//			}
+//		}
+
 		return errors;
 	}
-	
-	
-	private Map<String, String> validateEncryptedHttpData() throws Exception
-	{ 
+
+	private Map<String, String> validateEncryptedHttpData(String status) throws Exception
+	{
 		Map<String, String> errors = new HashMap<String, String>();
-		SmartRequest smartRequest = this.smartUpload.getRequest();
-		
-		Enumeration<String> parameterNames = smartRequest.getParameterNames();
-		while (parameterNames.hasMoreElements())
+		Field validationRule = null;
+		try
 		{
-			String propertyNames = parameterNames.nextElement();
-			Field propertyField = null;
-			try
-			{
-				propertyField = BeanOperator.getField(propertyNames, this);
-			}
-			catch(NoSuchFieldException e)
-			{
-				continue;
-			}
- 
-			if (propertyNames.contains("."))
-			{
-				// 自定义bean属性
-				BeanOperator beanOperator = null;
-				if (!propertyField.getType().getSimpleName().contains("[]"))
-				{
-					// 普通属性
-					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameter(propertyNames));
-				} else
-				{
-					// 数组属性
-					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameterValues(propertyNames));
-				}
+			validationRule = this.getClass().getDeclaredField(status + "Validation");
+			validationRule.setAccessible(true);
+		} catch (NoSuchFieldException nsfe)
+		{
+			return errors;
+		}
 
-				beanOperator.validateProperties(errors);
+		String[] allProperties = ((String) validationRule.get(this)).split("\\|");
+		SmartRequest smartRequest = this.smartUpload.getRequest();
+
+		for (String propertyNames : allProperties)
+		{
+			Field propertyField = BeanOperator.getField(propertyNames, this);
+
+			// 自定义bean属性
+			BeanOperator beanOperator = null;
+			if (!propertyField.getType().getSimpleName().contains("[]"))
+			{
+				// 普通属性
+				beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameter(propertyNames));
 			} else
 			{
-				// 一般其它属性，此处不处理
-				// System.out.println();
+				// 数组属性
+				beanOperator = new BeanOperator(this, propertyNames,
+						smartRequest.getParameterValues(propertyNames));
 			}
+
+			beanOperator.validateProperties(errors);
 		}
-		
+
+		// Enumeration<String> parameterNames =
+		// smartRequest.getParameterNames();
+		// while (parameterNames.hasMoreElements())
+		// {
+		// String propertyNames = parameterNames.nextElement();
+		// Field propertyField = null;
+		// try
+		// {
+		// propertyField = BeanOperator.getField(propertyNames, this);
+		// }
+		// catch(NoSuchFieldException e)
+		// {
+		// continue;
+		// }
+		//
+		// if (propertyNames.contains("."))
+		// {
+		// // 自定义bean属性
+		// BeanOperator beanOperator = null;
+		// if (!propertyField.getType().getSimpleName().contains("[]"))
+		// {
+		// // 普通属性
+		// beanOperator = new BeanOperator(this, propertyNames,
+		// smartRequest.getParameter(propertyNames));
+		// } else
+		// {
+		// // 数组属性
+		// beanOperator = new BeanOperator(this, propertyNames,
+		// smartRequest.getParameterValues(propertyNames));
+		// }
+		//
+		// beanOperator.validateProperties(errors);
+		// } else
+		// {
+		// // 一般其它属性，此处不处理
+		// // System.out.println();
+		// }
+		// }
+
 		return errors;
 	}
-	
-	
 
 	private void handleNormalHttpData() throws Exception
 	{
@@ -247,8 +308,7 @@ public abstract class DispatcherServlet extends HttpServlet
 			try
 			{
 				propertyField = BeanOperator.getField(propertyNames, this);
-			}
-			catch(NoSuchFieldException e)
+			} catch (NoSuchFieldException e)
 			{
 				continue;
 			}
@@ -264,7 +324,8 @@ public abstract class DispatcherServlet extends HttpServlet
 				} else
 				{
 					// 数组属性
-					beanOperator = new BeanOperator(this, propertyNames, request.getParameterValues(propertyNames));
+					beanOperator = new BeanOperator(this, propertyNames,
+							request.getParameterValues(propertyNames));
 				}
 
 				beanOperator.handleProperties();
@@ -288,8 +349,7 @@ public abstract class DispatcherServlet extends HttpServlet
 			try
 			{
 				propertyField = BeanOperator.getField(propertyNames, this);
-			}
-			catch(NoSuchFieldException e)
+			} catch (NoSuchFieldException e)
 			{
 				continue;
 			}
@@ -301,11 +361,13 @@ public abstract class DispatcherServlet extends HttpServlet
 				if (!propertyField.getType().getSimpleName().contains("[]"))
 				{
 					// 普通属性
-					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameter(propertyNames));
+					beanOperator = new BeanOperator(this, propertyNames,
+							smartRequest.getParameter(propertyNames));
 				} else
 				{
 					// 数组属性
-					beanOperator = new BeanOperator(this, propertyNames, smartRequest.getParameterValues(propertyNames));
+					beanOperator = new BeanOperator(this, propertyNames,
+							smartRequest.getParameterValues(propertyNames));
 				}
 
 				beanOperator.handleProperties();
@@ -340,8 +402,8 @@ public abstract class DispatcherServlet extends HttpServlet
 
 	protected void saveFile(Integer fileIndex, String fileName) throws Exception
 	{
-		String filePath = super.getServletContext().getRealPath("/photos/" + this.getUploadFolderName() + "/")
-				+ fileName; 
+		String filePath = super.getServletContext()
+				.getRealPath("/photos/" + this.getUploadFolderName() + "/") + fileName;
 		File fileUploaded = new File(filePath);
 		if (!fileUploaded.getParentFile().exists())
 		{
@@ -362,7 +424,8 @@ public abstract class DispatcherServlet extends HttpServlet
 				{
 					String fileName = this.generateFileName(smartFile);
 					this.saveFile(i, fileName);
-					System.out.println("第(" + i + ")个文件已经保存. 文件名: " + fileName + ",文件大小:" + smartFile.getSize());
+					System.out.println("第(" + i + ")个文件已经保存. 文件名: " + fileName + ",文件大小:"
+							+ smartFile.getSize());
 				}
 			}
 
@@ -404,14 +467,17 @@ public abstract class DispatcherServlet extends HttpServlet
 	 * @return
 	 */
 	protected abstract String getUploadFolderName();
-	
+
 	/**
 	 * 从子类中获取分页中的所有查询列
+	 * 
 	 * @return
 	 */
 	protected abstract String getColumns();
+
 	/**
 	 * 从子类中获取默认查询咧
+	 * 
 	 * @return
 	 */
 	protected abstract String getColumn();

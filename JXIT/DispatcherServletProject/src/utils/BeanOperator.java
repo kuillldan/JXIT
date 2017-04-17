@@ -206,6 +206,18 @@ public class BeanOperator
 			Method getter = this.obj.getClass().getMethod("get" + StringUtils.initCap(allProperties[i]));
 			this.obj = getter.invoke(obj);
 		}
+		
+		
+		try
+		{
+			Thread.sleep(200);
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		
+		
+		
 		Field field = obj.getClass().getDeclaredField(allProperties[allProperties.length - 1]);
 
 		Method setter = this.obj.getClass().getMethod(
