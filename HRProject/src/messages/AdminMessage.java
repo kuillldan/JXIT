@@ -1,0 +1,10 @@
+package messages;
+
+public class AdminMessage
+{
+	public static final String codeError = "验证码错误";
+	public static final String userNameOrPasswordError = "用户名或密码错误";
+	public static final String frontAdminSuccessfullyLogin = "前台管理员登录成功";
+	public static final String backAdminSuccessfullyLogin = "后台管理员登录成功";
+	public static final String illegalAdminType = "非法的用户类型";
+}
