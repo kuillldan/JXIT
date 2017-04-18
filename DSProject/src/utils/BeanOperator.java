@@ -32,6 +32,10 @@ public class BeanOperator
 		while (allParameterNames.hasMoreElements())
 		{
 			String eachParameterName = allParameterNames.nextElement();
+			if(!eachParameterName.contains("."))
+			{ 
+				continue;
+			}
 			Map<String, Object> map = this.getLastField(eachParameterName);
 			Field lastField = (Field) map.get("lastField");
 			Object realObject = (Object) map.get("realObject");
@@ -69,8 +73,7 @@ public class BeanOperator
 			throws IllegalArgumentException, IllegalAccessException, ParseException
 	{
 		if (!lastFieldTypeName.contains("[]"))
-		{
-			System.out.println("[debug] 准备设置" + eachParameterName + "的值");
+		{ 
 			String eachParameterValue = null;
 			if (!isEncryped)
 			{
@@ -117,7 +120,6 @@ public class BeanOperator
 			{
 				if (!StringUtils.isEmpty(eachParameterValue))
 				{
-					System.out.println("[debug] 准备将值" + eachParameterValue + "设置到" + eachParameterName + "上");
 					lastField.set(realObject, eachParameterValue);
 				}
 			} else

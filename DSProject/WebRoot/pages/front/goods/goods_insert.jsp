@@ -15,7 +15,7 @@
   </head>
   
   <body>
-  <form action="pages/front/goods/GoodsServlet/insert" method="post">
+  <form action="pages/front/goods/GoodsServlet/insert" method="post" enctype="multipart/form-data">
   	<table border="1" bgcolor="F2F2F2" cellpadding="5" cellspacing="0">
   		<tr>
   			<td>操作员id</td>
@@ -28,6 +28,31 @@
   		<tr>
   			<td>库存量</td>
   			<td><input type="text" id="goods.amount" name="goods.amount" value="50"></td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="file" name="file1">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="file" name="file2">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="file" name="file3">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="file" name="file4">
+  			</td>
+  		</tr>
+  		<tr>
+  			<td colspan="2">
+  				<input type="file" name="file5">
+  			</td>
   		</tr>
   		<tr>
   			<td colspan="2">

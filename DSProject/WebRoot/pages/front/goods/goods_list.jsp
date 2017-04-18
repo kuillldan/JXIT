@@ -11,7 +11,7 @@
 
 
 <%
-	String searchUrl = basePath + "pages/front/goods/GoodsServletFront/list";
+	String searchUrl = basePath + "pages/front/goods/GoodsServlet//list";
 	String searchByItemURL =  basePath + "pages/front/goods/GoodsServletFront/list";
 	String goodsShowURL = basePath + "pages/front/goods/GoodsServletFront/show";
 	String addToShopCartURL = basePath + "pages/front/shopCart/ShopCarServletFront/add";
@@ -34,7 +34,7 @@
 			<option value="${item.iid }" ${item.iid==parameterValue?"selected":""}>${ item.title}</option>
 		</c:forEach>
 	</select>
-	<c:if test="${allCount > 0 }">
+	<c:if test="${allGoodsCount > 0 }">
 		<jsp:include page="/pages/common/search.jsp">
 			<jsp:param value="${columns }" name="columns" />
 			<jsp:param value="${columnName }" name="columnName" />
