@@ -44,7 +44,7 @@ public class AdminLoginServletFront extends AbstractServlet
 			{// 验证码正确
 				this.admin.setPassword(new MD5Code().getMD5ofStr(this.admin.getPassword()));
 				Map<String, Object> map = ServiceFrontFactory.getIAdminServiceFrontInstance().login(admin);
-				boolean flag = (boolean) map.get("flag");  
+				boolean flag = (boolean) map.get("flag");
 				if (flag)
 				{
 					// 登录成功
@@ -53,14 +53,14 @@ public class AdminLoginServletFront extends AbstractServlet
 					{
 						// 前台人事管理员
 						super.request.getSession().setAttribute("aid", this.admin.getAid());
-						return super.setMsgAndUrlInRequest(AdminMessage.frontAdminSuccessfullyLogin,
-								AdminPages.frontAdminIndexJSP);
+						//return super.setMsgAndUrlInRequest(AdminMessage.frontAdminSuccessfullyLogin,AdminPages.frontAdminIndexJSP);
+						return AdminPages.frontAdminIndexJSP;
 					} else if (this.admin.getType().equals(AdminType.BACK_ADMIN.ordinal()))
 					{
 						// 后台人事管理员
 						super.request.getSession().setAttribute("aid", this.admin.getAid());
-						return super.setMsgAndUrlInRequest(AdminMessage.backAdminSuccessfullyLogin,
-								AdminPages.backAdminIndexJSP);
+						//return super.setMsgAndUrlInRequest(AdminMessage.backAdminSuccessfullyLogin,AdminPages.backAdminIndexJSP);
+						return AdminPages.backAdminIndexJSP;
 					} else
 					{
 						throw new Exception(AdminMessage.illegalAdminType);
@@ -82,8 +82,10 @@ public class AdminLoginServletFront extends AbstractServlet
 		try
 		{
 			super.request.getSession().invalidate();
-			return super.setMsgAndUrlInRequest("退出成功", AdminPages.loginPage);
-			//this.request.getRequestDispatcher(AdminPages.loginPage).forward(request, response);
+			//return super.setMsgAndUrlInRequest("退出成功", AdminPages.loginPage);
+			return AdminPages.loginPage;
+			// this.request.getRequestDispatcher(AdminPages.loginPage).forward(request,
+			// response);
 		} catch (Exception e)
 		{
 			return super.setSystemError(e);

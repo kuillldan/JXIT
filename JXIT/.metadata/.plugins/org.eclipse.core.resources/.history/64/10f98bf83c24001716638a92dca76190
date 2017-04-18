@@ -1,0 +1,19 @@
+package DAO;
+
+import java.sql.Date;
+import java.sql.SQLException;
+
+import vo.Admin;
+
+public interface IAdminDAO extends IDAO<String, Admin>
+{
+	/**
+	 * 根据aid查询管理员信息 如果找到则返回Admin记录 否则返回null
+	 * @param vo
+	 * @return
+	 * @throws SQLException
+	 */
+	public Admin findLogin(Admin vo) throws SQLException;
+	
+	public boolean doUpdateLastlogin(String aid, Date date) throws SQLException;
+}

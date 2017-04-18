@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.Date;
 import java.sql.SQLException;
 
 import vo.Admin;
@@ -13,4 +14,7 @@ public interface IAdminDAO extends IDAO<String, Admin>
 	 * @throws SQLException
 	 */
 	public Admin findLogin(Admin vo) throws SQLException;
+	
+	public boolean doUpdateLastDate(String aid, Date date) throws SQLException;
+	
 }

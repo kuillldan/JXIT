@@ -2,6 +2,7 @@ package vo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @SuppressWarnings("serial")
@@ -12,8 +13,25 @@ public class Admin implements Serializable
 	private Integer type;
 	private Date lastdate;
 	private Integer flag;
-	
-	
+	private Role role;
+	private List<Adminlogs> adminlogs;
+	 
+	public Role getRole()
+	{
+		return role;
+	}
+	public void setRole(Role role)
+	{
+		this.role = role;
+	}
+	public List<Adminlogs> getAdminlogs()
+	{
+		return adminlogs;
+	}
+	public void setAdminlogs(List<Adminlogs> adminlogs)
+	{
+		this.adminlogs = adminlogs;
+	}
 	public String getAid()
 	{
 		return aid;

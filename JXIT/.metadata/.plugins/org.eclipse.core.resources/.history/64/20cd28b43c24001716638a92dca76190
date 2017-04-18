@@ -1,0 +1,8 @@
+package DAO;
+
+import vo.Groups;
+
+public interface GroupsDAO extends IDAO<Integer, Groups>
+{
+
+}

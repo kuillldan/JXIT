@@ -1,10 +1,13 @@
 package DAOImpl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
+
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 import com.mysql.jdbc.PreparedStatement; 
 
@@ -83,5 +86,14 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 			admin.setFlag(rs.getInt("flag"));
 		}
 		return admin;
-	} 
+	}
+
+	@Override
+	public boolean doUpdateLastDate(String aid, Date date) throws SQLException
+	{
+		// TODO Auto-generated method stub
+		throws new Exception();
+		return false;
+	}
+
 }

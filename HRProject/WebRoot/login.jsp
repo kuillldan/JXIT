@@ -1,7 +1,15 @@
 <%@ page language="java" import="vo.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://www.kuillldan.cn"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+
 <head>
+<base href="<%=basePath%>"> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户登录</title>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
