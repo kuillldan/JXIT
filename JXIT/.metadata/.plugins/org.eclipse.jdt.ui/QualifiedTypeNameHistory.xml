@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
-<fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="java.lang.Double"/>
-<fullyQualifiedTypeName name="org.lyk.vo.Const"/>
-<fullyQualifiedTypeName name="org.lyk.vo.Const.DATATYPE"/>
-<fullyQualifiedTypeName name="java.io.InputStream"/>
-<fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="java.io.ByteArrayOutputStream"/>
-<fullyQualifiedTypeName name="java.lang.ClassLoader"/>
-<fullyQualifiedTypeName name="java.lang.Class"/>
-<fullyQualifiedTypeName name="org.lyk.vo.LYKClassLoader"/>
-<fullyQualifiedTypeName name="org.lyk.vo.BeanOperate"/>
 <fullyQualifiedTypeName name="java.lang.reflect.InvocationHandler"/>
 <fullyQualifiedTypeName name="org.lyk.dao.impl.DeptDAOImpl"/>
 <fullyQualifiedTypeName name="org.lyk.dao.DAOInvocationHandler"/>
@@ -41,7 +28,6 @@
 <fullyQualifiedTypeName name="utils.BeanOperator"/>
 <fullyQualifiedTypeName name="javax.validation.Valid"/>
 <fullyQualifiedTypeName name="utils.StringUtils"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="utils.CONST"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="com.jspsmart.upload.SmartRequest"/>
@@ -50,9 +36,28 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="org.lyk.main.B"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="org.lyk.main.A"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Field"/>
+<fullyQualifiedTypeName name="pages.AdminPages"/>
+<fullyQualifiedTypeName name="javax.management.relation.Role"/>
+<fullyQualifiedTypeName name="DAO.IDAO"/>
+<fullyQualifiedTypeName name="vo.Adminlogs"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="javax.xml.crypto.dsig.spec.ExcC14NParameterSpec"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="vo.Action"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="vo.Groups"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="DAO.IActionDAO"/>
+<fullyQualifiedTypeName name="DAOImpl.ActionDAOImpl"/>
+<fullyQualifiedTypeName name="DAO.IAdminlogsDAO"/>
+<fullyQualifiedTypeName name="DAOImpl.AdminlogsDAOImpl"/>
+<fullyQualifiedTypeName name="DAO.AbstractDAOImpl"/>
+<fullyQualifiedTypeName name="DAO.IGroupsDAO"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="DAOImpl.GroupsDAOImpl"/>
 </qualifiedTypeNameHistroy>

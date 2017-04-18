@@ -15,4 +15,6 @@ public interface IAdminServiceFront
 	 * @throws SQLException
 	 */
 	public Map<String, Object> login(Admin admin) throws SQLException;
+	
+	
 }
