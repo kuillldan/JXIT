@@ -7,16 +7,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
+import javax.management.relation.Role;
 import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
-import com.mysql.jdbc.PreparedStatement; 
+import com.mysql.jdbc.PreparedStatement;
 
+import utils.General;
 import vo.Admin;
 import DAO.AbstractDAOImpl;
 import DAO.IAdminDAO;
 import DAO.IDAO;
 
-public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO 
+public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 {
 	public AdminDAOImpl(Connection conn)
 	{
@@ -45,7 +47,7 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 	public Admin findById(String id) throws SQLException
 	{
 		Admin admin = null;
-//		String sql = " SELECT aid,rid, ";
+		// String sql = " SELECT aid,rid, ";
 		return admin;
 	}
 
@@ -77,12 +79,15 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 		this.ps.setString(1, vo.getAid());
 		this.ps.setString(2, vo.getPassword());
 		ResultSet rs = this.ps.executeQuery();
-		if(rs.next())
+		if (rs.next())
 		{
 			admin = new Admin();
 			admin.setAid(rs.getString("aid"));
+			vo.Role role = new vo.Role();
+			role.setRid(rs.getInt("rid"));
+			admin.setRole(role);
 			admin.setType(rs.getInt("type"));
-			admin.setLastdate(rs.getDate("lastdate"));
+			admin.setLastdate(rs.getTimestamp("lastdate"));
 			admin.setFlag(rs.getInt("flag"));
 		}
 		return admin;
@@ -92,8 +97,21 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 	public boolean doUpdateLastDate(String aid, Date date) throws SQLException
 	{
 		// TODO Auto-generated method stub
-		throws new Exception();
-		return false;
+		String sql = " UPDATE admin SET lastdate=? WHERE aid=? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setTimestamp(1, General.getCurrentSqlDate());
+		this.ps.setString(2, aid);
+		return this.ps.executeUpdate() == 1;
+	}
+
+	@Override
+	public boolean doUpdatePassword(String aid, String password) throws SQLException
+	{
+		String sql = " UPDATE admin SET password = ? WHERE aid = ? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, password);
+		this.ps.setString(2, aid);
+		return this.ps.executeUpdate() == 1;
 	}
 
 }

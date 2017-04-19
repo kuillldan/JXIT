@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
+import utils.General;
 import vo.Adminlogs;
 import DAO.AbstractDAOImpl;
 import DAO.IAdminlogsDAO;
@@ -21,8 +22,11 @@ public class AdminlogsDAOImpl extends AbstractDAOImpl implements IAdminlogsDAO
 	@Override
 	public boolean doCreate(Adminlogs vo) throws SQLException
 	{
-		throws new Exception();
-		return false;
+		String sql = " INSERT INTO adminlogs(aid,logindate) VALUES(?,?) ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, vo.getAdmin().getAid());
+		this.ps.setTimestamp(2, General.getCurrentSqlDate());
+		return this.ps.executeUpdate() == 1;
 	}
 
 	@Override

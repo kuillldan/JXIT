@@ -17,4 +17,6 @@ public interface IAdminDAO extends IDAO<String, Admin>
 	
 	public boolean doUpdateLastDate(String aid, Date date) throws SQLException;
 	
+	public boolean doUpdatePassword(String aid, String password) throws SQLException;
+	
 }

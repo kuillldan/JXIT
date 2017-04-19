@@ -13,7 +13,7 @@ public class Admin implements Serializable
 	private Integer type;
 	private Date lastdate;
 	private Integer flag;
-	private Role role;
+	private Role role = new Role();
 	private List<Adminlogs> adminlogs;
 	 
 	public Role getRole()
@@ -72,11 +72,12 @@ public class Admin implements Serializable
 	{
 		this.flag = flag;
 	}
-	
 	@Override
 	public String toString()
 	{
 		return "Admin [aid=" + aid + ", password=" + password + ", type=" + type + ", lastdate=" + lastdate + ", flag="
-				+ flag + "]";
-	} 
+				+ flag + ", role=" + role + ", adminlogs=" + adminlogs + "]";
+	}
+	
+	 
 }

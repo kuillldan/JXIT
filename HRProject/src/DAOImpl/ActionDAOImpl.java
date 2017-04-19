@@ -1,11 +1,14 @@
 package DAOImpl;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 import vo.Action;
+import vo.Groups;
 import DAO.AbstractDAOImpl;
 import DAO.IActionDAO;
 
@@ -71,8 +74,23 @@ public class ActionDAOImpl extends AbstractDAOImpl implements IActionDAO
 	@Override
 	public List<Action> findAllByGroups(Integer gid) throws Exception
 	{
-		throws new Exception();
-		return null;
+		List<Action> allActions = new ArrayList<Action>();
+		String sql = " SELECT actid,gid,title,url FROM action WHERE gid = ? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, gid);
+		ResultSet rs = this.ps.executeQuery();
+		while(rs.next())
+		{
+			Action vo = new Action();
+			vo.setActid(rs.getInt("actid"));
+			Groups groups = new Groups();
+			groups.setGid(rs.getInt("gid"));
+			vo.setGroups(groups);
+			vo.setTitle(rs.getString("title"));
+			vo.setUrl(rs.getString("url"));
+			allActions.add(vo);
+		}
+		return allActions;
 	}
 
 }

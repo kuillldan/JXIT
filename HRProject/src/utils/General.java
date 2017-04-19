@@ -20,6 +20,10 @@ public class General
 	{
 		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()).toString();
 	}
+	public static java.sql.Timestamp getCurrentSqlDate()
+	{
+		return new java.sql.Timestamp(System.currentTimeMillis());
+	}
 	
 	public static void removePhotos(List<String> allPhotos)
 	{

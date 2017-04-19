@@ -19,14 +19,15 @@ import utils.StringUtils;
 /**
  * Servlet Filter implementation class LoginValidation
  */
-@WebFilter({"/pages/front/*","/pages/back/*"})
-public class LoginValidation implements Filter
+@WebFilter(
+{ "/pages/front/*"})
+public class LoginValidationFront implements Filter
 {
 
 	/**
 	 * Default constructor.
 	 */
-	public LoginValidation()
+	public LoginValidationFront()
 	{
 		// TODO Auto-generated constructor stub
 	}
@@ -47,10 +48,10 @@ public class LoginValidation implements Filter
 	{
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpSession session = httpRequest.getSession();
-		String aid = (String) session.getAttribute("aid");
+		String aid = (String) session.getAttribute("faid");
 		if (StringUtils.isEmpty(aid))
 		{
-			// 未登录 
+			// 未登录
 			httpRequest.getRequestDispatcher(General.setMsgAndUrlInRequest(httpRequest, "请先登录", AdminPages.loginPage))
 					.forward(request, response);
 

@@ -1,7 +1,9 @@
 package DAOImpl;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -71,9 +73,22 @@ public class GroupsDAOImpl extends AbstractDAOImpl implements IGroupsDAO
 	@Override
 	public List<Groups> findAllByRole(Integer rid) throws SQLException
 	{
-		throws new Exception();
-		// TODO Auto-generated method stub
-		return null;
+		List<Groups> allGroups = new ArrayList<Groups>();
+		String sql = " SELECT gid,title,note FROM groups WHERE gid IN "
+				+ " (SELECT gid FROM role_groups WHERE rid=?); ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, rid);
+		ResultSet rs = this.ps.executeQuery();
+		while(rs.next())
+		{
+			Groups vo = new Groups();
+			vo.setGid(rs.getInt("gid"));
+			vo.setTitle(rs.getString("title"));
+			vo.setNote(rs.getString("note"));
+			allGroups.add(vo);
+		}
+		
+		return allGroups;
 	}
 
 }

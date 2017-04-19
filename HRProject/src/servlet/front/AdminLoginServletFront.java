@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pages.AdminPages;
 import enums.AdminType;
@@ -46,21 +47,23 @@ public class AdminLoginServletFront extends AbstractServlet
 				Map<String, Object> map = ServiceFrontFactory.getIAdminServiceFrontInstance().login(admin);
 				boolean flag = (boolean) map.get("flag");
 				if (flag)
-				{
+				{ 
 					// 登录成功
-					this.admin = (Admin) map.get("admin");
+					this.admin = (Admin) map.get("admin"); 
+					
+					HttpSession session = this.request.getSession(); 
 					if (this.admin.getType().equals(AdminType.FRONT_ADMIN.ordinal()))
 					{
 						// 前台人事管理员
-						super.request.getSession().setAttribute("aid", this.admin.getAid());
-						//return super.setMsgAndUrlInRequest(AdminMessage.frontAdminSuccessfullyLogin,AdminPages.frontAdminIndexJSP);
+						super.request.getSession().setAttribute("faid", this.admin.getAid());
+						session.setAttribute("fAdmin", this.admin);
 						return AdminPages.frontAdminIndexJSP;
 					} else if (this.admin.getType().equals(AdminType.BACK_ADMIN.ordinal()))
 					{
 						// 后台人事管理员
-						super.request.getSession().setAttribute("aid", this.admin.getAid());
-						//return super.setMsgAndUrlInRequest(AdminMessage.backAdminSuccessfullyLogin,AdminPages.backAdminIndexJSP);
-						return AdminPages.backAdminIndexJSP;
+						super.request.getSession().setAttribute("baid", this.admin.getAid());
+						session.setAttribute("bAdmin", this.admin);
+						return super.setMsgAndUrlInRequest("后台管理员登录成功", AdminPages.backAdminIndexJSP);
 					} else
 					{
 						throw new Exception(AdminMessage.illegalAdminType);

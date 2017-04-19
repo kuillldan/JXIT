@@ -14,7 +14,9 @@ public interface IAdminServiceFront
 	 * admin 如果找到，则admin代表该记录 否则admin为null
 	 * @throws SQLException
 	 */
-	public Map<String, Object> login(Admin admin) throws SQLException;
+	public Map<String, Object> login(Admin admin) throws Exception;
+	
+	public boolean updatePassword(String aid, String oldPassword, String newPassword) throws Exception;
 	
 	
 }
