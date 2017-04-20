@@ -80,18 +80,31 @@ public class AdminServiceFrontImpl implements IAdminServiceFront
 	{
 		try
 		{
+			System.out.println("[debug] service :oldPassword: " + oldPassword + ", newPassword:" + newPassword);
 			Admin admin = new Admin();
 			admin.setAid(aid);
 			admin.setPassword(oldPassword);
 			if(DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findLogin(admin) != null)
 			{
+				System.out.println("[debug] 密码校验通过");
 				//旧密码正确
+				if(DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdatePassword(aid, newPassword))
+				{
+					System.out.println("[debug] 密码更新成功");
+					return true;
+				}
+				else
+				{
+					System.out.println("[debug] 密码更新失败");
+					return false;
+				}
 			}
 			else
 			{
 				//旧密码不正确
-			}
-			return false;
+				System.out.println("[debug] 密码校验未通过");
+				return false;
+			} 
 		} catch (Exception e)
 		{
 			throw e;

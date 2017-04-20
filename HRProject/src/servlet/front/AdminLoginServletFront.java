@@ -1,6 +1,7 @@
 package servlet.front;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import enums.AdminType;
 import factories.ServiceFrontFactory;
 import messages.AdminMessage;
 import utils.AbstractServlet;
+import utils.CONST;
 import utils.General;
 import utils.MD5Code;
 import utils.StringUtils;
@@ -33,6 +35,42 @@ public class AdminLoginServletFront extends AbstractServlet
 
 	private String loginValidation = "admin.aid|admin.password";
 
+	protected String changePassword()
+	{
+		try
+		{
+			String oldPassword = request.getParameter("oldPassword");
+			String newPassword = request.getParameter("newPassword");
+			String aid = request.getParameter("aid");
+			System.out.println("[debug]: servlet oldPassword: " + oldPassword + ", newPassword:" + newPassword);
+			if(StringUtils.isEmpty(oldPassword) || StringUtils.isEmpty(newPassword))
+			{
+				Map<String, String> errors = new HashMap<String, String>();
+				errors.put("密码", "旧密码或新密码不能为空");
+				request.setAttribute("errors", errors);
+				return CONST.errorPage;
+			}
+			
+			if(ServiceFrontFactory.getIAdminServiceFrontInstance().updatePassword(aid, new MD5Code().getMD5ofStr(oldPassword), new MD5Code().getMD5ofStr(newPassword)))
+			{
+				String url = "/pages/public/change_password.jsp";
+				String msg = "密码更新成功";
+				return super.setMsgAndUrlInRequest(msg, url);
+				
+			}
+			else
+			{
+				String url = "/pages/public/change_password.jsp";
+				String msg = "密码更新失败";
+				return super.setMsgAndUrlInRequest(msg, url);
+			}
+		}
+		catch(Exception e)
+		{
+			return super.setSystemError(e);
+		}
+	}
+	
 	protected String login()
 	{
 		try

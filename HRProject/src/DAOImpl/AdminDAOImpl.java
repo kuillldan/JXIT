@@ -113,5 +113,4 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 		this.ps.setString(2, aid);
 		return this.ps.executeUpdate() == 1;
 	}
-
 }
