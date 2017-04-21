@@ -18,7 +18,16 @@
   </head> 
   
   <body> 
+  
    <form action="<%=changePasswordURL%>">
+   <c:if test="${fAdmin!=null }">
+  	<h1>当前用户(前台):${fAdmin.aid }</h1>
+  	<input type="hidden" name="aid" value="${fAdmin.aid }">
+  </c:if>
+  <c:if test="${bAdmin!=null }">
+  	<h1>当前用户(后台):${bAdmin.aid }</h1>
+  	<input type="hidden" name="aid" value="${bAdmin.aid }">
+  </c:if> 
    <table border="1" cellpadding="5" cellspacing="0" bgcolor="F2F2F2">
    	
    	<tr>
@@ -37,6 +46,7 @@
    		</td>
    	</tr>
    </table>
+   
    </form>
   </body>
 </html>

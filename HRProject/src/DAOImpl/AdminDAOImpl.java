@@ -75,6 +75,7 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 	{
 		Admin admin = null;
 		String sql = " SELECT aid,rid,type,lastdate,flag FROM Admin WHERE aid = ? AND password = ? ";
+		System.out.println("[debug] vo ***"+vo);
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setString(1, vo.getAid());
 		this.ps.setString(2, vo.getPassword());
@@ -90,6 +91,7 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 			admin.setLastdate(rs.getTimestamp("lastdate"));
 			admin.setFlag(rs.getInt("flag"));
 		}
+		System.out.println("[debug]:****  " + admin);
 		return admin;
 	}
 

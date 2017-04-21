@@ -9,7 +9,7 @@
 
 <%
 	String logoutURL = basePath + "login/front/admin/AdminLoginServletFront/logout" ;
-	String changePasswordURL = "login/front/admin/AdminLoginServletFront/resetPassword";
+	String changePasswordJSP = "pages/public/change_password.jsp";
 %>
  
 
@@ -209,7 +209,7 @@ H1 a {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="<%=changePasswordURL%>" target="main">修改密码</a></li>
+          <li><a href="<%=changePasswordJSP%>" target="main">修改密码</a></li>
           <li><a href="#" target="_self" onClick="logout();">退出登录</a></li>
         </ul>
       </div>

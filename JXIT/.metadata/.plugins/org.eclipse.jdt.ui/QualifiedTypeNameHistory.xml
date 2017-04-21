@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.reflect.InvocationHandler"/>
 <fullyQualifiedTypeName name="org.lyk.dao.impl.DeptDAOImpl"/>
 <fullyQualifiedTypeName name="org.lyk.dao.DAOInvocationHandler"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Proxy"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="DAO.IGroupsDAO"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="DAOImpl.GroupsDAOImpl"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

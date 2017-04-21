@@ -22,7 +22,7 @@
 		<ul>
 			<li><a class="a_list a_list1">全局设置</a>
 				<div class="menu_list menu_list_first">
-					<a class="lista_first" href="password.html">安全设置</a>
+					<a class="lista_first" href="pages/public/change_password.jsp">安全设置</a>
 
 				</div></li>
 			<li><a class="a_list a_list2">员工基本信息</a>
@@ -46,7 +46,7 @@
 		<ul>
 			<li><a class="j_a_list j_a_list1"></a>
 				<div class="j_menu_list j_menu_list_first">
-					<span class="sp1"><i></i>全局设置</span> <a class="lista_first" href="password.html">安全设置</a>
+					<span class="sp1"><i></i>全局设置</span> <a class="lista_first" href="pages/public/change_password.jsp">安全设置</a>
 
 				</div></li>
 			<li><a class="j_a_list j_a_list2"></a>
