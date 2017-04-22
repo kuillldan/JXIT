@@ -20,7 +20,7 @@
   
   <body> 
   
-   <form action="<%=changePasswordURL%>"> 
+   <form action="<%=changePasswordURL%>" method="post"> 
   <c:if test="${bAdmin!=null }">
   	<h1>当前用户(后台):${bAdmin.aid }</h1>
   	<input type="hidden" name="aid" value="${bAdmin.aid }">

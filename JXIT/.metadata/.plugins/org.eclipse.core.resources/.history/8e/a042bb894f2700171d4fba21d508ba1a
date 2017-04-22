@@ -1,0 +1,9 @@
+package dao;
+
+import java.sql.SQLException; 
+
+public interface ILevelDAO extends IDAO<Integer, vo.Level>
+{
+	public boolean findByTitle(String title) throws SQLException;
+	public boolean findByTitleAndId(String title, Integer levid) throws SQLException;
+}

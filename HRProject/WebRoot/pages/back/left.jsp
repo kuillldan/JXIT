@@ -192,7 +192,7 @@ H1 a {
         <ul class="MM">
 		  <c:if test="${groups.allActions!=null }">
 		  	<c:forEach items="${groups.allActions }" var="action">
-		  		<li><a href="${action.url }" target="main">${action.title }</a></li>
+		  		<li><a href="<%=basePath %>${action.url }" target="main">${action.title }</a></li>
 		  	</c:forEach>
 		  </c:if> 
         </ul>

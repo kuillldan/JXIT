@@ -1,0 +1,6 @@
+package service.back;
+
+public interface IJobsServiceBack
+{
+
+}

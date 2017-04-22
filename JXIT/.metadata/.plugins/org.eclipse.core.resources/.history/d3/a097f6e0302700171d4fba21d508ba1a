@@ -1,0 +1,10 @@
+function validateDname() 
+{
+	return validateEmpty("dept.dname");
+}
+
+function updateDept(id,url) 
+{
+	var dname = document.getElementById("dept-"+id).value;
+	window.location = url + "?did=" + id + "&dname=" + dname;
+}

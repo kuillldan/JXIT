@@ -2,14 +2,20 @@ package factories;
 
 import java.sql.Connection;
 
-import DAO.IActionDAO;
-import DAO.IAdminDAO;
-import DAO.IAdminlogsDAO;
-import DAO.IGroupsDAO;
-import DAOImpl.ActionDAOImpl;
-import DAOImpl.AdminDAOImpl;
-import DAOImpl.AdminlogsDAOImpl;
-import DAOImpl.GroupsDAOImpl;
+import dao.IActionDAO;
+import dao.IAdminDAO;
+import dao.IAdminlogsDAO;
+import dao.IDeptDAO;
+import dao.IGroupsDAO;
+import dao.IJobsDAO;
+import dao.ILevelDAO;
+import dao.impl.ActionDAOImpl;
+import dao.impl.AdminDAOImpl;
+import dao.impl.AdminlogsDAOImpl;
+import dao.impl.DeptDAOImpl;
+import dao.impl.GroupsDAOImpl;
+import dao.impl.JobsDAOImpl;
+import dao.impl.LevelDAOImpl;
 
 public class DAOFactory
 {
@@ -31,5 +37,19 @@ public class DAOFactory
 	public static IGroupsDAO getIGroupsDAOInstance(Connection conn)
 	{
 		return new GroupsDAOImpl(conn);
+	}
+	
+	public static IDeptDAO getIDeptDAOInstance(Connection conn)
+	{
+		return new DeptDAOImpl(conn);
+	}
+	public static IJobsDAO getIJobsDAOInstance(Connection conn)
+	{
+		return new JobsDAOImpl(conn);
+	}
+	
+	public static ILevelDAO getILevelDAOInstance(Connection conn)
+	{
+		return new LevelDAOImpl(conn);
 	}
 }

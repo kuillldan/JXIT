@@ -1,0 +1,10 @@
+function validateDname() 
+{
+	return validateEmpty("dept.dname");
+}
+
+function updateDept(id) 
+{
+	var dname = document.getElementById("dept-"+id).value;
+	console.log("[debug] dname:" + dname)
+}

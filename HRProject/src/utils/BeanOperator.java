@@ -25,6 +25,13 @@ public class BeanOperator
 		this.servletObject = servletObject;
 	}
 
+	/**
+	 * 绑定数据
+	 * 
+	 * @param request
+	 * @param smartRequest
+	 * @param isEncryped
+	 */
 	public void setValueAutomatic(HttpServletRequest request, SmartRequest smartRequest, boolean isEncryped)
 	{
 
@@ -32,8 +39,8 @@ public class BeanOperator
 		while (allParameterNames.hasMoreElements())
 		{
 			String eachParameterName = allParameterNames.nextElement();
-			if(!eachParameterName.contains("."))
-			{ 
+			if (!eachParameterName.contains("."))
+			{
 				continue;
 			}
 			Map<String, Object> map = this.getLastField(eachParameterName);
@@ -72,8 +79,9 @@ public class BeanOperator
 			String eachParameterName, Field lastField, Object realObject, boolean isEncryped)
 			throws IllegalArgumentException, IllegalAccessException, ParseException
 	{
+		// 绑定普通字段(非数组)
 		if (!lastFieldTypeName.contains("[]"))
-		{ 
+		{
 			String eachParameterValue = null;
 			if (!isEncryped)
 			{
@@ -82,50 +90,67 @@ public class BeanOperator
 			{
 				eachParameterValue = smartRequest.getParameter(eachParameterName);
 			}
-			if (CONST.DATATYPE.Int.getRealType().equalsIgnoreCase(lastFieldTypeName)
-					|| CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(lastFieldTypeName))
+
+			if (!StringUtils.isEmpty(eachParameterValue))
 			{
-				if (!StringUtils.isEmpty(eachParameterValue) && StringUtils.validateRegex(eachParameterValue, "\\d+"))
+				if (CONST.DATATYPE.Int.getRealType().equalsIgnoreCase(lastFieldTypeName)
+						|| CONST.DATATYPE.Integer.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
-					lastField.set(realObject, Integer.parseInt(eachParameterValue));
-				}
-			} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(lastFieldTypeName))
-			{
-				if (!StringUtils.isEmpty(eachParameterValue)
-						&& StringUtils.validateRegex(eachParameterValue, "\\d+(\\.\\d+)?"))
-				{
-					lastField.set(realObject, Double.parseDouble(eachParameterValue));
-				}
-			} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(lastFieldTypeName))
-			{
-				if (!StringUtils.isEmpty(eachParameterValue))
-				{
-					if (StringUtils.validateRegex(eachParameterValue, "\\d{4}-\\d{2}-\\d{2}"))
+					if (StringUtils.validateRegex(eachParameterValue, "\\d+"))
 					{
+						// 整型数据验证成功
+						lastField.set(realObject, Integer.parseInt(eachParameterValue));
+					} else
+					{
+						// 整型数据验证失败
+						lastField.set(realObject, null);
+					}
+				} else if (CONST.DATATYPE.Double.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+					if (StringUtils.validateRegex(eachParameterValue, "\\d+(\\.\\d+)?"))
+					{
+						// Double数据验证成功
+						lastField.set(realObject, Double.parseDouble(eachParameterValue));
+					} else
+					{
+						// Double数据验证失败
+						lastField.set(realObject, null);
+					}
+				} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(lastFieldTypeName))
+				{
+
+					if (StringUtils.validateRegex(eachParameterValue, "\\d{4}-\\d{2}-\\d{2}"))
+					{// Date数据验证成功
 						lastField.set(realObject, new SimpleDateFormat("yyyy-MM-dd").parse(eachParameterValue));
 					} else if (StringUtils.validateRegex(eachParameterValue,
 							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
-					{
+					{// Date数据验证成功
 						lastField
 								.set(realObject, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eachParameterValue));
 					} else if (StringUtils.validateRegex(eachParameterValue,
 							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{3}"))
-					{
+					{// Date数据验证成功
 						lastField.set(realObject,
 								new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(eachParameterValue));
+					} else
+					{// Date数据验证失败
+						lastField.set(realObject, null);
 					}
-				}
 
-			} else if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(lastFieldTypeName))
-			{
-				if (!StringUtils.isEmpty(eachParameterValue))
+				} else if (CONST.DATATYPE.String.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
+					// String数据 直接赋值
 					lastField.set(realObject, eachParameterValue);
+				} else
+				{
+					System.out.println("******不支持的数据类型，无法完成自动赋值******");
 				}
 			} else
 			{
-				System.out.println("******不支持的数据类型，无法完成自动赋值******");
+				// 传入的数据为空 赋null值
+				lastField.set(realObject, null);
 			}
+
 		} else
 		{
 			// 数组
@@ -138,11 +163,11 @@ public class BeanOperator
 				eachParameterValues = smartRequest.getParameterValues(eachParameterName);
 			}
 
-			if (eachParameterName != null)
+			if (eachParameterValues != null)
 			{
 				if (CONST.DATATYPE.IntArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
-
+					
 					boolean arrayDataValid = true;
 					int[] acturalValues = new int[eachParameterValues.length];
 					for (int i = 0; i < eachParameterValues.length; i++)
@@ -160,6 +185,10 @@ public class BeanOperator
 					if (arrayDataValid == true)
 					{
 						lastField.set(realObject, new Object[] { acturalValues });
+					}
+					else
+					{
+						lastField.set(realObject, new Object[] { null });
 					}
 				} else if (CONST.DATATYPE.IntegerArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
@@ -183,6 +212,10 @@ public class BeanOperator
 						lastField.set(realObject, acturalValues);
 
 					}
+					else
+					{
+						lastField.set(realObject, new Object[] { null });
+					}
 				} else if (CONST.DATATYPE.DoubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
 
@@ -203,6 +236,10 @@ public class BeanOperator
 					if (arrayDataValid == true)
 					{
 						lastField.set(realObject, acturalValues);
+					}
+					else
+					{
+						lastField.set(realObject, new Object[] { null });
 					}
 				} else if (CONST.DATATYPE.doubleArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
@@ -225,6 +262,10 @@ public class BeanOperator
 					{
 						lastField.set(realObject, acturalValues);
 					}
+					else
+					{
+						lastField.set(realObject, new Object[] { null });
+					}
 				} else if (CONST.DATATYPE.StringArray.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
 					String[] acturalValues = new String[eachParameterValues.length];
@@ -237,6 +278,11 @@ public class BeanOperator
 				{
 					System.out.println("******不支持的数据类型，无法完成数组的自动赋值******");
 				}
+			}
+			else
+			{
+				//传入数组为空 赋null值
+				lastField.set(realObject, new Object[] { null });
 			}
 		}
 	}

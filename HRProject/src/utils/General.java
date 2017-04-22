@@ -4,7 +4,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -104,5 +106,35 @@ public class General
 		}
 		
 		return photo;
+	}
+	
+	public static Set<Integer> splitIntegers(String _ids)
+	{
+		Set<Integer> ids  = new HashSet<Integer>();
+		if(StringUtils.isEmpty(_ids))
+			return ids;
+		
+		String[] allIds =  _ids.split("\\|");
+		for(String item : allIds)
+		{
+			ids.add(Integer.parseInt(item));
+		}
+		
+		return ids;
+	}
+	public static Set<String> splitStrings(String _ids)
+	{
+		Set<String> ids = new HashSet<String>();
+		if(StringUtils.isEmpty(_ids))
+			return ids;
+		
+		String[] allIds =  _ids.split("\\|");
+		for(String item : allIds)
+		{
+			ids.add(item);
+		}
+		
+		return ids;
+		
 	}
 }

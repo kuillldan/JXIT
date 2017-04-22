@@ -274,6 +274,40 @@ public abstract class AbstractServlet extends HttpServlet
 		e.printStackTrace();
 		return CONST.errorPage;
 	}
+	
+	protected String updateSuccessfull(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息更新成功", url);
+	}
+	
+	protected String updateFailed(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息更新失败", url);
+	}
+	
+	protected String insertSuccessfull(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息增加成功", url);
+		
+	}
+	
+	protected String insertFailed(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息增加失败", url);
+		
+	}
+	
+	protected String deleteSuccessfull(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息删除成功", url);
+	}
+	
+	protected String deleteFailed(String url)
+	{
+		return this.setMsgAndUrlInRequest(this.getTitle() + "信息删除失败", url);
+	}
+	
+	protected abstract String getTitle();
 
 	protected abstract String getColumns();
 

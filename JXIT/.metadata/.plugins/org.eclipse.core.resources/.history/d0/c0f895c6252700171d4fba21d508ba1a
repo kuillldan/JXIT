@@ -1,0 +1,90 @@
+package servlet.back;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import messages.DeptMessages;
+import factories.ServiceBackFactory;
+import pages.DeptPages;
+import utils.AbstractServlet;
+import vo.Dept;
+
+/**
+ * Servlet implementation class DeptServletBack
+ */
+@SuppressWarnings("serial")
+@WebServlet("/pages/back/admin/dept/DeptServletBack/*")
+public class DeptServletBack extends AbstractServlet
+{ 
+	private String insertValidation = "dept.dname";
+	private String updateValidation = "dept.dname|dept.did";
+	private Dept dept = new Dept();
+	public Dept getDept()
+	{
+		return dept;
+	}
+	 
+	public String insertPre()
+	{
+		return DeptPages.insertJSP;
+		
+	}
+	
+	public String insert()
+	{
+		try
+		{
+			if(ServiceBackFactory.getIDeptServiceBackInstance().insert(this.dept))
+				return super.setMsgAndUrlInRequest(DeptMessages.insertSuccessfully, DeptPages.insertPreURL);
+			else
+				return super.setMsgAndUrlInRequest(DeptMessages.insertFailed, DeptPages.insertPreURL);
+			
+		} catch (Exception e)
+		{
+			return super.setSystemError(e);
+		}
+	}
+	
+	public String updatePre()
+	{
+		return DeptPages.updateJSP;
+	}
+	
+	public String update()
+	{
+		return DeptPages.updatePreURL;
+	}
+	
+	public String delete()
+	{
+		return null;
+	}
+	
+
+	@Override
+	protected String getUploadFolder()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumns()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumn()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

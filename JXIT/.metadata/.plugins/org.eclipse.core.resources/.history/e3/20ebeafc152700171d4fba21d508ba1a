@@ -1,0 +1,10 @@
+package pages;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+public class DeptPages
+{
+	public static final String insertPreURL = "/pages/back/admin/dept/DeptServletBack/insertPre";
+	public static final String insertJSP = "/pages/back/admin/dept/dept_insert.jsp";
+
+}

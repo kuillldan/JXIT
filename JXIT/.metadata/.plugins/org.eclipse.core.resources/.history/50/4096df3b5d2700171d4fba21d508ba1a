@@ -1,0 +1,35 @@
+package servlet.back;
+
+import utils.AbstractServlet;
+
+public class LevelServletBack extends AbstractServlet
+{
+
+	@Override
+	protected String getUploadFolder()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getTitle()
+	{
+		return "工资级别";
+	}
+
+	@Override
+	protected String getColumns()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumn()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

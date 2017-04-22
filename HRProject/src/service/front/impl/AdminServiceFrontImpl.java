@@ -67,8 +67,7 @@ public class AdminServiceFrontImpl implements IAdminServiceFront
 			admin.setAid(aid);
 			admin.setPassword(oldPassword);
 			if (DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findFrontLogin(admin) != null)
-			{
-				System.out.println("[debug] 密码校验通过");
+			{ 
 				// 旧密码正确
 				if (DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdatePassword(aid, newPassword))
 				{ 

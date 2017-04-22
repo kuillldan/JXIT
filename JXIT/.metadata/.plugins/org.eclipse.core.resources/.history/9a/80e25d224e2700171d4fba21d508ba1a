@@ -1,0 +1,48 @@
+package factories;
+
+import java.sql.Connection;
+
+import DAO.IActionDAO;
+import DAO.IAdminDAO;
+import DAO.IAdminlogsDAO;
+import DAO.IDeptDAO;
+import DAO.IGroupsDAO;
+import DAO.IJobsDAO;
+import DAOImpl.ActionDAOImpl;
+import DAOImpl.AdminDAOImpl;
+import DAOImpl.AdminlogsDAOImpl;
+import DAOImpl.DeptDAOImpl;
+import DAOImpl.GroupsDAOImpl;
+import DAOImpl.JobsDAOImpl;
+
+public class DAOFactory
+{
+	public static IAdminDAO getIAdminDAOInstance(Connection conn)
+	{
+		return new AdminDAOImpl(conn);
+	}
+	
+	public static IActionDAO getIActionDAOInstance(Connection conn)
+	{
+		return new ActionDAOImpl(conn);
+	}
+	
+	public static IAdminlogsDAO getIAdminlogsDAOInstance(Connection conn)
+	{
+		return new AdminlogsDAOImpl(conn);
+	}
+	
+	public static IGroupsDAO getIGroupsDAOInstance(Connection conn)
+	{
+		return new GroupsDAOImpl(conn);
+	}
+	
+	public static IDeptDAO getIDeptDAOInstance(Connection conn)
+	{
+		return new DeptDAOImpl(conn);
+	}
+	public static IJobsDAO getIJobsDAOInstance(Connection conn)
+	{
+		return new JobsDAOImpl(conn);
+	}
+}

@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpSession;
 
-import messages.AdminMessage;
+import messages.AdminMessages;
 import pages.AdminPages;
 import factories.ServiceBackFactory;  
 import utils.AbstractServlet;
@@ -20,16 +20,14 @@ import vo.Admin;
 @WebServlet("/login/back/admin/AdminLoginServletBack/*")
 public class AdminLoginServletBack extends AbstractServlet
 {
-
-	
+	private String loginValidation = "admin.aid|admin.password";
 	private Admin admin = new Admin();
-
 	public Admin getAdmin()
 	{
 		return admin;
 	}
 	
-	private String loginValidation = "admin.aid|admin.password";
+	
 	
 	protected String login()
 	{
@@ -38,9 +36,9 @@ public class AdminLoginServletBack extends AbstractServlet
 			if (!super.checkCode())
 			{
 				// 返回登录页面 验证码错误
-				return super.setMsgAndUrlInRequest(AdminMessage.codeError, AdminPages.loginBackPage);
+				return super.setMsgAndUrlInRequest(AdminMessages.codeError, AdminPages.loginBackPage);
 			} else
-			{// 验证码正确 
+			{// 验证码正确  
 				this.admin.setPassword(new MD5Code().getMD5ofStr(this.admin.getPassword()));
 				Map<String, Object> map = ServiceBackFactory.getIAdminServiceBackInstance().login(admin);
 				boolean flag = (boolean) map.get("flag");
@@ -54,10 +52,10 @@ public class AdminLoginServletBack extends AbstractServlet
 					// 后台人事管理员
 					super.request.getSession().setAttribute("baid", this.admin.getAid());
 					session.setAttribute("bAdmin", this.admin);
-					return super.setMsgAndUrlInRequest(AdminMessage.backAdminSuccessfullyLogin, AdminPages.backAdminIndexJSP);
+					return super.setMsgAndUrlInRequest(AdminMessages.backAdminSuccessfullyLogin, AdminPages.backAdminIndexJSP);
 				} else
 				{
-					return super.setMsgAndUrlInRequest(AdminMessage.userNameOrPasswordError, AdminPages.loginBackPage);
+					return super.setMsgAndUrlInRequest(AdminMessages.userNameOrPasswordError, AdminPages.loginBackPage);
 				}
 			}
 		} catch (Exception e)
@@ -84,12 +82,12 @@ public class AdminLoginServletBack extends AbstractServlet
 			String url = AdminPages.backChangePasswordJSP;
 			if(ServiceBackFactory.getIAdminServiceBackInstance().updatePassword(aid, new MD5Code().getMD5ofStr(oldPassword), new MD5Code().getMD5ofStr(newPassword)))
 			{
-				String msg = AdminMessage.backAdminSuccessfullChangedPassword;
+				String msg = AdminMessages.backAdminSuccessfullChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);				
 			}
 			else
 			{
-				String msg = AdminMessage.backAdminFailedToChangedPassword;
+				String msg = AdminMessages.backAdminFailedToChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);
 			}
 		}
@@ -114,6 +112,13 @@ public class AdminLoginServletBack extends AbstractServlet
 	@Override
 	protected String getColumn()
 	{
+		return null;
+	}
+
+	@Override
+	protected String getTitle()
+	{
+		// TODO Auto-generated method stub
 		return null;
 	}
 

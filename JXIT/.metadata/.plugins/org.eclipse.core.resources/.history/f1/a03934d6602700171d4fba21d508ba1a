@@ -1,0 +1,37 @@
+function validateTitle() {
+	return validateEmpty("level.title");
+}
+
+function validateLosal() {
+	return validateRegex("level.losal","/^\d+(\.\d+)?$/");
+}
+
+function validateHisal() {
+	return validateRegex("level.hisal","/^\d+(\.\d+)?$/");
+}
+
+function validateInsert() {
+	var titleResult = validateTitle();
+	var losalResult = validateLosal();
+	var hisalResult = validateHisal();
+
+	return titleResult && losalResult && hisalResult;
+}
+
+function validateTitleWhenUpdate(jid) {
+	console.log("[debug] jid: " + jid);
+	return validateEmpty("jobs-title-" + jid);
+}
+
+function updateJobs(id, url) {
+	if (validateTitleWhenUpdate(id)) {
+		var title = document.getElementById("jobs-title-" + id).value;
+		var note = document.getElementById("jobs-note-" + id).value;
+		window.location = url + "?jobs.jid=" + id + "&jobs.title=" + title
+				+ "&jobs.note=" + note;
+	}
+}
+
+function validateDnameWhenUpdate(did) {
+	validateEmpty("dept-" + did);
+}

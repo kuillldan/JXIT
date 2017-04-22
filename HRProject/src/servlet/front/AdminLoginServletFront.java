@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import pages.AdminPages;
 import enums.AdminType;
 import factories.ServiceFrontFactory;
-import messages.AdminMessage;
+import messages.AdminMessages;
 import utils.AbstractServlet;
 import utils.CONST;
 import utils.General;
@@ -41,8 +41,7 @@ public class AdminLoginServletFront extends AbstractServlet
 		{
 			String oldPassword = request.getParameter("oldPassword");
 			String newPassword = request.getParameter("newPassword");
-			String aid = request.getParameter("aid");
-			System.out.println("[debug]: servlet oldPassword: " + oldPassword + ", newPassword:" + newPassword);
+			String aid = request.getParameter("aid"); 
 			if(StringUtils.isEmpty(oldPassword) || StringUtils.isEmpty(newPassword))
 			{
 				Map<String, String> errors = new HashMap<String, String>();
@@ -54,13 +53,13 @@ public class AdminLoginServletFront extends AbstractServlet
 			String url = AdminPages.frontChangePasswordJSP;
 			if(ServiceFrontFactory.getIAdminServiceFrontInstance().updatePassword(aid, new MD5Code().getMD5ofStr(oldPassword), new MD5Code().getMD5ofStr(newPassword)))
 			{ 
-				String msg = AdminMessage.frontAdminSuccessfullChangedPassword;
+				String msg = AdminMessages.frontAdminSuccessfullChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);
 				
 			}
 			else
 			{
-				String msg = AdminMessage.frontAdminFailedToChangedPassword;
+				String msg = AdminMessages.frontAdminFailedToChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);
 			}
 		}
@@ -77,10 +76,9 @@ public class AdminLoginServletFront extends AbstractServlet
 			if (!super.checkCode())
 			{
 				// 返回登录页面 验证码错误
-				return super.setMsgAndUrlInRequest(AdminMessage.codeError, AdminPages.loginFrontPage);
+				return super.setMsgAndUrlInRequest(AdminMessages.codeError, AdminPages.loginFrontPage);
 			} else
-			{// 验证码正确
-				System.out.println("[debug] *** 登陆成功:" + this.admin);
+			{// 验证码正确 
 				this.admin.setPassword(new MD5Code().getMD5ofStr(this.admin.getPassword()));
 				Map<String, Object> map = ServiceFrontFactory.getIAdminServiceFrontInstance().login(admin);
 				boolean flag = (boolean) map.get("flag");
@@ -112,7 +110,7 @@ public class AdminLoginServletFront extends AbstractServlet
 //					}
 				} else
 				{
-					return super.setMsgAndUrlInRequest(AdminMessage.userNameOrPasswordError, AdminPages.loginFrontPage);
+					return super.setMsgAndUrlInRequest(AdminMessages.userNameOrPasswordError, AdminPages.loginFrontPage);
 				}
 
 			}
@@ -153,6 +151,13 @@ public class AdminLoginServletFront extends AbstractServlet
 
 	@Override
 	protected String getColumn()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getTitle()
 	{
 		// TODO Auto-generated method stub
 		return null;
