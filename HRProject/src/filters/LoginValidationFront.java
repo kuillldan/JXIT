@@ -19,8 +19,8 @@ import utils.StringUtils;
 /**
  * Servlet Filter implementation class LoginValidation
  */
-@WebFilter(
-{ "/pages/front/*"})
+@WebFilter({ "/pages/front/*", "/login/front/admin/AdminLoginServletFront/changePassword"})
+//, "/login/front/admin/AdminLoginServletFront/changePassword" 
 public class LoginValidationFront implements Filter
 {
 
@@ -52,8 +52,9 @@ public class LoginValidationFront implements Filter
 		if (StringUtils.isEmpty(aid))
 		{
 			// 未登录
-			httpRequest.getRequestDispatcher(General.setMsgAndUrlInRequest(httpRequest, "请先登录", AdminPages.loginPage))
-					.forward(request, response);
+			httpRequest.getRequestDispatcher(
+					General.setMsgAndUrlInRequest(httpRequest, "请先登录", AdminPages.loginFrontPage)).forward(request,
+					response);
 
 		} else
 		{

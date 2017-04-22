@@ -1,0 +1,6 @@
+package servlet.back;
+
+public interface AdminLoginServletBack
+{
+
+}

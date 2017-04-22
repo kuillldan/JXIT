@@ -1,0 +1,37 @@
+package servlet.back;
+
+import javax.servlet.annotation.WebServlet;
+
+import utils.AbstractServlet;
+
+
+@SuppressWarnings("serial")
+@WebServlet("/login/back/admin/AdminLoginServletFront/*")
+public class AdminLoginServletBack extends AbstractServlet
+{
+
+	
+	
+	
+	@Override
+	protected String getUploadFolder()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumns()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumn()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

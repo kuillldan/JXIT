@@ -9,7 +9,7 @@
 
 <%
 	String logoutURL = basePath + "login/front/admin/AdminLoginServletFront/logout" ;
-	String changePasswordJSP = "pages/public/change_password.jsp";
+	String changePasswordJSP = "pages/back/change_password.jsp";
 %>
  
 

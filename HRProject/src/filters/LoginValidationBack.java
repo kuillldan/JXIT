@@ -20,7 +20,8 @@ import utils.StringUtils;
  * Servlet Filter implementation class LoginValidationBack
  */
 @WebFilter(
-{ "/pages/back/*" })
+{ "/pages/back/*","/login/back/admin/AdminLoginServletBack/changePassword"})
+//,"/login/back/admin/AdminLoginServletBack/changePassword" 
 public class LoginValidationBack implements Filter
 {
 
@@ -52,7 +53,7 @@ public class LoginValidationBack implements Filter
 		if (StringUtils.isEmpty(aid))
 		{
 			// 未登录
-			httpRequest.getRequestDispatcher(General.setMsgAndUrlInRequest(httpRequest, "请先登录", AdminPages.loginPage))
+			httpRequest.getRequestDispatcher(General.setMsgAndUrlInRequest(httpRequest, "请先登录", AdminPages.loginBackPage))
 					.forward(request, response);
 
 		} else

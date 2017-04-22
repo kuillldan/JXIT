@@ -13,7 +13,9 @@ public interface IAdminDAO extends IDAO<String, Admin>
 	 * @return
 	 * @throws SQLException
 	 */
-	public Admin findLogin(Admin vo) throws SQLException;
+	public Admin findFrontLogin(Admin vo) throws SQLException;
+	
+	public Admin findBackLogin(Admin vo) throws SQLException;
 	
 	public boolean doUpdateLastDate(String aid, Date date) throws SQLException;
 	

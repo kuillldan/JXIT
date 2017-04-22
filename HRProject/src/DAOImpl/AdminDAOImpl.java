@@ -12,6 +12,7 @@ import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import enums.AdminType;
 import utils.General;
 import vo.Admin;
 import DAO.AbstractDAOImpl;
@@ -71,11 +72,10 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 	}
 
 	@Override
-	public Admin findLogin(Admin vo) throws SQLException
+	public Admin findFrontLogin(Admin vo) throws SQLException
 	{
 		Admin admin = null;
-		String sql = " SELECT aid,rid,type,lastdate,flag FROM Admin WHERE aid = ? AND password = ? ";
-		System.out.println("[debug] vo ***"+vo);
+		String sql = " SELECT aid,rid,type,lastdate,flag FROM Admin WHERE aid = ? AND password = ? AND type=" + AdminType.FRONT_ADMIN.ordinal() + " ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setString(1, vo.getAid());
 		this.ps.setString(2, vo.getPassword());
@@ -90,8 +90,7 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 			admin.setType(rs.getInt("type"));
 			admin.setLastdate(rs.getTimestamp("lastdate"));
 			admin.setFlag(rs.getInt("flag"));
-		}
-		System.out.println("[debug]:****  " + admin);
+		} 
 		return admin;
 	}
 
@@ -114,5 +113,28 @@ public class AdminDAOImpl extends AbstractDAOImpl implements IAdminDAO
 		this.ps.setString(1, password);
 		this.ps.setString(2, aid);
 		return this.ps.executeUpdate() == 1;
+	}
+
+	@Override
+	public Admin findBackLogin(Admin vo) throws SQLException
+	{
+		Admin admin = null;
+		String sql = " SELECT aid,rid,type,lastdate,flag FROM Admin WHERE aid = ? AND password = ? AND type=" + AdminType.BACK_ADMIN.ordinal() + " ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setString(1, vo.getAid());
+		this.ps.setString(2, vo.getPassword());
+		ResultSet rs = this.ps.executeQuery();
+		if (rs.next())
+		{
+			admin = new Admin();
+			admin.setAid(rs.getString("aid"));
+			vo.Role role = new vo.Role();
+			role.setRid(rs.getInt("rid"));
+			admin.setRole(role);
+			admin.setType(rs.getInt("type"));
+			admin.setLastdate(rs.getTimestamp("lastdate"));
+			admin.setFlag(rs.getInt("flag"));
+		} 
+		return admin;
 	}
 }

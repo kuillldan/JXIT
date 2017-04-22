@@ -51,17 +51,16 @@ public class AdminLoginServletFront extends AbstractServlet
 				return CONST.errorPage;
 			}
 			
+			String url = AdminPages.frontChangePasswordJSP;
 			if(ServiceFrontFactory.getIAdminServiceFrontInstance().updatePassword(aid, new MD5Code().getMD5ofStr(oldPassword), new MD5Code().getMD5ofStr(newPassword)))
-			{
-				String url = "/pages/public/change_password.jsp";
-				String msg = "密码更新成功";
+			{ 
+				String msg = AdminMessage.frontAdminSuccessfullChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);
 				
 			}
 			else
 			{
-				String url = "/pages/public/change_password.jsp";
-				String msg = "密码更新失败";
+				String msg = AdminMessage.frontAdminFailedToChangedPassword;
 				return super.setMsgAndUrlInRequest(msg, url);
 			}
 		}
@@ -78,9 +77,10 @@ public class AdminLoginServletFront extends AbstractServlet
 			if (!super.checkCode())
 			{
 				// 返回登录页面 验证码错误
-				return super.setMsgAndUrlInRequest(AdminMessage.codeError, AdminPages.loginPage);
+				return super.setMsgAndUrlInRequest(AdminMessage.codeError, AdminPages.loginFrontPage);
 			} else
 			{// 验证码正确
+				System.out.println("[debug] *** 登陆成功:" + this.admin);
 				this.admin.setPassword(new MD5Code().getMD5ofStr(this.admin.getPassword()));
 				Map<String, Object> map = ServiceFrontFactory.getIAdminServiceFrontInstance().login(admin);
 				boolean flag = (boolean) map.get("flag");
@@ -90,25 +90,29 @@ public class AdminLoginServletFront extends AbstractServlet
 					this.admin = (Admin) map.get("admin"); 
 					
 					HttpSession session = this.request.getSession(); 
-					if (this.admin.getType().equals(AdminType.FRONT_ADMIN.ordinal()))
-					{
-						// 前台人事管理员
-						super.request.getSession().setAttribute("faid", this.admin.getAid());
-						session.setAttribute("fAdmin", this.admin);
-						return AdminPages.frontAdminIndexJSP;
-					} else if (this.admin.getType().equals(AdminType.BACK_ADMIN.ordinal()))
-					{
-						// 后台人事管理员
-						super.request.getSession().setAttribute("baid", this.admin.getAid());
-						session.setAttribute("bAdmin", this.admin);
-						return super.setMsgAndUrlInRequest("后台管理员登录成功", AdminPages.backAdminIndexJSP);
-					} else
-					{
-						throw new Exception(AdminMessage.illegalAdminType);
-					}
+					
+					// 前台人事管理员
+					super.request.getSession().setAttribute("faid", this.admin.getAid());
+					session.setAttribute("fAdmin", this.admin);
+					return AdminPages.frontAdminIndexJSP;
+					
+					
+//					if (this.admin.getType().equals(AdminType.FRONT_ADMIN.ordinal()))
+//					{
+//						
+//					} else if (this.admin.getType().equals(AdminType.BACK_ADMIN.ordinal()))
+//					{
+//						// 后台人事管理员
+//						super.request.getSession().setAttribute("baid", this.admin.getAid());
+//						session.setAttribute("bAdmin", this.admin);
+//						return super.setMsgAndUrlInRequest("后台管理员登录成功", AdminPages.backAdminIndexJSP);
+//					} else
+//					{
+//						throw new Exception(AdminMessage.illegalAdminType);
+//					}
 				} else
 				{
-					return super.setMsgAndUrlInRequest(AdminMessage.userNameOrPasswordError, AdminPages.loginPage);
+					return super.setMsgAndUrlInRequest(AdminMessage.userNameOrPasswordError, AdminPages.loginFrontPage);
 				}
 
 			}
@@ -124,7 +128,7 @@ public class AdminLoginServletFront extends AbstractServlet
 		{
 			super.request.getSession().invalidate();
 			//return super.setMsgAndUrlInRequest("退出成功", AdminPages.loginPage);
-			return AdminPages.loginPage;
+			return AdminPages.loginFrontPage;
 			// this.request.getRequestDispatcher(AdminPages.loginPage).forward(request,
 			// response);
 		} catch (Exception e)

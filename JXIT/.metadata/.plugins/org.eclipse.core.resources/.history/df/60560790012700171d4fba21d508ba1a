@@ -1,0 +1,11 @@
+package servlet.back;
+
+import javax.servlet.annotation.WebServlet;
+
+
+@SuppressWarnings("serial")
+@WebServlet("/login/front/admin/AdminLoginServletFront/*")
+public interface AdminLoginServletBack extends AbstractServlet
+{
+
+}

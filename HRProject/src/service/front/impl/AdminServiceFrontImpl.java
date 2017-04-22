@@ -29,7 +29,7 @@ public class AdminServiceFrontImpl implements IAdminServiceFront
 		try
 		{
 			Map<String, Object> map = new HashMap<String, Object>();
-			Admin result = DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findLogin(admin);
+			Admin result = DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findFrontLogin(admin);
 			boolean flag = result != null;
 			map.put("flag", flag);
 			map.put("admin", result);
@@ -37,32 +37,15 @@ public class AdminServiceFrontImpl implements IAdminServiceFront
 			if (flag == true)
 			{
 				// 登录成功
-				//记录登录日志
+				// 记录登录日志
 				Adminlogs adminlogs = new Adminlogs();
 				adminlogs.setAdmin(result);
 				adminlogs.setLogindate(new Date(System.currentTimeMillis()));
 				DAOFactory.getIAdminlogsDAOInstance(this.dbc.getConnection()).doCreate(adminlogs);
-				
-				//更新最后登录日期
-				DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdateLastDate(result.getAid(), new Date(System.currentTimeMillis()));
-				
-				if (AdminType.BACK_ADMIN.ordinal() == result.getType())
-				{
-					// 前台管理员
-					Role role = result.getRole();
-					Integer rid = role.getRid();
-					List<Groups> allGroups = DAOFactory.getIGroupsDAOInstance(this.dbc.getConnection()).findAllByRole(
-							rid); 
-					role.setAllGroups(allGroups);
-					
-					for (Groups groups : allGroups)
-					{
-						Integer gid = groups.getGid();
-						List<Action> allActions = DAOFactory.getIActionDAOInstance(this.dbc.getConnection())
-								.findAllByGroups(gid);
-						groups.setAllActions(allActions);
-					}
-				}
+
+				// 更新最后登录日期
+				DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdateLastDate(result.getAid(),
+						new Date(System.currentTimeMillis()));
 			}
 
 			return map;
@@ -80,31 +63,25 @@ public class AdminServiceFrontImpl implements IAdminServiceFront
 	{
 		try
 		{
-			System.out.println("[debug] service :oldPassword: " + oldPassword + ", newPassword:" + newPassword);
 			Admin admin = new Admin();
 			admin.setAid(aid);
 			admin.setPassword(oldPassword);
-			if(DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findLogin(admin) != null)
+			if (DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findFrontLogin(admin) != null)
 			{
 				System.out.println("[debug] 密码校验通过");
-				//旧密码正确
-				if(DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdatePassword(aid, newPassword))
-				{
-					System.out.println("[debug] 密码更新成功");
+				// 旧密码正确
+				if (DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).doUpdatePassword(aid, newPassword))
+				{ 
 					return true;
-				}
-				else
-				{
-					System.out.println("[debug] 密码更新失败");
+				} else
+				{ 
 					return false;
 				}
-			}
-			else
+			} else
 			{
-				//旧密码不正确
-				System.out.println("[debug] 密码校验未通过");
+				// 旧密码不正确 
 				return false;
-			} 
+			}
 		} catch (Exception e)
 		{
 			throw e;
