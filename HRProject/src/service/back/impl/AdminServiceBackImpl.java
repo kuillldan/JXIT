@@ -28,8 +28,7 @@ public class AdminServiceBackImpl implements IAdminServiceBack
 			Admin result = DAOFactory.getIAdminDAOInstance(this.dbc.getConnection()).findBackLogin(admin);
 			boolean flag = result != null;
 			map.put("flag", flag);
-			map.put("admin", result);
-
+			map.put("admin", result); 
 			if (flag == true)
 			{
 				// 登录成功

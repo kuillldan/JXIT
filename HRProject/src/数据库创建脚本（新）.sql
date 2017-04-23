@@ -40,197 +40,197 @@ DROP TABLE IF EXISTS groups;
 -- 五、创建数据表
 -- 1、创建权限组信息表
 CREATE TABLE groups (
-	gid		INT	AUTO_INCREMENT,
-	title		VARCHAR(50),
-	note		TEXT ,
-	CONSTRAINT pk_gid PRIMARY KEY(gid)
+    gid INT AUTO_INCREMENT,
+    title VARCHAR(50),
+    note TEXT ,
+    CONSTRAINT pk_gid PRIMARY KEY(gid)
 );
 
 -- 2、权限信息表
 CREATE TABLE action (
-	actid		INT	AUTO_INCREMENT ,
-	gid		INT,
-	title		VARCHAR(50),
-	url		VARCHAR(100) ,
-	CONSTRAINT pk_actid PRIMARY KEY(actid) ,
-	CONSTRAINT fk_gid1 FOREIGN KEY(gid) REFERENCES groups(gid) ON DELETE CASCADE
+    actid        INT    AUTO_INCREMENT ,
+    gid        INT,
+    title        VARCHAR(50),
+    url        VARCHAR(100) ,
+    CONSTRAINT pk_actid PRIMARY KEY(actid) ,
+    CONSTRAINT fk_gid1 FOREIGN KEY(gid) REFERENCES groups(gid) ON DELETE CASCADE
 );
 
 -- 3、角色信息表
 CREATE TABLE role (
-	rid		INT	AUTO_INCREMENT ,
-	title		VARCHAR(50),
-	note		TEXT,
-	CONSTRAINT pk_rid PRIMARY KEY(rid)
+    rid        INT    AUTO_INCREMENT ,
+    title        VARCHAR(50),
+    note        TEXT,
+    CONSTRAINT pk_rid PRIMARY KEY(rid)
 );
 
 -- 4、角色-权限组关系表
 CREATE TABLE role_groups (
-	rid		INT ,
-	gid		INT ,
-	CONSTRAINT fk_rid2 FOREIGN KEY(rid) REFERENCES role(rid) ON DELETE CASCADE ,
-	CONSTRAINT fk_gid2 FOREIGN KEY(gid) REFERENCES groups(gid) ON DELETE CASCADE 
+    rid        INT ,
+    gid        INT ,
+    CONSTRAINT fk_rid2 FOREIGN KEY(rid) REFERENCES role(rid) ON DELETE CASCADE ,
+    CONSTRAINT fk_gid2 FOREIGN KEY(gid) REFERENCES groups(gid) ON DELETE CASCADE 
 );
 
 -- 5、管理员信息表
 CREATE TABLE admin (
-	aid		VARCHAR(50) ,
-	rid		INT,
-	password	VARCHAR(32),
-	type		INT,
-	lastdate	DATETIME,
-	flag		INT ,
-	CONSTRAINT pk_aid PRIMARY KEY(aid) ,
-	CONSTRAINT fk_rid3 FOREIGN KEY(rid) REFERENCES role(rid) ON DELETE SET NULL
+    aid        VARCHAR(50) ,
+    rid        INT,
+    password    VARCHAR(32),
+    type        INT,
+    lastdate    DATETIME,
+    flag        INT ,
+    CONSTRAINT pk_aid PRIMARY KEY(aid) ,
+    CONSTRAINT fk_rid3 FOREIGN KEY(rid) REFERENCES role(rid) ON DELETE SET NULL
 );
 
 -- 6、管理员登录日志表
 CREATE TABLE adminlogs (
-	alid		INT	AUTO_INCREMENT ,
-	aid		VARCHAR(50),
-	logindate	DATETIME,
-	ip		VARCHAR(50),
-	CONSTRAINT pk_alid PRIMARY KEY (alid) ,
-	CONSTRAINT fk_aid FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE CASCADE
+    alid        INT    AUTO_INCREMENT ,
+    aid        VARCHAR(50),
+    logindate    DATETIME,
+    ip        VARCHAR(50),
+    CONSTRAINT pk_alid PRIMARY KEY (alid) ,
+    CONSTRAINT fk_aid FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE CASCADE
 );
 
 -- 7、职位信息
 CREATE TABLE jobs (
-	jid		INT	AUTO_INCREMENT,
-	title		VARCHAR(50),
-	note		TEXT,
-	CONSTRAINT pk_jid PRIMARY KEY(jid) 
+    jid        INT    AUTO_INCREMENT,
+    title        VARCHAR(50),
+    note        TEXT,
+    CONSTRAINT pk_jid PRIMARY KEY(jid) 
 );
 
 -- 8、雇员级别信息
 CREATE TABLE level (
-	levid		INT	AUTO_INCREMENT ,
-	title		VARCHAR(50),
-	losal		FLOAT,
-	hisal		FLOAT,
-	CONSTRAINT pk_levid PRIMARY KEY(levid)
+    levid        INT    AUTO_INCREMENT ,
+    title        VARCHAR(50),
+    losal        FLOAT,
+    hisal        FLOAT,
+    CONSTRAINT pk_levid PRIMARY KEY(levid)
 );
 
 
 -- 9、部门信息表
 CREATE TABLE dept (
-	did		INT	AUTO_INCREMENT ,
-	dname		VARCHAR(50),
-	current		INT,
-	CONSTRAINT pk_did PRIMARY KEY (did)
+    did        INT    AUTO_INCREMENT ,
+    dname        VARCHAR(50),
+    current        INT,
+    CONSTRAINT pk_did PRIMARY KEY (did)
 );
 
 -- 10、雇员信息表
 CREATE TABLE employee (
-	eid		INT	,
-	aid		VARCHAR(50) ,
-	did		INT ,
-	levid		INT ,
-	jid		INT ,
-	ename		VARCHAR(50),
-	birthday	DATETIME,
-	sex		VARCHAR(10),
-	idcard		VARCHAR(18),
-	dname		VARCHAR(50),
-	job		VARCHAR(50),
-	school		VARCHAR(50),
-	profession	VARCHAR(50),
-	grad		DATETIME,
-	photo		VARCHAR(50),
-	indate		DATETIME ,
-	outdate		DATETIME ,
-	status		INT ,
-	sal		FLOAT ,
-	note		TEXT,
-	edu		VARCHAR(50) ,
-	CONSTRAINT pk_eid PRIMARY KEY(eid) ,
-	CONSTRAINT fk_aid4 FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE SET NULL ,
-	CONSTRAINT fk_did4 FOREIGN KEY(did) REFERENCES dept(did) ON DELETE SET NULL ,
-	CONSTRAINT fk_levid4 FOREIGN KEY(levid) REFERENCES level(levid) ON DELETE SET NULL ,
-	CONSTRAINT fk_jid4 FOREIGN KEY(jid) REFERENCES jobs(jid) ON DELETE SET NULL 
+    eid        INT    ,
+    aid        VARCHAR(50) ,
+    did        INT ,
+    levid        INT ,
+    jid        INT ,
+    ename        VARCHAR(50),
+    birthday    DATETIME,
+    sex        VARCHAR(10),
+    idcard        VARCHAR(18),
+    dname        VARCHAR(50),
+    job        VARCHAR(50),
+    school        VARCHAR(50),
+    profession    VARCHAR(50),
+    grad        DATETIME,
+    photo        VARCHAR(50),
+    indate        DATETIME ,
+    outdate        DATETIME ,
+    status        INT ,
+    sal        FLOAT ,
+    note        TEXT,
+    edu        VARCHAR(50) ,
+    CONSTRAINT pk_eid PRIMARY KEY(eid) ,
+    CONSTRAINT fk_aid4 FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE SET NULL ,
+    CONSTRAINT fk_did4 FOREIGN KEY(did) REFERENCES dept(did) ON DELETE SET NULL ,
+    CONSTRAINT fk_levid4 FOREIGN KEY(levid) REFERENCES level(levid) ON DELETE SET NULL ,
+    CONSTRAINT fk_jid4 FOREIGN KEY(jid) REFERENCES jobs(jid) ON DELETE SET NULL 
 ) ;
 
 -- 11、创建课程信息表
 CREATE TABLE course (
-	cid		INT	AUTO_INCREMENT,
-	aid		VARCHAR(50),
-	cname		VARCHAR(50),
-	total		INT,
-	begin		DATETIME,
-	end		DATETIME,
-	status		INT,
-	photo		VARCHAR(50),
-	note		TEXT,
-	CONSTRAINT pk_cid PRIMARY KEY(cid) ,
-	CONSTRAINT fk_aid6 FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE SET NULL 
+    cid        INT    AUTO_INCREMENT,
+    aid        VARCHAR(50),
+    cname        VARCHAR(50),
+    total        INT,
+    begin        DATETIME,
+    end        DATETIME,
+    status        INT,
+    photo        VARCHAR(50),
+    note        TEXT,
+    CONSTRAINT pk_cid PRIMARY KEY(cid) ,
+    CONSTRAINT fk_aid6 FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE SET NULL 
 );
 
 -- 12、创建课程详情表
 CREATE TABLE details (
-	dtid		INT	AUTO_INCREMENT,
-	cid		INT,
-	eid		INT,
-	ename		VARCHAR(50) ,
-	score		FLOAT ,
-	CONSTRAINT pk_dtid PRIMARY KEY(dtid) ,
-	CONSTRAINT fk_cid7 FOREIGN KEY(cid) REFERENCES course(cid) ON DELETE CASCADE ,
-	CONSTRAINT fk_eid7 FOREIGN KEY(eid) REFERENCES employee(eid) ON DELETE CASCADE 
+    dtid        INT    AUTO_INCREMENT,
+    cid        INT,
+    eid        INT,
+    ename        VARCHAR(50) ,
+    score        FLOAT ,
+    CONSTRAINT pk_dtid PRIMARY KEY(dtid) ,
+    CONSTRAINT fk_cid7 FOREIGN KEY(cid) REFERENCES course(cid) ON DELETE CASCADE ,
+    CONSTRAINT fk_eid7 FOREIGN KEY(eid) REFERENCES employee(eid) ON DELETE CASCADE 
 );
 
 -- 13、课程考勤表
 CREATE TABLE logs (
-	lid		INT	AUTO_INCREMENT,
-	dtid		INT,
-	recdate		DATETIME,
-	num		INT,
-	status		INT,
-	CONSTRAINT pk_lid PRIMARY KEY(lid) ,
-	CONSTRAINT fk_did8 FOREIGN KEY(dtid) REFERENCES details(dtid) ON DELETE CASCADE
+    lid        INT    AUTO_INCREMENT,
+    dtid        INT,
+    recdate        DATETIME,
+    num        INT,
+    status        INT,
+    CONSTRAINT pk_lid PRIMARY KEY(lid) ,
+    CONSTRAINT fk_did8 FOREIGN KEY(dtid) REFERENCES details(dtid) ON DELETE CASCADE
 );
 
 
 -- 14、工资信息变更
 CREATE TABLE salary (
-	sid		INT	AUTO_INCREMENT,
-	oldlevid	INT,
-	newlevid	INT,
-	eid		INT,
-	aid		VARCHAR(50),
-	cdate		DATETIME,
-	oldsal		FLOAT,
-	newsal		FLOAT,
-	reason		TEXT,
-	note		TEXT,
-	CONSTRAINT pk_sid PRIMARY KEY (sid) ,
-	CONSTRAINT fk_oldlevid9 FOREIGN KEY(oldlevid) REFERENCES level(levid) ,
-	CONSTRAINT fk_newlevid9 FOREIGN KEY(newlevid) REFERENCES level(levid) ,
-	CONSTRAINT fk_eid9 FOREIGN KEY(eid) REFERENCES employee(eid) ,
-	CONSTRAINT fk_aid9 FOREIGN KEY(aid) REFERENCES admin(aid) 
+    sid        INT    AUTO_INCREMENT,
+    oldlevid    INT,
+    newlevid    INT,
+    eid        INT,
+    aid        VARCHAR(50),
+    cdate        DATETIME,
+    oldsal        FLOAT,
+    newsal        FLOAT,
+    reason        TEXT,
+    note        TEXT,
+    CONSTRAINT pk_sid PRIMARY KEY (sid) ,
+    CONSTRAINT fk_oldlevid9 FOREIGN KEY(oldlevid) REFERENCES level(levid) ,
+    CONSTRAINT fk_newlevid9 FOREIGN KEY(newlevid) REFERENCES level(levid) ,
+    CONSTRAINT fk_eid9 FOREIGN KEY(eid) REFERENCES employee(eid) ,
+    CONSTRAINT fk_aid9 FOREIGN KEY(aid) REFERENCES admin(aid) 
 );
 
 -- 15、职位信息变更
 CREATE TABLE work (
-	wid		INT	AUTO_INCREMENT,
-	eid		INT,
-	aid		VARCHAR(50),
-	olddid		INT,
-	newdid		INT,
-	oldjid		INT,
-	newjid		INT,
-	cdate		DATETIME,
-	olddname	VARCHAR(50),
-	oldjob		VARCHAR(50),
-	newdname	VARCHAR(50),
-	newjob		VARCHAR(50),
-	reason		TEXT,
-	note		TEXT,
-	CONSTRAINT pk_wid PRIMARY KEY (wid) ,
-	CONSTRAINT fk_eid10 FOREIGN KEY(eid) REFERENCES employee(eid) ,
-	CONSTRAINT fk_aid10 FOREIGN KEY(aid) REFERENCES admin(aid)  ON DELETE SET NULL,
-	CONSTRAINT fk_olddid10 FOREIGN KEY(olddid) REFERENCES dept(did) ON DELETE SET NULL ,
-	CONSTRAINT fk_newdid10 FOREIGN KEY(newdid) REFERENCES dept(did) ON DELETE SET NULL ,
-	CONSTRAINT fk_oldjid10 FOREIGN KEY(oldjid) REFERENCES jobs(jid) ON DELETE SET NULL,
-	CONSTRAINT fk_newjid10 FOREIGN KEY(newjid) REFERENCES jobs(jid) ON DELETE SET NULL 
+    wid        INT    AUTO_INCREMENT,
+    eid        INT,
+    aid        VARCHAR(50),
+    olddid        INT,
+    newdid        INT,
+    oldjid        INT,
+    newjid        INT,
+    cdate        DATETIME,
+    olddname    VARCHAR(50),
+    oldjob        VARCHAR(50),
+    newdname    VARCHAR(50),
+    newjob        VARCHAR(50),
+    reason        TEXT,
+    note        TEXT,
+    CONSTRAINT pk_wid PRIMARY KEY (wid) ,
+    CONSTRAINT fk_eid10 FOREIGN KEY(eid) REFERENCES employee(eid) ,
+    CONSTRAINT fk_aid10 FOREIGN KEY(aid) REFERENCES admin(aid)  ON DELETE SET NULL,
+    CONSTRAINT fk_olddid10 FOREIGN KEY(olddid) REFERENCES dept(did) ON DELETE SET NULL ,
+    CONSTRAINT fk_newdid10 FOREIGN KEY(newdid) REFERENCES dept(did) ON DELETE SET NULL ,
+    CONSTRAINT fk_oldjid10 FOREIGN KEY(oldjid) REFERENCES jobs(jid) ON DELETE SET NULL,
+    CONSTRAINT fk_newjid10 FOREIGN KEY(newjid) REFERENCES jobs(jid) ON DELETE SET NULL 
 );
 
 -- 六、测试数据
