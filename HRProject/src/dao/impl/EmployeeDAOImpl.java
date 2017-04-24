@@ -33,8 +33,8 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 	@Override
 	public boolean doCreate(Employee vo) throws SQLException
 	{
-		String sql = " INSERT INTO employee(aid,did,levid,jid,ename,birthday,sex,idcard,dname,job,school,profession,grad,photo,indate,outdate,status,note,edu,sal) "
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+		String sql = " INSERT INTO employee(aid,did,levid,jid,ename,birthday,sex,idcard,dname,job,school,profession,grad,photo,indate,outdate,status,note,edu,sal,phone,email) "
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 		this.ps = this.conn.prepareStatement(sql); 
 		this.ps.setString(1, vo.getAdmin().getAid());
 		this.ps.setInt(2, vo.getDept().getDid());
@@ -56,6 +56,8 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		this.ps.setString(18, vo.getNote());
 		this.ps.setString(19, vo.getEdu());
 		this.ps.setDouble(20, vo.getSal());
+		this.ps.setString(21, vo.getPhone());
+		this.ps.setString(22, vo.getEdu());
 		return this.ps.executeUpdate() == 1;
 	}
 
@@ -64,7 +66,7 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 	{
 		String sql = " UPDATE employee SET did=?,levid=?,jid=?,ename=?,birthday=?, "
 				+ " sex=?,idcard=?,dname=?,job=?,school=?,profession=?,grad=?,photo=?, "
-				+ " indate=?,outdate=?,status=?,note=?,edu=?,sal=? WHERE eid=? ";
+				+ " indate=?,outdate=?,status=?,note=?,edu=?,sal=?,phone=?,email=? WHERE eid=? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, vo.getDept().getDid());
 		this.ps.setInt(2, vo.getLevel().getLevid());
@@ -85,7 +87,9 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		this.ps.setString(17, vo.getNote());
 		this.ps.setString(18, vo.getEdu());
 		this.ps.setDouble(19, vo.getSal());
-		this.ps.setInt(20, vo.getEid());
+		this.ps.setString(20, vo.getPhone());
+		this.ps.setString(21, vo.getEmail());
+		this.ps.setInt(22, vo.getEid());
 		return this.ps.executeUpdate() == 1;
 	}
 
@@ -102,7 +106,7 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		Employee vo = null;
 		String sql = " SELECT eid,aid,did,levid,jid,ename,birthday,sex, "
 				+ " idcard,dname,job,school,profession,grad,photo,indate, "
-				+ " outdate,status,note,edu,sal FROM employee WHERE eid=? ";
+				+ " outdate,status,note,edu,sal,phone,email FROM employee WHERE eid=? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, id);
 		ResultSet rs = this.ps.executeQuery();
@@ -287,6 +291,8 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 			vo.setNote(rs.getString("note"));
 			vo.setEdu(rs.getString("edu"));
 			vo.setSal(rs.getDouble("sal"));
+			vo.setPhone(rs.getString("phone"));
+			vo.setEmail(rs.getString("email"));
 			allEmployees.add(vo);
 		}
 		return allEmployees;

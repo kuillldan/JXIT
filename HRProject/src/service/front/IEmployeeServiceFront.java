@@ -14,7 +14,7 @@ public interface IEmployeeServiceFront
 	 * @return
 	 * @throws Exception
 	 */
-	public Map<String, Object> insertPre(Integer eid) throws Exception;
+	public Map<String, Object> insertPre() throws Exception;
 	
 	/**
 	 * 更新前查询所有的DEPT JOBS JOBLEVEL信息
@@ -61,7 +61,7 @@ public interface IEmployeeServiceFront
 	 * @return
 	 * @throws SQLException
 	 */
-	public List<Employee> list(Integer currentPage,Integer pageSize, String column, String keyword) throws SQLException;
+	public Map<String, Object> list(Integer currentPage,Integer pageSize, String column, String keyWord) throws Exception;
 	/**
 	 * 指定状态雇员信息列出 包括雇员个数
 	 * @param currentPage
@@ -72,5 +72,5 @@ public interface IEmployeeServiceFront
 	 * @return
 	 * @throws SQLException
 	 */
-	public Map<String, Object> listByStatus(Integer currentPage,Integer pageSize, String column, String keyword, Integer status) throws SQLException;
+	public Map<String, Object> listByStatus(Integer currentPage,Integer pageSize, String column, String keyword, Integer status) throws Exception;
 }

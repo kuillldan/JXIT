@@ -1,11 +1,12 @@
-<%@ page language="java" import="vo.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://www.kuillldan.cn" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://www.kuillldan.cn"%>
 
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
- 
+
 <html>
   <head>
     <base href="<%=basePath%>"> 

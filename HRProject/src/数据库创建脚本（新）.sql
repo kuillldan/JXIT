@@ -144,6 +144,8 @@ CREATE TABLE employee (
     sal        FLOAT ,
     note        TEXT,
     edu        VARCHAR(50) ,
+    phone		VARCHAR(20),
+    email 		VARCHAR(20),
     CONSTRAINT pk_eid PRIMARY KEY(eid) ,
     CONSTRAINT fk_aid4 FOREIGN KEY(aid) REFERENCES admin(aid) ON DELETE SET NULL ,
     CONSTRAINT fk_did4 FOREIGN KEY(did) REFERENCES dept(did) ON DELETE SET NULL ,

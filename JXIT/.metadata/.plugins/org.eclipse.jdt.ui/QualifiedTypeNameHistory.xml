@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="vo.Groups"/>
-<fullyQualifiedTypeName name="DAO.IActionDAO"/>
-<fullyQualifiedTypeName name="DAOImpl.ActionDAOImpl"/>
-<fullyQualifiedTypeName name="DAO.IAdminlogsDAO"/>
-<fullyQualifiedTypeName name="DAOImpl.AdminlogsDAOImpl"/>
-<fullyQualifiedTypeName name="DAO.IGroupsDAO"/>
-<fullyQualifiedTypeName name="DAOImpl.GroupsDAOImpl"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="service.back.IAdminServiceBack"/>
-<fullyQualifiedTypeName name="service.back.impl.AdminServiceBack"/>
 <fullyQualifiedTypeName name="pages.AdminPages"/>
 <fullyQualifiedTypeName name="messages.AdminMessage"/>
 <fullyQualifiedTypeName name="DAO.AbstractDAOImpl"/>
@@ -18,7 +8,6 @@
 <fullyQualifiedTypeName name="service.back.IDeptServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.DeptServiceBackImpl"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.ResultSet"/>
-<fullyQualifiedTypeName name="vo.Dept"/>
 <fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
 <fullyQualifiedTypeName name="javax.jws.soap.SOAPBinding.ParameterStyle"/>
 <fullyQualifiedTypeName name="messages.DeptMessages"/>
@@ -33,7 +22,6 @@
 <fullyQualifiedTypeName name="DAOImpl.JobsDAOImpl"/>
 <fullyQualifiedTypeName name="service.back.IJobsServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.JobsServiceBackImpl"/>
-<fullyQualifiedTypeName name="vo.Jobs"/>
 <fullyQualifiedTypeName name="pages.JobsPages"/>
 <fullyQualifiedTypeName name="utils.StringUtils"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
@@ -41,23 +29,35 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="dbc.DatabaseConnection"/>
 <fullyQualifiedTypeName name="dao.ILevelDAO"/>
-<fullyQualifiedTypeName name="java.sql.Connection"/>
 <fullyQualifiedTypeName name="dao.impl.LevelDAOImpl"/>
-<fullyQualifiedTypeName name="factories.DAOFactory"/>
 <fullyQualifiedTypeName name="service.back.ILevelServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.LevelServiceBackImpl"/>
 <fullyQualifiedTypeName name="utils.AbstractServlet"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="utils.General"/>
-<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.TryCatchFinally"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="vo.Level"/>
 <fullyQualifiedTypeName name="factories.ServiceBackFactory"/>
 <fullyQualifiedTypeName name="pages.LevelPages"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="dbc.DatabaseConnection"/>
+<fullyQualifiedTypeName name="dao.IEmployeeDAO"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="dao.impl.EmployeeDAOImpl"/>
+<fullyQualifiedTypeName name="utils.General"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="factories.DAOFactory"/>
+<fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
+<fullyQualifiedTypeName name="vo.Employee"/>
+<fullyQualifiedTypeName name="factories.ServiceFrontFactory"/>
+<fullyQualifiedTypeName name="service.front.IEmployeeServiceFront"/>
+<fullyQualifiedTypeName name="service.front.impl.EmployeeServiceFrontImpl"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="vo.Dept"/>
+<fullyQualifiedTypeName name="vo.Jobs"/>
+<fullyQualifiedTypeName name="vo.Level"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="pages.EmployeePages"/>
 </qualifiedTypeNameHistroy>

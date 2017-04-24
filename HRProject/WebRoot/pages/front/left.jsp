@@ -7,6 +7,10 @@
 			+ path + "/";
 %>
 
+<%
+	String employeeInsertURL="pages/front/employee/EmployeeServletFront/insertPre";
+ %>
+
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -27,7 +31,7 @@
 				</div></li>
 			<li><a class="a_list a_list2">员工基本信息</a>
 				<div class="menu_list">
-					<a href="addemp.html">员工入职</a> <a href="emplist.html">员工列表</a> <a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
+					<a href="<%=employeeInsertURL%>">员工入职</a> <a href="employeelist.jsp">员工列表</a> <a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
 				</div></li>
 			<li><a class="a_list a_list3">培训管理</a>
 				<div class="menu_list">
@@ -51,7 +55,7 @@
 				</div></li>
 			<li><a class="j_a_list j_a_list2"></a>
 				<div class="j_menu_list">
-					<span class="sp2"><i></i>员工基本信息</span> <a href="addemp.html">员工入职</a> <a href="emplist.html">员工列表</a> <a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
+					<span class="sp2"><i></i>员工基本信息</span> <a href="<%=employeeInsertURL%>">员工入职</a> <a href="emplist.html">员工列表</a> <a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
 				</div></li>
 			<li><a class="j_a_list j_a_list3"></a>
 				<div class="j_menu_list">

@@ -1,0 +1,44 @@
+package servlet.front;
+
+import javax.servlet.annotation.WebServlet;
+
+import utils.AbstractServlet;
+import vo.Employee;
+
+@WebServlet("/pages/front/employee/EmployeeServletFront/*")
+public class EmployeeServletFront extends AbstractServlet
+{
+	private String insertValidation = "employee.ff";
+	Employee employee = new Employee();
+	public Employee getEmployee()
+	{
+		return employee;
+	}
+	
+	
+	@Override
+	protected String getUploadFolder()
+	{
+		return "employee";
+	}
+
+	@Override
+	protected String getTitle()
+	{
+		return "员工";
+	}
+
+	@Override
+	protected String getColumns()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected String getColumn()
+	{
+		return "ename";
+	}
+
+}

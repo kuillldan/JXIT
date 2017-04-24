@@ -6,6 +6,7 @@ import dao.IActionDAO;
 import dao.IAdminDAO;
 import dao.IAdminlogsDAO;
 import dao.IDeptDAO;
+import dao.IEmployeeDAO;
 import dao.IGroupsDAO;
 import dao.IJobsDAO;
 import dao.ILevelDAO;
@@ -13,6 +14,7 @@ import dao.impl.ActionDAOImpl;
 import dao.impl.AdminDAOImpl;
 import dao.impl.AdminlogsDAOImpl;
 import dao.impl.DeptDAOImpl;
+import dao.impl.EmployeeDAOImpl;
 import dao.impl.GroupsDAOImpl;
 import dao.impl.JobsDAOImpl;
 import dao.impl.LevelDAOImpl;
@@ -51,5 +53,10 @@ public class DAOFactory
 	public static ILevelDAO getILevelDAOInstance(Connection conn)
 	{
 		return new LevelDAOImpl(conn);
+	}
+	
+	public static IEmployeeDAO getIEmployeeDAOInstance(Connection conn)
+	{
+		return new EmployeeDAOImpl(conn);
 	}
 }

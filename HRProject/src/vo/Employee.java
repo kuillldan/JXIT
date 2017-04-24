@@ -36,6 +36,11 @@ public class Employee implements Serializable
 	private String edu;
 	//
 	private Double sal;
+	
+	private String phone;
+	private String email;
+	
+	
 	public Integer getEid()
 	{
 		return eid;
@@ -204,4 +209,20 @@ public class Employee implements Serializable
 	{
 		this.sal = sal;
 	}
+	public String getPhone()
+	{
+		return phone;
+	}
+	public void setPhone(String phone)
+	{
+		this.phone = phone;
+	}
+	public String getEmail()
+	{
+		return email;
+	}
+	public void setEmail(String email)
+	{
+		this.email = email;
+	} 
 }
