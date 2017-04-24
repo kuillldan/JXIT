@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,6 +26,10 @@ public class General
 	public static java.sql.Timestamp getCurrentSqlDate()
 	{
 		return new java.sql.Timestamp(System.currentTimeMillis());
+	}
+	public static java.sql.Timestamp getSqlDate(Date date)
+	{
+		return new java.sql.Timestamp(date.getTime());
 	}
 	
 	public static void removePhotos(List<String> allPhotos)

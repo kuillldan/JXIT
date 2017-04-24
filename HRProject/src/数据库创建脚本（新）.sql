@@ -17,8 +17,7 @@ DROP TABLE IF EXISTS logs;
 DROP TABLE IF EXISTS details;
 -- 6、删除课程信息表
 DROP TABLE IF EXISTS course;
--- 7、删除雇员信息表
-DROP TABLE IF EXISTS employee;
+
 -- 8、删除职位信息表
 DROP TABLE IF EXISTS jobs;
 -- 9、删除雇员级别信息表
@@ -120,9 +119,11 @@ CREATE TABLE dept (
     CONSTRAINT pk_did PRIMARY KEY (did)
 );
 
+-- 7、删除雇员信息表
+DROP TABLE IF EXISTS employee;
 -- 10、雇员信息表
 CREATE TABLE employee (
-    eid        INT    ,
+    eid        INT   AUTO_INCREMENT ,
     aid        VARCHAR(50) ,
     did        INT ,
     levid        INT ,

@@ -1,6 +1,6 @@
 package vo;
 
-public class T01
+public class TBL_01
 {
 	private Integer empnum;
 	private String first_name;

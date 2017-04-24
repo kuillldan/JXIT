@@ -63,6 +63,12 @@ public abstract class AbstractDAOImpl
 		return 0;
 	}
 	
+	protected void setLimit(PreparedStatement ps, String keyWord,Integer currentPage, Integer lineSize,Integer index1,Integer index2) throws SQLException
+	{
+		this.ps.setInt(index1, (currentPage - 1) * lineSize);
+		this.ps.setInt(index2, lineSize);
+	}
+	
 	protected String getKeyWork(String keyWord)
 	{
 		return "%"+keyWord+"%";
