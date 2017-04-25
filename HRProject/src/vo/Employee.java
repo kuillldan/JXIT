@@ -8,9 +8,9 @@ public class Employee implements Serializable
 {
 	private Integer eid;
 	private Admin admin;
-	private Dept dept;
-	private Level level;
-	private Jobs jobs;
+	private Dept dept = new Dept();
+	private Level level = new Level();
+	private Jobs jobs = new Jobs();
 	private String ename;
 	private Date birthday;
 	private String sex;
