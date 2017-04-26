@@ -86,8 +86,7 @@ public class InsertDataMain
 					if (n < maxcolLength)
 						sql.append(",");
 				}
-				sql.append(");");
-				System.out.println(sql.toString());
+				sql.append(");"); 
 				ps = conn.prepareStatement(sql.toString());
 
 				for (int i = 1; i <= maxsql; i++)
@@ -133,8 +132,7 @@ public class InsertDataMain
 					}
 
 					val.append(");");
-					ps.addBatch();
-					// System.out.println(val.toString());
+					ps.addBatch(); 
 					// ps.executeUpdate();
 
 					if (i % BULK == 0)
@@ -143,6 +141,7 @@ public class InsertDataMain
 						ps.executeBatch();
 					}
 				}
+				ps.executeBatch();
 			}
 
 			// conn.commit();
