@@ -15,30 +15,20 @@ import dbc.DatabaseConnection;
  
 public class Main
 {
+	
 	public static void main(String[] args) throws Exception
 	{
-		String filePathANSI = "C:\\D\\Programs\\apache-jmeter-2.13\\bin\\sheldon\\data\\dataANSI.txt";
-		String filePathUTF8 = "C:\\D\\Programs\\apache-jmeter-2.13\\bin\\sheldon\\data\\dataUTF8.txt";
 		
-		InputStream isANSI = new FileInputStream(filePathANSI);
-		InputStream isUTF8 = new FileInputStream(filePathUTF8);
-		
-		int buf = -1;
-		while((buf=isANSI.read()) != -1)
+		Double initial = 1000000.0;
+		Double times = 0.04;
+		Integer years = 10;
+		Double total = initial;
+		for(int i = 1; i <= years; i++)
 		{
-			System.out.print((char)buf+"|");
-		}
-		buf = -1;
-		
-		System.out.println("\r\n---------------------");
-		byte[] buffer = new byte[4];
-		while((buf=isUTF8.read(buffer, 0, 4)) != -1)
-		{
-			System.out.print(new String(buffer));
+			total += total*times;
+			System.out.println("year " + i + " :" + total/10000);
 		}
 		
-		isANSI.close();
-		isUTF8.close();
 		System.out.println("\r\n---------------------");
 		System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));;
 		System.out.println("///Main done~~");

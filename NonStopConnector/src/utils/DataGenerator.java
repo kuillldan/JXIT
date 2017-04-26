@@ -83,6 +83,24 @@ public class DataGenerator
 	{
 		this.tableName = tableName;
 	}
+	
+	public StringBuffer getProperties() throws Exception
+	{
+		StringBuffer properties = new StringBuffer();
+		
+		List<Column> allColumns = this.getColumnInfo();
+		
+		int index = 1;
+		for(Column column : allColumns)
+		{
+			properties.append(index++).append("=");
+			properties.append(column.getColumnName()).append(",");
+			properties.append(this.convertNormalSQLTypeToNonStopSQLType(column.getDataType())).append(",");
+			properties.append(column.getLength()).append("\r\n");
+		}
+		
+		return properties;
+	}
 
 	public StringBuffer getInsertSQL() throws Exception
 	{
@@ -195,5 +213,21 @@ public class DataGenerator
 		}
 		scanner.close();
 		return allColumns;
+	}
+	
+	private String convertNormalSQLTypeToNonStopSQLType(String normalSQLType) throws NotSupportedDataTypeException
+	{
+		if(DataTypes.CHAR.getRealType().equals(normalSQLType))
+		{
+			return "CHAR";
+		}
+		else if(DataTypes.NUMERIC.getRealType().equals(normalSQLType))
+		{
+			return "NUMERIC";
+		}
+		else
+		{
+			throw new NotSupportedDataTypeException();
+		}
 	}
 }

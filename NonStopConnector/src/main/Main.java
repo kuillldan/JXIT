@@ -23,24 +23,66 @@ public class Main
 	
 	public static final String TABLE_DEFINITION_FOLDER = "C:\\D\\NonStop\\tableDefinition\\";
 	public static final String INSERT_SQL_FOLDER = "C:\\D\\NonStop\\datas\\";
+	public static final String PROPERTIES_FOLDER = "C:\\D\\NonStop\\properties\\";
+	
 	
 	public static void main(String[] args) throws Exception
 	{ 
+		
+		generateVariableFiles();
+		System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));
+		System.out.println("///Main done~~");
+	}
+	
+	public static void generatePropertyFiles() throws Exception
+	{
 		File file = new File(TABLE_DEFINITION_FOLDER);
 		File[] allFiles = file.listFiles();
 		for(File eachTable : allFiles)
 		{
 			DataGenerator dg = new DataGenerator(eachTable,RECORDS_COUNT,CATALOG,SCHEMA);
-			StringBuffer insertSQL = dg.getInsertSQL();
-			String insertSqlFileName = dg.getTableName() + ".sql";
-			PrintStream ps = new PrintStream(new FileOutputStream(new File(INSERT_SQL_FOLDER + insertSqlFileName), false));
-			ps.print(insertSQL.toString());
+			StringBuffer properties = dg.getProperties();
+			String propertiesFileName = dg.getTableName() + ".properties";
+			PrintStream ps = new PrintStream(new FileOutputStream(new File(PROPERTIES_FOLDER + propertiesFileName), false));
+			ps.print(properties.toString());
 			ps.close();
 			System.gc();
-			System.out.println("***" + insertSqlFileName + " 生成完成");
+			System.out.println("***" + propertiesFileName + " 生成完成");
+		}
+	}
+	
+	public static void generateVariableFiles() throws Exception
+	{
+		//C:\sheldon\apache-jmeter-2.13\bin\sheldon\data\TBL_01.txt
+		//C:\\sheldon\\apache-jmeter-2.13\\bin\\sheldon\\data\\TBL_01.txt
+		String variableFolderPath  = "C:\\sheldon\\apache-jmeter-2.13\\bin\\sheldon\\data\\";
+		File variableFolder = new File(variableFolderPath);
+		if(!variableFolder.exists())
+		{
+			variableFolder.mkdirs();
 		}
 		
-		System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));
-		System.out.println("///Main done~~");
+		for(int index = 1; index <= 14; index++)
+		{
+			String variableFilePath = null;
+			if(index < 10)
+			{
+				variableFilePath = variableFolderPath + "TBL_0" + index + ".txt";
+			}
+			else
+			{
+				variableFilePath = variableFolderPath + "TBL_" + index + ".txt";
+			}
+			File variableFile = new File(variableFilePath);
+			if(variableFile.createNewFile())
+			{
+				System.out.println(variableFilePath.substring(variableFilePath.lastIndexOf("\\")) + "创建成功");
+			}
+		}
 	}
+	
+	
+	
+	//C:\sheldon\apache-jmeter-2.13\bin\sheldon\data\TBL_01.txt
+	
 }

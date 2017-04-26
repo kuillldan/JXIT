@@ -311,7 +311,7 @@ INSERT INTO role_groups(rid,gid) VALUES (2,4) ;
 
 -- 8、管理员信息
 -- 增加管理员信息：admin / hello
-INSERT INTO admin(aid,password,rid,type,flag) VALUES ('admin','5D41402ABC4B2A76B9719D911017C592',1,1,1) ;
+INSERT INTO admin(aid,password,rid,type,flag) VALUES ('admin','202CB962AC59075B964B07152D234B70',1,1,1) ;
 -- 增加人事管理员信息：mldn / java
-INSERT INTO admin(aid,password,type,flag) VALUES ('mldn','93F725A07423FE1C889F448B33D21F46',0,0) ;
+INSERT INTO admin(aid,password,type,flag) VALUES ('mldn','202CB962AC59075B964B07152D234B70',0,0) ;
 COMMIT ;

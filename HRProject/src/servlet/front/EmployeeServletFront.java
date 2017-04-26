@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import pages.EmployeePages;
 import factories.ServiceFrontFactory;
 import utils.AbstractServlet;
+import vo.Admin;
 import vo.Dept;
 import vo.Employee;
 import vo.Jobs;
@@ -16,8 +17,8 @@ import vo.Level;
 @WebServlet("/pages/front/employee/EmployeeServletFront/*")
 public class EmployeeServletFront extends AbstractServlet
 {
-	private String insertValidation = "employee.ename|employee.sex|employee.idcard|employee.birthday|employee.school|employee.edu|employee.profession|employee.indate|employee.did|employee.levid|employee.jid|employee.sal|employee.note";
-	private String updateValidation = "employee.ename|employee.sex|employee.idcard|employee.birthday|employee.school|employee.edu|employee.profession|employee.indate|employee.did|employee.levid|employee.jid|employee.sal|employee.note";
+	private String insertValidation = "employee.ename|employee.sex|employee.idcard|employee.birthday|employee.school|employee.edu|employee.profession|employee.indate|employee.dept.did|employee.level.levid|employee.jobs.jid|employee.sal|employee.note";
+	private String updateValidation = "employee.ename|employee.sex|employee.idcard|employee.birthday|employee.school|employee.edu|employee.profession|employee.indate|employee.dept.did|employee.level.levid|employee.jobs.jid|employee.sal|employee.note";
 	private String updatePreValidation = "employee.eid";
 	Employee employee = new Employee();
 	public Employee getEmployee()
@@ -40,6 +41,29 @@ public class EmployeeServletFront extends AbstractServlet
 			request.setAttribute("allLevels", allLevels);
 			return EmployeePages.insertJSP;
 		} catch (Exception e)
+		{
+			return super.setSystemError(e);
+		}
+	}
+	
+	public String insert()
+	{
+		try
+		{
+			if(super.isUpload())
+			{
+				List<String> allFileNames = super.saveFiles("image");
+				this.employee.setPhoto(allFileNames.get(0));
+			}
+			Admin admin = (Admin)super.request.getSession().getAttribute("fAdmin");
+			this.employee.setAdmin(admin);
+			System.out.println("[debug]:" + this.employee.getDept().getDid());
+			if(ServiceFrontFactory.getIEmployeeServiceFrontInstance().insert(this.employee))
+				return super.insertSuccessfull(EmployeePages.insertPreURL);
+			else
+				return super.insertFailed(EmployeePages.insertPreURL);
+		}
+		catch(Exception e)
 		{
 			return super.setSystemError(e);
 		}

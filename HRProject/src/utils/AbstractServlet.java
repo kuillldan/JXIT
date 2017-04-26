@@ -3,7 +3,9 @@ package utils;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -112,10 +114,11 @@ public abstract class AbstractServlet extends HttpServlet
 		this.request.getRequestDispatcher(path).forward(request, response);
 	}
 
-	protected void saveFiles(String content) throws IOException, SmartUploadException
+	protected List<String> saveFiles(String content) throws IOException, SmartUploadException
 	{ 
 		if (this.isUpload())
 		{
+			List<String> allFileNames = new ArrayList<String>();
 			SmartFiles smartFiles = this.smartUpload.getFiles();
 			for (int i = 0; i < smartFiles.getCount(); i++)
 			{
@@ -124,6 +127,7 @@ public abstract class AbstractServlet extends HttpServlet
 				{
 					// 有文件上传
 					String fileName = this.generateFileName(smartFile);
+					allFileNames.add(fileName);
 					String filePath = this.request.getServletContext().getRealPath("/photos/") + this.getUploadFolder()
 							+ File.separator + fileName;
 					File fileToBeSaved = new File(filePath);
@@ -134,8 +138,10 @@ public abstract class AbstractServlet extends HttpServlet
 					smartFile.saveAs(filePath);
 				}
 			}
+			return allFileNames;
 		} else
 		{ 
+			return null;
 		}
 	}
 

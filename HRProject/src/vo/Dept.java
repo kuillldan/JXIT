@@ -2,11 +2,13 @@ package vo;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Dept implements Serializable
 {
 	private Integer did;
 	private String dname;
 	private Integer current;
+	
 	public Integer getDid()
 	{
 		return did;

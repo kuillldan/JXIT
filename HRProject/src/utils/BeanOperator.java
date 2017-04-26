@@ -559,6 +559,7 @@ public class BeanOperator
 		}
 		try
 		{
+			System.out.println("");
 			lastField = realObject.getClass().getDeclaredField(propertyList[propertyList.length - 1]);
 		} catch (NoSuchFieldException | SecurityException e)
 		{
