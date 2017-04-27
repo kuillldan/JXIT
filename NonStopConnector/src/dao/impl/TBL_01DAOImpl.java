@@ -52,20 +52,15 @@ public class TBL_01DAOImpl extends AbstractDAOImpl implements ITBL_01DAO
 	@Override
 	public List<TBL_01> findAll() throws SQLException
 	{
-		List<TBL_01> allT01s = new ArrayList<TBL_01>();
-		String sql = " SELECT * FROM SHELDONCAT.SHELDONSCH.T01 ";
+		String sql = "SELECT * FROM CTFAKSPRD.SCFAKPRD.TBL_01 "
+				+ " where COL_01_002 = '999' "
+				+ " order by COL_01_171 DESC, "
+				+ " COL_01_172 DESC, "
+				+ " COL_01_001 DESC ";
 		this.ps = this.conn.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
-		while(rs.next())
-		{
-			TBL_01 vo = new TBL_01();
-			vo.setEmpnum(rs.getInt(1));
-			vo.setFirst_name(rs.getString(2));
-			vo.setLast_name(rs.getString(3));
-			vo.setTeamnum(rs.getInt(4));
-			allT01s.add(vo);
-		}
-		return allT01s;
+		
+		return null;
 	}
 
 	@Override

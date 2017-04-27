@@ -83,22 +83,61 @@ public class DataGenerator
 	{
 		this.tableName = tableName;
 	}
+
+	public StringBuffer getObjects() throws Exception
+	{
+		StringBuffer object = new StringBuffer();
+		List<Column> allColumns = this.getColumnInfo();
+		object.append("package vo;\r\n");
+		object.append("public class ").append(this.tableName).append("\r\n");
+		object.append("{\r\n"); 
+		for (Column column : allColumns)
+		{
+			object.append("private ").append(this.convertNormalSQLTypeToJavaType(column.getDataType())).append(" ").append(column.getColumnName()).append(" ;\r\n");
+		}
+		
+		object.append("\r\n\r\n");
+		for(Column column : allColumns)
+		{
+			//GETTER
+			object.append("public ").append(this.convertNormalSQLTypeToJavaType(column.getDataType())).append("  get").append(column.getColumnName()).append("()\r\n");
+			object.append("{ return this.").append(column.getColumnName()).append("; ").append("}\r\n");
+			
+			//SETTER
+			object.append("public void set").append(column.getColumnName()).append("(").append(this.convertNormalSQLTypeToJavaType(column.getDataType())).append(" ").append(column.getColumnName()).append(")\r\n");
+			object.append("{ this.").append(column.getColumnName()).append("=").append(column.getColumnName()).append(";\r\n");
+			object.append("}\r\n");
+		}
+		object.append("}");
+		
+		return object;
+	}
 	
+	private String convertNormalSQLTypeToJavaType(String sqlType) throws NotSupportedDataTypeException
+	{
+		if(DataTypes.CHAR.getRealType().equals(sqlType))
+			return "String";
+		else if(DataTypes.NUMERIC.getRealType().equals(sqlType))
+			return "Integer";
+		else
+			throw new NotSupportedDataTypeException();
+	}
+
 	public StringBuffer getProperties() throws Exception
 	{
 		StringBuffer properties = new StringBuffer();
-		
+
 		List<Column> allColumns = this.getColumnInfo();
-		
+
 		int index = 1;
-		for(Column column : allColumns)
+		for (Column column : allColumns)
 		{
 			properties.append(index++).append("=");
 			properties.append(column.getColumnName()).append(",");
 			properties.append(this.convertNormalSQLTypeToNonStopSQLType(column.getDataType())).append(",");
 			properties.append(column.getLength()).append("\r\n");
 		}
-		
+
 		return properties;
 	}
 
@@ -115,29 +154,27 @@ public class DataGenerator
 		{
 			sql.append(sqlHeader);
 			values = new StringBuffer();
-			
+
 			for (Column column : allColumns)
 			{
 				sql.append(column.getColumnName()).append(",");
-				if(DataTypes.CHAR.getRealType().equals(column.getDataType()))
+				if (DataTypes.CHAR.getRealType().equals(column.getDataType()))
 				{
 					values.append("'");
 					values.append(this.generateString(column.getLength()));
 					values.append("'");
-				}
-				else if(DataTypes.NUMERIC.getRealType().equals(column.getDataType()))
+				} else if (DataTypes.NUMERIC.getRealType().equals(column.getDataType()))
 				{
 					values.append(this.generateInt(column.getLength()));
-				}
-				else
+				} else
 				{
 					throw new NotSupportedDataTypeException();
 				}
 				values.append(",");
 			}
 			sql.delete(sql.length() - 1, sql.length());
-			values.delete(values.length()-1, values.length());
-			
+			values.delete(values.length() - 1, values.length());
+
 			sql.append(") VALUES (");
 			sql.append(values);
 			sql.append(");");
@@ -153,12 +190,11 @@ public class DataGenerator
 		StringBuffer dataInString = new StringBuffer();
 		Random rand = new Random();
 		realLength = rand.nextInt(maxLength + 1);
-		while(realLength == 0)
+		while (realLength == 0)
 		{
 			realLength = rand.nextInt(maxLength + 1);
 		}
-		
-		
+
 		String head = String.valueOf(rand.nextInt(10));
 		while (head.equals("0"))
 		{
@@ -174,30 +210,30 @@ public class DataGenerator
 	}
 
 	private String generateString(Integer maxLength)
-	{ 
+	{
 		StringBuffer dataInStringBuffer = new StringBuffer();
 		Integer realLength = null;
-		
+
 		Random rand = new Random();
 		realLength = rand.nextInt(maxLength + 1);
-		while(realLength == 0)
+		while (realLength == 0)
 		{
 			realLength = rand.nextInt(maxLength + 1);
 		}
-		
+
 		for (int i = 0; i < realLength; i++)
 		{
 			int singleChar = rand.nextInt(126);
-			while (singleChar < 48 || (singleChar > 57 && singleChar < 64) || (singleChar > 90 && singleChar<97))
+			while (singleChar < 48 || (singleChar > 57 && singleChar < 64) || (singleChar > 90 && singleChar < 97))
 			{
 				singleChar = rand.nextInt(126);
-			} 
-			dataInStringBuffer.append((char)singleChar);
-		} 
+			}
+			dataInStringBuffer.append((char) singleChar);
+		}
 		return dataInStringBuffer.toString();
 	}
 
-	private List<Column> getColumnInfo() throws Exception
+	public List<Column> getColumnInfo() throws Exception
 	{
 		List<Column> allColumns = new ArrayList<Column>();
 		Scanner scanner = new Scanner(this.tableInfo);
@@ -214,18 +250,16 @@ public class DataGenerator
 		scanner.close();
 		return allColumns;
 	}
-	
+
 	private String convertNormalSQLTypeToNonStopSQLType(String normalSQLType) throws NotSupportedDataTypeException
 	{
-		if(DataTypes.CHAR.getRealType().equals(normalSQLType))
+		if (DataTypes.CHAR.getRealType().equals(normalSQLType))
 		{
 			return "CHAR";
-		}
-		else if(DataTypes.NUMERIC.getRealType().equals(normalSQLType))
+		} else if (DataTypes.NUMERIC.getRealType().equals(normalSQLType))
 		{
 			return "NUMERIC";
-		}
-		else
+		} else
 		{
 			throw new NotSupportedDataTypeException();
 		}
