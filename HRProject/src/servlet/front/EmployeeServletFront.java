@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.servlet.annotation.WebServlet;
 
 import pages.EmployeePages;
+import enums.EmployeeStatus;
+import factories.ServiceBackFactory;
 import factories.ServiceFrontFactory;
 import utils.AbstractServlet;
 import vo.Admin;
@@ -57,11 +59,29 @@ public class EmployeeServletFront extends AbstractServlet
 			}
 			Admin admin = (Admin)super.request.getSession().getAttribute("fAdmin");
 			this.employee.setAdmin(admin);
-			System.out.println("[debug]:" + this.employee.getDept().getDid());
+			this.employee.setStatus(EmployeeStatus.IN.ordinal());
+			
+			Dept dept = new Dept();
+			
+			
 			if(ServiceFrontFactory.getIEmployeeServiceFrontInstance().insert(this.employee))
 				return super.insertSuccessfull(EmployeePages.insertPreURL);
 			else
 				return super.insertFailed(EmployeePages.insertPreURL);
+		}
+		catch(Exception e)
+		{
+			return super.setSystemError(e);
+		}
+	}
+	
+	public String list()
+	{
+		try
+		{	
+			super.handleSplit();
+			ServiceFrontFactory.getIEmployeeServiceFrontInstance().list(currentPage, lineSize, column, keyWord);
+			return EmployeePages.listAllJSP;
 		}
 		catch(Exception e)
 		{

@@ -33,5 +33,10 @@ public class Dept implements Serializable
 	{
 		this.current = current;
 	}
+	@Override
+	public String toString()
+	{
+		return "Dept [did=" + did + ", dname=" + dname + ", current=" + current + "]";
+	}
 	 
 }

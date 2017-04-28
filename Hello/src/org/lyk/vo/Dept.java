@@ -1,27 +1,98 @@
 package org.lyk.vo;
 
-import java.io.Serializable;
- 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+/**
+ * Dept entity. @author MyEclipse Persistence Tools
+ */
 @SuppressWarnings("serial")
-public class Dept implements Serializable,Cloneable
+@Entity
+@Table(name = "dept", catalog = "mldn")
+public class Dept implements java.io.Serializable
 {
-	private Company company = new Company();
 
-	public Company getCompany()
+	// Fields
+
+	private Integer deptno;
+	private String dname;
+	private String loc;
+	private Set<Emp> emps = new HashSet<Emp>(0);
+
+	// Constructors
+
+	/** default constructor */
+	public Dept()
 	{
-		return company;
 	}
 
-	public void setCompany(Company company)
+	/** minimal constructor */
+	public Dept(Integer deptno)
 	{
-		this.company = company;
+		this.deptno = deptno;
 	}
 
-	@Override
-	public String toString()
+	/** full constructor */
+	public Dept(Integer deptno, String dname, String loc, Set<Emp> emps)
 	{
-		return "Dept [company=" + company + "]";
+		this.deptno = deptno;
+		this.dname = dname;
+		this.loc = loc;
+		this.emps = emps;
 	}
-	
-	
+
+	// Property accessors
+	@Id
+	@Column(name = "DEPTNO", unique = true, nullable = false)
+	public Integer getDeptno()
+	{
+		return this.deptno;
+	}
+
+	public void setDeptno(Integer deptno)
+	{
+		this.deptno = deptno;
+	}
+
+	@Column(name = "DNAME", length = 14)
+	public String getDname()
+	{
+		return this.dname;
+	}
+
+	public void setDname(String dname)
+	{
+		this.dname = dname;
+	}
+
+	@Column(name = "LOC", length = 13)
+	public String getLoc()
+	{
+		return this.loc;
+	}
+
+	public void setLoc(String loc)
+	{
+		this.loc = loc;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "dept")
+	public Set<Emp> getEmps()
+	{
+		return this.emps;
+	}
+
+	public void setEmps(Set<Emp> emps)
+	{
+		this.emps = emps;
+	}
+
 }

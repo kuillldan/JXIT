@@ -35,7 +35,16 @@ public class BeanOperator
 	public void setValueAutomatic(HttpServletRequest request, SmartRequest smartRequest, boolean isEncryped)
 	{
 
-		Enumeration<String> allParameterNames = request.getParameterNames();
+		Enumeration<String> allParameterNames = null;
+		
+		if(!isEncryped)
+		{
+			allParameterNames = request.getParameterNames();
+		}
+		else
+		{
+			allParameterNames = smartRequest.getParameterNames();
+		}
 		while (allParameterNames.hasMoreElements())
 		{
 			String eachParameterName = allParameterNames.nextElement();
@@ -558,8 +567,7 @@ public class BeanOperator
 			}
 		}
 		try
-		{
-			System.out.println("");
+		{ 
 			lastField = realObject.getClass().getDeclaredField(propertyList[propertyList.length - 1]);
 		} catch (NoSuchFieldException | SecurityException e)
 		{

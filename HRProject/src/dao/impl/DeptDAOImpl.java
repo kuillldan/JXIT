@@ -61,11 +61,13 @@ public class DeptDAOImpl extends AbstractDAOImpl implements IDeptDAO
 		if(rs.next())
 		{
 			dept = new Dept();
-			Dept vo = new Dept();
-			vo.setDid(rs.getInt("did"));
-			vo.setDname(rs.getString("dname"));
-			vo.setCurrent(rs.getInt("current"));
+			 
+			dept.setDid(rs.getInt("did"));
+			dept.setDname(rs.getString("dname"));
+			dept.setCurrent(rs.getInt("current"));
 		}
+		
+		
 		return dept;
 	}
 

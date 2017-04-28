@@ -53,7 +53,7 @@ public class Main
 	{
 		Worker worker = new Worker();
 		List<Thread> allThreads = new ArrayList<Thread>();
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < 2; i++)
 		{
 			allThreads.add(new Thread(worker));
 		}
@@ -66,7 +66,9 @@ public class Main
 		for(Thread thread : allThreads)
 		{
 			thread.join();
-		}
+		} 
+		
+		 
 
 		System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));
 		System.out.println("///Main done~~");

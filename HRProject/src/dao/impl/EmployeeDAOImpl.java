@@ -33,8 +33,11 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 	@Override
 	public boolean doCreate(Employee vo) throws SQLException
 	{
-		String sql = " INSERT INTO employee(aid,did,levid,jid,ename,birthday,sex,idcard,dname,job,school,profession,grad,photo,indate,outdate,status,note,edu,sal,phone,email) "
-				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+		String sql = " INSERT INTO employee(aid,did,levid,jid,ename,birthday,sex,idcard, "
+				+ " dname,"
+				+ "job,school,profession,grad,photo,indate,outdate,status, "
+				+ " note,edu,sal,phone,email) "
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 		this.ps = this.conn.prepareStatement(sql); 
 		this.ps.setString(1, vo.getAdmin().getAid());
 		this.ps.setInt(2, vo.getDept().getDid());
@@ -57,7 +60,7 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		this.ps.setString(19, vo.getEdu());
 		this.ps.setDouble(20, vo.getSal());
 		this.ps.setString(21, vo.getPhone());
-		this.ps.setString(22, vo.getEdu());
+		this.ps.setString(22, vo.getEmail());
 		return this.ps.executeUpdate() == 1;
 	}
 

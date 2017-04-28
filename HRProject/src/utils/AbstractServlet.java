@@ -73,6 +73,11 @@ public abstract class AbstractServlet extends HttpServlet
 				this.smartUpload.initialize(super.getServletConfig(), this.request, this.response);
 				this.smartUpload.upload();
 				SmartRequest smartRequest = smartUpload.getRequest();
+				
+				
+				System.out.println("[debug] employee.dept.did: " + smartRequest.getParameter("employee.dept.did"));
+				
+				
 				bo.validateParameters(errors, status, request, smartRequest, true);
 				if (errors.size() <= 0)
 				{

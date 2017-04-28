@@ -67,6 +67,13 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 		try
 		{
 			employee.setOutdate(null);
+			Dept dept = DAOFactory.getIDeptDAOInstance(this.dbc.getConnection()).findById(employee.getDept().getDid());
+			Jobs jobs = DAOFactory.getIJobsDAOInstance(this.dbc.getConnection()).findById(employee.getJobs().getJid());
+//			Level level = DAOFactory.getILevelDAOInstance(this.dbc.getConnection()).findById(employee.getLevel().getLevid());
+			
+			employee.setDname(dept.getDname()); 
+			employee.setJob(jobs.getTitle());
+			
 			return DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).doCreate(employee);
 		} catch (Exception e)
 		{

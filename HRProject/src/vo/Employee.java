@@ -224,5 +224,16 @@ public class Employee implements Serializable
 	public void setEmail(String email)
 	{
 		this.email = email;
-	} 
+	}
+	@Override
+	public String toString()
+	{
+		return "Employee [eid=" + eid + ", admin=" + admin + ", dept=" + dept + ", level=" + level + ", jobs=" + jobs
+				+ ", ename=" + ename + ", birthday=" + birthday + ", sex=" + sex + ", idcard=" + idcard + ", dname="
+				+ dname + ", job=" + job + ", school=" + school + ", profession=" + profession + ", grad=" + grad
+				+ ", photo=" + photo + ", indate=" + indate + ", outdate=" + outdate + ", status=" + status + ", note="
+				+ note + ", edu=" + edu + ", sal=" + sal + ", phone=" + phone + ", email=" + email + "]";
+	}
+	
+	
 }

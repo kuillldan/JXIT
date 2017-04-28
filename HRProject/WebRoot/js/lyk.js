@@ -203,8 +203,7 @@ function forward(url)
 }
 
 function showPreview(file)
-{
-	console.log("XXXX");
+{ 
 	var prevDiv = document.getElementById('previewDiv');
 	if (file.files && file.files[0])
 	{

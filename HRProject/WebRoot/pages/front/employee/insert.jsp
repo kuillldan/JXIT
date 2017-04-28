@@ -51,26 +51,32 @@
 
 								<div class="form_add">
 
-									<span class="list">性别</span> <span class="list"> 男 <input name="employee.sex" type="radio" value="男" checked />女 <input name="employee.sex" type="radio" value="女" />
+									<span class="list">性别</span> <span class="list"> 男 <input name="employee.sex" type="radio" value="男" checked />女 <input name="employee.sex" type="radio" />
 									</span>
 
 								</div>
 
 								<div class="form_add">
 
-									<span class="list">身份证</span> <span class="list"> <input name="employee.idcard" type="text" id="employee.idcard" /></span>
+									<span class="list">身份证</span> <span class="list"> <input name="employee.idcard" type="text" id="employee.idcard"  /></span>
 
 								</div>
 
 								<div class="form_add">
 
-									<span class="list">出生年月</span> <span class="list"> <input name="employee.birthday" id="employee.birthday" type="text" onclick="laydate()" /></span>
+									<span class="list">出生年月</span> <span class="list"> <input name="employee.birthday" id="employee.birthday" type="text" onclick="laydate()"  /></span>
 
 								</div>
 
 								<div class="form_add">
 
 									<span class="list">毕业院校</span> <span class="list"> <input name="employee.school" id="employee.school" type="text" /></span>
+
+								</div>
+								
+								<div class="form_add">
+
+									<span class="list">毕业日期</span> <span class="list"> <input name="employee.grad" id="employee.grad" type="text"  onclick="laydate()"/></span>
 
 								</div>
 
@@ -87,7 +93,7 @@
 								</div>
 								<div class="form_add">
 
-									<span class="list">专业</span> <span class="list"> <input name="employee.profession" id="employee.profession" type="text" /></span>
+									<span class="list">专业</span> <span class="list"> <input name="employee.profession" id="employee.profession" type="text"  /></span>
 
 								</div>
 								<div class="form_add">
@@ -97,12 +103,12 @@
 								</div>
 								<div class="form_add">
 
-									<span class="list">邮箱</span> <span class="list"> <input name="employee.email" type="text" /></span>
+									<span class="list">邮箱</span> <span class="list"> <input name="employee.email" type="text"  /></span>
 
 								</div>
 								<div class="form_add">
 
-									<span class="list">入职日期</span> <span class="list"> <input name="employee.indate" id="employee.indate" type="text" onclick="laydate()" /></span>
+									<span class="list">入职日期</span> <span class="list"> <input name="employee.indate" id="employee.indate" type="text" onclick="laydate()"  /></span>
 
 								</div>
 
@@ -135,7 +141,7 @@
 								</div>
 
 								<div class="form_add">
-									<span class="list">税前月薪</span> <span class="list"> <input name="employee.sal" id="employee.sal" type="text" />
+									<span class="list">税前月薪</span> <span class="list"> <input name="employee.sal" id="employee.sal" type="text"  />
 									</span> 元
 								</div>
 								<div class="form_add">
@@ -151,7 +157,7 @@
 							</form>
 						</td>
 						<td width="70%">
-							<div id="previewDiv"></div>
+							
 						</td>
 					</tr>
 				</table>
