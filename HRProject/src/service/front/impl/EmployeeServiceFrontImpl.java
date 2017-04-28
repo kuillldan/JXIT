@@ -35,7 +35,7 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 			
 			return map;
 		} catch (Exception e)
-		{
+		{ 
 			throw e;
 		} finally
 		{
@@ -48,7 +48,14 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 	{
 		try
 		{
-			Map<String, Object> map = this.insertPre();
+			Map<String, Object> map = new HashMap<String, Object>();
+			List<Dept> allDepts = DAOFactory.getIDeptDAOInstance(this.dbc.getConnection()).findAll();
+			List<Level> allLevels = DAOFactory.getILevelDAOInstance(this.dbc.getConnection()).findAll();
+			List<Jobs> allJobs = DAOFactory.getIJobsDAOInstance(this.dbc.getConnection()).findAll();
+			
+			map.put("allDepts", allDepts);
+			map.put("allLevels", allLevels);
+			map.put("allJobs", allJobs);
 			Employee employee = DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).findById(eid);
 			map.put("employee", employee);
 			return map;
@@ -125,6 +132,7 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 			Integer allEmployeesCount = DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).getAllCount(column, keyWord);
 			map.put("allEmployees", allEmployees);
 			map.put("allEmployeesCount", allEmployeesCount);
+			System.out.println("[debug] : " + allEmployees.size());
 			return map;
 		} catch (Exception e)
 		{

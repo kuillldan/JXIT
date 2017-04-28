@@ -1,6 +1,0 @@
-package DAO;
-
-public interface GroupsDAO extends IDAO<K, V>
-{
-
-}

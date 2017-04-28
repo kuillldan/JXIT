@@ -186,7 +186,8 @@ public abstract class AbstractServlet extends HttpServlet
 
 		if (this.isEncryped())
 		{// 请求已经封装
-			SmartRequest smartRequest = this.smartUpload.getRequest();
+			
+			SmartRequest smartRequest = this.smartUpload.getRequest(); 
 			try
 			{
 				currentPage = Integer.parseInt(smartRequest.getParameter("currentPage"));
@@ -203,16 +204,16 @@ public abstract class AbstractServlet extends HttpServlet
 			{
 				columns = smartRequest.getParameter("columns");
 			}
-			if (!StringUtils.isEmpty(smartRequest.getParameter("column")))
+			if (!StringUtils.isEmpty(smartRequest.getParameter("columnName")))
 			{
-				column = smartRequest.getParameter("column");
+				column = smartRequest.getParameter("columnName");
 			}
 			if (!StringUtils.isEmpty(smartRequest.getParameter("keyWord")))
 			{
 				keyWord = smartRequest.getParameter("keyWord");
 			}
 		} else
-		{
+		{ 
 			try
 			{
 				currentPage = Integer.parseInt(this.request.getParameter("currentPage"));
@@ -229,9 +230,9 @@ public abstract class AbstractServlet extends HttpServlet
 			{
 				columns = this.request.getParameter("columns");
 			}
-			if (!StringUtils.isEmpty(this.request.getParameter("column")))
+			if (!StringUtils.isEmpty(this.request.getParameter("columnName")))
 			{
-				column = this.request.getParameter("column");
+				column = this.request.getParameter("columnName");
 			}
 			if (!StringUtils.isEmpty(this.request.getParameter("keyWord")))
 			{
@@ -242,7 +243,7 @@ public abstract class AbstractServlet extends HttpServlet
 		this.request.setAttribute("currentPage", currentPage);
 		this.request.setAttribute("lineSize", lineSize);
 		this.request.setAttribute("columns", columns);
-		this.request.setAttribute("column", column);
+		this.request.setAttribute("columnName", column);
 		this.request.setAttribute("keyWord", keyWord);
  
 	}

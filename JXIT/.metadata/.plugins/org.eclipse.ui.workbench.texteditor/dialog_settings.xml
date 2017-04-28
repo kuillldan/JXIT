@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="325" key="DIALOG_WIDTH"/>
-		<item value="254" key="DIALOG_Y_ORIGIN"/>
+		<item value="339" key="DIALOG_Y_ORIGIN"/>
+		<item value="624" key="DIALOG_X_ORIGIN"/>
 		<item value="442" key="DIALOG_HEIGHT"/>
-		<item value="1224" key="DIALOG_X_ORIGIN"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="menu-top.jsp" key="selection"/>
+		<item value="employee.indate" key="selection"/>
 		<list key="findhistory">
-			<item value="menu-top.jsp"/>
-			<item value="入职"/>
-			<item value="indate"/>
-			<item value="create table empl"/>
-			<item value="employee"/>
-			<item value="SQL"/>
-			<item value="SQLE"/>
-			<item value="list"/>
+			<item value="employee.indate"/>
+			<item value="employee.email"/>
+			<item value="email"/>
+			<item value="findById"/>
+			<item value="updatepre"/>
+			<item value="employee.phone"/>
+			<item value="电话"/>
+			<item value=""/>
 		</list>
 		<list key="replacehistory">
 			<item value="smartRequest."/>

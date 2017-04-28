@@ -111,6 +111,8 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 				+ " idcard,dname,job,school,profession,grad,photo,indate, "
 				+ " outdate,status,note,edu,sal,phone,email FROM employee WHERE eid=? ";
 		this.ps = this.conn.prepareStatement(sql);
+		
+		
 		this.ps.setInt(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		if(rs.next())
@@ -150,6 +152,8 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 			vo.setNote(rs.getString("note"));
 			vo.setEdu(rs.getString("edu"));
 			vo.setSal(rs.getDouble("sal"));
+			vo.setPhone(rs.getString("phone"));
+			vo.setEmail(rs.getString("email"));
 		}
 		return vo;
 	}
@@ -170,6 +174,9 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		String sql = " SELECT eid,aid,did,levid,jid,ename,birthday,sex, "
 				+ " idcard,dname,job,school,profession,grad,photo,indate, "
 				+ " outdate,status,note,edu,sal FROM employee WHERE " + column +" LIKE ? LIMIT ?,? ";
+		
+		System.out.println("[debug]: currentPage:" + currentPage + ",lineSize:" + lineSize + ",column:" + column + ",keyWord:" + keyWord);
+		
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setString(1, super.getKeyWork(keyWord));
 		super.setLimit(ps, keyWord, currentPage, lineSize, 2, 3);

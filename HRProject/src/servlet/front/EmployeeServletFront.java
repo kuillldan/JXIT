@@ -1,5 +1,6 @@
 package servlet.front;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +27,41 @@ public class EmployeeServletFront extends AbstractServlet
 	public Employee getEmployee()
 	{
 		return employee;
+	}
+	
+	
+	public String updatePre()
+	{
+		try
+		{
+			Map<String, Object> map  = ServiceFrontFactory.getIEmployeeServiceFrontInstance().updatePre(this.employee.getEid());
+			
+//			map.put("allDepts", allDepts);
+//			map.put("allLevels", allLevels);
+//			map.put("allJobs", allJobs);
+			
+			List<Dept> allDepts = (List<Dept>)map.get("allDepts");
+			List<Level> allLevels = (List<Level>)map.get("allLevels");
+			List<Jobs> allJobs = (List<Jobs>)map.get("allJobs");
+			Employee employee = (Employee)map.get("employee");
+			System.out.println("[debug]-email:" + employee.getEmail());
+			request.setAttribute("allDepts", allDepts);
+			request.setAttribute("allLevels", allLevels);
+			request.setAttribute("allJobs", allJobs);
+			request.setAttribute("employee", employee);
+			
+		
+			return EmployeePages.updateJSP;
+		}
+		catch(Exception e)
+		{
+			return super.setSystemError(e);
+		}
+	}
+	
+	public String update()
+	{
+		return "";
 	}
 	
 	public String insertPre()
@@ -80,7 +116,18 @@ public class EmployeeServletFront extends AbstractServlet
 		try
 		{	
 			super.handleSplit();
-			ServiceFrontFactory.getIEmployeeServiceFrontInstance().list(currentPage, lineSize, column, keyWord);
+			System.out.println("[debug]- column:" + column);
+			Map<String, Object> map = ServiceFrontFactory.getIEmployeeServiceFrontInstance().list(currentPage, lineSize, column, keyWord);
+//			map.put("allEmployees", allEmployees);
+//			map.put("allEmployeesCount", allEmployeesCount);
+			List<Employee> allEmployees = (List<Employee>)map.get("allEmployees");
+			Integer allEmployeesCount = (Integer)map.get("allEmployeesCount");
+			Integer totalPages = (allEmployeesCount + lineSize  - 1)/lineSize;
+			
+			request.setAttribute("allEmployees", allEmployees);
+			request.setAttribute("allEmployeesCount", allEmployeesCount);
+			request.setAttribute("totalPages", totalPages);
+			System.out.println("[debug]-currentPage:" + currentPage + ",lineSize:" + lineSize + ",totalPages:" + totalPages);
 			return EmployeePages.listAllJSP;
 		}
 		catch(Exception e)

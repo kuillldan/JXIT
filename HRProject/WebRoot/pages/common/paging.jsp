@@ -14,5 +14,5 @@
 
 <button onclick="gotoFirstPage()" id="btnGotoFirstPage" <%=currentPage == 1 ? "disabled" : ""%>>首页</button>
 <button onclick="gotoPreviousPage()" id="btnGotoPreviousPage" <%=currentPage == 1 ? "disabled" : ""%>>上一页</button>
-<button onclick="gotoNextPage()" id="btnGotoNextPage" <%=currentPage == totalPages ? "disabled" : ""%>>下一页</button>
-<button onclick="gotoLastPage()" id="btnGotoLastPage" <%=currentPage == totalPages ? "disabled" : ""%>>末页</button>
+<button onclick="gotoNextPage()" id="btnGotoNextPage" <%=currentPage == totalPages || totalPages==0 ? "disabled" : ""%>>下一页</button>
+<button onclick="gotoLastPage()" id="btnGotoLastPage" <%=currentPage == totalPages || totalPages==0 ? "disabled" : ""%>>末页</button>
