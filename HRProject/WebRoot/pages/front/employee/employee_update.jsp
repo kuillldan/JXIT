@@ -10,8 +10,9 @@
 
 
 <%
-	String upateURL = "pages/front/employee/EmployeeServletFront/upate";
+	String upateURL = "pages/front/employee/EmployeeServletFront/update";
 %>
+ 
 
 
 <html>
@@ -35,7 +36,7 @@
 		<div class="rightcon">
 			<div class="right_con">
 				<p style="text-align:left; margin-top:50px">
-				<h3>增加员工资料</h3>
+				<h3>更新员工资料</h3>
 			</div>
 
 			<div class="right_con">
@@ -78,7 +79,8 @@
 								
 								<div class="form_add">
 
-									<span class="list">毕业日期</span> <span class="list"> <input name="employee.grad" id="employee.grad" type="text"  onclick="laydate()" value="${employee.indate }" /></span>
+									<span class="list">毕业日期</span> <span class="list"> 
+									<input name="employee.grad" id="employee.grad" type="text"  onclick="laydate()" value="${employee.grad }" /></span>
 
 								</div>
 
@@ -86,10 +88,10 @@
 
 									<span class="list">学历</span> <span class="list"> <select name="employee.edu">
 											<option ${employee.edu =="专科以下"?"selected":"" }>专科以下</option>
-											<option>专科</option>
-											<option selected="selected">本科</option>
-											<option>硕士</option>
-											<option>博士</option>
+											<option ${employee.edu =="专科"?"selected":""} >专科</option>
+											<option ${employee.edu =="本科"?"selected":""}  >本科</option>
+											<option ${employee.edu =="硕士"?"selected":""} >硕士</option>
+											<option ${employee.edu =="博士"?"selected":""} >博士</option>
 									</select></span>
 
 								</div>
@@ -110,7 +112,8 @@
 								</div>
 								<div class="form_add">
 
-									<span class="list">入职日期</span> <span class="list"> <input name="employee.indate" id="employee.indate" type="text" onclick="laydate()" value="${employee.indate }" /></span>
+									<span class="list">入职日期</span> <span class="list"> 
+									<input type="hidden" name="employee.indate" id="employee.indate" type="text"  value="${employee.indate }" /><input type="text" disabled="true" value="${employee.indate }"></span>
 
 								</div>
 
@@ -149,6 +152,13 @@
 									</span> 元
 								</div>
 								<div class="form_add">
+									<span class="list">当前状态</span> 
+									<input name="employee.status" type="radio" value="0" ${employee.status==0?"checked":"" } />离职
+									<input name="employee.status" type="radio" value="1"  ${employee.status==1?"checked":""} />在职
+							 
+								</div>
+								
+								<div class="form_add">
 									<span class="list">上传照片</span> <span class="list"> <input name="photo" id="photo" type="file" onchange="showPreview(this)" />
 									</span> 
 								</div>
@@ -158,6 +168,7 @@
 								<div class="form_add">
 									<input type="submit" value="更新" />&nbsp;&nbsp;&nbsp;<input type="reset" value="重置">
 								</div>
+								<input type="hidden" id="oldPhoto" name="oldPhoto" value="${employee.photo }"> 
 							</form>
 						</td>
 						<td width="70%">

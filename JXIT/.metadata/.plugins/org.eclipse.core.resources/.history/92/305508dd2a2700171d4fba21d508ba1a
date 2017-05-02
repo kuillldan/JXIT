@@ -1,4 +1,0 @@
-function validateDname()
-{
-	return validateEmpty();
-}

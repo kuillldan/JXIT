@@ -1,8 +1,0 @@
-package service.back;
-
-import vo.Employee;
-
-public class IemployeeServiceBack
-{
-	public boolean insert(Employee employee) throws Exception;
-}

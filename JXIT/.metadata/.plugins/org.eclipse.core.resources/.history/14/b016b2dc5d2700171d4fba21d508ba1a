@@ -1,6 +1,0 @@
-package pages;
-
-public class LevelPages
-{
-	public static final String insertJSP = "/pages/back/admin/level/level_insert.jsp";
-}

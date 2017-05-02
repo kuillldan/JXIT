@@ -1,3 +1,6 @@
+closeBraces=false
+closeBrackets=false
+closeStrings=false
 eclipse.preferences.version=1
 fontPropagated=true
 java_bracket=249,250,244

@@ -73,11 +73,7 @@ public abstract class AbstractServlet extends HttpServlet
 				this.smartUpload.initialize(super.getServletConfig(), this.request, this.response);
 				this.smartUpload.upload();
 				SmartRequest smartRequest = smartUpload.getRequest();
-				
-				
-				System.out.println("[debug] employee.dept.did: " + smartRequest.getParameter("employee.dept.did"));
-				
-				
+				 
 				bo.validateParameters(errors, status, request, smartRequest, true);
 				if (errors.size() <= 0)
 				{
@@ -119,6 +115,13 @@ public abstract class AbstractServlet extends HttpServlet
 		this.request.getRequestDispatcher(path).forward(request, response);
 	}
 
+	/**
+	 * 保存上传文件，返回一文件名
+	 * @param content
+	 * @return
+	 * @throws IOException
+	 * @throws SmartUploadException
+	 */
 	protected List<String> saveFiles(String content) throws IOException, SmartUploadException
 	{ 
 		if (this.isUpload())
@@ -157,6 +160,44 @@ public abstract class AbstractServlet extends HttpServlet
 		return UUID.randomUUID().toString() + "." + smartFile.getFileExt();
 	}
 
+	protected String updatePhoto() throws Exception
+	{
+		SmartRequest smartRequest = this.smartUpload.getRequest();
+		String oldPhoto = smartRequest.getParameter("oldPhoto");
+		if(StringUtils.isEmpty(oldPhoto))
+			return null;
+		
+		
+		if(this.isEncryped() && this.isUpload())
+		{ 
+			//保存新上传的文件
+			List<String> allPhotoNames = this.saveFiles("image");
+			
+			if(null == allPhotoNames)
+			{
+				return oldPhoto;
+			}
+			else
+			{
+				if(!CONST.noPhoto.equals(oldPhoto))
+				{
+					//删除旧文件
+					String containingFolder = this.request.getServletContext().getRealPath("/photos/" + this.getUploadFolder() + "/");
+					File oldPhotoFile = new File(containingFolder + oldPhoto);
+					if(oldPhotoFile.exists())
+					{
+						oldPhotoFile.delete();
+					}
+				}
+				return allPhotoNames.get(0);
+			}
+		}
+		else
+		{
+			return oldPhoto;
+		}
+	}
+		
 	protected boolean isUpload()
 	{
 		try

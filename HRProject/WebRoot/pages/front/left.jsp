@@ -10,6 +10,8 @@
 <%
 	String employeeInsertURL="pages/front/employee/EmployeeServletFront/insertPre";
 	String employeeListURL="pages/front/employee/EmployeeServletFront/list";
+	String employeeInListURL = "";
+	String employeeOutListURL = "";
  %>
 
 <html>
@@ -33,7 +35,10 @@
 			<li><a class="a_list a_list2">员工基本信息</a>
 				<div class="menu_list">
 					<a href="<%=employeeInsertURL%>">员工入职</a> 
-					<a href="<%=employeeListURL%>">员工列表</a> <a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
+					<a href="<%=employeeListURL%>">员工列表</a>
+					<a href="<%=employeeInListURL%>">在职员工列表</a>
+					<a href="<%=employeeOutListURL%>">离职员工列表</a> 
+					<a href="Position.html">职位变更</a> <a href="salary.html">待遇变更</a>
 				</div></li>
 			<li><a class="a_list a_list3">培训管理</a>
 				<div class="menu_list">

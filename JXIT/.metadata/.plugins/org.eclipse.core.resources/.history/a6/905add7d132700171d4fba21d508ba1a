@@ -1,8 +1,0 @@
-package vo;
-
-import java.io.Serializable;
-
-public class Dept implements Serializable
-{
-
-}

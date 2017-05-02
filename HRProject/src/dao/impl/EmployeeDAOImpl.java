@@ -85,7 +85,17 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		this.ps.setTimestamp(12, General.getSqlDate(vo.getGrad()));
 		this.ps.setString(13, vo.getPhoto());
 		this.ps.setTimestamp(14, General.getSqlDate(vo.getIndate()));
-		this.ps.setTimestamp(15, General.getSqlDate(vo.getOutdate()));
+		
+		
+		
+		if(vo.getOutdate() == null)
+		{
+			this.ps.setNull(15, Types.NULL);
+		}
+		else
+		{
+			this.ps.setTimestamp(15, General.getSqlDate(vo.getOutdate()));
+		}
 		this.ps.setInt(16, vo.getStatus());
 		this.ps.setString(17, vo.getNote());
 		this.ps.setString(18, vo.getEdu());
@@ -142,7 +152,7 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 			vo.setIdcard(rs.getString("idcard"));
 			vo.setDname(rs.getString("dname"));
 			vo.setJob(rs.getString("job"));
-			vo.setSchool(rs.getString("job"));
+			vo.setSchool(rs.getString("school"));
 			vo.setProfession(rs.getString("profession"));
 			vo.setGrad(rs.getTimestamp("grad"));
 			vo.setPhoto(rs.getString("photo"));
@@ -174,8 +184,6 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 		String sql = " SELECT eid,aid,did,levid,jid,ename,birthday,sex, "
 				+ " idcard,dname,job,school,profession,grad,photo,indate, "
 				+ " outdate,status,note,edu,sal FROM employee WHERE " + column +" LIKE ? LIMIT ?,? ";
-		
-		System.out.println("[debug]: currentPage:" + currentPage + ",lineSize:" + lineSize + ",column:" + column + ",keyWord:" + keyWord);
 		
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setString(1, super.getKeyWork(keyWord));
@@ -221,6 +229,7 @@ public class EmployeeDAOImpl extends AbstractDAOImpl implements IEmployeeDAO
 			vo.setSal(rs.getDouble("sal"));
 			allEmployees.add(vo);
 		}
+		 
 		return allEmployees;
 	}
 

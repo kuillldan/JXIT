@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="messages.AdminMessage"/>
-<fullyQualifiedTypeName name="DAO.AbstractDAOImpl"/>
-<fullyQualifiedTypeName name="DAO.IDeptDAO"/>
-<fullyQualifiedTypeName name="DAOImpl.DeptDAOImpl"/>
-<fullyQualifiedTypeName name="service.back.IDeptServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.DeptServiceBackImpl"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.ResultSet"/>
 <fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
@@ -22,7 +17,6 @@
 <fullyQualifiedTypeName name="service.back.IJobsServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.JobsServiceBackImpl"/>
 <fullyQualifiedTypeName name="pages.JobsPages"/>
-<fullyQualifiedTypeName name="utils.StringUtils"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -49,15 +43,21 @@
 <fullyQualifiedTypeName name="service.front.impl.EmployeeServiceFrontImpl"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
-<fullyQualifiedTypeName name="factories.ServiceFrontFactory"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="vo.Dept"/>
 <fullyQualifiedTypeName name="vo.Level"/>
 <fullyQualifiedTypeName name="vo.Jobs"/>
+<fullyQualifiedTypeName name="com.jspsmart.upload.SmartFile"/>
+<fullyQualifiedTypeName name="com.jspsmart.upload.SmartRequest"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="pages.EmployeePages"/>
-<fullyQualifiedTypeName name="vo.Employee"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="utils.StringUtils"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="utils.CONST"/>
+<fullyQualifiedTypeName name="factories.ServiceFrontFactory"/>
+<fullyQualifiedTypeName name="pages.EmployeePages"/>
+<fullyQualifiedTypeName name="java.sql.Types"/>
+<fullyQualifiedTypeName name="vo.Employee"/>
 </qualifiedTypeNameHistroy>

@@ -96,6 +96,13 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 	{
 		try
 		{
+			Dept dept = DAOFactory.getIDeptDAOInstance(this.dbc.getConnection()).findById(employee.getDept().getDid());
+			Jobs jobs = DAOFactory.getIJobsDAOInstance(this.dbc.getConnection()).findById(employee.getJobs().getJid());
+//			Level level = DAOFactory.getILevelDAOInstance(this.dbc.getConnection()).findById(employee.getLevel().getLevid());
+			
+			employee.setDname(dept.getDname()); 
+			employee.setJob(jobs.getTitle());
+			
 			return DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).doUpdate(employee);
 		} catch (Exception e)
 		{
@@ -131,8 +138,7 @@ public class EmployeeServiceFrontImpl implements IEmployeeServiceFront
 			List<Employee> allEmployees = DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).findAllSplit(currentPage, pageSize, column, keyWord);
 			Integer allEmployeesCount = DAOFactory.getIEmployeeDAOInstance(this.dbc.getConnection()).getAllCount(column, keyWord);
 			map.put("allEmployees", allEmployees);
-			map.put("allEmployeesCount", allEmployeesCount);
-			System.out.println("[debug] : " + allEmployees.size());
+			map.put("allEmployeesCount", allEmployeesCount); 
 			return map;
 		} catch (Exception e)
 		{

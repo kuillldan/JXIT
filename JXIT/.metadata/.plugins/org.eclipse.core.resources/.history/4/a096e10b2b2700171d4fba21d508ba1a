@@ -1,5 +1,0 @@
-function validateDname()
-{
-	alert("XXX");
-	return validateEmpty("dept.dname");
-}

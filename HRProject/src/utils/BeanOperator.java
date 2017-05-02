@@ -33,7 +33,7 @@ public class BeanOperator
 	 * @param isEncryped
 	 */
 	public void setValueAutomatic(HttpServletRequest request, SmartRequest smartRequest, boolean isEncryped)
-	{
+	{ 
 
 		Enumeration<String> allParameterNames = null;
 		
@@ -87,7 +87,7 @@ public class BeanOperator
 	private void bindData(String lastFieldTypeName, HttpServletRequest request, SmartRequest smartRequest,
 			String eachParameterName, Field lastField, Object realObject, boolean isEncryped)
 			throws IllegalArgumentException, IllegalAccessException, ParseException
-	{
+	{ 
 		// 绑定普通字段(非数组)
 		if (!lastFieldTypeName.contains("[]"))
 		{
@@ -100,6 +100,7 @@ public class BeanOperator
 				eachParameterValue = smartRequest.getParameter(eachParameterName);
 			}
 
+			
 			if (!StringUtils.isEmpty(eachParameterValue))
 			{
 				if (CONST.DATATYPE.Int.getRealType().equalsIgnoreCase(lastFieldTypeName)
@@ -127,7 +128,8 @@ public class BeanOperator
 					}
 				} else if (CONST.DATATYPE.DATE.getRealType().equalsIgnoreCase(lastFieldTypeName))
 				{
-
+ 
+					
 					if (StringUtils.validateRegex(eachParameterValue, "\\d{4}-\\d{2}-\\d{2}"))
 					{// Date数据验证成功
 						lastField.set(realObject, new SimpleDateFormat("yyyy-MM-dd").parse(eachParameterValue));
@@ -136,7 +138,13 @@ public class BeanOperator
 					{// Date数据验证成功
 						lastField
 								.set(realObject, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(eachParameterValue));
-					} else if (StringUtils.validateRegex(eachParameterValue,
+					} else if(StringUtils.validateRegex(eachParameterValue,
+							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{1}"))
+					{ 
+						lastField.set(realObject,
+								new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(eachParameterValue));
+					}
+					else if (StringUtils.validateRegex(eachParameterValue,
 							"\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}.\\d{3}"))
 					{// Date数据验证成功
 						lastField.set(realObject,
@@ -374,6 +382,7 @@ public class BeanOperator
 				errors.put(property, "日期数据(" + property + ")不能为空");
 			} else if (!StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2}")
 					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}")
+					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{1}")
 					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
 			{
 				errors.put(property, "日期数据(" + property + ")格式不正确");
@@ -475,6 +484,7 @@ public class BeanOperator
 				errors.put(lastFieldName, "日期数据(" + lastFieldName + ")不能为空");
 			} else if (!StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2}")
 					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}")
+					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{1}")
 					&& !StringUtils.validateRegex(lastFieldValue, "\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
 			{
 				errors.put(lastFieldName, "日期数据(" + lastFieldName + ")格式不正确");
