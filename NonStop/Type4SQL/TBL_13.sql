@@ -1,0 +1,17 @@
+﻿(
+SELECT 
+ A.COL_13_001
+FROM
+ TBL_13 A
+WHERE
+ A.COL_13_014 = ?文字列①?
+)
+UNION ALL
+(
+SELECT
+ A.COL_13_001
+FROM
+ TBL_13 A
+WHERE
+ A.COL_13_015 = ?文字列①?
+)
