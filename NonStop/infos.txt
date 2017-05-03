@@ -1,0 +1,53 @@
+﻿APP Server:
+         System name    \NSX07
+  EXPAND node number    006
+       Current SYSnn    SYS04
+       System number    078584
+Software release ID    L16.05.00
+    Public IP:         172.17.197.52
+
+DB Server:
+		 System name    \NSX08
+  EXPAND node number    089
+       Current SYSnn    SYS05
+       System number    078585
+Software release ID    L16.05.00
+     Public ip         172.17.197.54 18650 
+	super.super/Kddi4BmC
+	mxci
+HYamaoka/Welcome02
+
+telnet 172.17.197.54
+super.super/Kddi4BmC
+mxci
+SET CATALOG CTFAKSPRD;
+SET SCHEMA SCFAKPRD;
+SELECT * FROM SHELDONCAT.SHELDONSCH.T01
+
+CREATE TABLE TBL_0420
+(EMPNUM NUMERIC (4) UNSIGNED NO DEFAULT NOT NULL,
+FIRST_NAME CHARACTER (15) NO DEFAULT NOT NULL,
+LAST_NAME CHARACTER (20) NO DEFAULT NOT NULL,
+TEAMNUM NUMERIC (4) UNSIGNED NO DEFAULT NOT NULL,
+PRIMARY KEY (EMPNUM, TEAMNUM));
+
+Hyamaoka/Welcome02
+Mnakamura/Welcome02
+Tyamauchi/Welcome02
+
+JDBC:
+FAK.DBMNG
+FACEkddi
+
+Servlet Address
+http://172.17.10.10:10080/face/servlet02
+
+JOBSS LOG
+/fak/nsasj10/domain/servers/nsasj-server/log 
+/fak/nsasj11/domain/servers/nsasj-server/log  
+/fak/nsasj12/domain/servers/nsasj-server/log    
+
+
+NONSTOP 系统日志
+EMSDIST TYPE PRINTING, COLLECTOR $0, FILTER FCRIT, TEXTOUT [ #MYTERM ] 
+EMSDIST TYPE PRINTING, COLLECTOR $0, TEXTOUT [ #MYTERM ]
