@@ -1,0 +1,64 @@
+17-05-03 00:50:10 \NSX08.$TIME      TANDEM.273.V01        001016 Local clock
+                                    differs from the time source clock
+                                    172.17.193.118 by -0.012 seconds; the
+                                    local clock will be adjusted
+17-05-03 00:50:10 \NSX08.$TIME      TANDEM.CLOCK.H02      000107 System time
+                                    adjusted by -12157 microsec
+17-05-03 00:59:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000102
+                                    \NSX08.$ZBAT:102 JOB MEASSTOP(5) started,
+                                    program \NSX08.$SYSTEM.SYSTEM.TACL, user
+                                    ID 255,255
+17-05-03 00:59:03 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000202
+                                    \NSX08.$ZBAT:202 JOB MEASSTOP(5) has
+                                    stopped with Normal termination
+                                    Job started at 00:59:01, CPU usage 449028
+                                    microsecs, program
+                                    \NSX08.$SYSTEM.SYSTEM.TACL, userid
+                                    255,255.
+17-05-03 01:01:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000102
+                                    \NSX08.$ZBAT:102 JOB MEASSTRT(4) started,
+                                    program \NSX08.$SYSTEM.SYSTEM.TACL, user
+                                    ID 255,255
+17-05-03 01:01:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000202
+                                    \NSX08.$ZBAT:202 JOB MEASSTRT(4) has
+                                    stopped with Normal termination
+                                    Job started at 01:01:01, CPU usage 37094
+                                    microsecs, program
+                                    \NSX08.$SYSTEM.SYSTEM.TACL, userid
+                                    255,255.
+17-05-03 01:04:22 \NSX08.$XM05     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM08     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM10     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM03     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM06     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM01     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM09     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM02     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM07     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM04     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM00     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
+17-05-03 01:04:22 \NSX08.$XM11     *TANDEM.MEASURE.J06    004016 Measurement 3
+                                    $WK091.MEAS.M050301: write to datafile
+                                    failed. File error 45.
