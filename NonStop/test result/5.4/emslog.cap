@@ -1,0 +1,97 @@
+$SYSTEM STARTUP 1> EMSDIST TYPE PRINTING, COLLECTOR $0, TEXTOUT [ #MYTERM ]
+17-05-04 01:36:04 \NSX08.$Z07Z      TANDEM.TACL.D46       000001 TACL DEVICE
+                                    I/O ERROR: 60, $ZTN01.#PTL9W0U
+17-05-04 01:53:02 \NSX08.$XM04     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM08     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM11     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM10     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM07     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM05     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM06     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM09     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM03     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM02     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM00     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:53:02 \NSX08.$XM01     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050401: write to datafile
+                                    failed. File error 45.
+17-05-04 01:59:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000102
+                                    \NSX08.$ZBAT:102 JOB MEASSTOP(5) started,
+                                    program \NSX08.$SYSTEM.SYSTEM.TACL, user
+                                    ID 255,255
+17-05-04 01:59:05 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000202
+                                    \NSX08.$ZBAT:202 JOB MEASSTOP(5) has
+                                    stopped with Normal termination
+                                    Job started at 01:59:01, CPU usage 478727
+                                    microsecs, program
+                                    \NSX08.$SYSTEM.SYSTEM.TACL, userid
+                                    255,255.
+17-05-04 02:01:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000102
+                                    \NSX08.$ZBAT:102 JOB MEASSTRT(4) started,
+                                    program \NSX08.$SYSTEM.SYSTEM.TACL, user
+                                    ID 255,255
+17-05-04 02:01:01 \NSX08.$ZBAT      TANDEM.NETBATCH.D30   000202
+                                    \NSX08.$ZBAT:202 JOB MEASSTRT(4) has
+                                    stopped with Normal termination
+                                    Job started at 02:01:01, CPU usage 38631
+                                    microsecs, program
+                                    \NSX08.$SYSTEM.SYSTEM.TACL, userid
+                                    255,255.
+17-05-04 02:10:45 \NSX08.$XM07     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM08     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM09     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM10     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM05     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM11     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM02     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:45 \NSX08.$XM00     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:46 \NSX08.$XM04     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:46 \NSX08.$XM01     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:46 \NSX08.$XM06     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
+17-05-04 02:10:46 \NSX08.$XM03     *TANDEM.MEASURE.J06    004016 Measurement 2
+                                    $WK091.MEAS.M050402: write to datafile
+                                    failed. File error 45.
