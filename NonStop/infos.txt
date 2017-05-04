@@ -12,7 +12,7 @@ DB Server:
        Current SYSnn    SYS05
        System number    078585
 Software release ID    L16.05.00
-     Public ip         172.17.197.54 18650 
+    Public ip         172.17.197.54 18650
 	super.super/Kddi4BmC
 	mxci
 HYamaoka/Welcome02
@@ -51,3 +51,5 @@ JOBSS LOG
 NONSTOP 系统日志
 EMSDIST TYPE PRINTING, COLLECTOR $0, FILTER FCRIT, TEXTOUT [ #MYTERM ] 
 EMSDIST TYPE PRINTING, COLLECTOR $0, TEXTOUT [ #MYTERM ]
+
+https://atlab.atc-hpe.com
