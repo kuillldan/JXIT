@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="service.back.impl.DeptServiceBackImpl"/>
-<fullyQualifiedTypeName name="com.mysql.jdbc.ResultSet"/>
-<fullyQualifiedTypeName name="org.omg.CORBA.PUBLIC_MEMBER"/>
-<fullyQualifiedTypeName name="javax.jws.soap.SOAPBinding.ParameterStyle"/>
 <fullyQualifiedTypeName name="messages.DeptMessages"/>
 <fullyQualifiedTypeName name="javax.xml.rpc.ServiceFactory"/>
-<fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="javax.faces.flow.builder.ReturnBuilder"/>
 <fullyQualifiedTypeName name="pages.DeptPages"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
@@ -17,9 +12,7 @@
 <fullyQualifiedTypeName name="service.back.IJobsServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.JobsServiceBackImpl"/>
 <fullyQualifiedTypeName name="pages.JobsPages"/>
-<fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.logging.Level"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="dao.ILevelDAO"/>
@@ -27,7 +20,6 @@
 <fullyQualifiedTypeName name="service.back.ILevelServiceBack"/>
 <fullyQualifiedTypeName name="service.back.impl.LevelServiceBackImpl"/>
 <fullyQualifiedTypeName name="utils.AbstractServlet"/>
-<fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.tagext.TryCatchFinally"/>
 <fullyQualifiedTypeName name="factories.ServiceBackFactory"/>
 <fullyQualifiedTypeName name="pages.LevelPages"/>
@@ -50,14 +42,22 @@
 <fullyQualifiedTypeName name="vo.Jobs"/>
 <fullyQualifiedTypeName name="com.jspsmart.upload.SmartFile"/>
 <fullyQualifiedTypeName name="com.jspsmart.upload.SmartRequest"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="utils.StringUtils"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="utils.CONST"/>
 <fullyQualifiedTypeName name="factories.ServiceFrontFactory"/>
 <fullyQualifiedTypeName name="pages.EmployeePages"/>
 <fullyQualifiedTypeName name="java.sql.Types"/>
 <fullyQualifiedTypeName name="vo.Employee"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.HashSet"/>
+<fullyQualifiedTypeName name="java.util.TreeSet"/>
+<fullyQualifiedTypeName name="java.lang.Comparable"/>
+<fullyQualifiedTypeName name="org.lyk.vo.Book"/>
 </qualifiedTypeNameHistroy>

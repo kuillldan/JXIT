@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -45,7 +44,7 @@ public class Main
 	{ 
 		Book b1 = new Book("JAVA变成死相", 99.9);
 		Book b2 = new Book("Head First JSP", 68.5);
-		Set<Book> allBooks = new TreeSet<Book>();
+		Set<Book> allBooks = new HashSet<Book>();
 		allBooks.add(b1);
 		allBooks.add(b2);
 		Iterator<Book> iter = allBooks.iterator();
