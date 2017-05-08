@@ -1,0 +1,16 @@
+package dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class AbstractDAOImpl
+{
+	private Connection conn;
+	private PreparedStatement ps;
+	
+	public AbstractDAOImpl(Connection conn)
+	{
+		super();
+		this.conn = conn;
+	}
+}

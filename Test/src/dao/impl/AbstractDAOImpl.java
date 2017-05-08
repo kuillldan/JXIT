@@ -5,28 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.PreparedHandler;
-import dao.ResultSetter;
-import dao.SqlCallback;
+import vo.Dept;
 
-public class AbstractDAOImpl
+public abstract class AbstractDAOImpl
 {
 	protected Connection conn;
-	protected PreparedStatement ps ;
+	protected PreparedStatement ps;
 	
 	public AbstractDAOImpl(Connection conn)
 	{
+		super();
 		this.conn = conn;
 	}
 	
-	public Object query(SqlCallback sqlCallback, PreparedHandler preparedHandler, ResultSetter resultSetter)throws SQLException
+	public Object query(SQLCallBack salCallBack, ParameterSetter parameterSetter, ResultHandler resultHandler) throws SQLException
 	{
-		Object vo = null;
-		String sql = sqlCallback.getSqlString();
+		String sql = salCallBack.getCommandText();
 		this.ps = this.conn.prepareStatement(sql);
-		preparedHandler.setParameter(this.ps);
+		parameterSetter.setParameter(this.ps);
 		ResultSet rs = this.ps.executeQuery();
-		vo = resultSetter.getResult(rs);
-		return vo;
+		return resultHandler.getResult(rs);
 	}
 }

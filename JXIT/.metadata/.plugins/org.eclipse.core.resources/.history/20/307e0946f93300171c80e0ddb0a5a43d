@@ -1,0 +1,17 @@
+package main;
+
+import java.util.List;
+
+import vo.Dept;
+import dao.IDeptDAO;
+import dao.impl.DeptDAOImpl;
+import dbc.DatabaseConnection;
+import factory.ServiceFactory;
+
+public class Hello
+{
+	public static void main(String[] args) throws Exception
+	{
+		Dept dept = ServiceFactory.getIDeptServiceInstance().show(2);
+	}
+}

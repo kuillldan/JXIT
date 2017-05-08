@@ -8,13 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-
-
 import vo.Dept;
 import dao.IDeptDAO;
-import dao.PreparedHandler;
-import dao.ResultSetter;
-import dao.SqlCallback;
 
 public class DeptDAOImpl extends AbstractDAOImpl implements IDeptDAO
 {
@@ -47,46 +42,57 @@ public class DeptDAOImpl extends AbstractDAOImpl implements IDeptDAO
 	@Override
 	public Dept findById(Integer id) throws SQLException
 	{
-		return (Dept) super.query(() -> " SELECT did,dname,current FROM dept WHERE did=? ", (ps) ->
+		super.query(() -> " SELECT did,dname,current FROM dept WHERE did=? ", (ps) ->
 		{
-			DeptDAOImpl.this.ps.setInt(1, id);
+			ps.setInt(1, id);
 		}, (rs) ->
 		{
-
+			Dept dept = null;
 			if (rs.next())
 			{
-				Dept vo = new Dept();
-				vo.setDid(rs.getInt("did"));
-				vo.setDname(rs.getString("dname"));
-				vo.setCurrent(rs.getInt("current"));
-				return vo;
-			} else
-			{
-				return null;
+				dept = new Dept();
+				dept.setDid(rs.getInt("did"));
+				dept.setDname(rs.getString("dname"));
+				dept.setCurrent(rs.getInt("current"));
 			}
+
+			return dept;
 		});
+		Dept dept = null;
+		String sql = " SELECT did,dname,current FROM dept WHERE did=? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, id);
+		ResultSet rs = this.ps.executeQuery();
+		if (rs.next())
+		{
+			dept = new Dept();
+			dept.setDid(rs.getInt("did"));
+			dept.setDname(rs.getString("dname"));
+			dept.setCurrent(rs.getInt("current"));
+		}
+
+		return dept;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dept> findAll() throws SQLException
 	{
-		return (List<Dept>)super.query(()->
+		return (List<Dept>) super.query(() ->
 		{
 			return " SELECT did,dname,current FROM dept ";
-		}, (ps)->
+		}, (ps) ->
 		{
-			
-		}, (rs)->
+		}, (rs) ->
 		{
-			List<Dept> allDepts = new ArrayList<Dept>();
-			while(rs.next())
+			List<Dept> allDepts = new ArrayList<>();
+			while (rs.next())
 			{
-				Dept vo = new Dept();
-				vo.setDid(rs.getInt("did"));
-				vo.setDname(rs.getString("dname"));
-				vo.setCurrent(rs.getInt("current"));
-				allDepts.add(vo);
+				Dept dept = new Dept();
+				dept.setDid(rs.getInt("did"));
+				dept.setDname(rs.getString("dname"));
+				dept.setCurrent(rs.getInt("current"));
+				allDepts.add(dept);
 			}
 			return allDepts;
 		});

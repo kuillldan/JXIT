@@ -1,18 +1,90 @@
 package main;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.List;
 
+import vo.Book;
 import vo.Dept;
 import dao.IDeptDAO;
 import dao.impl.DeptDAOImpl;
 import dbc.DatabaseConnection;
 import factory.ServiceFactory;
 
+interface Subject
+{
+	public void doXXX();
+}
+
+class RealSubject implements Subject
+{
+
+	@Override
+	public void doXXX()
+	{
+		System.out.println("XXOOXXOO");
+	}
+
+}
+
+class Proxy implements Subject
+{
+	private Subject realSubject;
+	
+	
+	
+	public Proxy(Subject realSubject)
+	{
+		super();
+		this.realSubject = realSubject;
+	}
+
+	private void prepare()
+	{
+		System.out.println("洗干净，过衣服。。。。");
+	}
+	
+	private void over()
+	{
+		System.out.println("送回去");
+	}
+
+	@Override
+	public void doXXX()
+	{
+		this.prepare();
+		this.realSubject.doXXX();
+		this.over();
+	}
+}
+
 public class Hello
 {
+	public static Proxy getInstance()
+	{
+		return new Proxy(new RealSubject());
+	}
 	public static void main(String[] args) throws Exception
 	{
-		List<Dept> allDepts = ServiceFactory.getIDeptServiceInstance().list();
-		System.out.println(allDepts);
+		Proxy proxy = Hello.getInstance();
+		proxy.doXXX();
+	}
+
+	public static void serilize(Object obj) throws Exception
+	{
+		ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(new File("C:\\D\\JXIT\\temp\\obj.ser")));
+		os.writeObject(obj);
+		os.close();
+	}
+
+	public static Object deserilize() throws Exception
+	{
+		ObjectInputStream is = new ObjectInputStream(new FileInputStream(new File("C:\\D\\JXIT\\temp\\obj.ser")));
+		Object obj = is.readObject();
+		is.close();
+		return obj;
 	}
 }
