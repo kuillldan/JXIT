@@ -13,12 +13,18 @@ public class Book implements Serializable
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Book(String title) throws NullPointerException,NumberFormatException
+	{}
+	
 	public Book(String title, Double price)
 	{
 		super();
 		this.title = title;
 		this.price = price;
 	}
+	
+	
+	
 	public String getTitle()
 	{
 		return title;

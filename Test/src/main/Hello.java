@@ -1,90 +1,71 @@
 package main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.List;
+import java.awt.print.Book;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
 
-import vo.Book;
-import vo.Dept;
-import dao.IDeptDAO;
-import dao.impl.DeptDAOImpl;
-import dbc.DatabaseConnection;
-import factory.ServiceFactory;
+import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
 
-interface Subject
+
+
+interface Message
 {
-	public void doXXX();
+	public void showMessage(String msg);
 }
 
-class RealSubject implements Subject
+class IPhone implements Message
 {
 
 	@Override
-	public void doXXX()
+	public void showMessage(String msg)
 	{
-		System.out.println("XXOOXXOO");
+		System.out.println("IPhone消息:" + msg);
 	}
-
 }
 
-class Proxy implements Subject
+class Android implements Message
 {
-	private Subject realSubject;
-	
-	
-	
-	public Proxy(Subject realSubject)
-	{
-		super();
-		this.realSubject = realSubject;
-	}
-
-	private void prepare()
-	{
-		System.out.println("洗干净，过衣服。。。。");
-	}
-	
-	private void over()
-	{
-		System.out.println("送回去");
-	}
 
 	@Override
-	public void doXXX()
+	public void showMessage(String msg)
 	{
-		this.prepare();
-		this.realSubject.doXXX();
-		this.over();
+		System.out.println("Android消息:" + msg);
 	}
 }
+
+@Retention(RetentionPolicy.RUNTIME)
+@interface ClassInfo
+{
+	public String className();
+}
+
+@ClassInfo(className="main.IPhone")
+class MessageFactory
+{
+	public static Message getMessageInstance() throws Exception
+	{
+		Class<?> helloClass = MessageFactory.class;
+		ClassInfo classInfoAnnotation = helloClass.getAnnotation(ClassInfo.class);
+		String className = classInfoAnnotation.className();
+		Class<?> cls = Class.forName(className);
+		Object obj = cls.newInstance();
+		Message message = (Message)obj;
+		return message;
+	}
+}
+
+
 
 public class Hello
 {
-	public static Proxy getInstance()
-	{
-		return new Proxy(new RealSubject());
-	}
 	public static void main(String[] args) throws Exception
 	{
-		Proxy proxy = Hello.getInstance();
-		proxy.doXXX();
-	}
-
-	public static void serilize(Object obj) throws Exception
-	{
-		ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(new File("C:\\D\\JXIT\\temp\\obj.ser")));
-		os.writeObject(obj);
-		os.close();
-	}
-
-	public static Object deserilize() throws Exception
-	{
-		ObjectInputStream is = new ObjectInputStream(new FileInputStream(new File("C:\\D\\JXIT\\temp\\obj.ser")));
-		Object obj = is.readObject();
-		is.close();
-		return obj;
+		Class<?> bookClass = Class.forName("vo.Book");
+		Constructor<?> cons = bookClass.getConstructor();
+		Object obj = cons.newInstance();
+		System.out.println(obj); 
 	}
 }
