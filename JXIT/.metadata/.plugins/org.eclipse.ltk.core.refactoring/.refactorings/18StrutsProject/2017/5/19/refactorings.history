@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;18StrutsProject/WebRoot/index.jsp&apos; to &apos;echo.jsp&apos;" description="Rename resource &apos;index.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebRoot/index.jsp" name="echo.jsp" stamp="1494292652481" updateReferences="true"/>
+</session>

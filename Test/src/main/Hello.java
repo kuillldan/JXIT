@@ -2,6 +2,8 @@ package main;
 
 import java.lang.annotation.*;
 import java.lang.reflect.*;
+import java.util.ResourceBundle;
+
 import utils.StringUtils;
 
 interface Message
@@ -56,12 +58,11 @@ class MessageFactory
 public class Hello
 {
 	public static void main(String[] args) throws Exception
-	{
-		Class<?> bookClass = Class.forName("vo.Book");
-		Object obj = bookClass.newInstance();
-		Method setter = bookClass.getDeclaredMethod("setTitle", String.class);
-		setter.invoke(obj, "JAVA彻底变成死相");
-		System.out.println(obj);
+	{ 
+		ResourceBundle resource = ResourceBundle.getBundle("dbinfo");
+		System.out.println(resource.getString("username"));;
+		System.out.println(resource.getString("password"));;
+		
 		System.out.println("//Main done~~~");
 	}
 
@@ -98,7 +99,7 @@ public class Hello
 				methodString.append("throws ");
 				for (int k = 0; k < allExceptionTypes.length; k++)
 				{
-					methodString.append(allExceptionTypes[i].getSimpleName());
+					methodString.append(allExceptionTypes[k].getSimpleName());
 					if (k < allExceptionTypes.length - 1)
 					{
 						methodString.append(", ");

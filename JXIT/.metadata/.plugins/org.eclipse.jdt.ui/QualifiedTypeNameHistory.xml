@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.servlet.jsp.tagext.TryCatchFinally"/>
 <fullyQualifiedTypeName name="factories.ServiceBackFactory"/>
 <fullyQualifiedTypeName name="pages.LevelPages"/>
 <fullyQualifiedTypeName name="dbc.DatabaseConnection"/>
@@ -46,12 +45,10 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="vo.Dept"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.ObjectInputStream"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
@@ -60,4 +57,7 @@
 <fullyQualifiedTypeName name="main.RealSubject"/>
 <fullyQualifiedTypeName name="main.Proxy"/>
 <fullyQualifiedTypeName name="main.Hello"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.ResourceBundle"/>
 </qualifiedTypeNameHistroy>

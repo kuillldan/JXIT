@@ -1,3 +1,13 @@
 1494251853979	Delete elements
 1494251865647	Delete element
 1494252210521	Move compilation unit
+1494513653102	Move 'dbinfo.properties' to 'Test'
+1494513677647	Rename resource 'dbinfo.properties'
+1494513693732	Rename resource 'dbinfo_zn_CH.properties'
+1494513706889	Rename resource 'dbinfo_zh_CN.properties'
+1494513743145	Delete element
+1494513777411	Move 'dbinfo.properties' to 'resources'
+1494513817901	Move file
+1494513924177	Move file
+1494513956146	Move file
+1494513995756	Delete element
