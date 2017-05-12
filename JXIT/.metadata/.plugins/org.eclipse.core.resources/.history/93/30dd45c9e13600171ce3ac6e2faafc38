@@ -1,0 +1,59 @@
+package actions;
+ 
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.Locale;
+import java.util.ResourceBundle;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import utils.StringUtils;
+
+@SuppressWarnings("serial") 
+public class DispatcherServlet extends HttpServlet
+{
+
+	private ResourceBundle pageResource ;
+	private ResourceBundle messageResource ;
+	
+	@Override
+	public void init(ServletConfig config) throws ServletException
+	{
+		Locale locale = Locale.getDefault();
+		this.pageResource = ResourceBundle.getBundle("Pages", locale);
+		this.messageResource = ResourceBundle.getBundle("Message", locale);
+		super.init(config);
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		this.doPost(req, resp);
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		try
+		{
+			String methodName = this.getMethodName(request);
+			Method method = this.getClass().getMethod(methodName,HttpServletRequest.class,HttpServletResponse.class);
+			String path = (String)method.invoke(this, request,response);
+			request.getRequestDispatcher(path).forward(request, response);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	private String getMethodName(HttpServletRequest request)
+	{
+		String uri = request.getRequestURI();
+		return uri.substring(uri.lastIndexOf("/") + 1);
+	}
+}

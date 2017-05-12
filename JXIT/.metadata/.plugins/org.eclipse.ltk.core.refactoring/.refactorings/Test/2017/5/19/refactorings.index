@@ -11,3 +11,8 @@
 1494513924177	Move file
 1494513956146	Move file
 1494513995756	Delete element
+1494553055077	Rename field 'currentObject'
+1494553062229	Rename local variable 'currentObject'
+1494564931058	Rename field '_int1'
+1494570492637	Copy package
+1494571003105	Copy package

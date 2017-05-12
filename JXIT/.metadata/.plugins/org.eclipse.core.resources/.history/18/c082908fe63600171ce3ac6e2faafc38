@@ -1,0 +1,27 @@
+package actions;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@SuppressWarnings("serial")
+@WebServlet("/pages/back/admin/emp/EmpServlet/*")
+public class EmpServlet extends DispatcherServlet
+{
+	public String list(HttpServletRequest request, HttpServletResponse response)
+	{
+		System.out.println("*******list*******");
+		return "emp.list.page";
+	}
+	
+	public String insert(HttpServletRequest request, HttpServletResponse response)
+	{
+		return super.setPathAndMessage(request, response, "emp.insert.page", "emp.insert.success");
+	}
+
+	@Override
+	protected String getObjectName()
+	{
+		return "雇员";
+	}
+}

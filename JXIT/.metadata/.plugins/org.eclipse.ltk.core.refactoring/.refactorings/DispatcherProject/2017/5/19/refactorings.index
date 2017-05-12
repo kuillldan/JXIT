@@ -1,0 +1,13 @@
+1494571047862	Rename method 'getStatus'
+1494571246640	Rename resource 'MyJsp.jsp'
+1494572306878	Delete elements
+1494573139114	Rename resource 'Messages.properties'
+1494573146512	Rename resource 'Pages.properties'
+1494573155223	Rename resource 'Messages_zn_CH.properties'
+1494573161869	Rename resource 'Pages_zn_CH.properties'
+1494573196168	Move 'Pages_zh_CN.properties' to 'WEB-INF'
+1494573198766	Move 'Messages_zh_CN.properties' to 'WEB-INF'
+1494574928715	Copy file
+1494575499990	Move files
+1494579060423	Rename local variable 'smart1'
+1494579754865	Rename method 'handleParameter'

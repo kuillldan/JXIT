@@ -1,0 +1,29 @@
+package utils;
+
+public class BeanOperator
+{
+	private Object rootObject;
+	private String property;
+	private Object value;
+
+	private Object currentObject;
+	private String lastFieldName;
+
+	public BeanOperator(Object rootObject, String property, Object value)
+	{
+		super();
+		this.rootObject = rootObject;
+		this.property = property;
+		this.value = value;
+	}
+
+	private void handleString()
+	{
+		this.currentObject = this.rootObject;
+		String[] propertiesInArray = property.split("\\.");
+		for (int i = 0; i < propertiesInArray.length; i++)
+		{
+
+		}
+	}
+}

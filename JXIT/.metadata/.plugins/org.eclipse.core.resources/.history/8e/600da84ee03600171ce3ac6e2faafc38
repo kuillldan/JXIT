@@ -1,0 +1,2 @@
+forward.page=/pages/common/forward.jsp
+error.page=/pages/common/error.jsp

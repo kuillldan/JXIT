@@ -1,0 +1,10 @@
+package actions;
+
+import javax.servlet.annotation.WebServlet;
+
+@SuppressWarnings("serial")
+@WebServlet("/")
+public class EmpServlet extends DispatcherServlet
+{
+
+}

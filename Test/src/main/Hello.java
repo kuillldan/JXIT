@@ -2,9 +2,14 @@ package main;
 
 import java.lang.annotation.*;
 import java.lang.reflect.*;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import utils.BeanOperator;
 import utils.StringUtils;
+import vo.Book;
+import vo.Container;
+import vo.Employee;
 
 interface Message
 {
@@ -23,7 +28,6 @@ class IPhone implements Message
 
 class Android implements Message
 {
-
 	@Override
 	public void showMessage(String msg)
 	{
@@ -57,11 +61,11 @@ class MessageFactory
 
 public class Hello
 {
+	public static Container container = new Container();
 	public static void main(String[] args) throws Exception
-	{ 
-		ResourceBundle resource = ResourceBundle.getBundle("dbinfo");
-		System.out.println(resource.getString("username"));;
-		System.out.println(resource.getString("password"));;
+	{
+		
+		
 		
 		System.out.println("//Main done~~~");
 	}

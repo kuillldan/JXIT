@@ -1,0 +1,8 @@
+package actions;
+
+import javax.servlet.http.HttpServlet;
+
+public class DispatcherServlet extends HttpServlet
+{
+
+}
