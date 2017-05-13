@@ -9,7 +9,7 @@ public class Dept implements Serializable
 	private String dname;
 	private Integer current;
 	
-	private Company company = new Company();
+//	private Company company = new Company();
 	
 	public Integer getDid()
 	{
@@ -35,17 +35,11 @@ public class Dept implements Serializable
 	{
 		this.current = current;
 	}
-	public Company getCompany()
-	{
-		return company;
-	}
-	public void setCompany(Company company)
-	{
-		this.company = company;
-	}
 	@Override
 	public String toString()
 	{
-		return "Dept [did=" + did + ", dname=" + dname + ", current=" + current + ", company=" + company + "]";
+		return "Dept [did=" + did + ", dname=" + dname + ", current=" + current + "]";
 	}
+ 
+ 
 }

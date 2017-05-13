@@ -12,6 +12,7 @@ import vo.Employee;
 @WebServlet("/pages/back/admin/emp/EmpServlet/*")
 public class EmpServlet extends DispatcherServlet
 {
+	private String insertValidation = "emp.ename|emp.empno|emp.dept.company.foundDate|emp.dept.company.subCompany"; 
 	private Employee emp = new Employee();
 	public Employee getEmp()
 	{

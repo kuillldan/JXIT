@@ -7,8 +7,11 @@ import java.lang.reflect.Method;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -55,19 +58,36 @@ public abstract class DispatcherServlet extends HttpServlet
 		try
 		{
 			this.smart = null;
-			
-			if(this.isEncrypted(request))
+
+			if (this.isEncrypted(request))
 			{
 				this.smart = new SmartUpload();
 				this.smart.initialize(super.getServletConfig(), request, response);
 				this.smart.upload();
 			}
-			
-			this.setValuesAutomaticlly(request, response);
+
 			String methodName = this.getMethodName(request);
-			Method method = this.getClass().getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-			String pageKey = (String) method.invoke(this, request, response);
-			request.getRequestDispatcher(this.pageResource.getString(pageKey)).forward(request, response);
+			Map<String, String> errors = this.validateValues(request, methodName);
+			if (errors.size() <= 0)
+			{
+				this.setValuesAutomaticlly(request, response);
+				Method method = this.getClass().getMethod(methodName, HttpServletRequest.class,
+						HttpServletResponse.class);
+				String pageKey = (String) method.invoke(this, request, response);
+				request.getRequestDispatcher(this.pageResource.getString(pageKey)).forward(request, response);
+			} else
+			{
+				List<String> errorFields = new ArrayList<String>();
+				Iterator<Map.Entry<String, String>> iter = errors.entrySet().iterator();
+				while (iter.hasNext())
+				{
+					errorFields.add(iter.next().getKey());
+				}
+				request.setAttribute("errorFields", errorFields);
+				request.setAttribute("errors", errors);
+				request.getRequestDispatcher(this.pageResource.getString("error.page")).forward(request, response);
+			}
+
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -90,103 +110,144 @@ public abstract class DispatcherServlet extends HttpServlet
 
 	protected abstract String getObjectName();
 
+	public Map<String, String> validateValues(HttpServletRequest request, String status) throws Exception
+	{
+		Map<String, String> errors = new HashMap<String, String>();
+		Field validations = null;
+		try
+		{
+			validations = this.getClass().getDeclaredField(status+"Validation");
+		}
+		catch(Exception e)
+		{
+			return errors;
+		}
+ 
+
+		validations.setAccessible(true);
+		String validationString = (String) validations.get(this);
+		String[] properties = validationString.split("\\|");
+		for (int i = 0; i < properties.length; i++)
+		{
+			String property = properties[i];
+			BeanOperator bo = new BeanOperator(this, property);
+			bo.handleString();
+			Object value = this.getValue(request, bo, property);
+			bo.handleString();
+			String error = bo.validateValue(value);
+			if(!StringUtils.isEmpty(error))
+			{
+				errors.put(property, error);
+			}
+		}
+		return errors;
+	}
+
 	public void setValuesAutomaticlly(HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		Enumeration<String> parameterNames = null;
-		if(this.isEncrypted(request))
-		{
-			//数据已经封装 
-			parameterNames = this.smart.getRequest().getParameterNames(); 
-		}
-		else
-		{
-			parameterNames = request.getParameterNames();
-		}
-		
-		
+		Enumeration<String> parameterNames = this.getParameters(request);
+
 		while (parameterNames.hasMoreElements())
 		{
 			String parameterName = parameterNames.nextElement();
-			
+
 			if (parameterName.contains("."))
 			{
-				Object value = null;
-				
 				BeanOperator bo = new BeanOperator(this, parameterName);
 				bo.handleString();
-				Field lastField = bo.getLastField();
-				 
-				if(!lastField.getType().getSimpleName().contains("[]"))
-				{
-					//非数组
-					if(this.isEncrypted(request))
-					{
-						//数据已经封装 
-						value = this.smart.getRequest().getParameter(parameterName);
-					}
-					else
-					{
-						value = request.getParameter(parameterName);
-					}
-				}
-				else
-				{
-					//数组
-					if(this.isEncrypted(request))
-					{
-						//数据已经封装 
-						value = this.smart.getRequest().getParameterValues(parameterName);
-					}
-					else
-					{
-						value = request.getParameterValues(parameterName);
-					}
-				}
-				
+				Object value = this.getValue(request, bo, parameterName);
+
 				bo.setValue(value);
 			}
 		}
 	}
-	
-	public List<String> saveFiles(HttpServletRequest request,String content) throws IOException, SmartUploadException
+
+	private Object getValue(HttpServletRequest request, BeanOperator bo, String parameterName)
+	{
+		Object value = null;
+		Field lastField = bo.getLastField();
+
+		if (!lastField.getType().getSimpleName().contains("[]"))
+		{
+			// 非数组
+			if (this.isEncrypted(request))
+			{
+				// 数据已经封装
+				value = this.smart.getRequest().getParameter(parameterName);
+			} else
+			{
+				value = request.getParameter(parameterName);
+			}
+		} else
+		{
+			// 数组
+			if (this.isEncrypted(request))
+			{
+				// 数据已经封装
+				value = this.smart.getRequest().getParameterValues(parameterName);
+			} else
+			{
+				value = request.getParameterValues(parameterName);
+			}
+		}
+
+		return value;
+	}
+
+	private Enumeration<String> getParameters(HttpServletRequest request)
+	{
+		Enumeration<String> parameterNames = null;
+		if (this.isEncrypted(request))
+		{
+			// 数据已经封装
+			parameterNames = this.smart.getRequest().getParameterNames();
+		} else
+		{
+			parameterNames = request.getParameterNames();
+		}
+
+		return parameterNames;
+	}
+
+	public List<String> saveFiles(HttpServletRequest request, String content) throws IOException, SmartUploadException
 	{
 		List<String> allFileNames = new ArrayList<String>();
-		if(this.isEncrypted(request) && this.smart != null)
+		if (this.isEncrypted(request) && this.smart != null)
 		{
 			SmartFiles files = this.smart.getFiles();
-			for(int i = 0; i < files.getCount(); i++)
+			for (int i = 0; i < files.getCount(); i++)
 			{
-				if(files.getFile(i).getSize() > 0 && files.getFile(i).getContentType().contains(content))
+				if (files.getFile(i).getSize() > 0 && files.getFile(i).getContentType().contains(content))
 				{
 					String fileName = UUID.randomUUID().toString() + "." + files.getFile(i).getFileExt();
-					String filePath = request.getServletContext().getRealPath("/upload/" + this.getUploadFolder() + "/") ;
+					String filePath = request.getServletContext()
+							.getRealPath("/upload/" + this.getUploadFolder() + "/");
 					File file = new File(filePath);
-					if(!file.exists())
+					if (!file.exists())
 					{
 						file.mkdirs();
 					}
-					
+
 					files.getFile(i).saveAs(filePath + "/" + fileName);
-					
+
 					allFileNames.add(fileName);
-				}
-				else
+				} else
 				{
 					allFileNames.add(null);
 				}
 			}
 		}
-		
-		
-		
+
 		return allFileNames;
 	}
+
 	protected String getUploadFolder()
 	{
 		return "default";
 	}
+
 	private boolean isEncrypted(HttpServletRequest request)
 	{
-		return request.getContentType().contains("multipart/form-data");
+		return request.getContentType() != null && request.getContentType().contains("multipart/form-data");
 	}
 }

@@ -1,69 +1,127 @@
 package main;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.annotation.*;
 import java.lang.reflect.*;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import factory.ServiceFactory;
+import service.IDeptService;
+import service.impl.DeptServiceImpl;
 import utils.BeanOperator;
-import utils.StringUtils;
-import vo.Book;
-import vo.Container;
+import utils.StringUtils; 
+import vo.Dept;
 import vo.Employee;
 
-interface Message
+interface IPrintable
 {
-	public void showMessage(String msg);
+	public void print();
 }
 
-class IPhone implements Message
+class Worker implements IPrintable
 {
 
 	@Override
-	public void showMessage(String msg)
+	public void print()
 	{
-		System.out.println("IPhone消息:" + msg);
+		System.out.println("当前时间:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date()));
 	}
 }
 
-class Android implements Message
+class WorkerProxy implements IPrintable
 {
+	IPrintable realObject = null;
+	public WorkerProxy(IPrintable realObject)
+	{
+		super();
+		this.realObject = realObject;
+	}
+
+	private void prework()
+	{
+		System.out.println("====前期工作 ====");
+	}
+	private void afterwork()
+	{
+		System.out.println("====后期工作 ====");
+	}
+	
+	
 	@Override
-	public void showMessage(String msg)
+	public void print()
 	{
-		System.out.println("Android消息:" + msg);
+		this.prework();
+		this.realObject.print();
+		this.afterwork();
 	}
 }
 
-@Retention(RetentionPolicy.RUNTIME)
-@interface ClassInfo
+class WorkerDynamicProxy implements InvocationHandler
 {
-	public String value();
-}
-
-@ClassInfo("main.Android")
-class MessageFactory
-{
-	public static Message getInstance() throws ClassNotFoundException, InstantiationException, IllegalAccessException
+	private Object realObject = null;
+	String msg = "代理类的message";
+	public WorkerDynamicProxy(Object realObject)
 	{
-		Class<?> messageFactoryClass = MessageFactory.class;
-		ClassInfo classInfoAnnotation = messageFactoryClass.getAnnotation(ClassInfo.class);
-		if (classInfoAnnotation == null)
-			return null;
-		String className = classInfoAnnotation.value();
-		if (StringUtils.isEmpty(className))
-			return null;
-		Class<?> realObjectClass = Class.forName(className);
-		Object realObject = realObjectClass.newInstance();
-		return (Message) realObject;
+		super();
+		this.realObject = realObject;
+	}
+	private void prework()
+	{
+		System.out.println("====前期工作 ====");
+	}
+	private void afterwork()
+	{
+		System.out.println("====后期工作 ====");
+	}
+
+	
+	@Override
+	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable
+	{
+		this.prework();
+		Object retVal = method.invoke(this.realObject, args);
+		this.afterwork();
+		return retVal;
 	}
 }
+
+class MyClassLoader extends ClassLoader
+{
+	public Class<?> loadFromByte(byte[] classInByte,String className)
+	{
+		return super.defineClass(className, classInByte, 0, classInByte.length);
+	}
+}
+
 
 public class Hello
 {
-	public static Container container = new Container();
 	public static void main(String[] args) throws Exception
-	{
+	{ 
+		URL url = new URL("http://192.168.1.103:8080/ClassServer/allClasses/Evil.class");
+		URLConnection conn = url.openConnection();
+		InputStream is = conn.getInputStream();
+		byte[] buffer = new byte[1024];
+		int len = 0;
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		while((len = is.read(buffer)) > -1)
+		{
+			bos.write(buffer, 0, len);
+		}
+		byte[] classesInByte = bos.toByteArray();
+		Class<?> evilClass = new MyClassLoader().loadFromByte(classesInByte, "vo.Evil");
+		System.out.println(evilClass.newInstance());
+		is.close();
 		
 		
 		

@@ -37,6 +37,7 @@ public class DatabaseConnection
 			try
 			{
 				this.conn.close();
+				System.out.println("[debug]: connection closed" );
 			} catch (Exception e)
 			{
 				e.printStackTrace();

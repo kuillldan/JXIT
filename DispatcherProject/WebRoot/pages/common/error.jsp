@@ -1,5 +1,5 @@
 <%@ page language="java" import="vo.*" pageEncoding="UTF-8"%>
- 
+<%@ taglib prefix="c" uri="http://www.kuillldan.cn" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -16,5 +16,8 @@
   
   <body> 
   	<h1>系统异常，请联系管理员!</h1> 
+  	<c:forEach items="${errorFields }" var="field">
+  		<h2>${field }":"${errors[field] }</h2>
+  	</c:forEach>
   </body>
 </html>
