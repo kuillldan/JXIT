@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	
+	
+	
+	<field name="news.nid">
+		<field-validator type="int">
+			<param name="min">10</param>
+			<param name="max">30</param>
+			<message>【验证框架】新闻编号必须10到30之间</message>
+		</field-validator>
+		 
+        <field-validator type="required">  
+            <param name="trim">true</param>  
+            <message>【验证框架】新闻编号不能为空</message>  
+        </field-validator>
+    </field>  
+	
+	<field name="news.title">
+		<field-validator type="requiredstring">
+			<message>【验证框架】新闻标题不允许为空！</message>
+		</field-validator>
+	</field>
+	
+	
+	<field name="news.content">
+		<field-validator type="requiredstring">
+			<message>【验证框架】新闻内容不允许为空！</message>
+		</field-validator>
+	</field>
+	
+	<field name="news.pubdate">
+		<field-validator type="date">
+			<param name="min">1900-01-01</param>
+			<param name="max">2020-01-01</param>
+			<message>【验证框架】日期范围错误</message>
+		</field-validator>
+		
+		<field-validator type="requiredstring">
+			<message>【验证框架】新闻发布日期不允许为空！</message>
+		</field-validator>
+	</field>
+	
+</validators>

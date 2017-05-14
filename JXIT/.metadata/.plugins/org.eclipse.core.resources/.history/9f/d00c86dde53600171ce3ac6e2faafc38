@@ -1,6 +1,0 @@
-forward.page=/pages/common/forward.jsp
-error.page=/pages/common/error.jsp
-
-emp.insert.page=/pages/back/admin/emp/emp_insert.jsp
-emp.list.page=/pages/back/admin/emp/emp_list.jsp
-

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 所以的Struts2程序都要设置命名空间 -->
+	<package name="abc" namespace="/" extends="struts-default">
+		<action name="EchoAction" class="actions.EchoAction">
+			<result name="success">echo.jsp</result>
+		</action>
+		
+		<action name="empAction" class="actions.EmpAction">
+			<result name="success">emp_insert.jsp</result>
+		</action>
+		<action name="newsAction_*" class="actions.NewsAction" method="{1}">
+			
+		</action>
+	</package>
+	 
+</struts>    

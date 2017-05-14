@@ -1,0 +1,8 @@
+package actions;
+
+import Emp;
+
+public class vo extends Emp
+{
+
+}

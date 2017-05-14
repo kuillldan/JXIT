@@ -136,6 +136,8 @@
 		<item value="201" key="DIALOG_X_ORIGIN"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
 	</section>
+	<section name="BreadcrumbItemDropDown">
+	</section>
 	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
 		<item value="true" key="ShowStatusLine"/>
 		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;" key="History"/>
@@ -170,6 +172,6 @@
 	</section>
 	<section name="NewJspCreationWizardPage">
 		<item value="Default JSP template" key="templatezh_CN"/>
-		<item value="/HRProject/WebRoot/pages/common" key="filePath"/>
+		<item value="/18StrutsProject/WebRoot" key="filePath"/>
 	</section>
 </section>
