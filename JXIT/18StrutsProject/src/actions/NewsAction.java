@@ -14,6 +14,10 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class NewsAction extends ActionSupport
 {
+	
+	private String insertRule = "news.nid:int|news.title:String|news.pubdate:date|news.content:String";
+	private String updateRule = "news.nid:int|news.title:String";
+	
 	private News news = new News();
 	public News getNews()
 	{

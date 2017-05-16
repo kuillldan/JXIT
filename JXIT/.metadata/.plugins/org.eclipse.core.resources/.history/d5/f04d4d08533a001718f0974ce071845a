@@ -1,0 +1,16 @@
+package utils;
+
+import java.util.Map;
+
+public class DataValidator
+{
+	public static boolean validateByRule(String validationRuleString, Map<String, Object> parameters)
+	{
+		String[] allFieldRules = validationRuleString.split("\\|");
+		for(String eachFieldRule : allFieldRules)
+		{
+			
+		}
+		return false;
+	}
+}

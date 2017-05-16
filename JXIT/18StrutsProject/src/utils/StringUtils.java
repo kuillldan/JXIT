@@ -59,4 +59,16 @@ public class StringUtils
 		
 		return data.matches(regex);
 	}
+	
+	/**
+	 * 传入URI 返回请求该Action的方法
+	 * 例如，传入：/18StrutsProject/newsAction!insert.action
+	 * 返回insert
+	 * @param uri
+	 * @return
+	 */
+	public static String getActionMethodFromRequest(String uri)
+	{
+		return uri.substring(uri.lastIndexOf("!") + 1,uri.lastIndexOf(".action"));
+	}
 }

@@ -1,7 +1,0 @@
-import com.opensymphony.xwork2.ActionSupport;
-
-
-public class EchoAction extends ActionSupport
-{
-
-}
