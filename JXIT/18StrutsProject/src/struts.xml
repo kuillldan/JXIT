@@ -2,24 +2,18 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 	<!-- 所以的Struts2程序都要设置命名空间 -->
-  <package name="root" namespace="/" extends="struts-default">
-  	<interceptors> 
-  		<interceptor name="loginValidator" class="interceptor.LoginValidator"></interceptor>
-  		<interceptor name="dataValidation" class="interceptor.DataValidationInterceptor"></interceptor>
-  	</interceptors>
-  	
-  	<global-results>
-  		<result name="forward.page">/pages/common/forward.jsp</result>
-  	</global-results>
-  	
-  	
-  	<action name="newsAction" class="actions.NewsAction"> 
-  		<interceptor-ref name="loginValidator"></interceptor-ref>
-  		<interceptor-ref name="dataValidation"></interceptor-ref>
-  		<interceptor-ref name="defaultStack"></interceptor-ref>
-  		<result name="input">news_insert.jsp</result>
-  		<result name="insertValidationFailed">news_insert.jsp</result>
-  		<result name="good">good.jsp</result>
-  	</action>
-  </package>
+	<package name="root" namespace="/pages/message" extends="struts-default">
+		
+		<action name="MessagePreAction" class="actions.MessagePreAction">
+			<result name="message_input.page">/pages/message/message_input.jsp</result>
+		</action>
+		
+		<action name="MessageAction" class="actions.MessageAction">
+			<result name="good">/pages/message/good.jsp</result>
+			<result name="invalid.token">/pages/common/invalid_token.jsp</result>
+			<interceptor-ref name="token"></interceptor-ref>
+		</action>
+		
+		
+	</package>
 </struts>    
