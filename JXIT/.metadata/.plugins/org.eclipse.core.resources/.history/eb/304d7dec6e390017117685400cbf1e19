@@ -1,0 +1,33 @@
+package interceptor;
+
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
+
+@SuppressWarnings("serial")
+public class MyInterceptor extends AbstractInterceptor
+{
+
+	@Override
+	public void init()
+	{
+		// TODO Auto-generated method stub
+		super.init();
+		System.out.println("++++初始化MyInterceptor++++");
+	}
+	
+	@Override
+	public void destroy()
+	{
+		// TODO Auto-generated method stub
+		super.destroy();
+		System.out.println("++++销毁MyInterceptor++++");
+	}
+	
+	@Override
+	public String intercept(ActionInvocation invocation) throws Exception
+	{ 
+		return invocation.invoke();
+	}
+
+}

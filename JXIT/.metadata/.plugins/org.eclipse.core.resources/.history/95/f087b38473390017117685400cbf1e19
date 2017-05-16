@@ -1,0 +1,41 @@
+package interceptor;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
+
+@SuppressWarnings("serial")
+public class MyInterceptor extends AbstractInterceptor
+{
+
+	@Override
+	public void init()
+	{
+		// TODO Auto-generated method stub
+		super.init();
+		System.out.println("++++初始化MyInterceptor++++");
+	}
+	
+	@Override
+	public void destroy()
+	{
+		// TODO Auto-generated method stub
+		super.destroy();
+		System.out.println("++++销毁MyInterceptor++++");
+	}
+	
+	@Override
+	public String intercept(ActionInvocation invocation) throws Exception
+	{ 
+		System.out.println("++++执行拦截器++++");
+		ActionContext context = invocation.getInvocationContext();
+		
+		ServletActionContext.getRequest().getSession().getAttribute(arg0);
+		
+		return invocation.invoke();
+	}
+
+}

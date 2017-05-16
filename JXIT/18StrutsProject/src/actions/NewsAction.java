@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.struts2.ServletActionContext;
+
 import utils.StringUtils;
 import vo.News;
 
@@ -20,8 +22,8 @@ public class NewsAction extends ActionSupport
 	
 	public String insert()
 	{
-		System.out.println( this.news);
-
+		System.out.println( "newsAction.insert"+this.news);
+		
 		return "good";
 	}
 	

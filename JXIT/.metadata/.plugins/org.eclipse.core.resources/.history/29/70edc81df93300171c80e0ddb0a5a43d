@@ -1,8 +1,0 @@
-package dao.impl;
-
-import java.sql.ResultSet;
-
-public interface ResultHandler
-{
-	public Object getResult(ResultSet rs);
-}

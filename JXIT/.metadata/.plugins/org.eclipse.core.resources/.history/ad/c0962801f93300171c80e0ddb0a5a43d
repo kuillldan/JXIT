@@ -1,8 +1,0 @@
-package dao.impl;
-
-import java.sql.PreparedStatement;
-
-public interface ParameterSetter
-{
-	public void setParameter(PreparedStatement ps);
-}

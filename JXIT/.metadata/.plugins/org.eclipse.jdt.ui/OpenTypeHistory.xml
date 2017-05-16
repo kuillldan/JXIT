@@ -11,4 +11,5 @@
 <typeInfo handle="=Test/src&lt;dao.impl{AbstractDAOImpl.java[AbstractDAOImpl" modifiers="1025" timestamp="1494252740095"/>
 <typeInfo handle="=Test/src&lt;service{IJobsService.java[IJobsService" modifiers="513" timestamp="1494669254677"/>
 <typeInfo handle="=18StrutsProject/C:\/D\/programfiles\/MyEclipse\/configuration\/org.eclipse.osgi\/54\/0\/.cp\/data\/2.1\/core\/xwork-core-2.2.1.jar&lt;com.opensymphony.xwork2(ActionSupport.class[ActionSupport" modifiers="33" timestamp="1494291540465"/>
+<typeInfo handle="=18StrutsProject/C:\/D\/programfiles\/MyEclipse\/configuration\/org.eclipse.osgi\/54\/0\/.cp\/data\/2.1\/core\/xwork-core-2.2.1.jar&lt;com.opensymphony.xwork2.interceptor(AbstractInterceptor.class[AbstractInterceptor" modifiers="1057" timestamp="1494291540465"/>
 </typeInfoHistroy>

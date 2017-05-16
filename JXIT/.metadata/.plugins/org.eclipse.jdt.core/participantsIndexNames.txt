@@ -77,5 +77,7 @@ C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1488593932.
 \MShop\src
 C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3893663732.index
 \HRProject\src
+C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3455444383.index
+\18StrutsProject\src
 C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1832871612.index
 \MShop\src

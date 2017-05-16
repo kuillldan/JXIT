@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Sun May 14 23:04:48 CST 2017
+#Mon May 15 21:58:40 CST 2017
 org.eclipse.jst.jee.server\:18StrutsProject=C\:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\webapps\\18StrutsProject
 org.eclipse.jst.jee.server\:DispatcherProject=C\:\\Program Files\\Apache Software Foundation\\Tomcat 8.0\\webapps\\DispatcherProject
