@@ -17,50 +17,22 @@ public class NewsAction extends ActionSupport
 	
 	private String insertRule = "news.nid:int|news.title:String|news.pubdate:date|news.content:String";
 	private String updateRule = "news.nid:int|news.title:String";
+	private String otherInfo;
+	public void setOtherInfo(String otherInfo)
+	{
+		this.otherInfo = otherInfo;
+	}
 	
-	private News news = new News();
+	private News news = new News();  
 	public News getNews()
 	{
 		return news;
 	}
 	
+	
 	public String insert()
 	{
-		System.out.println( "newsAction.insert"+this.news);
-		
+		System.out.println( "newsAction.insert"+this.news + " 其它信息:" + this.otherInfo);
 		return "good";
-	}
-	
-//	@Override
-//	public void validate()
-//	{
-//		if(this.news.getNid() == null)
-////		{
-////			super.addFieldError("news.nid", super.getText("data.null",new String[]{"新闻编号"}));
-////		}
-////		
-////		if(StringUtils.isEmpty(this.news.getTitle()))
-////		{
-////			super.addFieldError("news.title", super.getText("data.null",new String[]{"新闻标题"}));
-////		}
-////		
-////		if(StringUtils.isEmpty(this.news.getContent()))
-////		{
-////			super.addFieldError("news.content", super.getText("data.null",new String[]{"新闻内容"}));
-////		}
-////		
-////		if(this.news.getPubdate() == null)
-////		{
-////			super.addFieldError("news.pubdate", super.getText("data.null",new String[]{"新闻发布日期"}));
-////		}
-//		
-//		System.out.println("==================================================");
-//		Map<String, List<String>> errors = super.getFieldErrors();
-//		Set<Map.Entry<String, List<String>>> entrySet = errors.entrySet();
-//		for(Map.Entry<String, List<String>> errorEntry : entrySet)
-//		{
-//			System.out.println(errorEntry.getKey() + " --> " + errorEntry.getValue());
-//		}
-//		System.out.println("==================================================");
-//	}
+	} 
 }

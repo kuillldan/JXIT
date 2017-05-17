@@ -19,7 +19,7 @@ public class DataValidationInterceptor extends AbstractInterceptor
 {
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception
-	{
+	{ 
 		HttpServletRequest request = ServletActionContext.getRequest();
 		ActionSupport actionSupport = (ActionSupport)actionInvocation.getAction();
 		Map<String, Object> parameters = actionInvocation.getInvocationContext().getParameters();
@@ -44,7 +44,7 @@ public class DataValidationInterceptor extends AbstractInterceptor
 		}
 		catch(NoSuchFieldException e)
 		{
-			e.printStackTrace();
+			System.out.println("未找到对应的验证规则，本操作无需验证。");
 			return actionInvocation.invoke();
 		} 
 	}

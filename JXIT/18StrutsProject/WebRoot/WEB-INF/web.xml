@@ -17,4 +17,11 @@
     <filter-name>struts2</filter-name>
     <url-pattern>*.action</url-pattern>
   </filter-mapping>
+  
+  <jsp-config>
+    <taglib>
+      <taglib-uri>http://www.kuillldan.cn</taglib-uri>
+      <taglib-location>/WEB-INF/c.tld</taglib-location>
+    </taglib>
+  </jsp-config>
 </web-app>

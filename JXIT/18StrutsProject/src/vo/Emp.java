@@ -7,6 +7,8 @@ public class Emp
 	private Integer empno;
 	private String ename;
 	private Double sal;
+	
+	
 	public Integer getEmpno()
 	{
 		return empno;

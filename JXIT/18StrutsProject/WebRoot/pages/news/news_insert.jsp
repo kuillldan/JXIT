@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<form action="newsAction!insert.action" method="post">
+	<form action="pages/news/newsAction!insert.action" method="post">
 		新闻编号:<input type="text" id="news.nid" name="news.nid" value="1">
 		<span>${fieldErrors['news.nid'][0] }</span>
 		<br/>
@@ -35,6 +35,7 @@
 		新闻内容:<input type="text" id="news.content" name="news.content" value="重庆多地爆发禽流感疫情病毒">
 		<span>${fieldErrors['news.content'][0] }</span>
 		<br/>
+		其它信息:<input type="text" id="otherInfo" name="otherInfo" value="请不要造谣"><br>
 		<input type="submit" value="增加">
 	</form>
 	

@@ -16,7 +16,8 @@ public class LoginValidator extends AbstractInterceptor
 
 	@Override
 	public String intercept(ActionInvocation actionInvocation) throws Exception
-	{
+	{ 
+		
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = request.getSession();
 		
