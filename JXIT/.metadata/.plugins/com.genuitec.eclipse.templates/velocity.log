@@ -48,3 +48,4 @@ Thu May 18 15:25:27 CST 2017   [info] ResourceManager : found templates/jsp/Jsp.
 Thu May 18 15:25:27 CST 2017   [info] ResourceManager : found templates/jsp/JSPMetaTags.vtl with loader com.genuitec.eclipse.templates.internal.PluginResourceLoader
 Thu May 18 17:40:43 CST 2017   [info] ResourceManager : found templates/jsp/Jsp.vtl with loader com.genuitec.eclipse.templates.internal.PluginResourceLoader
 Thu May 18 17:40:43 CST 2017   [info] ResourceManager : found templates/jsp/JSPMetaTags.vtl with loader com.genuitec.eclipse.templates.internal.PluginResourceLoader
+Thu May 18 20:12:13 CST 2017   [info] ResourceManager : found /templates/velocity/welcome/Jsp.vtl with loader com.genuitec.eclipse.templates.internal.PluginResourceLoader

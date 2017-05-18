@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=HRProject/src&lt;service.back{IAdminServiceBack.java[IAdminServiceBack" modifiers="513" timestamp="1492830469497"/>
+<typeInfo handle="=HRProject/src&lt;service.back{IAdminServiceBack.java[IAdminServiceBack" modifiers="513" timestamp="1495023496144"/>
 <typeInfo handle="=HRProject/C:\/D\/programfiles\/MyEclipse\/binary\/com.sun.java.jdk7.win32.x86_64_1.7.0.u45\/jre\/lib\/rt.jar&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1381899904000"/>
-<typeInfo handle="=HRProject/src&lt;service.back{IJobsServiceBack.java[IJobsServiceBack" modifiers="513" timestamp="1492851444775"/>
-<typeInfo handle="=HRProject/src&lt;dao{IDAO.java[IDAO" modifiers="513" timestamp="1492860219769"/>
-<typeInfo handle="=HRProject/src&lt;dao{AbstractDAOImpl.java[AbstractDAOImpl" modifiers="1025" timestamp="1493032785163"/>
-<typeInfo handle="=HRProject/src&lt;utils{AbstractServlet.java[AbstractServlet" modifiers="1025" timestamp="1493694741161"/>
+<typeInfo handle="=HRProject/src&lt;service.back{IJobsServiceBack.java[IJobsServiceBack" modifiers="513" timestamp="1495023496144"/>
+<typeInfo handle="=HRProject/src&lt;dao{IDAO.java[IDAO" modifiers="513" timestamp="1495023496097"/>
+<typeInfo handle="=HRProject/src&lt;dao{AbstractDAOImpl.java[AbstractDAOImpl" modifiers="1025" timestamp="1495023496097"/>
+<typeInfo handle="=HRProject/src&lt;utils{AbstractServlet.java[AbstractServlet" modifiers="1025" timestamp="1495023496300"/>
 <typeInfo handle="=Test/C:\/Program Files\/Java\/jdk1.8.0_40\/jre\/lib\/rt.jar&lt;java.lang.reflect(InvocationHandler.class[InvocationHandler" modifiers="1537" timestamp="1491833196058"/>
-<typeInfo handle="=Test/src&lt;dao{IJobs.java[IJobs" modifiers="513" timestamp="1494669084803"/>
-<typeInfo handle="=Test/src&lt;dao.impl{AbstractDAOImpl.java[AbstractDAOImpl" modifiers="1025" timestamp="1494252740095"/>
-<typeInfo handle="=Test/src&lt;service{IJobsService.java[IJobsService" modifiers="513" timestamp="1494669254677"/>
-<typeInfo handle="=18StrutsProject/C:\/D\/programfiles\/MyEclipse\/configuration\/org.eclipse.osgi\/54\/0\/.cp\/data\/2.1\/core\/xwork-core-2.2.1.jar&lt;com.opensymphony.xwork2(ActionSupport.class[ActionSupport" modifiers="33" timestamp="1494291540465"/>
-<typeInfo handle="=18StrutsProject/C:\/D\/programfiles\/MyEclipse\/configuration\/org.eclipse.osgi\/54\/0\/.cp\/data\/2.1\/core\/xwork-core-2.2.1.jar&lt;com.opensymphony.xwork2.interceptor(AbstractInterceptor.class[AbstractInterceptor" modifiers="1057" timestamp="1494291540465"/>
+<typeInfo handle="=Test/src&lt;dao{IJobs.java[IJobs" modifiers="513" timestamp="1495023504006"/>
+<typeInfo handle="=Test/src&lt;dao.impl{AbstractDAOImpl.java[AbstractDAOImpl" modifiers="1025" timestamp="1495023504053"/>
+<typeInfo handle="=Test/src&lt;service{IJobsService.java[IJobsService" modifiers="513" timestamp="1495023504755"/>
+<typeInfo handle="=StrutsAnnotationProject/C:\/Program Files\/Java\/jdk1.8.0_40\/jre\/lib\/rt.jar&lt;java.lang(Exception.class[Exception" modifiers="33" timestamp="1491833196058"/>
 </typeInfoHistroy>

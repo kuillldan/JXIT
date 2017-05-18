@@ -13,6 +13,8 @@ C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1605750290.
 \HRProject\src
 C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\824629765.index
 \18StrutsProject\src
+C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2179788042.index
+\HibernateProject\src
 C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1643724806.index
 \StrutsAnnotationProject\src
 C:\D\JXIT\JXIT\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3393832541.index

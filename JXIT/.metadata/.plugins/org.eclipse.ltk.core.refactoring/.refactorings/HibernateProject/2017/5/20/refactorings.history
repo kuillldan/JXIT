@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;HibernateProject&apos;&#x0D;&#x0A;- Original project: &apos;HibernateProject&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     vo.AbstractMember.java&#x0D;&#x0A;     vo.Member.java&#x0D;&#x0A;     Member.hbm.xml" description="Delete elements" element1="src/vo/Member.hbm.xml" element2="/src&lt;vo{Member.java" element3="/src&lt;vo{AbstractMember.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="1" stamp="1495110473698" subPackages="false" version="1.0"/>
+</session>
