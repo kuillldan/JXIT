@@ -1,0 +1,33 @@
+package actions;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+
+import vo.Emp;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+@Action(value = "EmpAction", results = { @Result(name = "showJSP", location = "/pages/emp/show.jsp"),
+		@Result(name = "goodJSP", location = "/pages/common/good.jsp") })
+
+public class EmpAction extends ActionSupport
+{
+	private Emp emp = new Emp();
+	public Emp getEmp()
+	{
+		return emp;
+	}
+
+	public void setEmp(Emp emp)
+	{
+		this.emp = emp;
+	}
+
+	@Override
+	public String execute() throws Exception
+	{
+		System.out.println(this.emp);
+		return "showJSP";
+	}
+}

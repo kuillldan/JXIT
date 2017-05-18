@@ -1,0 +1,30 @@
+package utils;
+
+import java.io.File;
+import java.util.UUID;
+
+public class FileUploadUtil
+{
+	private File file;
+	private String folder;
+	private String contentType;
+	private String fileName;
+	
+	public FileUploadUtil(File file, String folder, String contentType, String fileName)
+	{
+		this.file = file;
+		this.folder = folder;
+		this.contentType = contentType;
+		this.fileName = fileName;
+	}
+	
+	public void save()
+	{
+		
+	}
+	
+	private String generateName()
+	{
+		return UUID.randomUUID() + this.fileName.substring(this.fileName.lastIndexOf(".")); 
+	}
+}

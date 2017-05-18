@@ -1,0 +1,23 @@
+package actions;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+@Action(value = "MemberAction")
+@ParentPackage(value = "root")
+@Namespace("/pages/back/admin/member")
+@Results({ @Result(name = "good", location = "/pages/back/admin/member/good.jsp"),
+		@Result(name = "input", location = "/pages/common/good.jsp") })
+public class MemberAction extends ActionSupport
+{
+	public void insert()
+	{
+		System.out.println("========================MemberAction数据增加");
+	}
+}

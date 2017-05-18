@@ -1,0 +1,20 @@
+package actions;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.InterceptorRefs;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+@ParentPackage(value="root")
+@Action("TokenDemoAction")
+@InterceptorRefs(
+		@InterceptorRef("generalInterceptor")
+		)
+public class TokenDemoAction extends ActionSupport
+{
+	
+}

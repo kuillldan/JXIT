@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+<validators>
+	<field name="news.nid">
+		<field-validator type="required">
+			<message>【验证框架】新闻编号不能为空</message>
+		</field-validator>
+	</field>
+	<field name="news.title">
+		<field-validator type="requiredstring">
+			<message>【验证框架】新闻标题不能为空</message>
+		</field-validator>
+	</field>
+	<field name="news.content">
+		<field-validator type="requiredstring">
+			<message>【验证框架】新闻内容不能为空</message>
+		</field-validator>
+	</field>
+	<field name="news.pubdate">
+		<field-validator type="required">
+			<message>【验证框架】新闻发布日期不能为空</message>
+		</field-validator>
+	</field>
+</validators>

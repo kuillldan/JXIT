@@ -1,0 +1,44 @@
+package interceptors;
+
+import java.lang.reflect.Field;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
+
+@SuppressWarnings("serial")
+public class DataValidationInterceptor extends AbstractInterceptor
+{
+	@Override
+	public String intercept(ActionInvocation actionInvocation)
+	{
+		ActionSupport action = (ActionSupport)actionInvocation.getAction();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String uri = request.getRequestURI();
+		String requestMethodName = uri.substring(uri.lastIndexOf("!") + 1, uri.lastIndexOf("."));
+		
+		try
+		{
+			Field validationRuleField = action.getClass().getDeclaredField(requestMethodName + "Rule");
+			validationRuleField.setAccessible(true);
+			String validationRule = (String)validationRuleField.get(action);
+			return null;
+		}catch(NoSuchFieldException e)
+		{
+			try
+			{
+				return actionInvocation.invoke();
+			} catch (Exception e1)
+			{
+				e1.printStackTrace();
+			}
+		} catch (IllegalArgumentException | IllegalAccessException e)
+		{
+			return "";
+		} 
+	}
+}

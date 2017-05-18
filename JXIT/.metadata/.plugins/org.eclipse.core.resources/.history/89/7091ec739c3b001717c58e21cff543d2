@@ -1,0 +1,83 @@
+package actions;
+
+import java.io.File;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+@ParentPackage("root")
+@Namespace("/pages/fileUploadDemo")
+@Action("FileUploadAction")
+public class FileUploadAction extends ActionSupport
+{
+	private File file1;
+	private File file2;
+	private File file3;
+	private File file4;
+	private File file5;
+
+	public File getFile1()
+	{
+		return file1;
+	}
+
+	public void setFile1(File file1)
+	{
+		this.file1 = file1;
+	}
+
+	public File getFile2()
+	{
+		return file2;
+	}
+
+	public void setFile2(File file2)
+	{
+		this.file2 = file2;
+	}
+
+	public File getFile3()
+	{
+		return file3;
+	}
+
+	public void setFile3(File file3)
+	{
+		this.file3 = file3;
+	}
+
+	public File getFile4()
+	{
+		return file4;
+	}
+
+	public void setFile4(File file4)
+	{
+		this.file4 = file4;
+	}
+
+	public File getFile5()
+	{
+		return file5;
+	}
+
+	public void setFile5(File file5)
+	{
+		this.file5 = file5;
+	}
+
+	public void upload()
+	{
+		System.out.println("=================================================");
+		System.out.println(this.file1.length());
+		System.out.println(this.file2.length());
+		System.out.println(this.file3.length());
+		System.out.println(this.file4.length());
+		System.out.println(this.file5.length());
+		System.out.println("=================================================");
+	}
+}

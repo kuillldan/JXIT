@@ -1,0 +1,17 @@
+package utils;
+
+import java.io.File;
+
+public class FileUploadUtil
+{
+	private File file;
+	private String folder;
+	
+	public FileUploadUtil(File file, String folder)
+	{
+		this.file = file;
+		this.folder = folder;
+	}
+	
+	
+}

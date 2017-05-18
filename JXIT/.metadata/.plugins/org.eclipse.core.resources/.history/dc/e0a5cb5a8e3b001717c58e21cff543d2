@@ -1,0 +1,6 @@
+package interceptors;
+
+public class DataValidationInterceptor
+{
+
+}
