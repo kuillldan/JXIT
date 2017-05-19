@@ -1,0 +1,15 @@
+package action;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.ParentPackage;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+
+@SuppressWarnings("serial")
+@ParentPackage("root")
+@Action("MemberAction")
+public class MemberAction extends ActionSupport
+{
+
+}

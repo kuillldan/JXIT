@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="vo.Dept"/>
-<fullyQualifiedTypeName name="vo.Emp"/>
-<fullyQualifiedTypeName name="net.sf.json.JSONArray"/>
-<fullyQualifiedTypeName name="net.sf.json.JSONObject"/>
-<fullyQualifiedTypeName name="vo.News"/>
-<fullyQualifiedTypeName name="sun.swing.StringUIClientPropertyKey"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
-<fullyQualifiedTypeName name="com.opensymphony.xwork2.interceptor.AbstractInterceptor"/>
 <fullyQualifiedTypeName name="java.lang.reflect.Field"/>
 <fullyQualifiedTypeName name="java.lang.NoSuchFieldException"/>
 <fullyQualifiedTypeName name="java.lang.ExceptionInInitializerError"/>
@@ -15,7 +7,6 @@
 <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
 <fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Namespace"/>
 <fullyQualifiedTypeName name="actions.FileUploadAction"/>
@@ -24,19 +15,12 @@
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="exceptions.NotSupportedFileTypeException"/>
-<fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletConfig"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
 <fullyQualifiedTypeName name="utils.FileUploadUtil"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.ParentPackage"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Action"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRefs"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRef"/>
 <fullyQualifiedTypeName name="java.util.Locale"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.util.LocalizedTextUtil"/>
 <fullyQualifiedTypeName name="utils.StringUtils"/>
@@ -44,13 +28,8 @@
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Results"/>
-<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Result"/>
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
-<fullyQualifiedTypeName name="org.hibernate.Session"/>
-<fullyQualifiedTypeName name="vo.Member"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.dom4j.io.SAXReader"/>
@@ -59,5 +38,26 @@
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.dom4j.Element"/>
+<fullyQualifiedTypeName name="dao.impl.MemberDAOImpl"/>
+<fullyQualifiedTypeName name="dbc.HibernateSessionFactory"/>
+<fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="factory.DAOFactory"/>
+<fullyQualifiedTypeName name="dao.IMemberDAO"/>
+<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+<fullyQualifiedTypeName name="service.IMemberService"/>
+<fullyQualifiedTypeName name="service.impl.MemberServiceImpl"/>
+<fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Action"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.ParentPackage"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRefs"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRef"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="vo.Member"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="factory.ServiceFactory"/>
+<fullyQualifiedTypeName name="jdk.nashorn.internal.ir.RuntimeNode.Request"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Results"/>
+<fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Result"/>
 </qualifiedTypeNameHistroy>

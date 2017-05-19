@@ -4,7 +4,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 
 import utils.StringUtils;
 import vo.News;
@@ -12,27 +19,28 @@ import vo.News;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
+
+@ParentPackage("root")
+@Action("NewsAction") 
+@Results({@Result(name="input",location="/input.jsp")})
 public class NewsAction extends ActionSupport
-{
-	
-	private String insertRule = "news.nid:int|news.title:String|news.pubdate:date|news.content:String";
-	private String updateRule = "news.nid:int|news.title:String";
-	private String otherInfo;
-	public void setOtherInfo(String otherInfo)
+{ 
+//http://localhost:8080/18StrutsProject/NewsAction!forJmeter.action
+	private String msg ;
+	public String getMsg()
 	{
-		this.otherInfo = otherInfo;
+		return msg;
+	}
+	public void setMsg(String msg)
+	{
+		this.msg = msg;
 	}
 	
-	private News news = new News();  
-	public News getNews()
-	{
-		return news;
+	public void forJmeter()
+	{ 
+		System.out.println("===================================");
+		System.out.println("[debug] msg=" + this.msg);
+		System.out.println("===================================");
 	}
-	
-	
-	public String insert()
-	{
-		System.out.println( "newsAction.insert"+this.news + " 其它信息:" + this.otherInfo);
-		return "good";
-	} 
+	 
 }

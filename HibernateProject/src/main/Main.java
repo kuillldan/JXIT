@@ -1,8 +1,10 @@
 package main;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.dom4j.DocumentException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -10,34 +12,58 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import dbc.HibernateSessionFactory;
+import utils.HibernateConfiguation;
+import utils.MySession;
 import vo.Member;
+
+class Worker implements Runnable
+{
+	private Session session;
+	private long timespan;
+	public Worker(Session session, long timespan)
+	{
+		this.session = session;
+		this.timespan = timespan;
+	}
+	
+	@Override
+	public void run()
+	{ 
+		session.beginTransaction();
+		try
+		{
+			Thread.sleep(this.timespan);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		session.close();
+	}
+}
+
+
 
 public class Main
 {	
 	@SuppressWarnings("unused")
-	public static void main(String[] args) throws ParseException
+	public static void main(String[] args) throws ParseException, SQLException, InterruptedException
 	{
-		//取的配置文件信息
-		Configuration configuration = new Configuration();
-		//读取默认资源
+		org.hibernate.SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
 		
-		configuration.configure();
-		ServiceRegistry serviceRegistry  = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
-				.buildServiceRegistry();
-		SessionFactory  sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-		Session session = sessionFactory.openSession();
+		Worker worker1 = new Worker(sessionFactory.openSession() , 5000);
+		Worker worker2 = new Worker(sessionFactory.openSession() , 1000);
 		
-		Member member = new Member();
-		member.setAge(33);
-		member.setBirthday(new SimpleDateFormat("yyyy-MM-dd").parse("1987-10-18"));
-		member.setMid("21591924");
-		member.setName("yuankui");
-		member.setNote("a good guy");
-		member.setSalary(9999.0);
-		Transaction trans = session.beginTransaction();
-		session.save(member);
-		trans.commit();
-		session.close();
+		Thread thread1 = new Thread(worker1);
+		Thread thread2 = new Thread(worker2);
+		
+		thread1.start();
+		thread2.start();
+		
+		thread1.join();
+		thread2.join();
+		
 		System.out.println("//Main ~~~");
 	}
 

@@ -1,0 +1,19 @@
+package dao.impl;
+
+import org.hibernate.Session;
+
+import vo.Member;
+import dao.IMemberDAO;
+import dbc.HibernateSessionFactory;
+
+public class MemberDAOImpl implements IMemberDAO
+{
+	@Override
+	public boolean doCreate(Member vo)
+	{
+		Session session = HibernateSessionFactory.getSession();
+		session.save(vo);
+		return false;
+	}
+
+}

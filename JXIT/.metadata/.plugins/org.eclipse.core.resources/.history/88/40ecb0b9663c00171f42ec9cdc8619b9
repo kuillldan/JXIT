@@ -1,0 +1,12 @@
+package factory;
+
+import dao.IMemberDAO;
+import dao.impl.MemberDAOImpl;
+
+public class DAOFactory
+{
+	public IMemberDAO getIMemberDAOInstance()
+	{
+		return new MemberDAOImpl();
+	}
+}

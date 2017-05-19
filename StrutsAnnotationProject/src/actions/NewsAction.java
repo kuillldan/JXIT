@@ -24,7 +24,7 @@ public class NewsAction extends ActionSupport
 {
 	private String insertRule = "news.nid:Integer|news.title:String|news.content:String|news.pubdate:Date";
 	private String updateRule = "news.nid:Integer|news.title:String|news.content:String";
-
+	
 	private News news = new News();
 
 	public News getNews()
