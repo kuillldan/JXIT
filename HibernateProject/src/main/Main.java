@@ -3,8 +3,10 @@ package main;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.dom4j.DocumentException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +18,7 @@ import dbc.HibernateSessionFactory;
 import utils.HibernateConfiguation;
 import utils.MySession;
 import vo.Member;
+import vo.News;
 
 class Worker implements Runnable
 {
@@ -50,19 +53,13 @@ public class Main
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws ParseException, SQLException, InterruptedException
 	{
-		org.hibernate.SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+		Session session = HibernateSessionFactory.getSession();
 		
-		Worker worker1 = new Worker(sessionFactory.openSession() , 5000);
-		Worker worker2 = new Worker(sessionFactory.openSession() , 1000);
-		
-		Thread thread1 = new Thread(worker1);
-		Thread thread2 = new Thread(worker2);
-		
-		thread1.start();
-		thread2.start();
-		
-		thread1.join();
-		thread2.join();
+		Query query = session.createQuery(" SELECT COUNT(*) FROM Member WHERE mid like ? ");
+		query.setParameter(0, "%2159%");
+		Long count = (Long)query.uniqueResult();
+		System.out.println(count);
+		session.close();
 		
 		System.out.println("//Main ~~~");
 	}

@@ -28,7 +28,7 @@
 		员工号:<input type="text" name="member.mid" value="21591930"><br>
 		姓&nbsp;名:<input type="text" name="member.name" value="kui"><br>
 		年&nbsp;龄:<input type="text" name="member.age" value="30"><br>
-		工&nbsp;资:<input type="text" name="member.sal" value="5555.2"><br>
+		工&nbsp;资:<input type="text" name="member.salary" value="5555.2"><br>
 		生&nbsp;日:<input type="text" name="member.birthday" value="1922-12-23"><br>
 		备&nbsp;注:<input type="text" name="member.note" value="good man"><br>
 		<input type="submit" value="提交"> 

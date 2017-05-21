@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
-<fullyQualifiedTypeName name="java.lang.NoSuchFieldException"/>
-<fullyQualifiedTypeName name="java.lang.ExceptionInInitializerError"/>
-<fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ThisReference"/>
-<fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.Enumeration"/>
@@ -26,7 +21,6 @@
 <fullyQualifiedTypeName name="utils.StringUtils"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.conversion.impl.DefaultTypeConverter"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
@@ -36,14 +30,10 @@
 <fullyQualifiedTypeName name="org.dom4j.Document"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="org.dom4j.Element"/>
 <fullyQualifiedTypeName name="dao.impl.MemberDAOImpl"/>
-<fullyQualifiedTypeName name="dbc.HibernateSessionFactory"/>
-<fullyQualifiedTypeName name="org.hibernate.Session"/>
 <fullyQualifiedTypeName name="factory.DAOFactory"/>
 <fullyQualifiedTypeName name="dao.IMemberDAO"/>
-<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
 <fullyQualifiedTypeName name="service.IMemberService"/>
 <fullyQualifiedTypeName name="service.impl.MemberServiceImpl"/>
 <fullyQualifiedTypeName name="com.opensymphony.xwork2.ActionSupport"/>
@@ -52,7 +42,6 @@
 <fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRefs"/>
 <fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.InterceptorRef"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="vo.Member"/>
 <fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="factory.ServiceFactory"/>
 <fullyQualifiedTypeName name="jdk.nashorn.internal.ir.RuntimeNode.Request"/>
@@ -60,4 +49,15 @@
 <fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
 <fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Results"/>
 <fullyQualifiedTypeName name="org.apache.struts2.convention.annotation.Result"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="org.hibernate.Transaction"/>
+<fullyQualifiedTypeName name="dbc.HibernateSessionFactory"/>
+<fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="javax.management.Query"/>
+<fullyQualifiedTypeName name="org.hibernate.Query"/>
+<fullyQualifiedTypeName name="vo.News"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="vo.Member"/>
+<fullyQualifiedTypeName name="java.lang.Long"/>
 </qualifiedTypeNameHistroy>

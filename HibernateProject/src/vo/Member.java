@@ -104,4 +104,13 @@ public class Member implements java.io.Serializable
 		this.note = note;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "Member [mid=" + mid + ", name=" + name + ", age=" + age + ", salary=" + salary + ", birthday="
+				+ birthday + ", note=" + note + "]";
+	}
+	
+	
+
 }

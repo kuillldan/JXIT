@@ -56,7 +56,8 @@ public class MemberAction extends ActionSupport
 			}
 		}catch(Exception e)
 		{ 
+			e.printStackTrace();
 			return "errorJSP";
-		} 
+		}
 	}
 }
