@@ -1,0 +1,101 @@
+May 22, 2017 5:35:11 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:35:12 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:35:12 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:35:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:35:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:35:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:35:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:35:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:35:13 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:35:13 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:35:13 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:35:13 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+May 22, 2017 5:35:42 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:35:42 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:35:42 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:35:43 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:35:43 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:35:43 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:35:43 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:35:43 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:35:43 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:35:43 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:35:43 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:35:43 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//DemoA done~~~

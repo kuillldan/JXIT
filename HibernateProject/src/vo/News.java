@@ -1,9 +1,16 @@
 package vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * News entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "news", catalog = "hedb")
 public class News implements java.io.Serializable
 {
 
@@ -34,7 +41,9 @@ public class News implements java.io.Serializable
 	}
 
 	// Property accessors
-
+	@Id
+	@GeneratedValue
+	@Column(name = "nid", unique = true, nullable = false)
 	public Integer getNid()
 	{
 		return this.nid;
@@ -45,6 +54,7 @@ public class News implements java.io.Serializable
 		this.nid = nid;
 	}
 
+	@Column(name = "title", nullable = false, length = 50)
 	public String getTitle()
 	{
 		return this.title;
@@ -55,6 +65,7 @@ public class News implements java.io.Serializable
 		this.title = title;
 	}
 
+	@Column(name = "CONTENT", length = 100)
 	public String getContent()
 	{
 		return this.content;
@@ -65,9 +76,4 @@ public class News implements java.io.Serializable
 		this.content = content;
 	}
 
-	@Override
-	public String toString()
-	{
-		return "News [nid=" + nid + ", title=" + title + ", content=" + content + "]";
-	}
 }

@@ -1,0 +1,1219 @@
+May 22, 2017 5:49:02 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:02 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:02 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:03 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:03 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:03 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:03 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:03 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:49:09 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:09 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:09 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:09 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:09 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:09 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:09 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:09 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:10 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:10 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:10 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:10 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:49:15 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:15 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:15 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:16 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:16 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:16 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:16 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:16 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:16 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:16 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:16 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:16 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:49:32 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:32 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:32 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:33 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:33 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:33 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:33 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:33 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:33 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:33 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:33 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:33 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:49:39 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:39 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:39 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:39 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:39 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:39 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:39 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:40 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:40 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:40 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:40 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:40 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:40 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:40 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:40 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:40 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:40 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 5:49:41 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:41 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:41 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:49:41 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:49:41 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:41 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:42 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:42 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:42 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:42 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:42 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:42 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:42 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:43 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:43 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:43 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:43 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+May 22, 2017 5:49:43 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:49:43 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:49:43 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+==================================
+May 22, 2017 5:49:43 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:49:43 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:49:43 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:49:44 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:49:44 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:49:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:49:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:49:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:49:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:49:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:49:45 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:49:45 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:49:45 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:49:45 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:50:13 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:50:13 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:50:13 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:50:13 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:50:13 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:50:13 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:50:13 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:50:14 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:50:14 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:50:14 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:50:14 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:50:14 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:50:14 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:50:14 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:50:14 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:50:14 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:50:14 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:50:21 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:50:21 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:50:21 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:50:22 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:50:22 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:50:22 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:50:22 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:50:22 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:50:22 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:50:22 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:50:22 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:50:22 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:50:35 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:50:35 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:50:35 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:50:36 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:50:36 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:50:36 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:50:36 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:50:36 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:50:36 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:50:36 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:50:37 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:50:37 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:51:18 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:51:18 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:51:18 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:51:19 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:51:19 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:51:19 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:51:19 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:51:19 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:51:19 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:51:19 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:51:19 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:51:19 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:51:23 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:51:23 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:51:23 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:51:23 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:51:23 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:51:23 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:51:24 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:51:24 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:51:24 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:51:24 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:51:24 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:51:24 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:51:24 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:51:24 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:51:24 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:51:24 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:51:24 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+//Main ~~~
+May 22, 2017 5:53:31 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:53:31 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:53:31 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:53:31 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:53:32 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:53:32 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:53:32 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:53:32 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:53:32 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:53:32 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:53:32 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:53:32 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+%%%% Error Creating SessionFactory %%%%
+org.hibernate.cache.CacheException: net.sf.ehcache.CacheException: Error configuring from file:/C:/D/JXIT/HibernateProject/WebRoot/WEB-INF/classes/ehcache.xml. Initial cause was Error configuring from input stream. Initial cause was 与元素类型 "defaultCache" 相关联的属性名 "eternafdsa" 必须后跟 ' = ' 字符。
+	at org.hibernate.cache.ehcache.EhCacheRegionFactory.start(EhCacheRegionFactory.java:110)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:283)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1744)
+	at dbc.HibernateSessionFactory.<clinit>(HibernateSessionFactory.java:37)
+	at main.Main.main(Main.java:57)
+Caused by: net.sf.ehcache.CacheException: Error configuring from file:/C:/D/JXIT/HibernateProject/WebRoot/WEB-INF/classes/ehcache.xml. Initial cause was Error configuring from input stream. Initial cause was 与元素类型 "defaultCache" 相关联的属性名 "eternafdsa" 必须后跟 ' = ' 字符。
+	at net.sf.ehcache.config.ConfigurationFactory.parseConfiguration(ConfigurationFactory.java:103)
+	at net.sf.ehcache.config.ConfigurationFactory.parseConfiguration(ConfigurationFactory.java:138)
+	at org.hibernate.cache.ehcache.EhCacheRegionFactory.start(EhCacheRegionFactory.java:82)
+	... 4 more
+Caused by: net.sf.ehcache.CacheException: Error configuring from input stream. Initial cause was 与元素类型 "defaultCache" 相关联的属性名 "eternafdsa" 必须后跟 ' = ' 字符。
+	at net.sf.ehcache.config.ConfigurationFactory.parseConfiguration(ConfigurationFactory.java:157)
+	at net.sf.ehcache.config.ConfigurationFactory.parseConfiguration(ConfigurationFactory.java:101)
+	... 6 more
+Caused by: org.xml.sax.SAXParseException; lineNumber: 6; columnNumber: 1; 与元素类型 "defaultCache" 相关联的属性名 "eternafdsa" 必须后跟 ' = ' 字符。
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.createSAXParseException(ErrorHandlerWrapper.java:203)
+	at com.sun.org.apache.xerces.internal.util.ErrorHandlerWrapper.fatalError(ErrorHandlerWrapper.java:177)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:441)
+	at com.sun.org.apache.xerces.internal.impl.XMLErrorReporter.reportError(XMLErrorReporter.java:368)
+	at com.sun.org.apache.xerces.internal.impl.XMLScanner.reportFatalError(XMLScanner.java:1437)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanAttribute(XMLDocumentFragmentScannerImpl.java:1530)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanStartElement(XMLDocumentFragmentScannerImpl.java:1319)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:2786)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:606)
+	at com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:510)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:848)
+	at com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:777)
+	at com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1213)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:649)
+	at com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:333)
+	at javax.xml.parsers.SAXParser.parse(SAXParser.java:195)
+	at net.sf.ehcache.config.ConfigurationFactory.parseConfiguration(ConfigurationFactory.java:155)
+	... 7 more
+Exception in thread "main" java.lang.NullPointerException
+	at main.Main.main(Main.java:57)
+May 22, 2017 5:56:04 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:56:04 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:56:04 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:56:04 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:56:04 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:56:04 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:56:04 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:56:04 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:56:05 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:56:05 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:56:05 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:56:05 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 5:56:10 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 5:56:11 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+//Main ~~~
+May 22, 2017 5:57:20 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:57:20 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:57:20 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:57:20 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:57:20 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:57:20 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:57:20 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:57:20 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:57:21 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:57:21 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:57:21 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:57:21 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 5:57:22 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 5:57:22 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+//Main ~~~
+May 22, 2017 5:58:38 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:58:38 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:58:38 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:58:39 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:58:39 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:58:39 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:58:39 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:58:39 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:58:39 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:58:39 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:58:39 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:58:39 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 5:58:40 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 5:58:41 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+==================================
+//Main ~~~
+May 22, 2017 5:59:09 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 5:59:09 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 5:59:09 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 5:59:09 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 5:59:09 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 5:59:09 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 5:59:10 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 5:59:10 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 5:59:10 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 5:59:10 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 5:59:10 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 5:59:10 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 5:59:10 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 5:59:10 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 5:59:10 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 5:59:10 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 5:59:10 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 5:59:12 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 5:59:12 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=101, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+==================================
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~
+May 22, 2017 6:00:11 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:00:11 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:00:11 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:00:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:00:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:00:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:00:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:00:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:00:12 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:00:12 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:00:12 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:00:12 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:00:14 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:00:14 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=101, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+==================================
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~
+May 22, 2017 6:00:43 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:00:43 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:00:43 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:00:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:00:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:00:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:00:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:00:44 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:00:44 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:00:44 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:00:44 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:00:44 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:00:46 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:00:46 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+169833205
+==================================
+1595938139
+//Main ~~~
+May 22, 2017 6:01:16 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:01:16 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:01:16 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:01:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:01:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:01:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:01:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:01:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:01:17 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:01:17 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:01:17 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:01:17 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:01:19 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:01:19 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=101, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+==================================
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~
+May 22, 2017 6:01:24 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:01:24 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:01:24 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:01:25 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:01:25 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:01:25 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:01:25 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:01:25 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:01:25 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:01:25 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:01:25 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:01:25 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:01:26 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:01:27 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=101, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+==================================
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~
+May 22, 2017 6:01:34 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:01:34 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:01:34 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:01:34 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:01:34 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:01:34 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:01:34 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:01:34 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:01:35 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:01:35 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:01:35 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:01:35 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:01:36 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:01:36 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591930, name=liuyuankui, age=101, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+==================================
+Member [mid=21591930, name=liuyuankui, age=12, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~
+May 22, 2017 6:16:11 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:16:11 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:16:11 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:16:11 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:16:11 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:16:11 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:16:11 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:16:11 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:16:12 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:16:12 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:16:12 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:16:12 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:16:13 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:16:13 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Exception in thread "main" java.lang.NoSuchMethodError: antlr.collections.AST.getLine()I
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.generatePositionalParameter(HqlSqlWalker.java:929)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.parameter(HqlSqlBaseWalker.java:4826)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.expr(HqlSqlBaseWalker.java:1341)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:3895)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:1935)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:794)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:299)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:247)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:248)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:183)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:136)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:105)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:80)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:168)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:219)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:197)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1736)
+	at main.Main.main(Main.java:59)
+May 22, 2017 6:17:16 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:17:16 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:17:16 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:17:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:17:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:17:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:17:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:17:17 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:17:17 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:17:17 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:17:17 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:17:17 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:17:18 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:17:18 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Exception in thread "main" java.lang.NoSuchMethodError: antlr.collections.AST.getLine()I
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.generatePositionalParameter(HqlSqlWalker.java:929)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.parameter(HqlSqlBaseWalker.java:4826)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.expr(HqlSqlBaseWalker.java:1341)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:3895)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:1935)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:794)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:299)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:247)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:248)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:183)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:136)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:105)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:80)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:168)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:219)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:197)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1736)
+	at main.Main.main(Main.java:59)
+May 22, 2017 6:18:07 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:18:07 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:18:07 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:18:07 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:18:08 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:18:08 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:18:08 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:18:08 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:18:08 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:18:08 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:18:08 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:18:08 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:18:08 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:18:09 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:18:09 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:18:09 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:18:09 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:18:10 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:18:10 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+Exception in thread "main" java.lang.NoSuchMethodError: antlr.collections.AST.getLine()I
+	at org.hibernate.hql.internal.ast.HqlSqlWalker.generatePositionalParameter(HqlSqlWalker.java:929)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.parameter(HqlSqlBaseWalker.java:4826)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.expr(HqlSqlBaseWalker.java:1341)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.comparisonExpr(HqlSqlBaseWalker.java:3895)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.logicalExpr(HqlSqlBaseWalker.java:1935)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.whereClause(HqlSqlBaseWalker.java:794)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.query(HqlSqlBaseWalker.java:595)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.selectStatement(HqlSqlBaseWalker.java:299)
+	at org.hibernate.hql.internal.antlr.HqlSqlBaseWalker.statement(HqlSqlBaseWalker.java:247)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.analyze(QueryTranslatorImpl.java:248)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:183)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:136)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:105)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:80)
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:168)
+	at org.hibernate.internal.AbstractSessionImpl.getHQLQueryPlan(AbstractSessionImpl.java:219)
+	at org.hibernate.internal.AbstractSessionImpl.createQuery(AbstractSessionImpl.java:197)
+	at org.hibernate.internal.SessionImpl.createQuery(SessionImpl.java:1736)
+	at main.Main.main(Main.java:59)
+May 22, 2017 6:38:12 PM org.hibernate.annotations.common.Version <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+May 22, 2017 6:38:12 PM org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate Core {4.1.4.Final}
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Environment <clinit>
+INFO: HHH000206: hibernate.properties not found
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Environment buildBytecodeProvider
+INFO: HHH000021: Bytecode provider name : javassist
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Configuration configure
+INFO: HHH000043: Configuring from resource: /hibernate.cfg.xml
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Configuration getConfigurationInputStream
+INFO: HHH000040: Configuration resource: /hibernate.cfg.xml
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Configuration addResource
+INFO: HHH000221: Reading mappings from resource: vo/Member.hbm.xml
+May 22, 2017 6:38:12 PM org.hibernate.cfg.Configuration doConfigure
+INFO: HHH000041: Configured SessionFactory: null
+May 22, 2017 6:38:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000402: Using Hibernate built-in connection pool (not for production use!)
+May 22, 2017 6:38:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000115: Hibernate connection pool size: 20
+May 22, 2017 6:38:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000006: Autocommit mode: false
+May 22, 2017 6:38:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/hrdb]
+May 22, 2017 6:38:12 PM org.hibernate.service.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+INFO: HHH000046: Connection properties: {user=root, password=****}
+May 22, 2017 6:38:13 PM org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+May 22, 2017 6:38:13 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+May 22, 2017 6:38:13 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
+May 22, 2017 6:38:13 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+INFO: HHH000397: Using ASTQueryTranslatorFactory
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+May 22, 2017 6:38:14 PM org.hibernate.cache.ehcache.AbstractEhcacheRegionFactory getCache
+WARN: HHH020003: Could not find a specific ehcache configuration for cache named [vo.Member]; using defaults.
+May 22, 2017 6:38:14 PM org.hibernate.cache.ehcache.internal.strategy.EhcacheAccessStrategyFactoryImpl createEntityRegionAccessStrategy
+WARN: HHH020007: read-only cache configured for mutable entity [vo.Member]
+May 22, 2017 6:38:15 PM org.hibernate.hql.internal.ast.HqlSqlWalker generatePositionalParameter
+WARN: [DEPRECATION] Encountered positional parameter near line 1, column 34.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+May 22, 2017 6:38:15 PM org.hibernate.hql.internal.ast.HqlSqlWalker generatePositionalParameter
+WARN: [DEPRECATION] Encountered positional parameter near line 1, column 34.  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+Hibernate: select member0_.mid as col_0_0_ from hedb.member member0_ where member0_.mid like ?
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=215919211, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591924, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591925, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591926, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591927, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591928, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+Hibernate: select member0_.mid as mid0_0_, member0_.name as name0_0_, member0_.age as age0_0_, member0_.salary as salary0_0_, member0_.birthday as birthday0_0_, member0_.note as note0_0_ from hedb.member member0_ where member0_.mid=?
+Member [mid=21591929, name=kui, age=30, salary=5555.2, birthday=1922-12-23 00:00:00.0, note=good man]
+//Main ~~~

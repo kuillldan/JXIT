@@ -3,6 +3,7 @@ package main;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
 import java.util.List;
 
 import org.dom4j.DocumentException;
@@ -13,6 +14,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 import dbc.HibernateSessionFactory;
 import utils.HibernateConfiguation;
@@ -52,15 +54,16 @@ public class Main
 {	
 	@SuppressWarnings("unused")
 	public static void main(String[] args) throws ParseException, SQLException, InterruptedException
-	{
+	{ 
 		Session session = HibernateSessionFactory.getSession();
-		
-		Query query = session.createQuery(" SELECT COUNT(*) FROM Member WHERE mid like ? ");
-		query.setParameter(0, "%2159%");
-		Long count = (Long)query.uniqueResult();
-		System.out.println(count);
+		Query query = session.createQuery(" from Member  where  mid like ? ");
+		query.setParameter(0, "%2159192%");
+		Iterator<Member> iter = query.iterate();
+		while(iter.hasNext())
+		{
+			System.out.println(iter.next());
+		}
 		session.close();
-		
 		System.out.println("//Main ~~~");
 	}
 
