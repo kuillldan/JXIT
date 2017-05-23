@@ -20,7 +20,7 @@ public class Hello
 {
     public static void main(String[] args) throws Exception
     { 
-        Thread.sleep(5000);
+        System.out.println("hello shit");
         System.out.println("//Main done~~~");
     }
 }
