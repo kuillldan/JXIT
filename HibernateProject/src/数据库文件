@@ -1,7 +1,9 @@
-CREATE TABLE news
+DROP TABLE  IF EXISTS member;
+
+CREATE TABLE member
 (
-	nid INT AUTO_INCREMENT,
-	title VARCHAR(50) NOT NULL,
-	CONTENT varchar(100),
-	CONSTRAINT pk_nid PRIMARY KEY (nid)
+	mid INT AUTO_INCREMENT,
+	name VARCHAR(50) NOT NULL,
+	age INT,
+	CONSTRAINT pk_mid_name PRIMARY KEY (mid,name)
 );

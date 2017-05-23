@@ -7,9 +7,19 @@
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-<table name="news" catalog="hedb">
+	<table name="news" catalog="hedb">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="member_login" catalog="hedb">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+<table name="member_details" catalog="hedb">
 	<primary-key>
-		<generator class="native"></generator>
+		<generator class="assigned"></generator>
 	</primary-key>
 </table>
 </hibernate-reverse-engineering>

@@ -1,22 +1,24 @@
 package vo;
 
-import java.util.Date;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Member entity. @author MyEclipse Persistence Tools
  */
-
+@Entity
+@Table(name = "member", catalog = "hedb")
 public class Member implements java.io.Serializable
 {
 
 	// Fields
 
-	private String mid;
-	private String name;
+	private MemberId id;
 	private Integer age;
-	private Double salary;
-	private Date birthday;
-	private String note;
 
 	// Constructors
 
@@ -26,44 +28,34 @@ public class Member implements java.io.Serializable
 	}
 
 	/** minimal constructor */
-	public Member(String mid)
+	public Member(MemberId id)
 	{
-		this.mid = mid;
+		this.id = id;
 	}
 
 	/** full constructor */
-	public Member(String mid, String name, Integer age, Double salary, Date birthday, String note)
+	public Member(MemberId id, Integer age)
 	{
-		this.mid = mid;
-		this.name = name;
+		this.id = id;
 		this.age = age;
-		this.salary = salary;
-		this.birthday = birthday;
-		this.note = note;
 	}
 
 	// Property accessors
-
-	public String getMid()
+	@EmbeddedId
+	@AttributeOverrides(
+	{ @AttributeOverride(name = "mid", column = @Column(name = "mid", nullable = false)),
+			@AttributeOverride(name = "name", column = @Column(name = "name", nullable = false, length = 50)) })
+	public MemberId getId()
 	{
-		return this.mid;
+		return this.id;
 	}
 
-	public void setMid(String mid)
+	public void setId(MemberId id)
 	{
-		this.mid = mid;
+		this.id = id;
 	}
 
-	public String getName()
-	{
-		return this.name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
+	@Column(name = "age")
 	public Integer getAge()
 	{
 		return this.age;
@@ -73,44 +65,5 @@ public class Member implements java.io.Serializable
 	{
 		this.age = age;
 	}
-
-	public Double getSalary()
-	{
-		return this.salary;
-	}
-
-	public void setSalary(Double salary)
-	{
-		this.salary = salary;
-	}
-
-	public Date getBirthday()
-	{
-		return this.birthday;
-	}
-
-	public void setBirthday(Date birthday)
-	{
-		this.birthday = birthday;
-	}
-
-	public String getNote()
-	{
-		return this.note;
-	}
-
-	public void setNote(String note)
-	{
-		this.note = note;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "Member [mid=" + mid + ", name=" + name + ", age=" + age + ", salary=" + salary + ", birthday="
-				+ birthday + ", note=" + note + "]";
-	}
-	
-	
 
 }
