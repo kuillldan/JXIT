@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Person
 {
     private String name;
@@ -22,5 +25,8 @@ public class Hello
     { 
         System.out.println("hello shit");
         System.out.println("//Main done~~~");
+        List<String> allList = new ArrayList<>();
+        allList.add("Hello");
+        System.out.println(allList);
     }
 }
