@@ -1,1 +1,3 @@
-你好我好大家好
+1 Hibernate 中session的生命周期
+2 POJO中Serilizable接口的作用
+3 数据库的事物隔离级别

@@ -30,6 +30,10 @@
 		<mapping class="vo.Member" />
 		<mapping class="vo.MemberDetails" />
 		<mapping class="vo.MemberLogin" />
+		<mapping resource="vo/Item.hbm.xml" />
+		<mapping resource="vo/Subitem.hbm.xml" />
+		<mapping resource="vo/Groups.hbm.xml" />
+		<mapping resource="vo/Role.hbm.xml" />
 
 	</session-factory>
 
