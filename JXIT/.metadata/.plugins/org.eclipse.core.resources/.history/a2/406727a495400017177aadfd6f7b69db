@@ -1,0 +1,82 @@
+package main;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import factory.ServiceFactory;
+import service.IDeptService;
+import service.impl.DeptServiceImpl;
+import utils.BeanOperator;
+import utils.StringUtils;
+import vo.Dept;
+import vo.Employee;
+ 
+class Point<T>
+{
+	private T x;
+	private T y;
+	
+	public Point()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+	public T getX()
+	{
+		return x;
+	}
+
+	public void setX(T x)
+	{
+		this.x = x;
+	}
+
+	public T getY()
+	{
+		return y;
+	}
+
+	public void setY(T y)
+	{
+		this.y = y;
+	}
+
+	@Override
+	public String toString()
+	{
+		System.out.println(this.getX().getClass().getSimpleName());
+		return "Point [x=" + x + ", y=" + y + "]";
+	}
+}
+
+
+public class Hello
+{ 
+	public static void main(String[] args) throws Exception
+	{  
+		Point<String> point = new Point<>();
+		point.setX("北纬23度");
+		point.setY("东京15度");
+		showPoint(point);
+		System.out.println(point);
+		System.out.println("//Main done~~~");
+	}
+	
+	public static void showPoint(Point<?>  point)
+	{
+		System.out.println(point.getX().getClass().getSimpleName());
+		System.out.println(point);
+	} 
+}

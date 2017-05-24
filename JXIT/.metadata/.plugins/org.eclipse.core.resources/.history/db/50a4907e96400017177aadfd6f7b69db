@@ -1,0 +1,47 @@
+package main;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.lang.annotation.*;
+import java.lang.reflect.*;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import factory.ServiceFactory;
+import service.IDeptService;
+import service.impl.DeptServiceImpl;
+import utils.BeanOperator;
+import utils.StringUtils;
+import vo.Dept;
+import vo.Employee;
+
+class Person
+{
+	public<T> void show(T t)
+	{
+		System.out.println(t);
+	}
+}
+ 
+public class Hello
+{ 
+	public static void main(String[] args) throws Exception
+	{   
+		Person p = new Person();
+		p.show("hello");
+		
+		
+		
+		System.out.println("//Main done~~~");
+	}
+	
+	 
+}
