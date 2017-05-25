@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;dbinfo.properties&apos; to &apos;Test&apos;&#x0D;&#x0A;- Original project: &apos;face&apos;&#x0D;&#x0A;- Destination element: &apos;Test&apos;&#x0D;&#x0A;- Original element: &apos;dbinfo.properties&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="=Test" element1="resources/dbinfo.properties" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1494513921984" units="0" version="1.0"/>
-</session>
