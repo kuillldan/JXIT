@@ -27,6 +27,8 @@
 		<mapping class="lyk.vo.Subitem" />
 		<mapping class="lyk.vo.Groups" />
 		<mapping class="lyk.vo.Role" />
+		<mapping class="lyk.vo.MemberDetails" />
+		<mapping class="lyk.vo.MemberLogin" />
 
 
 	</session-factory>
