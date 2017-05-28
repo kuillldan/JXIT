@@ -22,9 +22,11 @@
 		</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<mapping class="lyk.vo.News" /> 
+		<mapping class="lyk.vo.News" />
 		<mapping class="lyk.vo.Item" />
 		<mapping class="lyk.vo.Subitem" />
+		<mapping class="lyk.vo.Groups" />
+		<mapping class="lyk.vo.Role" />
 
 
 	</session-factory>

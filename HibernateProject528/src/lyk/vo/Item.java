@@ -75,4 +75,10 @@ public class Item implements java.io.Serializable
 		this.subitems = subitems;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "Item [iid=" + iid + ", title=" + title + ", subitems="
+				+ subitems + "]";
+	}
 }

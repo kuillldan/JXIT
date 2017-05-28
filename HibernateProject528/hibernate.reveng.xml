@@ -27,7 +27,17 @@
 			<generator class="assigned"></generator>
 		</primary-key>
 	</table>
-<table name="subitem" catalog="hedb">
+	<table name="subitem" catalog="hedb">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+	<table name="role" catalog="hedb">
+		<primary-key>
+			<generator class="native"></generator>
+		</primary-key>
+	</table>
+<table name="groups" catalog="hedb">
 	<primary-key>
 		<generator class="native"></generator>
 	</primary-key>

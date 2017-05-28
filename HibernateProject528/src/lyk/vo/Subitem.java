@@ -74,4 +74,10 @@ public class Subitem implements java.io.Serializable
 		this.title = title;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "Subitem [sid=" + sid + ",title=" + title
+				+ "]";
+	} 
 }
