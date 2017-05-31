@@ -1,4 +1,4 @@
-<%@ page contentType="image/jpeg" import="java.awt.*,java.awt.image.*,vo.*,javax.imageio.*" pageEncoding="UTF-8"%>
+<%@ page contentType="image/jpeg" import="java.awt.*,java.awt.image.*,lyk.vo.*,javax.imageio.*" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%!Color getRandColor(int fc, int bc)
 	{//给定范围获得随机颜色
