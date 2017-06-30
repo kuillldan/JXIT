@@ -138,7 +138,23 @@ public class NewsAction extends ActionSupport
 	{
 		this.request = ServletActionContext.getRequest();
 		String column = this.request.getParameter("column");
-		String keyWord = this.request.getParameter("")
-		Map<String, Object> map = this.newsService.list("title", keyWord, currentPage, lineSize)
+		String keyWord = this.request.getParameter("keyWord");
+		Integer currentPage = Integer.parseInt(this.request.getParameter("currentPage"));
+		Integer lineSize = Integer.parseInt(this.request.getParameter("lineSize"));
+		try
+		{
+			Map<String, Object> map = this.newsService.list("title", keyWord, currentPage, lineSize);
+			List<News> allNews = (List<News>)map.get("allNews");
+			Integer allNewsCount = (Integer)map.get("allNewsCount");
+			System.out.println("Total News Count:" + allNewsCount);
+			for(News news : allNews)
+			{
+				System.out.println(news);
+			}
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
