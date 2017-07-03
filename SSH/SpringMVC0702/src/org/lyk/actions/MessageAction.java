@@ -25,6 +25,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.portlet.handler.SimpleMappingExceptionResolver;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -33,6 +37,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @RequestMapping("/pages/back/message/*")
 public class MessageAction
 {
+	private String insertRule = "nid:int|title:string";
+	private String mimeRule = "image/jpeg|image/jpg|image/png";
+	
+	
 	@Resource
 	private IMessageService messageServiceImpl;
 	
@@ -41,17 +49,16 @@ public class MessageAction
 	
 	//@RequestMapping(value="message_insert",method=RequestMethod.POST)
 	@RequestMapping("insert")
-	public ModelAndView insert(Message msg,HttpServletRequest request, HttpServletResponse response)throws Exception
-	{
-		
+	public ModelAndView insert(Message msg,HttpServletRequest request, HttpServletResponse response,MultipartFile photo)throws Exception
+	{ 
 		ServletContext servletContext = request.getServletContext();
 		HttpSession session = request.getSession();
 		System.out.println("真实路径:" + servletContext.getRealPath("/"));
 		System.out.println("SESSION ID:" + session.getId());
-		 
-		
-		
+		  
 		this.messageServiceImpl.insert(msg);
+		
+		System.out.println("上传文件名:" + photo.getName());
 		
 		
 		ModelAndView modelAndView = new ModelAndView("/common/forward");
@@ -141,7 +148,22 @@ public class MessageAction
 		catch(Exception e)
 		{
 			e.printStackTrace();
-		}
+		} 
 		return null;
+	}
+	
+	@RequestMapping("saveFile")
+	public ModelAndView saveFile(MultipartFile photo  )
+	{  
+		System.out.println("========================");
+		String contentType = photo.getContentType();
+		String size = String.valueOf(photo.getSize());
+		boolean isEmpty = photo.isEmpty();
+		
+		ModelAndView modelAndView = new ModelAndView("/message/show"); 
+		modelAndView.addObject("size", size);
+		modelAndView.addObject("isEmtpy",isEmpty);
+		modelAndView.addObject("contentType",contentType);
+		return modelAndView;
 	}
 }

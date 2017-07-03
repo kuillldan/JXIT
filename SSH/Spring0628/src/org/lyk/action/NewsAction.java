@@ -16,6 +16,7 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.lyk.service.INewsService;
 import org.lyk.vo.News;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -136,6 +137,7 @@ public class NewsAction extends ActionSupport
 	
 	public void listSplit()
 	{
+		
 		this.request = ServletActionContext.getRequest();
 		String column = this.request.getParameter("column");
 		String keyWord = this.request.getParameter("keyWord");
