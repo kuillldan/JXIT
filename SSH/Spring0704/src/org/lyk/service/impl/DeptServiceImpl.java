@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
 public class DeptServiceImpl implements IDeptService
 { 
 	@Resource(name="deptDAOImpl2")
-	private IDeptDAO xxxfff;
+	private IDeptDAO deptDAOImpl;
 	
 	@Override
 	public boolean insert(Dept dept)
 	{
-		this.xxxfff.doCreate(dept);
+		this.deptDAOImpl.doCreate(dept);
 		return false;
 	}
-
 }
