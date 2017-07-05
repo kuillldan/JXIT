@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
 import org.lyk.dao.INewsDAO; 
 import org.lyk.service.INewsService;
 import org.lyk.vo.News; 
