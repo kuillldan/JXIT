@@ -75,7 +75,6 @@ import org.apache.http.util.EntityUtils;
  * @author David Smiley dsmiley@mitre.org
  */
 
-@WebServlet(value={"/pages/ProxyServlet/*"},initParams={@WebInitParam(name="redirectURL",value="http://www.cnblogs.com/kuillldan/p/6187464.html")})
 public class ProxyServlet extends HttpServlet
 {
 
@@ -148,6 +147,7 @@ public class ProxyServlet extends HttpServlet
 	@Override
 	public void init() throws ServletException
 	{
+		System.out.println("====init servlet====");
 		String doLogStr = getConfigParam(P_LOG);
 		if (doLogStr != null)
 		{
