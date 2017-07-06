@@ -14,13 +14,18 @@ CREATE TABLE accountManagement
 	CONSTRAINT pk_aid	PRIMARY KEY(aid)
 );
 
-DROP TABLE IF EXISTS statusManagement;
-CREATE TABLE statusManagement
+INSERT INTO accountManagement(userID,transformedUserID,userType,ipAddress) values('yuankui','sheldon','NORMAL','127.0.0.1');
+
+
+DROP TABLE IF EXISTS openOffManagement;
+CREATE TABLE openOffManagement
 (
-	sid 		INT AUTO_INCREMENT,
-	status		INT ,
-	mode		INT	,
+	oid		INT 	AUTO_INCREMENT,
+	status	VARCHAR(10) ,
+	mode	VARCHAR(10) ,
 	startTime	VARCHAR(5),
 	endTime		VARCHAR(5),
-	CONSTRAINT pk_sid PRIMARY KEY(sid)
+	CONSTRAINT pk_oid	PRIMARY KEY(oid)
 );
+
+INSERT INTO openOffManagement(status,mode,startTime,endTime) VALUES('OPEN','AUTO','09:00','21:30');

@@ -75,6 +75,12 @@ import org.apache.http.util.EntityUtils;
  * @author David Smiley dsmiley@mitre.org
  */
 
+@WebServlet(value =
+{ "/pages/ProxyServlet/*" }, initParams =
+{ @WebInitParam(name = "log", value = "true"),
+		@WebInitParam(name = "redirectURL", value = "http://10.43.142.134:8080")
+// @WebInitParam(name = "redirectURL", value = "http://139.199.220.102")
+})
 public class ProxyServlet extends HttpServlet
 {
 
@@ -125,13 +131,13 @@ public class ProxyServlet extends HttpServlet
 
 	protected String getTargetUri(HttpServletRequest servletRequest)
 	{
-		//ProxyServlet.targetUri
+		// ProxyServlet.targetUri
 		return (String) servletRequest.getAttribute(ATTR_TARGET_URI);
 	}
 
 	private HttpHost getTargetHost(HttpServletRequest servletRequest)
 	{
-		//ProxyServlet.targetHost
+		// ProxyServlet.targetHost
 		return (HttpHost) servletRequest.getAttribute(ATTR_TARGET_HOST);
 	}
 
@@ -147,13 +153,14 @@ public class ProxyServlet extends HttpServlet
 	@Override
 	public void init() throws ServletException
 	{
-		System.out.println("====init servlet====");
+		// log
 		String doLogStr = getConfigParam(P_LOG);
 		if (doLogStr != null)
 		{
 			this.doLog = Boolean.parseBoolean(doLogStr);
 		}
-
+		
+		//forwardip
 		String doForwardIPString = getConfigParam(P_FORWARDEDFOR);
 		if (doForwardIPString != null)
 		{
@@ -165,29 +172,35 @@ public class ProxyServlet extends HttpServlet
 		HttpParams hcParams = new BasicHttpParams();
 		// hcParams.setParameter(ClientPNames.COOKIE_POLICY,
 		// CookiePolicy.IGNORE_COOKIES);
+		
+		//http.protocol.handle-redirects=false
 		hcParams.setParameter(ClientPNames.HANDLE_REDIRECTS, Boolean.FALSE);
 		// readConfigParam(hcParams, ClientPNames.HANDLE_REDIRECTS,
 		// Boolean.class);
-		proxyClient = createHttpClient(hcParams);
+		this.proxyClient = createHttpClient(hcParams);
 	}
 
 	protected void initTarget() throws ServletException
 	{
-		targetUri = getConfigParam(P_TARGET_URI);
-		if (targetUri == null)
+		//redirectURL
+		this.targetUri = getConfigParam(P_TARGET_URI);
+		if (this.targetUri == null || "".equals(this.targetUri))
 			throw new ServletException(P_TARGET_URI + " is required.");
 		// test it's valid
 		try
 		{
-			targetUriObj = new URI(targetUri);
+			this.targetUriObj = new URI(targetUri);
 		} catch (Exception e)
 		{
 			throw new ServletException("Trying to process targetUri init parameter: " + e, e);
 		}
-		targetHost = URIUtils.extractHost(targetUriObj);
+		this.targetHost = URIUtils.extractHost(targetUriObj);
 
-		pathTrim = getConfigParam(P_PATH_TRIM);
-		pathPrepend = getConfigParam(P_PATH_PREPEND);
+		//targetHost
+		this.pathTrim = getConfigParam(P_PATH_TRIM);
+		
+		//PathPrepend
+		this.pathPrepend = getConfigParam(P_PATH_PREPEND);
 	}
 
 	/**
@@ -240,7 +253,7 @@ public class ProxyServlet extends HttpServlet
 	 */
 	protected HttpClient getProxyClient()
 	{
-		return proxyClient;
+		return this.proxyClient;
 	}
 
 	/**
@@ -295,15 +308,16 @@ public class ProxyServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
 			throws ServletException, IOException
-	{
-		System.out.println("=====service begin======");
+	{ 
 		// initialize request attributes from caches if unset by a subclass by
 		// this point
+		//ProxyServlet.targetUri
 		if (servletRequest.getAttribute(ATTR_TARGET_URI) == null)
 		{
 			servletRequest.setAttribute(ATTR_TARGET_URI, targetUri);
 		}
-		
+
+		//ProxyServlet.targetHost
 		if (servletRequest.getAttribute(ATTR_TARGET_HOST) == null)
 		{
 			servletRequest.setAttribute(ATTR_TARGET_HOST, targetHost);
@@ -314,6 +328,7 @@ public class ProxyServlet extends HttpServlet
 		// would truly be compatible
 		String method = servletRequest.getMethod();
 		String proxyRequestUri = rewriteUrlFromRequest(servletRequest);
+		System.out.println("proxyRequestUri:" + proxyRequestUri);
 		HttpRequest proxyRequest;
 		// spec: RFC 2616, sec 4.3: either of these two headers signal that
 		// there is a message body.
@@ -400,8 +415,8 @@ public class ProxyServlet extends HttpServlet
 			// Note: Don't need to close servlet outputStream:
 			// http://stackoverflow.com/questions/1159168/should-one-call-close-on-httpservletresponse-getoutputstream-getwriter
 		}
-		
-		System.out.println("=====service end======");
+
+		// System.out.println("=====service end======");
 	}
 
 	protected boolean doResponseRedirectOrNotModifiedLogic(HttpServletRequest servletRequest,
@@ -528,7 +543,7 @@ public class ProxyServlet extends HttpServlet
 	private void setXForwardedForHeader(HttpServletRequest servletRequest, HttpRequest proxyRequest)
 	{
 		String headerName = "X-Forwarded-For";
-		if (doForwardIP)
+		if (this.doForwardIP)
 		{
 			String newHeader = servletRequest.getRemoteAddr();
 			String existingHeader = servletRequest.getHeader(headerName);
@@ -723,14 +738,18 @@ public class ProxyServlet extends HttpServlet
 	{
 		StringBuilder uri = new StringBuilder(500);
 		uri.append(getTargetUri(servletRequest));
+		System.out.println("====" + uri.toString());
 		// Handle the path given to the servlet
 		// if (servletRequest.getPathInfo() != null) {// ex: /my/path.html
 		uri.append(encodeUriQuery(rewriteRequestPath(servletRequest)));
+		System.out.println("====" + uri.toString());
+		
 		// }
 		// Handle the query string & fragment
 		String queryString = servletRequest.getQueryString();// ex:(following
 																// '?'):
 																// name=value&foo=bar#fragment
+		System.out.println("queryString:" + queryString);
 		String fragment = null;
 		// split off fragment from queryString, updating queryString if found
 		if (queryString != null)
@@ -750,7 +769,7 @@ public class ProxyServlet extends HttpServlet
 			uri.append(encodeUriQuery(queryString));
 		}
 
-		if (doSendUrlFragment && fragment != null)
+		if (this.doSendUrlFragment && fragment != null)
 		{
 			uri.append('#');
 			uri.append(encodeUriQuery(fragment));

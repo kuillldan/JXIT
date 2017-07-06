@@ -5,15 +5,18 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.http.client.params.ClientPNames;
+
 import bitool.enums.UserType;
 import dbc.DatabaseConnection;
 
-
+ 
 public class Hello
 {
 	public static void main(String[] args)
 	{
-		
+		String dd = ClientPNames.HANDLE_REDIRECTS;
+		System.out.println(dd);
 	}
 	
 	public static void schedule()

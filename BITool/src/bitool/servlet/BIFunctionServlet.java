@@ -8,9 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.taglibs.standard.tag.common.xml.IfTag;
+
+import bitool.enums.OpenOffStatus;
+import bitool.enums.UserType;
 import bitool.factory.ServiceFactory;
+import bitool.service.impl.OpenOffManagementServiceImpl;
 import bitool.utils.CONST;
 import bitool.vo.AccountManagement;
+import bitool.vo.OpenOffManagement;
 
 /**
  * Servlet implementation class Determin
@@ -19,7 +25,6 @@ import bitool.vo.AccountManagement;
 @WebServlet("/pages/bifunction/BIFunctionServlet/*")
 public class BIFunctionServlet extends HttpServlet
 {
-
 	public BIFunctionServlet()
 	{
 		super();
@@ -37,20 +42,38 @@ public class BIFunctionServlet extends HttpServlet
 		try
 		{
 			String ipAddress = request.getRemoteAddr();
+			System.out.println(ipAddress);
 			AccountManagement accountManagement = ServiceFactory.getAccountManagementServiceInstance()
 					.findAccountByIpAddress(ipAddress);
-			
-			if(null == accountManagement)
+
+			if (null == accountManagement)
 			{
-				request.setAttribute("msg", "user not found");
-				request.setAttribute("url", CONST.errorPageJSP);
-				request.getRequestDispatcher(CONST.forwardPageJSP).forward(request, response);
-			}
-			else
+				this.prevent(request, response, "user not found", CONST.errorPageJSP);
+			} else
 			{
-				request.getRequestDispatcher("/pages/bifunction/show.jsp").forward(request, response);
+				OpenOffManagement openOffManagement = ServiceFactory.getOpenOffManagementServiceInstance()
+						.findOpenOffManagement();
+				
+				System.out.println("UserType:" + accountManagement.getUserType());
+				System.out.println("Stauts:" + openOffManagement.getStatus());
+				
+				
+				if(OpenOffStatus.CLOSED.toString().equals(openOffManagement.getStatus()))
+				{
+					this.prevent(request, response, "current closed for all user", CONST.errorPageJSP);
+				} else if(OpenOffStatus.ADMIN_OPEN.toString().equals(openOffManagement.getStatus()))
+				{
+					if(UserType.NORMAL.toString().equals(accountManagement.getUserType()))
+					{
+						//Normal user && Admin Open Status
+						this.prevent(request, response, "current closed for normal user", CONST.errorPageJSP);
+					}
+					else
+					{
+						request.getRequestDispatcher("/pages/ProxyServlet/hello.jsp").forward(request, response);
+					}
+				}
 			}
-			
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -58,4 +81,11 @@ public class BIFunctionServlet extends HttpServlet
 		}
 	}
 
+	private void prevent(HttpServletRequest request, HttpServletResponse response, String msg, String url)
+			throws Exception
+	{
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		request.getRequestDispatcher(CONST.forwardPageJSP).forward(request, response);
+	}
 }

@@ -30,10 +30,10 @@ public class AccountManagementDAOImpl implements IAccountManagementDAO
 		{
 			vo = new AccountManagement();
 			vo.setAid(rs.getInt("aid"));
-			vo.setUserID("userID");
-			vo.setTransformedUserID("transformedUserID");
-			vo.setUserType("userType");
-			vo.setIpAddress("ipAddress");
+			vo.setUserID(rs.getString("userID"));
+			vo.setTransformedUserID(rs.getString("transformedUserID"));
+			vo.setUserType(rs.getString("userType"));
+			vo.setIpAddress(rs.getString("ipAddress"));
 		}
 		
 		return vo;

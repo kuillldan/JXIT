@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ProxyTestServlet
  */
-@WebServlet(value =
-{ "/pages/ProxyServlet/*" }, initParams =
-{ @WebInitParam(name = "redirectURL", value = "localhost:8080/benben/index.jsp") })
+//@WebServlet(value =
+//{ "/pages/ProxyServlet/*" }, initParams =
+//{ //@WebInitParam(name = "targetUri", value = "http://localhost:8080/AA/index.jsp"),
+//		@WebInitParam(name = "log", value = "true"),
+//		@WebInitParam(name = "redirectURL", value = "http://10.43.142.134:8080") 
+//		//@WebInitParam(name = "redirectURL", value = "http://139.199.220.102") 
+//		})
 public class ProxyTestServlet extends ProxyServlet
 {
 	private static final long serialVersionUID = 1L;
