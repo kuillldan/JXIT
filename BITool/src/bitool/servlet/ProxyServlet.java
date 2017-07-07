@@ -78,7 +78,7 @@ import org.apache.http.util.EntityUtils;
 @WebServlet(value =
 { "/pages/ProxyServlet/*" }, initParams =
 { @WebInitParam(name = "log", value = "true"),
-		@WebInitParam(name = "redirectURL", value = "http://10.43.142.134:8080")
+		@WebInitParam(name = "redirectURL", value = "http://139.199.220.102")
 // @WebInitParam(name = "redirectURL", value = "http://139.199.220.102")
 })
 public class ProxyServlet extends HttpServlet
