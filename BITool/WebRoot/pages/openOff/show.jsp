@@ -35,75 +35,31 @@
 					<tr>
 						<td>开始时刻</td>
 						<td><select>
-								<option>00</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option>15</option>
-								<option>16</option>
-								<option>17</option>
-								<option>18</option>
-								<option>19</option>
-								<option>20</option>
-								<option>21</option>
-								<option>22</option>
-								<option>23</option>
+								<c:forEach items="${allHours }" var="hour">
+									<option value="${hour }" ${hour==startHour?"selected":"" }>${hour }</option>
+								</c:forEach>
 						</select></td>
 						<td colspan="2"><select>
-								<option>00</option>
-								<option>10</option>
-								<option>20</option>
-								<option>30</option>
-								<option>40</option>
-								<option>50</option>
+								<c:forEach items="${allMinutes }" var="minute">
+									<option value="${minute }"
+										${minute==startMinute?"selected":"" }>${minute }</option>
+								</c:forEach>
 						</select></td>
 					</tr>
 					<tr>
 						<td>终了时刻</td>
+
+
 						<td><select>
-								<option>00</option>
-								<option>01</option>
-								<option>02</option>
-								<option>03</option>
-								<option>04</option>
-								<option>05</option>
-								<option>06</option>
-								<option>07</option>
-								<option>08</option>
-								<option>09</option>
-								<option>10</option>
-								<option>11</option>
-								<option>12</option>
-								<option>13</option>
-								<option>14</option>
-								<option>15</option>
-								<option>16</option>
-								<option>17</option>
-								<option>18</option>
-								<option>19</option>
-								<option>20</option>
-								<option>21</option>
-								<option>22</option>
-								<option>23</option>
-						</select></td>
+								<c:forEach items="${allHours }" var="hour">
+									<option value="${hour }" ${hour==endHour?"selected":"" }>${hour }</option>
+								</c:forEach>
+						</select> </select></td>
 						<td><select>
-								<option>00</option>
-								<option>10</option>
-								<option>20</option>
-								<option>30</option>
-								<option>40</option>
-								<option>50</option>
+								<c:forEach items="${allMinutes }" var="minute">
+									<option value="${minute }"
+										${minute==endMinute?"selected":"" }>${minute }</option>
+								</c:forEach>
 						</select></td>
 						<td><button onclick="showAlert()">变更</button></td>
 					</tr>
@@ -130,11 +86,11 @@
 						</c:if>
 						<c:if test="${status=='ADMIN_OPEN' }">
 							<td>管理员闭局</td>
-						</c:if> 
+						</c:if>
 						<td><select>
-								<option>自动开闭局管理</option>
-								<option>手动开闭局管理</option>
-								<option>Maintanance开具</option>
+								<option ${mode=='AUTO' ? "SELECTED":"" }>自动开闭局管理</option>
+								<option ${mode=='MANUAL' ? "SELECTED":"" }>手动开闭局管理</option>
+								<option ${mode=='MAINTAINANCE' ? "SELECTED":"" }>Maintanance开闭局管理</option>
 						</select></td>
 						<td><button>变更</button></td>
 					</tr>

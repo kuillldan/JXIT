@@ -57,6 +57,13 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 
+import bitool.enums.OpenOffStatus;
+import bitool.enums.UserType;
+import bitool.factory.ServiceFactory;
+import bitool.utils.CONST;
+import bitool.vo.AccountManagement;
+import bitool.vo.OpenOffManagement;
+
 /**
  * An HTTP reverse proxy/gateway servlet. It is designed to be extended for
  * customization if desired. Most of the work is handled by <a
@@ -103,6 +110,7 @@ public class ProxyServlet extends HttpServlet
 	protected static final String ATTR_TARGET_HOST = ProxyServlet.class.getSimpleName() + ".targetHost";
 	protected static final String ATTR_PATH_TRIM = ProxyServlet.class.getSimpleName() + ".pathTrim";
 	protected static final String ATTR_PATH_PREPEND = ProxyServlet.class.getSimpleName() + ".pathPrepend";
+	protected static final String ATTR_PATH_APPEND = ProxyServlet.class.getSimpleName() + ".pathAppend";
 
 	/* MISC */
 
@@ -159,8 +167,8 @@ public class ProxyServlet extends HttpServlet
 		{
 			this.doLog = Boolean.parseBoolean(doLogStr);
 		}
-		
-		//forwardip
+
+		// forwardip
 		String doForwardIPString = getConfigParam(P_FORWARDEDFOR);
 		if (doForwardIPString != null)
 		{
@@ -172,8 +180,8 @@ public class ProxyServlet extends HttpServlet
 		HttpParams hcParams = new BasicHttpParams();
 		// hcParams.setParameter(ClientPNames.COOKIE_POLICY,
 		// CookiePolicy.IGNORE_COOKIES);
-		
-		//http.protocol.handle-redirects=false
+
+		// http.protocol.handle-redirects=false
 		hcParams.setParameter(ClientPNames.HANDLE_REDIRECTS, Boolean.FALSE);
 		// readConfigParam(hcParams, ClientPNames.HANDLE_REDIRECTS,
 		// Boolean.class);
@@ -182,7 +190,7 @@ public class ProxyServlet extends HttpServlet
 
 	protected void initTarget() throws ServletException
 	{
-		//redirectURL
+		// redirectURL
 		this.targetUri = getConfigParam(P_TARGET_URI);
 		if (this.targetUri == null || "".equals(this.targetUri))
 			throw new ServletException(P_TARGET_URI + " is required.");
@@ -196,10 +204,10 @@ public class ProxyServlet extends HttpServlet
 		}
 		this.targetHost = URIUtils.extractHost(targetUriObj);
 
-		//targetHost
+		// targetHost
 		this.pathTrim = getConfigParam(P_PATH_TRIM);
-		
-		//PathPrepend
+
+		// PathPrepend
 		this.pathPrepend = getConfigParam(P_PATH_PREPEND);
 	}
 
@@ -308,16 +316,20 @@ public class ProxyServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
 			throws ServletException, IOException
-	{ 
+	{
+		if(!this.validate(servletRequest, servletResponse))
+		{
+			return;
+		} 
 		// initialize request attributes from caches if unset by a subclass by
 		// this point
-		//ProxyServlet.targetUri
+		// ProxyServlet.targetUri
 		if (servletRequest.getAttribute(ATTR_TARGET_URI) == null)
 		{
 			servletRequest.setAttribute(ATTR_TARGET_URI, targetUri);
 		}
 
-		//ProxyServlet.targetHost
+		// ProxyServlet.targetHost
 		if (servletRequest.getAttribute(ATTR_TARGET_HOST) == null)
 		{
 			servletRequest.setAttribute(ATTR_TARGET_HOST, targetHost);
@@ -691,13 +703,13 @@ public class ProxyServlet extends HttpServlet
 		return res;
 	}
 
-	protected boolean doPathPrepend(StringBuilder sb, String apendStr)
+	protected boolean doPathPrepend(StringBuilder sb, String prePendStr)
 	{
 		Boolean res = Boolean.FALSE;
-		if (apendStr != null && !apendStr.isEmpty())
+		if (prePendStr != null && !prePendStr.isEmpty())
 		{
 			res = Boolean.TRUE;
-			String lPathPrepend = apendStr;
+			String lPathPrepend = prePendStr;
 			if (!lPathPrepend.startsWith("/"))
 			{
 				lPathPrepend = "/" + lPathPrepend;
@@ -706,6 +718,9 @@ public class ProxyServlet extends HttpServlet
 			{
 				lPathPrepend = lPathPrepend.substring(0, lPathPrepend.length() - 1);
 			}
+			// 最前面增加/
+			// 最后面去掉/
+			// /pages/from/jobServlet
 			if (sb.length() == 0 || sb.charAt(0) == '/')
 			{
 				sb.insert(0, lPathPrepend);
@@ -715,6 +730,12 @@ public class ProxyServlet extends HttpServlet
 			}
 		}
 
+		return res;
+	}
+
+	protected boolean doPathAppend(StringBuilder sb, String apendStr)
+	{
+		Boolean res = Boolean.FALSE;
 		return res;
 	}
 
@@ -743,7 +764,7 @@ public class ProxyServlet extends HttpServlet
 		// if (servletRequest.getPathInfo() != null) {// ex: /my/path.html
 		uri.append(encodeUriQuery(rewriteRequestPath(servletRequest)));
 		System.out.println("====" + uri.toString());
-		
+
 		// }
 		// Handle the query string & fragment
 		String queryString = servletRequest.getQueryString();// ex:(following
@@ -921,4 +942,62 @@ public class ProxyServlet extends HttpServlet
 										// place
 	}
 
+	protected boolean validate(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		try
+		{
+			System.out.println("========do post ");
+			String ipAddress = request.getRemoteAddr();
+			System.out.println(ipAddress);
+			AccountManagement accountManagement = ServiceFactory.getAccountManagementServiceInstance()
+					.findAccountByIpAddress(ipAddress);
+
+			if (null == accountManagement)
+			{
+				this.prevent(request, response, "user not found", CONST.errorPageJSP);
+				return false;
+			} else
+			{
+				OpenOffManagement openOffManagement = ServiceFactory.getOpenOffManagementServiceInstance()
+						.findOpenOffManagement();
+
+				System.out.println("UserType:" + accountManagement.getUserType());
+				System.out.println("Stauts:" + openOffManagement.getStatus());
+
+				if (OpenOffStatus.CLOSED.toString().equals(openOffManagement.getStatus()))
+				{
+					this.prevent(request, response, "current closed for all user", CONST.errorPageJSP);
+					return false;
+				} else
+				{
+					if (OpenOffStatus.ADMIN_OPEN.toString().equals(openOffManagement.getStatus()))
+					{
+						if (UserType.NORMAL.toString().equals(accountManagement.getUserType()))
+						{
+							// Normal user && Admin Open Status
+							this.prevent(request, response, "current closed for normal user",
+									CONST.errorPageJSP);
+							return false;
+						}
+					} 
+				}
+				
+				return true;
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			request.getRequestDispatcher(CONST.errorPageJSP).forward(request, response);
+			return false;
+		}
+	}
+
+	private void prevent(HttpServletRequest request, HttpServletResponse response, String msg, String url)
+			throws Exception
+	{
+		request.setAttribute("msg", msg);
+		request.setAttribute("url", url);
+		request.getRequestDispatcher(CONST.forwardPageJSP).forward(request, response);
+	}
 }

@@ -1,6 +1,8 @@
 package bitool.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -78,6 +80,30 @@ public class openOffServlet extends HttpServlet
 			request.setAttribute("startMinute", startMinute);
 			request.setAttribute("endHour", endHour);
 			request.setAttribute("endMinute", endMinute);
+			
+			List<String> allHours = new ArrayList<String>();
+			for(int i = 0; i <= 23; i++)
+			{
+				if(i<10)
+				{
+					allHours.add("0" + i);
+				}
+				else
+				{
+					allHours.add(String.valueOf(i));
+				}
+			}
+			
+			List<String> allMinutes = new ArrayList<String>();
+			allMinutes.add("00");
+			for(int i = 1; i <= 5; i++)
+			{
+				allMinutes.add(i + "0");
+			}
+			
+			request.setAttribute("allHours", allHours);
+			request.setAttribute("allMinutes", allMinutes);
+			
 			return "/pages/openOff/show.jsp";
 		} catch (Exception e)
 		{ 

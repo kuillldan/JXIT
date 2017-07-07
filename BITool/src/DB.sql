@@ -22,10 +22,10 @@ CREATE TABLE openOffManagement
 (
 	oid		INT 	AUTO_INCREMENT,
 	status	VARCHAR(10) ,
-	mode	VARCHAR(10) ,
+	mode	VARCHAR(20) ,
 	startTime	VARCHAR(5),
 	endTime		VARCHAR(5),
 	CONSTRAINT pk_oid	PRIMARY KEY(oid)
 );
 
-INSERT INTO openOffManagement(status,mode,startTime,endTime) VALUES('OPEN','AUTO','09:00','21:30');
+INSERT INTO openOffManagement(status,mode,startTime,endTime) VALUES('OPEN','MAINTAINANCE','09:00','21:30');
