@@ -13,11 +13,7 @@
 <base href="<%=basePath%>">
 
 <title>My JSP 'show.jsp' starting page</title>
-<script type="text/javascript">
-	function showAlert() {
-		alert("你没有选择任何改变,该操作不能执行。");
-	}
-</script>
+ <script type="text/javascript" src="js/openOffManagement.js"></script>
 </head>
 
 <body>
@@ -34,12 +30,12 @@
 					</tr>
 					<tr>
 						<td>开始时刻</td>
-						<td><select>
+						<td><select id="currentStartHour">
 								<c:forEach items="${allHours }" var="hour">
 									<option value="${hour }" ${hour==startHour?"selected":"" }>${hour }</option>
 								</c:forEach>
 						</select></td>
-						<td colspan="2"><select>
+						<td colspan="2"><select id="currentStartMinute">
 								<c:forEach items="${allMinutes }" var="minute">
 									<option value="${minute }"
 										${minute==startMinute?"selected":"" }>${minute }</option>
@@ -61,7 +57,7 @@
 										${minute==endMinute?"selected":"" }>${minute }</option>
 								</c:forEach>
 						</select></td>
-						<td><button onclick="showAlert()">变更</button></td>
+						<td><button onclick="checkAutoManagementTime(startHour,startMinute,endHour,endMinute)">变更</button></td>
 					</tr>
 				</table>
 			</td>
