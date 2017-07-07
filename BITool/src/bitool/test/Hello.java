@@ -15,8 +15,7 @@ public class Hello
 {
 	public static void main(String[] args)
 	{
-		String dd = ClientPNames.HANDLE_REDIRECTS;
-		System.out.println(dd);
+		schedule();
 	}
 	
 	public static void schedule()
@@ -24,16 +23,28 @@ public class Hello
 		StartupEachDay startupEachDay = new StartupEachDay("打开引擎");
 		Calendar currentTime = Calendar.getInstance();
 		long currentTimeInLong = currentTime.getTime().getTime();
-		Calendar nextRuningTime = startupEachDay.getEarliestDate(currentTime, 13, 52, 0);
+		Calendar nextRuningTime = startupEachDay.getEarliestDate(currentTime, 15, 42, 0);
 		long nextRuningTimeInLong = nextRuningTime.getTime().getTime();
 		
-		System.out.println(currentTimeInLong);
-		System.out.println(nextRuningTimeInLong);
+		
 		Long delay = nextRuningTimeInLong - currentTimeInLong;
 		//long period = 24 * 60 *60 * 1000;
 		long period = 60 * 1000;
 		ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(10);
 		System.out.println("delay=" + delay);
+		scheduledExecutorService.scheduleAtFixedRate(startupEachDay, delay, period, TimeUnit.MILLISECONDS);
+		
+		System.out.println("===============");
+		currentTime = Calendar.getInstance();
+		currentTimeInLong = currentTime.getTime().getTime();
+		nextRuningTime = startupEachDay.getEarliestDate(currentTime, 15, 45, 0);
+		nextRuningTimeInLong = nextRuningTime.getTime().getTime();
+		delay = nextRuningTimeInLong - currentTimeInLong;
+		scheduledExecutorService.shutdown();
+		
+		scheduledExecutorService =  Executors.newScheduledThreadPool(10);
+		
+		
 		scheduledExecutorService.scheduleAtFixedRate(startupEachDay, delay, period, TimeUnit.MILLISECONDS);
 	}
 }

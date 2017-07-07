@@ -1,8 +1,13 @@
-package bitool.test;
+package bitool.job;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimerTask;
+
+import bitool.enums.OpenOffMode;
+import bitool.enums.OpenOffStatus;
+import bitool.factory.ServiceFactory;
+import bitool.servlet.InitServletGlobal;
 
 public class StartupEachDay extends TimerTask
 {
@@ -14,14 +19,43 @@ public class StartupEachDay extends TimerTask
 		this.jobName = jobName;
 	}
 
+	public String getJobName()
+	{
+		return jobName;
+	}
+
+
+
+	public void setJobName(String jobName)
+	{
+		this.jobName = jobName;
+	}
+
+
+
 	@Override
 	public void run()
 	{
-		System.out.println("Date = " + new Date() + ", execute " + this.jobName);
+		if (OpenOffMode.AUTO.toString().equalsIgnoreCase(InitServletGlobal.currentStatus.getMode()))
+		{
+			try
+			{
+				ServiceFactory.getOpenOffManagementServiceInstance().updateStatus(
+						OpenOffStatus.OPEN.toString());
+				InitServletGlobal.currentStatus.setStatus(OpenOffStatus.OPEN.toString());
+				System.out.println("状态更新成功:" + InitServletGlobal.currentStatus);
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+			System.out.println("JOB 未执行:" + InitServletGlobal.currentStatus);
+		}
 	}
 
-	public Calendar getEarliestDate(Calendar currentDate, int hourOfDay,
-			int minuteOfHour, int secondOfMinite)
+	public Calendar getEarliestDate(Calendar currentDate, int hourOfDay, int minuteOfHour, int secondOfMinite)
 	{
 		// 计算当前时间的DAY_OF_WEEK, HOUR_OF_DAY, MINUTE,SECOND等各个字段值
 		int currentDayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);

@@ -1,11 +1,17 @@
-function checkAutoManagementTime(startHour,startMinute,endHour,endMinute)
-{
-	alert("XX");
+function checkAutoManagementTime(startHour, startMinute, endHour, endMinute,
+		url) {
 	var currentStartHour = document.getElementById("currentStartHour").value;
-	alert(currentStartHour);
-}
+	var currentStartMinute = document.getElementById("currentStartMinute").value;
+	var currentEndHour = document.getElementById("currentEndHour").value;
+	var currentEndMinute = document.getElementById("currentEndMinute").value;
 
+	if (startHour == currentStartHour && startMinute == currentStartMinute
+			&& endHour == currentEndHour && endMinute == currentEndMinute) {
+		alert("你没有做任何改变，请选择后再试!");
+	} else {
+		window.location = url + "?startHour=" + currentStartHour
+				+ "&startMinute=" + currentStartMinute + "&endHour="
+				+ currentEndHour + "&endMinute=" + currentEndMinute;
+	}
 
-function showAlert() {
-	alert("你没有选择任何改变,该操作不能执行。");
 }

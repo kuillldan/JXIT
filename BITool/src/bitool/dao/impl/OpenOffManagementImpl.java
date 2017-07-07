@@ -35,4 +35,23 @@ public class OpenOffManagementImpl implements IOpenOffManagement
 		return vo;
 	}
 
+	@Override
+	public boolean updateTime(OpenOffManagement vo) throws Exception
+	{
+		String sql = " UPDATE OpenOffManagement SET startTime=?,endTime=? ";
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1, vo.getStartTime());
+		ps.setString(2, vo.getEndTime());
+		return ps.executeUpdate() == 1;
+	}
+
+	@Override
+	public boolean updateStatus(String status) throws Exception
+	{
+		String sql = " UPDATE OpenOffManagement SET status=? ";
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1, status);
+		return ps.executeUpdate() == 1;
+	}
+
 }

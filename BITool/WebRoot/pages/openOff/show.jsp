@@ -2,9 +2,36 @@
 <%@taglib prefix="c" uri="http://liuyuankui.cn"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
+			+ request.getServerPort() + path + "/";
+%>
+
+<%
+	String changeTimeURL = basePath + "pages/openOff/openOffServlet/updateTime";
+ %>
+
+<%
+	List<String> allHours = new ArrayList<String>();
+	for (int i = 0; i <= 23; i++)
+	{
+		if (i < 10)
+		{
+			allHours.add("0" + i);
+		} else
+		{
+			allHours.add(String.valueOf(i));
+		}
+	}
+
+	List<String> allMinutes = new ArrayList<String>();
+	allMinutes.add("00");
+	for (int i = 1; i <= 5; i++)
+	{
+		allMinutes.add(i + "0");
+	}
+
+	pageContext.setAttribute("allHours", allHours);
+	pageContext.setAttribute("allMinutes", allMinutes);
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -13,7 +40,7 @@
 <base href="<%=basePath%>">
 
 <title>My JSP 'show.jsp' starting page</title>
- <script type="text/javascript" src="js/openOffManagement.js"></script>
+<script type="text/javascript" src="js/openOffManagement.js"></script>
 </head>
 
 <body>
@@ -46,18 +73,18 @@
 						<td>终了时刻</td>
 
 
-						<td><select>
+						<td><select id="currentEndHour">
 								<c:forEach items="${allHours }" var="hour">
 									<option value="${hour }" ${hour==endHour?"selected":"" }>${hour }</option>
 								</c:forEach>
-						</select> </select></td>
-						<td><select>
+						</select></td>
+						<td><select id="currentEndMinute">
 								<c:forEach items="${allMinutes }" var="minute">
-									<option value="${minute }"
-										${minute==endMinute?"selected":"" }>${minute }</option>
+									<option value="${minute }" ${minute==endMinute?"selected":"" }>${minute }</option>
 								</c:forEach>
 						</select></td>
-						<td><button onclick="checkAutoManagementTime(startHour,startMinute,endHour,endMinute)">变更</button></td>
+						<td><button
+								onclick="checkAutoManagementTime('${startHour}','${startMinute }','${endHour }','${endMinute }','<%=changeTimeURL%>')">变更</button></td>
 					</tr>
 				</table>
 			</td>
@@ -74,15 +101,13 @@
 						<td></td>
 					</tr>
 					<tr>
-						<c:if test="${status=='OPEN' }">
-							<td>开局</td>
-						</c:if>
-						<c:if test="${status=='CLOSED' }">
-							<td>闭局</td>
-						</c:if>
-						<c:if test="${status=='ADMIN_OPEN' }">
-							<td>管理员闭局</td>
-						</c:if>
+						<td><c:if test="${mode=='AUTO' }">
+							自动
+						</c:if> <c:if test="${mode=='MANUAL' }">
+							手动
+						</c:if> <c:if test="${mode=='MAINTAINANCE' }">
+							 MAINTANANCE开闭局管理
+						</c:if></td>
 						<td><select>
 								<option ${mode=='AUTO' ? "SELECTED":"" }>自动开闭局管理</option>
 								<option ${mode=='MANUAL' ? "SELECTED":"" }>手动开闭局管理</option>
