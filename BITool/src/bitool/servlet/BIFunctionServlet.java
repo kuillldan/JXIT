@@ -30,84 +30,70 @@ public class BIFunctionServlet extends HttpServlet
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException
 	{
 		this.doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+			IOException
 	{
 		try
 		{
 			String ipAddress = request.getRemoteAddr();
 			System.out.println(ipAddress);
-			AccountManagement accountManagement = ServiceFactory
-					.getAccountManagementServiceInstance()
+			AccountManagement accountManagement = ServiceFactory.getAccountManagementServiceInstance()
 					.findAccountByIpAddress(ipAddress);
 
 			if (null == accountManagement)
 			{
-				this.prevent(request, response, "user not found",
-						CONST.errorPageJSP);
+				this.prevent(request, response, "user not found", CONST.errorPageJSP);
 			} else
 			{
-				OpenOffManagement openOffManagement = ServiceFactory
-						.getOpenOffManagementServiceInstance()
+				OpenOffManagement openOffManagement = ServiceFactory.getOpenOffManagementServiceInstance()
 						.findOpenOffManagement();
 
-				System.out.println("UserType:"
-						+ accountManagement.getUserType());
+				System.out.println("UserType:" + accountManagement.getUserType());
 				System.out.println("Stauts:" + openOffManagement.getStatus());
 
-				if (OpenOffStatus.CLOSED.toString().equals(
-						openOffManagement.getStatus()))
+				if (OpenOffStatus.CLOSED.toString().equals(openOffManagement.getStatus()))
 				{
-					this.prevent(request, response,
-							"current closed for all user", CONST.errorPageJSP);
+					this.prevent(request, response, "current closed for all user", CONST.errorPageJSP);
 				} else
 				{
-					if (OpenOffStatus.ADMIN_OPEN.toString().equals(
-							openOffManagement.getStatus()))
+					if (OpenOffStatus.ADMIN_OPEN.toString().equals(openOffManagement.getStatus()))
 					{
-						if (UserType.NORMAL.toString().equals(
-								accountManagement.getUserType()))
+						if (UserType.NORMAL.toString().equals(accountManagement.getUserType()))
 						{
 							// Normal user && Admin Open Status
-							this.prevent(request, response,
-									"current closed for normal user",
+							this.prevent(request, response, "current closed for normal user",
 									CONST.errorPageJSP);
 						} else
 						{
-							request.getRequestDispatcher(
-									"/pages/ProxyServlet/hello.jsp").forward(
-									request, response);
+							request.getRequestDispatcher("/pages/ProxyServlet/hello.jsp").forward(request,
+									response);
 						}
 
 					} else
 					{
-						request.getRequestDispatcher(
-								"/pages/ProxyServlet/hello.jsp").forward(
-								request, response);
+						request.getRequestDispatcher("/pages/ProxyServlet/hello.jsp").forward(request,
+								response);
 					}
 				}
 			}
 		} catch (Exception e)
 		{
 			e.printStackTrace();
-			request.getRequestDispatcher(CONST.errorPageJSP).forward(request,
-					response);
+			request.getRequestDispatcher(CONST.errorPageJSP).forward(request, response);
 		}
 	}
 
-	private void prevent(HttpServletRequest request,
-			HttpServletResponse response, String msg, String url)
+	private void prevent(HttpServletRequest request, HttpServletResponse response, String msg, String url)
 			throws Exception
 	{
 		request.setAttribute("msg", msg);
 		request.setAttribute("url", url);
-		request.getRequestDispatcher(CONST.forwardPageJSP).forward(request,
-				response);
+		request.getRequestDispatcher(CONST.forwardPageJSP).forward(request, response);
 	}
 }
