@@ -15,3 +15,12 @@ function checkAutoManagementTime(startHour, startMinute, endHour, endMinute,
 	}
 
 }
+
+function changeMode(mode, url) {
+
+	var currentMode = document.getElementById("currentMode").value;
+	if (mode == currentMode)
+		alert("你没有做任何改变，请选择后再试!");
+	else
+		window.location = url + "?mode=" + currentMode;
+}

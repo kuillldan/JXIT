@@ -59,6 +59,24 @@ public class StartupEachDay extends TimerTask
 	{
 		// 计算当前时间的DAY_OF_WEEK, HOUR_OF_DAY, MINUTE,SECOND等各个字段值
 		int currentDayOfWeek = currentDate.get(Calendar.DAY_OF_WEEK);
+		
+
+		if (isPostponeToTomorrow(currentDate, hourOfDay, minuteOfHour, secondOfMinite))
+		{
+			// 设置当前日期中的DAY_OF_WEEK为当前周推迟一天
+			currentDate.set(Calendar.DAY_OF_WEEK, currentDayOfWeek + 1);
+		}
+		
+		
+		// 设置当前日期中的HOUR_OF_DAY,MINUTE,SECOND为输入条件中的值。
+		currentDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
+		currentDate.set(Calendar.MINUTE, minuteOfHour);
+		currentDate.set(Calendar.SECOND, secondOfMinite);
+		return currentDate;
+	}
+	
+	public static boolean isPostponeToTomorrow(Calendar currentDate,Integer hourOfDay,Integer minuteOfHour,Integer secondOfMinite)
+	{
 		int currentHour = currentDate.get(Calendar.HOUR_OF_DAY);
 		int currentMinute = currentDate.get(Calendar.MINUTE);
 		int currentSecond = currentDate.get(Calendar.SECOND);
@@ -89,16 +107,7 @@ public class StartupEachDay extends TimerTask
 				}
 			}
 		}
-
-		if (postponeToTomorrow)
-		{
-			// 设置当前日期中的DAY_OF_WEEK为当前周推迟一天
-			currentDate.set(Calendar.DAY_OF_WEEK, currentDayOfWeek + 1);
-		}
-		// 设置当前日期中的HOUR_OF_DAY,MINUTE,SECOND为输入条件中的值。
-		currentDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
-		currentDate.set(Calendar.MINUTE, minuteOfHour);
-		currentDate.set(Calendar.SECOND, secondOfMinite);
-		return currentDate;
+		
+		return postponeToTomorrow;
 	}
 }

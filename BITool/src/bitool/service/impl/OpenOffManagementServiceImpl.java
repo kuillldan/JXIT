@@ -59,5 +59,22 @@ public class OpenOffManagementServiceImpl implements IOpenOffManagementService
 		{
 			this.dbc.close();
 		}
+	}
+
+	@Override
+	public boolean updateMode(String mode) throws Exception
+	{
+		try
+		{
+			return DAOFactory.getOpenOffManagementDAOInstance(this.dbc.getConnection()).updateMode(mode);
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+		finally
+		{
+			this.dbc.close();
+		}
 	} 
 }

@@ -8,6 +8,7 @@
 
 <%
 	String changeTimeURL = basePath + "pages/openOff/openOffServlet/updateTime";
+	String changeModeURL = basePath + "pages/openOff/openOffServlet/updateMode";
  %>
 
 <%
@@ -108,12 +109,12 @@
 						</c:if> <c:if test="${mode=='MAINTAINANCE' }">
 							 MAINTANANCE开闭局管理
 						</c:if></td>
-						<td><select>
-								<option ${mode=='AUTO' ? "SELECTED":"" }>自动开闭局管理</option>
-								<option ${mode=='MANUAL' ? "SELECTED":"" }>手动开闭局管理</option>
-								<option ${mode=='MAINTAINANCE' ? "SELECTED":"" }>Maintanance开闭局管理</option>
+						<td><select id="currentMode">
+								<option value="AUTO" ${mode=='AUTO' ? "SELECTED":"" }>自动开闭局管理</option>
+								<option value="MANUAL" ${mode=='MANUAL' ? "SELECTED":"" }>手动开闭局管理</option>
+								<option value="MAINTAINANCE" ${mode=='MAINTAINANCE' ? "SELECTED":"" }>Maintanance开闭局管理</option>
 						</select></td>
-						<td><button>变更</button></td>
+						<td><button onclick="changeMode('${mode }','<%=changeModeURL%>')">变更</button></td>
 					</tr>
 				</table>
 			</td>

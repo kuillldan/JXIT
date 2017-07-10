@@ -54,4 +54,13 @@ public class OpenOffManagementImpl implements IOpenOffManagement
 		return ps.executeUpdate() == 1;
 	}
 
+	@Override
+	public boolean updateMode(String mode) throws Exception
+	{ 
+		String sql = " UPDATE OpenOffManagement SET mode=? ";
+		PreparedStatement ps = this.conn.prepareStatement(sql);
+		ps.setString(1, mode);
+		return ps.executeUpdate() == 1;
+	}
+
 }
