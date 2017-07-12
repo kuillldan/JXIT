@@ -3,6 +3,7 @@ package org.lyk.actions;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.lyk.utils.AbstractServlet;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -13,7 +14,7 @@ import org.springframework.web.portlet.ModelAndView;
 
 @Controller
 @RequestMapping("/pages/empServlet/*")
-public class EmpServlet
+public class EmpServlet extends AbstractServlet
 {
 	@RequestMapping("insert")
 	public ModelAndView insert(org.lyk.vo.Emp emp)
@@ -21,11 +22,11 @@ public class EmpServlet
 		System.out.println(emp);
 		return null;
 	}
-	
-	@InitBinder
-	public void dateTranslator(WebDataBinder webDataBinder)
+
+	@Override
+	protected String getUploadFolder()
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-	}
+		// TODO Auto-generated method stub
+		return null;
+	} 
 }

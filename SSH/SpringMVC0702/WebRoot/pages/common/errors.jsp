@@ -5,16 +5,12 @@
 			+ request.getServerPort() + path + "/";
 %>
 
-<%
-	String fileHandlerURL = basePath + "pages/echo/fileHandler.action";
-%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'fileUploader.jsp' starting page</title>
+<title>My JSP 'errors.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -28,12 +24,6 @@
 </head>
 
 <body>
-	<form action="<%=fileHandlerURL%>" method="post"
-		enctype="multipart/form-data">
-		名称:<input type="text" name="name" id="name"><br/>
-		选择文件:<input type="file" name="photo1" id="photo1" /><br/>	
-		选择文件:<input type="file" name="photo2" id="photo2" /><br/>	
-		<input type="submit" value="提交">
-	</form>
+	<h1>Internal Exception. Please contact system administrator.</h1>
 </body>
 </html>
