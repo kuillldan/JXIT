@@ -10,9 +10,8 @@
 
 	<context:annotation-config />
 	<context:component-scan base-package="org.lyk" />
-
-	<bean id="msgSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
+	
+	<bean id="message111Source" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<array>
 				<value>Messages</value>
@@ -20,16 +19,22 @@
 		</property>
 	</bean>
 
+	<!-- <bean id="msgSource" class="org.springframework.context.support.ResourceBundleMessageSource"> 
+		<property name="basenames"> <array> <value>Messages</value> </array> </property> 
+		</bean> -->
+
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxInMemorySize" value="51200000"></property>
 		<property name="maxUploadSize" value="51200"></property>
 	</bean>
-	
-	<bean id="exceptionMapping" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+
+	<bean id="exceptionMapping"
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/pages/common/errors.jsp</prop>
+				<prop
+					key="org.springframework.web.multipart.MaxUploadSizeExceededException">/pages/common/errors.jsp</prop>
 				<prop key="java.lang.ArithmeticException">/pages/common/devideByZero.jsp</prop>
 			</props>
 		</property>

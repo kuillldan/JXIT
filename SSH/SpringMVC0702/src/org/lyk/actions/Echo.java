@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.lyk.utils.AbstractServlet;
 import org.springframework.context.MessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,16 +19,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class Echo extends AbstractServlet
 {
 	@Resource
-	MessageSource msgSource;
+	private MessageSource message111Source;
 
 	@RequestMapping("sayHello")
 	public ModelAndView sayHello(String name)
 	{
-		System.out.println(this.msgSource.getMessage("welcome", new Object[]
+		System.out.println(this.message111Source.getMessage("welcome", new Object[]
 		{ name }, Locale.getDefault()));
-		
-		int a = 4/0;
-		
 		return null;
 	}
 
