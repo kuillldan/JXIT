@@ -19,12 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 public class Echo extends AbstractServlet
 {
 	@Resource
-	private MessageSource message111Source;
+	private MessageSource messageSource;
+	
+	
 
 	@RequestMapping("sayHello")
 	public ModelAndView sayHello(String name)
 	{
-		System.out.println(this.message111Source.getMessage("welcome", new Object[]
+		System.out.println(this.messageSource.getMessage("welcome", new Object[]
 		{ name }, Locale.getDefault()));
 		return null;
 	}

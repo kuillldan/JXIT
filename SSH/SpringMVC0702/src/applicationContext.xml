@@ -11,10 +11,20 @@
 	<context:annotation-config />
 	<context:component-scan base-package="org.lyk" />
 	
-	<bean id="message111Source" class="org.springframework.context.support.ResourceBundleMessageSource">
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/pages/**/*.action"/>
+			<bean class="org.lyk.utils.ValidationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basenames">
 			<array>
 				<value>Messages</value>
+				<value>Validations</value>
+				<value>Pages</value>
 			</array>
 		</property>
 	</bean>

@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'errors.jsp' starting page</title>
+<title>My JSP 'error.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<h1>Internal Exception. Please contact system administrator.</h1>
+	EMP 发生异常
 	<h1>${errors }</h1>
 </body>
 </html>
