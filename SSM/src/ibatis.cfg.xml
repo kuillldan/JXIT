@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig> 
+	<!-- 配置命名空间可以使用 -->
+	<settings useStatementNamespaces="true" />
+	<!-- 定义数据库的连接操作，所有的连接操作都自动加入到事务控制之中 -->
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="org.gjt.mm.mysql.Driver" />
+			<property name="JDBC.ConnectionURL" value="jdbc:mysql://localhost:3306/ibatis" />
+			<property name="JDBC.Username" value="root" />
+			<property name="JDBC.Password" value="mysqladmin" />
+		</dataSource>
+	</transactionManager>
+	<!-- 定义每一个映射文件的路径 -->
+	<sqlMap resource="org/lyk/vo/mapping/News.xml" />
+</sqlMapConfig>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- 定义这个文件的命名空间，以后使用命名空间访问操作，所有的文件命名空间不允许重复 -->
+<sqlMap namespace="NewsNS">
+	<!-- 定义一个包.类的别名，这样在整个配置里面就不需要重复写类的完整名称了 -->
+	<typeAlias alias="News" type="cn.mldn.vo.News"/>
+	<!-- IBatis里面这样的操作没有意义，但是MyBatis有意义 -->
+	<resultMap class="News" id="NewsResultMap">
+		<result property="nid" column="nid"/>
+		<result property="title" column="title"/>
+		<result property="pubdate" column="pub_date"/>
+		<result property="content" column="content"/>
+	</resultMap>
+	<!-- 表示数据增加时要执行的SQL语句，而增加时都会传递News这个VO对象，此处是别名 -->
+	<insert id="doCreate" parameterClass="News">
+		<!-- 此时编写增加的SQL语句，如果访问的是类的属性内容就使用“#属性名称#”，自动调用getter -->
+		INSERT INTO news(title,pub_date,content) VALUES (#title#,#pubdate#,#content#) 
+		<selectKey keyProperty="nid" resultClass="Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="doUpdate" parameterClass="News">
+		UPDATE news SET title=#title#,pub_date=#pubdate#,content=#content# WHERE nid=#nid#
+	</update>
+	<delete id="doRemove" parameterClass="Integer">
+		DELETE FROM news WHERE nid=#pnid#
+	</delete>
+	<delete id="doRemoveBatch" parameterClass="String">
+		DELETE FROM news WHERE nid IN (#param#) 
+	</delete>
+	<select id="findAll" resultMap="NewsResultMap">
+		SELECT nid,title,pub_date,content FROM news 
+	</select>
+	<!-- 表示将查询的结果转换为ResultMap出现 -->
+	<select id="findById" resultMap="NewsResultMap" parameterClass="Integer">
+		SELECT nid,title,pub_date,content FROM news WHERE nid=#pnid#
+	</select>
+	<!-- 出现的字段使用“$名称$” -->
+	<select id="findAllSplit" resultMap="NewsResultMap" parameterClass="java.util.Map">
+		SELECT nid,title,pub_date,content FROM news 
+		WHERE $column$ LIKE #keyWord#
+		LIMIT #start#,#lineSize# 
+	</select>
+	<select id="getAllCount" resultClass="Integer">
+		SELECT COUNT(*) FROM News WHERE $column$ LIKE #keyWord#
+	</select>
+</sqlMap>

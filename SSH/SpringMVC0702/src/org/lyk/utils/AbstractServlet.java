@@ -49,10 +49,13 @@ public abstract class AbstractServlet
 				this.formatPath(this.getUploadFolder()));
 		String fileFullPath = fileUploadFolder + "/" + fileName;
 		File fileToBeSaved = new File(fileFullPath);
-		if (fileToBeSaved.getParentFile().exists())
+		
+		if (!fileToBeSaved.getParentFile().exists())
 		{
 			fileToBeSaved.getParentFile().mkdirs();
 		}
+		
+		
 		OutputStream os = new FileOutputStream(fileToBeSaved);
 
 		byte[] buffer = new byte[1024 * 1024];
