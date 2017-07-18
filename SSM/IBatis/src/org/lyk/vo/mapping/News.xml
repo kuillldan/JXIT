@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="NewsNS">
+	<typeAlias alias="News" type="org.lyk.vo.News" />
+
+	<resultMap class="News" id="newsResultMapping">
+		<result property="nid" column="nid" />
+		<result property="title" column="title" />
+		<result property="pubdate" column="pub_date" />
+		<result property="content" column="content" />
+	</resultMap>
+
+
+	<insert id="doCreate" parameterClass="News">
+		INSERT INTO news(title,pub_date,content) VALUES
+		(#title#,#pubdate#,#content#)
+		<selectKey resultClass="Integer" keyProperty="nid">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="doUpdate" parameterClass="News">
+		UPDATE news SET
+		title=#title#,content=#content# WHERE nid = #nid#
+	</update>
+	<delete id="doRemove" parameterClass="Integer">
+		DELETE FROM news WHERE
+		nid=#xxxx#
+	</delete>
+	<select id="findById" parameterClass="Integer" resultMap="newsResultMapping">
+		SELECT
+		nid,title,content,pub_date FROM news WHERE nid =
+		#nid#
+	</select>
+	
+	<select id="findAll" resultMap="newsResultMapping">
+		SELECT nid,title,content,pub_date FROM news
+	</select>
+	<select id="findAllSplit" resultMap="newsResultMapping" parameterClass="java.util.Map">
+		SELECT nid,title,content,pub_date FROM news WHERE #column# LIKE #keyWord# LIMIT #start#,#end#
+	</select>
+	<select id="getAllCount" resultClass="Integer" parameterClass="java.util.Map">
+		SELECT COUNT(*) FROM news WHERE $column$ LIKE #keyWord#
+	</select>
+</sqlMap>
