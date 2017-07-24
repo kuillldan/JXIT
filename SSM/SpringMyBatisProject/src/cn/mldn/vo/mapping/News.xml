@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 要求定义的是资源文件的名称空间，以后的访问要通过名称空间来定位，不能重复 --> 
+<mapper namespace="cn.mldn.vo.mapping.NewsNS">
+	<resultMap type="News" id="NewsResultMap">
+		<id column="nid" property="nid"/>
+		<result column="title" property="title"/>
+		<result column="pub_date" property="pubdate"/>
+		<result column="content" property="content"/>
+	</resultMap>
+	<!-- 在此处定义新闻数据增加时所使用的SQL语句，ID为调用名称，与命名空间结合使用，不能够重复 -->
+	<insert id="doCreate" parameterType="News" keyProperty="nid" useGeneratedKeys="true">
+		<!-- 如果要在配置文件中使用属性，那么使用的结构“#{属性名称,相关配置}” -->
+		INSERT INTO news(title,pub_date,content) VALUES (#{title},#{pubdate},#{content}) 
+	</insert>
+	<select id="findAllSplit" resultMap="NewsResultMap" parameterType="java.util.Map">
+		SELECT nid,title,pub_date,content 
+		FROM news
+		WHERE ${column} LIKE #{keyWord}
+		LIMIT #{start} , #{lineSize}
+	</select> 
+</mapper> 

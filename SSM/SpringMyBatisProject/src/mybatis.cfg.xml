@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true"/>
+	</settings> 
+	<typeAliases>
+		<typeAlias alias="News" type="cn.mldn.vo.News"/>
+	</typeAliases>
+	<!-- 编写映射文件的路径 -->
+	<mappers>									<!-- 映射文件信息 -->
+		<mapper resource="cn/mldn/vo/mapping/News.xml" />
+	</mappers>
+</configuration> 
