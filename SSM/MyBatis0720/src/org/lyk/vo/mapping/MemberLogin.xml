@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyk.vo.mapping.MemberLogin">
+	<resultMap type="MemberLogin" id="memberLoginResultMapping">
+		<id column="mid" property="mid" />
+		<result property="password" column="password" />
+		<association property="details" javaType="MemberDetails"
+			column="mid" select="org.lyk.vo.mapping.MemberDetailsNS.findById" />
+	</resultMap>
+
+	<insert id="doCreate" parameterType="MemberLogin">
+		INSERT INTO
+		member_login(mid,password) VALUES(#{mid},#{password})
+	</insert>
+	<select id="findById" parameterType="java.lang.Integer" resultMap="memberLoginResultMapping">
+		SELECT mid,password FROM
+		member_login WHERE mid=#{mid}
+	</select>
+</mapper>

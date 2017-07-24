@@ -2,7 +2,14 @@
 <!DOCTYPE configuration   
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration> 
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="org.lyk.vo.MemberLogin" alias="MemberLogin" />
+		<typeAlias type="org.lyk.vo.MemberDetails" alias="MemberDetails" />
+		<typeAlias type="org.lyk.vo.TimeDemo" alias="TimeDemo" />
+	</typeAliases>
+
 	<environments default="development">		<!-- 配置数据源的相关信息 -->
 		<environment id="development">
 			<transactionManager type="jdbc" />	<!-- 使用JDBC方式管理 -->
@@ -13,5 +20,11 @@
 				<property name="password" value="admin" />
 			</dataSource>
 		</environment>
-	</environments> 
+	</environments>
+
+	<mappers>
+		<!-- <mapper resource="org/lyk/vo/mapping/MemberLogin.xml"/> <mapper resource="org/lyk/vo/mapping/MemberDetails.xml"/> -->
+		<mapper resource="org/lyk/vo/mapping/TimeDemo.xml" />
+	</mappers>
+
 </configuration>

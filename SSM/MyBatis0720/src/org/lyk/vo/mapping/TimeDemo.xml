@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyk.vo.mapping.TimeDemoNS">
+	<resultMap type="TimeDemo" id="timeDemoResultMap">
+		<id column="id" property="id"/>
+		<result property="info" column="info"/>
+		<result property="current" column="current"/>
+	</resultMap>
+
+	<insert id="doCreate" parameterType="TimeDemo">
+		INSERT INTO timedemo(info,current) VALUES(#{info},#{current})
+	</insert>
+	
+	<select id="findById" parameterType="Integer" resultMap="timeDemoResultMap">
+		SELECT id,info,current FROM timedemo WHERE id=#{id}
+	</select>
+	
+	<update id="doUpdate" parameterType="TimeDemo">
+		UPDATE timedemo SET info=#{info},current=#{current} WHERE id=#{id}
+	</update>
+	
+</mapper>
