@@ -1,9 +1,11 @@
-package cn.mldn.vo;
+package org.lyk.vo;
 
 import java.io.Serializable;
 import java.util.Date;
 
-@SuppressWarnings("serial")
+import org.springframework.stereotype.Component;
+
+@Component
 public class News implements Serializable
 {
 	private Integer nid;
@@ -55,6 +57,6 @@ public class News implements Serializable
 	public String toString()
 	{
 		return "News [nid=" + nid + ", title=" + title + ", pubdate=" + pubdate + ", content=" + content
-				+ "]\n";
+				+ "]";
 	}
 }

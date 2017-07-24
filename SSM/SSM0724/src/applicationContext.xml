@@ -30,4 +30,8 @@
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
 	</bean>
+	
+	<bean id="news" class="org.lyk.vo.News">
+	
+	</bean>
 </beans>
