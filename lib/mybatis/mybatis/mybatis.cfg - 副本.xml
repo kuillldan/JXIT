@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration   
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Member" type="cn.mldn.vo.Member"/>
+		<typeAlias alias="News" type="cn.mldn.vo.News"/>
+	</typeAliases>
+	<environments default="development">		<!-- 配置数据源的相关信息 -->
+		<environment id="development">
+			<transactionManager type="jdbc" />	<!-- 使用JDBC方式管理 -->
+			<dataSource type="POOLED">			<!-- 设置数据源类型，此时为POOLED -->
+				<property name="driver" value="org.gjt.mm.mysql.Driver" />
+				<property name="url" value="jdbc:mysql://localhost:3306/mldn" />
+				<property name="username" value="root" />
+				<property name="password" value="mysqladmin" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>									<!-- 映射文件信息 -->
+		<mapper resource="cn/mldn/vo/Member.xml" />
+		<mapper resource="cn/mldn/vo/News.xml" />
+	</mappers>
+</configuration>
