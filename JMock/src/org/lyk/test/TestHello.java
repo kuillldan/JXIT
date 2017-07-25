@@ -1,6 +1,7 @@
 package org.lyk.test;
 
 import static org.junit.Assert.*;
+import mockit.Expectations;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.Verifications;
@@ -17,21 +18,18 @@ public class TestHello
 	@Test
 	public void testHello()
 	{
-		new NonStrictExpectations()
+		new Expectations()
 		{// 录制预期模拟行为
 			{
 				obj.hello("Zhangsan");
-				returns("Hello Zhangsan");
-				// 也可以使用：result = "Hello Zhangsan";
+				// returns("Hello Zhangsan");
+				obj.hello("Zhangsan1");
+				result = "Hello Zhangsan";
 			}
 		};
-		assertEquals("Hello Zhangsan", obj.hello("Zhangsan"));// 调用测试方法
-		new Verifications()
-		{// 验证预期Mock行为被调用
-			{
-				obj.hello("Hello Zhangsan");
-				times = 1;
-			}
-		};
+
+		obj.hello("Zhangsan");
+		obj.hello("Zhangsan1");
+		 
 	}
 }

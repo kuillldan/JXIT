@@ -12,13 +12,14 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>JMock\src\org\lyk\test\TestHello.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>2</td>
+      <td class='line'>1</td><td class='count'>1</td>
       <td><pre class='prettyprint covered' id='l1s0'>package org.lyk.test;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'></td><td>&nbsp;</td>
       <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import static org.junit.Assert.*;
+import mockit.Expectations;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.Verifications;
@@ -29,108 +30,90 @@ import org.lyk.vo.MyObject;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>11</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l11s0'>public class TestHello</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>12</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>{</pre></td>
+      <td class='line'>12</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l12s0'>public class TestHello</pre></td>
     </tr>
     <tr>
       <td class='line'>13</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Mocked</pre></td>
+      <td><pre class='prettyprint'>{</pre></td>
     </tr>
     <tr>
       <td class='line'>14</td><td>&nbsp;</td>
-      <td><pre class='comment'>	// 用@Mocked标注的对象，不需要赋值，jmockit自动mock</pre></td>
+      <td><pre class='prettyprint'>	@Mocked</pre></td>
     </tr>
     <tr>
       <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='comment'>	// 用@Mocked标注的对象，不需要赋值，jmockit自动mock</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	MyObject <span class='instance covered' title='Reads: 2 Writes: 0'>obj</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>17</td><td>&nbsp;</td>
+      <td class='line'>18</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	@Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>18</td><td>&nbsp;</td>
+      <td class='line'>19</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	public void testHello()</pre></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
+      <td class='line'>20</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	{</pre></td>
     </tr>
     <tr>
-      <td class='line'>20</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l20s0'>		new NonStrictExpectations()</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		{// 录制预期模拟行为</pre></td>
+      <td class='line'>21</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l21s0'>		new Expectations()</pre></td>
     </tr>
     <tr>
       <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			{</pre></td>
+      <td><pre class='prettyprint'>		{// 录制预期模拟行为</pre></td>
     </tr>
     <tr>
-      <td class='line'>23</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l23s0'>				obj.hello("Zhangsan");</pre></td>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			{</pre></td>
     </tr>
     <tr>
       <td class='line'>24</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l24s0'>				returns("Hello Zhangsan");</pre></td>
+      <td><pre class='prettyprint covered' id='l24s0'>				obj.hello("Zhangsan");</pre></td>
     </tr>
     <tr>
       <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='comment'>				// 也可以使用：result = "Hello Zhangsan";</pre></td>
+      <td><pre class='comment'>				// returns("Hello Zhangsan");</pre></td>
     </tr>
     <tr>
-      <td class='line'>26</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
+      <td class='line'>26</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l26s0'>				obj.hello("Zhangsan1");</pre></td>
     </tr>
     <tr>
-      <td class='line'>27</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		};</pre></td>
+      <td class='line'>27</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l27s0'>				result = "Hello Zhangsan";</pre></td>
     </tr>
     <tr>
       <td class='line'>28</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		assertEquals("Hello Zhangsan", obj.hello("Zhangsan"));// 调用测试方法</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>29</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l29s0'>		new Verifications()</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>30</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		{// 验证预期Mock行为被调用</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			{</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>32</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l32s0'>				obj.hello("Hello Zhangsan");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>33</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l33s0'>				times = 1;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>			}</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td>&nbsp;</td>
+      <td class='line'>29</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		};</pre></td>
     </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>36</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		obj.hello("Zhangsan");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		obj.hello("Zhangsan1");</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>	}</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td>&nbsp;</td>
+      <td class='line'>35</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

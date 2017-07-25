@@ -1,9 +1,0 @@
-DROP TABLE  IF EXISTS member;
-
-CREATE TABLE member
-(
-	mid INT AUTO_INCREMENT,
-	name VARCHAR(50) NOT NULL,
-	age INT,
-	CONSTRAINT pk_mid_name PRIMARY KEY (mid,name)
-);
