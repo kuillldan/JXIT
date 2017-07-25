@@ -12,4 +12,11 @@ public class MessageServiceImpl implements IMessageService
 		return "www.google.com";
 	}
 
+	@Override
+	public boolean remove(String mid)
+	{
+		System.out.println("[业务层]执行删除调用，删除的数据ID=" +mid);
+		return false;
+	}
+
 }
