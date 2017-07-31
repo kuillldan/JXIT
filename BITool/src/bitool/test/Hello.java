@@ -1,58 +1,54 @@
 package bitool.test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Calendar;
+import java.util.ResourceBundle;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.client.params.ClientPNames;
+import org.apache.log4j.Logger;
+
+
+
 
 import bitool.enums.UserType;
-import dbc.DatabaseConnection;
+import bitool.utils.CONST;
+import bitool.dbc.BI_DatabaseConnection;
 
  
 public class Hello
 {
 	public static void main(String[] args) throws Exception
 	{
-		Calendar calendar1 = Calendar.getInstance();
+		//139.199.220.102
+		Class.forName("org.gjt.mm.mysql.Driver");
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/bitool", "root", "admin");
 		
-		calendar1.set(Calendar.YEAR, 1999);
-		System.out.println(calendar1.getTimeInMillis());
+		conn.setAutoCommit(false);
 		
-		Calendar calendar2 = Calendar.getInstance();
-		System.out.println(calendar2.getTimeInMillis());
-		
-		
+		PreparedStatement ps = conn.prepareStatement("select * from openOffManagement WHERE oid = 1 FOR UPDATE ");
+		ResultSet rs = ps.executeQuery();
+		System.out.println("===准备休眠");
+		Thread.sleep(10000);
+		System.out.println("====休眠结束");
+		conn.commit();
+		System.out.println(conn);
+		conn.close();
 	}
 	
-	public static void schedule()
+	public static void showString(String msg)
 	{
-//		StartupEachDay startupEachDay = new StartupEachDay("打开引擎");
-//		Calendar currentTime = Calendar.getInstance();
-//		long currentTimeInLong = currentTime.getTime().getTime();
-//		Calendar nextRuningTime = startupEachDay.getEarliestDate(currentTime, 15, 42, 0);
-//		long nextRuningTimeInLong = nextRuningTime.getTime().getTime();
-//		
-//		
-//		Long delay = nextRuningTimeInLong - currentTimeInLong;
-//		//long period = 24 * 60 *60 * 1000;
-//		long period = 60 * 1000;
-//		ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(10);
-//		System.out.println("delay=" + delay);
-//		scheduledExecutorService.scheduleAtFixedRate(startupEachDay, delay, period, TimeUnit.MILLISECONDS);
-//		
-//		System.out.println("===============");
-//		currentTime = Calendar.getInstance();
-//		currentTimeInLong = currentTime.getTime().getTime();
-//		nextRuningTime = startupEachDay.getEarliestDate(currentTime, 15, 45, 0);
-//		nextRuningTimeInLong = nextRuningTime.getTime().getTime();
-//		delay = nextRuningTimeInLong - currentTimeInLong;
-//		scheduledExecutorService.shutdown();
-//		
-//		scheduledExecutorService =  Executors.newScheduledThreadPool(10);
-//		
-//		
-//		scheduledExecutorService.scheduleAtFixedRate(startupEachDay, delay, period, TimeUnit.MILLISECONDS);
+		System.out.println(msg);
+	}
+	
+	public static void showString(String msg,Object ... params)
+	{
+		System.out.println(msg);
+		System.out.println(params.length + "," + params.getClass().getSimpleName());
 	}
 }

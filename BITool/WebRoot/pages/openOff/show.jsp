@@ -2,14 +2,14 @@
 <%@taglib prefix="c" uri="http://liuyuankui.cn"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
-			+ request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
+
 <%
-	String changeTimeURL = basePath + "pages/openOff/openOffServlet/updateTime";
-	String changeModeURL = basePath + "pages/openOff/openOffServlet/updateMode";
- %>
+	String changeTimeURL = basePath + "svc_state_manage/updateTime?modtime="+request.getAttribute("modtime");
+	String changeModeURL = basePath + "svc_state_manage/updateMode?modtime="+request.getAttribute("modtime");
+%>
 
 <%
 	List<String> allHours = new ArrayList<String>();
@@ -26,9 +26,15 @@
 
 	List<String> allMinutes = new ArrayList<String>();
 	allMinutes.add("00");
-	for (int i = 1; i <= 5; i++)
+	for (int i = 1; i <= 59; i++)
 	{
-		allMinutes.add(i + "0");
+		if (i <= 9)
+		{
+			allMinutes.add("0" + i);
+		} else
+		{
+			allMinutes.add(String.valueOf(i));
+		}
 	}
 
 	pageContext.setAttribute("allHours", allHours);
@@ -112,9 +118,11 @@
 						<td><select id="currentMode">
 								<option value="AUTO" ${mode=='AUTO' ? "SELECTED":"" }>自动开闭局管理</option>
 								<option value="MANUAL" ${mode=='MANUAL' ? "SELECTED":"" }>手动开闭局管理</option>
-								<option value="MAINTAINANCE" ${mode=='MAINTAINANCE' ? "SELECTED":"" }>Maintanance开闭局管理</option>
+								<option value="MAINTAINANCE"
+									${mode=='MAINTAINANCE' ? "SELECTED":"" }>Maintanance开闭局管理</option>
 						</select></td>
-						<td><button onclick="changeMode('${mode }','<%=changeModeURL%>')">变更</button></td>
+						<td><button
+								onclick="changeMode('${mode }','<%=changeModeURL%>')">变更</button></td>
 					</tr>
 				</table>
 			</td>

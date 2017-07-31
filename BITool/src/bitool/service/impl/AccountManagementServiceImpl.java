@@ -1,13 +1,13 @@
 package bitool.service.impl;
 
-import dbc.DatabaseConnection;
+import bitool.dbc.BI_DatabaseConnection;
 import bitool.factory.DAOFactory;
 import bitool.service.IAccountManagementService;
 import bitool.vo.AccountManagement;
 
 public class AccountManagementServiceImpl implements IAccountManagementService
 {
-	private DatabaseConnection dbc = new DatabaseConnection();
+	private BI_DatabaseConnection dbc = new BI_DatabaseConnection();
 	
 	@Override
 	public AccountManagement findAccountByIpAddress(String ipaddress) throws Exception

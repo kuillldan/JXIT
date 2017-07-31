@@ -1,9 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -24,7 +22,7 @@
 
 </head>
 
-<body>
-	<h1>Internal Error. Please Contact System Administrator</h1>
+<body> 
+	<h1>${msg == null ? "Internal Error. Please Contact System Administrator" : msg}</h1>
 </body>
 </html>

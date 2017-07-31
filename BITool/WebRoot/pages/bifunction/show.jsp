@@ -1,8 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page import="java.text.*" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 			+ request.getServerPort() + path + "/";
+%>
+
+<%
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:MM:ss"); 
+	String currentDateInString = sdf.format(new Date());
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -25,5 +31,6 @@
 
 <body>
 	<h1>WELCOM TO BI FUNCTION</h1>
+	<h1>CURRENT TIME: <%=currentDateInString %></h1>
 </body>
 </html>

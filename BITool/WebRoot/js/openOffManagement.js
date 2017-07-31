@@ -9,7 +9,7 @@ function checkAutoManagementTime(startHour, startMinute, endHour, endMinute,
 			&& endHour == currentEndHour && endMinute == currentEndMinute) {
 		alert("你没有做任何改变，请选择后再试!");
 	} else {
-		window.location = url + "?startHour=" + currentStartHour
+		window.location = url + "&startHour=" + currentStartHour
 				+ "&startMinute=" + currentStartMinute + "&endHour="
 				+ currentEndHour + "&endMinute=" + currentEndMinute;
 	}
@@ -22,5 +22,5 @@ function changeMode(mode, url) {
 	if (mode == currentMode)
 		alert("你没有做任何改变，请选择后再试!");
 	else
-		window.location = url + "?mode=" + currentMode;
+		window.location = url + "&mode=" + currentMode;
 }

@@ -22,7 +22,7 @@ public class AccountManagementDAOImpl implements IAccountManagementDAO
 	{
 		AccountManagement vo = null;
 		
-		String sql = " SELECT aid,userID,transformedUserID,userType,ipAddress  FROM accountmanagement WHERE ipaddress = ? ";
+		String sql = " SELECT aid,userID,transformedUserID,userType,ipAddress  FROM accountManagement WHERE ipaddress = ? ";
 		PreparedStatement ps = this.conn.prepareStatement(sql);
 		ps.setString(1, ipAddress);
 		ResultSet rs = ps.executeQuery();

@@ -7,7 +7,7 @@
 %>
 
 <%
-	String openOffShowURL = basePath + "pages/openOff/openOffServlet/show";
+	String openOffShowURL = basePath + "svc_state_manage/show";
  %>
 
 

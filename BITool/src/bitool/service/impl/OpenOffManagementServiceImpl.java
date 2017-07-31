@@ -1,14 +1,17 @@
 package bitool.service.impl;
 
-import dbc.DatabaseConnection;
+import java.sql.Connection;
+
+import bitool.dbc.BI_DatabaseConnection;
 import bitool.dao.IOpenOffManagement;
+import bitool.exception.RecordUpdatedException;
 import bitool.factory.DAOFactory;
 import bitool.service.IOpenOffManagementService;
 import bitool.vo.OpenOffManagement;
 
 public class OpenOffManagementServiceImpl implements IOpenOffManagementService
 {
-	DatabaseConnection dbc = new DatabaseConnection();
+	BI_DatabaseConnection dbc = new BI_DatabaseConnection();
 
 	@Override
 	public OpenOffManagement findOpenOffManagement() throws Exception
@@ -16,65 +19,72 @@ public class OpenOffManagementServiceImpl implements IOpenOffManagementService
 		try
 		{
 			return DAOFactory.getOpenOffManagementDAOInstance(this.dbc.getConnection()).find();
-		}
-		catch(Exception e)
+		} catch (Exception e)
 		{
 			throw e;
-		}
-		finally
+		} finally
 		{
 			this.dbc.close();
 		}
 	}
 
 	@Override
-	public boolean updateTime(OpenOffManagement vo) throws Exception
+	public boolean updateTime(OpenOffManagement vo, long modtime) throws RecordUpdatedException, Exception
 	{
 		try
 		{
-			return DAOFactory.getOpenOffManagementDAOInstance(this.dbc.getConnection()).updateTime(vo);
-		}
-		catch(Exception e)
+			Connection conn = this.dbc.getConnection();
+			conn.setAutoCommit(false);
+			this.check(conn, modtime);
+			boolean retVal = DAOFactory.getOpenOffManagementDAOInstance(conn).updateTime(vo);
+			conn.commit();
+			return retVal;
+		} catch (RecordUpdatedException e)
 		{
 			throw e;
-		}
-		finally
+		} catch (Exception e)
+		{
+			throw e;
+		} finally
 		{
 			this.dbc.close();
 		}
 	}
 
+  
+
 	@Override
-	public boolean updateStatus(String status) throws Exception
+	public boolean updateMode(String mode, long modtime) throws RecordUpdatedException, Exception
 	{
 		try
 		{
-			return DAOFactory.getOpenOffManagementDAOInstance(this.dbc.getConnection()).updateStatus(status);
+			Connection conn = this.dbc.getConnection();
+			conn.setAutoCommit(false);
+			this.check(conn, modtime); 
+			boolean retVal = DAOFactory.getOpenOffManagementDAOInstance(conn).updateMode(mode);
+			conn.commit();
+			return retVal;
 		}
-		catch(Exception e)
+		catch(RecordUpdatedException e)
 		{
 			throw e;
 		}
-		finally
+		catch (Exception e)
+		{
+			throw e;
+		} finally
 		{
 			this.dbc.close();
 		}
 	}
 
-	@Override
-	public boolean updateMode(String mode) throws Exception
+	private void check(Connection conn, long modtime) throws RecordUpdatedException, Exception
 	{
-		try
+		OpenOffManagement latestStatus = DAOFactory.getOpenOffManagementDAOInstance(conn).find();
+
+		if (latestStatus.getModtime().getTime() != modtime)
 		{
-			return DAOFactory.getOpenOffManagementDAOInstance(this.dbc.getConnection()).updateMode(mode);
+			throw new RecordUpdatedException();
 		}
-		catch(Exception e)
-		{
-			throw e;
-		}
-		finally
-		{
-			this.dbc.close();
-		}
-	} 
+	}
 }

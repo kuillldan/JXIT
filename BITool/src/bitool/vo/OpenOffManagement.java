@@ -1,15 +1,25 @@
 package bitool.vo;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @SuppressWarnings("serial")
 public class OpenOffManagement implements Serializable
 {
-	private Integer oid;
-	private String status;
+	private Integer oid; 
 	private String mode;
 	private String startTime;
 	private String endTime;
+	private Timestamp modtime;
+	
+	public Timestamp getModtime()
+	{
+		return modtime;
+	}
+	public void setModtime(Timestamp modtime)
+	{
+		this.modtime = modtime;
+	}
 	public Integer getOid()
 	{
 		return oid;
@@ -17,15 +27,7 @@ public class OpenOffManagement implements Serializable
 	public void setOid(Integer oid)
 	{
 		this.oid = oid;
-	}
-	public String getStatus()
-	{
-		return status;
-	}
-	public void setStatus(String status)
-	{
-		this.status = status;
-	}
+	} 
 	public String getMode()
 	{
 		return mode;
@@ -53,7 +55,7 @@ public class OpenOffManagement implements Serializable
 	@Override
 	public String toString()
 	{
-		return "OpenOffManagement [oid=" + oid + ", status=" + status + ", mode=" + mode + ", startTime="
-				+ startTime + ", endTime=" + endTime + "]";
+		return "OpenOffManagement [oid=" + oid + ", mode=" + mode + ", startTime=" + startTime + ", endTime=" + endTime
+				+ ", modtime=" + modtime + "]";
 	} 
 }

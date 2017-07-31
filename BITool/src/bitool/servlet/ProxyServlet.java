@@ -84,8 +84,9 @@ import bitool.vo.OpenOffManagement;
 
 @WebServlet(value =
 { "/pages/ProxyServlet/*" }, initParams =
-{ @WebInitParam(name = "log", value = "true"),
-		@WebInitParam(name = "redirectURL", value = "http://139.199.220.102")
+{ @WebInitParam(name = "log", value = "true"), @WebInitParam(name = "redirectURL", value = "http://15.210.147.2"),
+		@WebInitParam(name = "PathTrim", value = "/bi/pages/ProxyServlet"),
+		@WebInitParam(name = "PathPrepend", value = "/sn/webquery/html")
 // @WebInitParam(name = "redirectURL", value = "http://139.199.220.102")
 })
 public class ProxyServlet extends HttpServlet
@@ -229,20 +230,6 @@ public class ProxyServlet extends HttpServlet
 	{ "unchecked", "deprecation" })
 	protected HttpClient createHttpClient(HttpParams hcParams)
 	{
-		// try {
-		// //as of HttpComponents v4.2, this class is better since it uses
-		// System
-		// // Properties:
-		// Class clientClazz =
-		// Class.forName("org.apache.http.impl.client.SystemDefaultHttpClient");
-		// Constructor constructor =
-		// clientClazz.getConstructor(HttpParams.class);
-		// return (HttpClient) constructor.newInstance(hcParams);
-		// } catch (ClassNotFoundException e) {
-		// //no problem; use v4.1 below
-		// } catch (Exception e) {
-		// throw new RuntimeException(e);
-		// }
 
 		// Fallback on using older client:
 		ThreadSafeClientConnManager manager = new ThreadSafeClientConnManager();
@@ -314,13 +301,12 @@ public class ProxyServlet extends HttpServlet
 	}
 
 	@Override
-	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
-			throws ServletException, IOException
+	protected void service(HttpServletRequest servletRequest, HttpServletResponse servletResponse) throws ServletException,
+			IOException
 	{
-		if(!this.validate(servletRequest, servletResponse))
-		{
-			return;
-		} 
+		
+		//System.out.println("=============servcice===============");
+		
 		// initialize request attributes from caches if unset by a subclass by
 		// this point
 		// ProxyServlet.targetUri
@@ -340,20 +326,18 @@ public class ProxyServlet extends HttpServlet
 		// would truly be compatible
 		String method = servletRequest.getMethod();
 		String proxyRequestUri = rewriteUrlFromRequest(servletRequest);
-		System.out.println("proxyRequestUri:" + proxyRequestUri);
+
 		HttpRequest proxyRequest;
 		// spec: RFC 2616, sec 4.3: either of these two headers signal that
 		// there is a message body.
 		if (servletRequest.getHeader(HttpHeaders.CONTENT_LENGTH) != null
 				|| servletRequest.getHeader(HttpHeaders.TRANSFER_ENCODING) != null)
 		{
-			HttpEntityEnclosingRequest eProxyRequest = new BasicHttpEntityEnclosingRequest(method,
-					proxyRequestUri);
+			HttpEntityEnclosingRequest eProxyRequest = new BasicHttpEntityEnclosingRequest(method, proxyRequestUri);
 			// Add the input entity (streamed)
 			// note: we don't bother ensuring we close the servletInputStream
 			// since the container handles it
-			eProxyRequest.setEntity(new InputStreamEntity(servletRequest.getInputStream(), servletRequest
-					.getContentLength()));
+			eProxyRequest.setEntity(new InputStreamEntity(servletRequest.getInputStream(), servletRequest.getContentLength()));
 			proxyRequest = eProxyRequest;
 		} else
 			proxyRequest = new BasicHttpRequest(method, proxyRequestUri);
@@ -384,8 +368,7 @@ public class ProxyServlet extends HttpServlet
 			// [#51](https://github.com/mitre/HTTP-Proxy-Servlet/issues/51)
 			copyResponseHeaders(proxyResponse, servletRequest, servletResponse);
 
-			if (doResponseRedirectOrNotModifiedLogic(servletRequest, servletResponse, proxyResponse,
-					statusCode))
+			if (doResponseRedirectOrNotModifiedLogic(servletRequest, servletResponse, proxyResponse, statusCode))
 			{
 				// the response is already "committed" now without any body to
 				// send
@@ -428,12 +411,10 @@ public class ProxyServlet extends HttpServlet
 			// http://stackoverflow.com/questions/1159168/should-one-call-close-on-httpservletresponse-getoutputstream-getwriter
 		}
 
-		// System.out.println("=====service end======");
 	}
 
 	protected boolean doResponseRedirectOrNotModifiedLogic(HttpServletRequest servletRequest,
-			HttpServletResponse servletResponse, HttpResponse proxyResponse, int statusCode)
-			throws ServletException, IOException
+			HttpServletResponse servletResponse, HttpResponse proxyResponse, int statusCode) throws ServletException, IOException
 	{
 		// Check if the proxy response is a redirect
 		// The following code is adapted from
@@ -444,8 +425,8 @@ public class ProxyServlet extends HttpServlet
 			Header locationHeader = proxyResponse.getLastHeader(HttpHeaders.LOCATION);
 			if (locationHeader == null)
 			{
-				throw new ServletException("Received status code: " + statusCode + " but no "
-						+ HttpHeaders.LOCATION + " header was found in the response");
+				throw new ServletException("Received status code: " + statusCode + " but no " + HttpHeaders.LOCATION
+						+ " header was found in the response");
 			}
 			// Modify the redirect to go to this proxy servlet rather that the
 			// proxied host
@@ -507,8 +488,8 @@ public class ProxyServlet extends HttpServlet
 	{
 		hopByHopHeaders = new HeaderGroup();
 		String[] headers = new String[]
-		{ "Connection", "Keep-Alive", "Proxy-Authenticate", "Proxy-Authorization", "TE", "Trailers",
-				"Transfer-Encoding", "Upgrade" };
+		{ "Connection", "Keep-Alive", "Proxy-Authenticate", "Proxy-Authorization", "TE", "Trailers", "Transfer-Encoding",
+				"Upgrade" };
 		for (String header : headers)
 		{
 			hopByHopHeaders.addHeader(new BasicHeader(header, null));
@@ -590,8 +571,7 @@ public class ProxyServlet extends HttpServlet
 	 * Copy cookie from the proxy to the servlet client. Replaces cookie path to
 	 * local path and renames cookie to avoid collisions.
 	 */
-	protected void copyProxyCookie(HttpServletRequest servletRequest, HttpServletResponse servletResponse,
-			Header header)
+	protected void copyProxyCookie(HttpServletRequest servletRequest, HttpServletResponse servletResponse, Header header)
 	{
 		List<HttpCookie> cookies = HttpCookie.parse(header.getValue());
 		String path = servletRequest.getContextPath(); // path starts with / or
@@ -657,8 +637,7 @@ public class ProxyServlet extends HttpServlet
 	 * Copy response body data (the entity) from the proxy to the servlet
 	 * client.
 	 */
-	protected void copyResponseEntity(HttpResponse proxyResponse, HttpServletResponse servletResponse)
-			throws IOException
+	protected void copyResponseEntity(HttpResponse proxyResponse, HttpServletResponse servletResponse) throws IOException
 	{
 		HttpEntity entity = proxyResponse.getEntity();
 		if (entity != null)
@@ -668,6 +647,14 @@ public class ProxyServlet extends HttpServlet
 		}
 	}
 
+	/**
+	 * 根据Servlet参数"trimStr"去掉URL前缀
+	 * 
+	 * @param sb
+	 * @param path
+	 * @param trimStr
+	 * @return
+	 */
 	protected Boolean doPathTrim(StringBuilder sb, String path, String trimStr)
 	{
 		Boolean res = Boolean.FALSE;
@@ -703,6 +690,13 @@ public class ProxyServlet extends HttpServlet
 		return res;
 	}
 
+	/**
+	 * 根据Servlet参数"pathPrepend"，将该前缀添加到URL中
+	 * 
+	 * @param sb
+	 * @param prePendStr
+	 * @return
+	 */
 	protected boolean doPathPrepend(StringBuilder sb, String prePendStr)
 	{
 		Boolean res = Boolean.FALSE;
@@ -718,9 +712,7 @@ public class ProxyServlet extends HttpServlet
 			{
 				lPathPrepend = lPathPrepend.substring(0, lPathPrepend.length() - 1);
 			}
-			// 最前面增加/
-			// 最后面去掉/
-			// /pages/from/jobServlet
+
 			if (sb.length() == 0 || sb.charAt(0) == '/')
 			{
 				sb.insert(0, lPathPrepend);
@@ -743,11 +735,8 @@ public class ProxyServlet extends HttpServlet
 	{
 		String path = servletRequest.getRequestURI();
 		StringBuilder sb = new StringBuilder();
-
 		servletRequest.setAttribute(ATTR_PATH_TRIM, doPathTrim(sb, path, pathTrim));
-
 		servletRequest.setAttribute(ATTR_PATH_PREPEND, doPathPrepend(sb, pathPrepend));
-
 		return sb.toString();
 	}
 
@@ -759,18 +748,17 @@ public class ProxyServlet extends HttpServlet
 	{
 		StringBuilder uri = new StringBuilder(500);
 		uri.append(getTargetUri(servletRequest));
-		System.out.println("====" + uri.toString());
+
 		// Handle the path given to the servlet
 		// if (servletRequest.getPathInfo() != null) {// ex: /my/path.html
 		uri.append(encodeUriQuery(rewriteRequestPath(servletRequest)));
-		System.out.println("====" + uri.toString());
 
 		// }
 		// Handle the query string & fragment
 		String queryString = servletRequest.getQueryString();// ex:(following
 																// '?'):
 																// name=value&foo=bar#fragment
-		System.out.println("queryString:" + queryString);
+
 		String fragment = null;
 		// split off fragment from queryString, updating queryString if found
 		if (queryString != null)
@@ -812,18 +800,7 @@ public class ProxyServlet extends HttpServlet
 	{
 		// TODO document example paths
 		final String targetUri = getTargetUri(servletRequest);
-		// if (theUrl.startsWith(targetUri)) {
-		// String curUrl = servletRequest.getRequestURL().toString();// no
-		// // query
-		// String pathInfo = servletRequest.getPathInfo();
-		// if (pathInfo != null) {
-		// assert curUrl.endsWith(pathInfo);
-		// curUrl = curUrl.substring(0,
-		// curUrl.length() - pathInfo.length());// take pathInfo
-		// // off
-		// }
-		// theUrl = curUrl + theUrl.substring(targetUri.length());
-		// }
+
 		if (theUrl.startsWith(targetUri))
 		{
 			String curUrl = servletRequest.getRequestURL().toString();// no
@@ -853,8 +830,7 @@ public class ProxyServlet extends HttpServlet
 				sb.append(rediPath);
 			}
 
-			theUrl = curUrl + (!curUrl.endsWith("/") && (sb.length() == 0 || sb.charAt(0) != '/') ? "/" : "")
-					+ sb.toString();
+			theUrl = curUrl + (!curUrl.endsWith("/") && (sb.length() == 0 || sb.charAt(0) != '/') ? "/" : "") + sb.toString();
 		}
 		return theUrl;
 	}
@@ -940,64 +916,5 @@ public class ProxyServlet extends HttpServlet
 
 		asciiQueryChars.set((int) '%');// leave existing percent escapes in
 										// place
-	}
-
-	protected boolean validate(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		try
-		{
-			System.out.println("========do post ");
-			String ipAddress = request.getRemoteAddr();
-			System.out.println(ipAddress);
-			AccountManagement accountManagement = ServiceFactory.getAccountManagementServiceInstance()
-					.findAccountByIpAddress(ipAddress);
-
-			if (null == accountManagement)
-			{
-				this.prevent(request, response, "user not found", CONST.errorPageJSP);
-				return false;
-			} else
-			{
-				OpenOffManagement openOffManagement = ServiceFactory.getOpenOffManagementServiceInstance()
-						.findOpenOffManagement();
-
-				System.out.println("UserType:" + accountManagement.getUserType());
-				System.out.println("Stauts:" + openOffManagement.getStatus());
-
-				if (OpenOffStatus.CLOSED.toString().equals(openOffManagement.getStatus()))
-				{
-					this.prevent(request, response, "current closed for all user", CONST.errorPageJSP);
-					return false;
-				} else
-				{
-					if (OpenOffStatus.ADMIN_OPEN.toString().equals(openOffManagement.getStatus()))
-					{
-						if (UserType.NORMAL.toString().equals(accountManagement.getUserType()))
-						{
-							// Normal user && Admin Open Status
-							this.prevent(request, response, "current closed for normal user",
-									CONST.errorPageJSP);
-							return false;
-						}
-					} 
-				}
-				
-				return true;
-			}
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-			request.getRequestDispatcher(CONST.errorPageJSP).forward(request, response);
-			return false;
-		}
-	}
-
-	private void prevent(HttpServletRequest request, HttpServletResponse response, String msg, String url)
-			throws Exception
-	{
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		request.getRequestDispatcher(CONST.forwardPageJSP).forward(request, response);
 	}
 }
