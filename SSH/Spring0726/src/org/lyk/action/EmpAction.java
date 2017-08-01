@@ -19,28 +19,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/pages/emp/*")
-public class EmpAction
+public class EmpAction extends AbstractAction
 {
-	@Resource
-	MessageSource messageSource;
-	
-	
-	
 	@RequestMapping("echo")
-	public void echo(String info,MultipartFile file1,MultipartFile file2) throws IOException
+	public void echo(String info, MultipartFile file1, MultipartFile file2) throws IOException
 	{
 		System.out.println("=======================");
 		System.out.println(info);
 		System.out.println(file1.getOriginalFilename());
 		System.out.println(file2.getOriginalFilename());
-		System.out.println(1/0);
+		System.out.println(super.getMessage("welcome", new Object[]
+		{ "sheldon" }));
 		System.out.println("=======================");
-	}
-
-	@InitBinder
-	public void dataBinder(WebDataBinder webDataBinder)
-	{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		webDataBinder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(sdf, true));
 	}
 }

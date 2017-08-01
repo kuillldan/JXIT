@@ -38,5 +38,12 @@
 			</props>
 		</property>
 	</bean>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/pages/**/*.action"/>
+			<bean class="org.lyk.interceptor.ValidationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>
