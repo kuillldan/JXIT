@@ -6,12 +6,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-@LanguageInfo(languageType="main.English")
+import dbc.DatabaseConnection;
+ 
 public class Hello
 {
 	public static void main(String[] args) throws Exception
 	{
-		ILanguage languageInstance = LanguageFactory.getLanguageInstance();
-		languageInstance.say();
+		DatabaseConnection dbc = new DatabaseConnection();
+		System.out.println(dbc.getConnection());
+		dbc.close();
+		System.out.println("//main done");
 	}
 }
