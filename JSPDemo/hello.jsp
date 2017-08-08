@@ -18,5 +18,5 @@
 	conn.close();
 %>
 
-<h1>今天遇到一个傻逼</h1>
+<h1>what a beautyful day.</h1>
 <h1><%=conn%></h1>
