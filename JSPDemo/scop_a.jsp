@@ -1,7 +1,7 @@
 <%@ page pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%
-	pageContext.setAttribute("name","sheldon");
+	pageContext.setAttribute("name","远奎");
 	pageContext.setAttribute("birthday",new Date());
 %>
 
@@ -10,4 +10,4 @@
 	Date birthday = (Date)pageContext.getAttribute("birthday");
 %>
 
-<jsp:forward page="scop_b.jsp" />
+<h1>NAME:<%=name%></h1>
