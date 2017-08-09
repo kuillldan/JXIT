@@ -6,8 +6,8 @@
 %>
 
 <%
-	String name = (String)pageContext.getAttribute("name");
-	Date birthday = (Date)pageContext.getAttribute("birthday");
+	pageContext.setAttribute("name","MLDN",PageContext.SESSION_SCOPE);
+	pageContext.setAttribute("birthday",new Date(),PageContext.SESSION_SCOPE);
 %>
 
-<h1>NAME:<%=name%></h1>
+<a href="scop_b.jsp">跳转</a>

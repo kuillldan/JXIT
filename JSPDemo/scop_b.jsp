@@ -3,8 +3,8 @@
 
 
 <%
-	String name = (String)pageContext.getAttribute("name");
-	Date birthday = (Date)pageContext.getAttribute("birthday");
+	String name = (String)session.getAttribute("name");
+	Date birthday = (Date)session.getAttribute("birthday");
 %>
 
 <h1>NAME:<%=name%></h1>
