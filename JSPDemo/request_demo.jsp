@@ -9,23 +9,10 @@
 <html>
 	<head></head>
 	<body>
-		<%
-			while(allParameterNames.hasMoreElements())
-			{
-				String parameterName = allParameterNames.nextElement();
-				if(parameterName.startsWith("**")) 
-				{ 
-					%>
-						<h1><%=Arrays.toString(request.getParameterValues(parameterName))%></h1>
-					<% 
-				}
-				else
-				{
-					%>
-						<h1><%=request.getParameter(parameterName)%></h1>
-					<% 
-				}
-			}
-		%>
+		<img src="<%=request.getContextPath()%>/image/cjk.jpg"/>
+		<h1>IP地址:<%=request.getRemoteAddr()%></h1>
+		<h1>协议模式:<%=request.getScheme()%></h1>
+		<h1>服务器名称:<%=request.getServerName()%></h1>
+		<h1>端口号:<%=request.getServerPort()%></h1>
 	</body>
 </html>
