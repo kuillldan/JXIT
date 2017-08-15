@@ -1,1 +1,6 @@
+/applicationContext.xml
 /cn/
+/database.properties
+/log4j.properties
+/mybatis.cfg.xml
+/数据库创建脚本.sql
