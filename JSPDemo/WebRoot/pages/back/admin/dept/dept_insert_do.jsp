@@ -19,6 +19,7 @@
 	dept.setDeptno(Integer.parseInt(request.getParameter("deptno")));
 	dept.setDname(request.getParameter("dname"));
 	dept.setLoc(request.getParameter("loc"));
+	System.out.println(request.getParameter("loc"));
 	String msg = "部门增加成功";
 	
 	if(!ServiceFactory.getDeptServiceInstance().insert(dept))

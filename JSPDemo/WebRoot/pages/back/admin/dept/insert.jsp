@@ -5,6 +5,12 @@
 			+ request.getServerPort() + path + "/";
 %>
 
+
+<%
+
+	String deptListJSP = basePath + "pages/back/admin/dept/list.jsp";
+ %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -40,6 +46,7 @@
 				<td colspan="3">
 					<input type="submit" value="提交">
 					<input type="reset" value="重置">
+					<a href="<%=deptListJSP%>">部门列表</a>
 				</td>
 			</tr>
 		</table>
