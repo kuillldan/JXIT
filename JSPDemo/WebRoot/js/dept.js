@@ -21,3 +21,13 @@ function validateInsert()
 	
 	return deptnoResult && dnameResult && locResult;
 }
+
+
+function gotoPage(cp,url)
+{
+	if(cp <= 0)
+	{
+		cp = 1;
+	}
+	window.location =  url + "?cp=" + cp;
+}
