@@ -8,7 +8,7 @@
 
 <%
 
-	String deptListJSP = basePath + "pages/back/admin/dept/list.jsp";
+	String deptListJSP = basePath + "pages/back/admin/dept/list_split.jsp";
  %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

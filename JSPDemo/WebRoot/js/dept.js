@@ -31,3 +31,28 @@ function gotoPage(cp,url)
 	}
 	window.location =  url + "?cp=" + cp;
 }
+
+function clearContent()
+{
+//	alert("XXX");
+//	alert(document.getElementById("redirectToPage").value);
+	document.getElementById("redirectToPage").value = "";
+}
+
+function resetContent(currentPage,pageSize)
+{
+	var val = document.getElementById("redirectToPage").value;
+	if(val == "" )
+	{
+		document.getElementById("redirectToPage").value = currentPage +"/" + pageSize;
+	}
+}
+
+function redirectTo(url)
+{
+	var val = document.getElementById("redirectToPage").value;
+	if(val != "")
+	{
+		gotoPage(val,url);
+	}
+}
