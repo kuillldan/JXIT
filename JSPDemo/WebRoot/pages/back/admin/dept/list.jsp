@@ -35,7 +35,7 @@
 		</tr>
 		<tr>
 			<td><input type="checkbox" id="selectAll" name="selectAll"
-				onclick="selectAllDepts()"></td>
+				onclick="checkboxSelect(this,'dept')"></td>
 			<td>部门编号</td>
 			<td>部门名称</td>
 			<td>部门位置</td>
@@ -46,7 +46,7 @@
 			{
 		%>
 		<tr>
-			<td><input type="checkbox" id="dept-<%=vo.getDeptno() %>" name="dept-<%=vo.getDeptno() %>" value="<%=vo.getDeptno() %>"></td>
+			<td><input type="checkbox" id="dept" name="dept" value="<%=vo.getDeptno() %>"></td>
 			<td><%=vo.getDeptno() %></td>
 			<td><%=vo.getDname() %></td>
 			<td><%=vo.getLoc() %></td>

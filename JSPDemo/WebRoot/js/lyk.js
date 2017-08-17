@@ -38,8 +38,10 @@ function changeColor(obj,color) {	// 负责改变表格显示颜色
 	obj.bgColor = color ;
 }
 
-function checkboxSelect(obj,eleName) {
+function checkboxSelect(obj,eleName) { 
 	var item = document.all(eleName) ;
+	alert(obj);
+	alert(obj.checked);
 	if (item.length == undefined) {	// 表示只有一个元素，不是数组
 		document.getElementById(eleName).checked = this.checked ;
 	} else {
