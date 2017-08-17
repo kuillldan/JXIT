@@ -11,6 +11,7 @@
 <%
 	String insertDeptJSP = basePath + "pages/back/admin/dept/insert.jsp";
 	String updateJSP = basePath + "pages/back/admin/dept/update.jsp";
+	String deptDeleteAllURL = basePath + "pages/back/admin/dept/delete_do.jsp?p=1";
  %>
 
 <%
@@ -58,7 +59,7 @@
 		
 		<tr>
 			<td colspan="5">
-				<input type="button" id="deleteAll" name="deleteAll" onclick="deleteAllDepts()" value="删除部门信息">
+				<input type="button" id="deleteAll" name="deleteAll" onclick="deleteAll('<%=deptDeleteAllURL %>','deptno','dept')" value="删除部门信息">
 				<a href="<%=insertDeptJSP%>">增加部门</a>
 			</td>
 		</tr>

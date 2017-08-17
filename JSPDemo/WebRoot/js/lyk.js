@@ -39,11 +39,9 @@ function changeColor(obj,color) {	// 负责改变表格显示颜色
 }
 
 function checkboxSelect(obj,eleName) { 
-	var item = document.all(eleName) ;
-	alert(obj);
-	alert(obj.checked);
+	var item = document.all(eleName) ; 
 	if (item.length == undefined) {	// 表示只有一个元素，不是数组
-		document.getElementById(eleName).checked = this.checked ;
+		document.getElementById(eleName).checked = obj.checked ;
 	} else {
 		for (var x = 0 ; x < item.length ; x ++) {
 			item[x].checked = obj.checked ;
