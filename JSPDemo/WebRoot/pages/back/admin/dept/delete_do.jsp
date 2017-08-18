@@ -9,7 +9,7 @@
 %>
 
 <%
-	String deptListJSP = basePath + "pages/back/admin/dept/list.jsp";
+	String deptListJSP = basePath + "pages/back/admin/dept/list_split.jsp";
  %>
 
 <%

@@ -99,7 +99,7 @@
 
 	
 
-	DatabaseConnection.close(conn);
+	DatabaseConnection.close(conn); 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -110,15 +110,7 @@
 <link type="text/css" rel="stylesheet" href="css/lyk.css">
 <script type="text/javascript" src="js/lyk.js"></script>
 <script type="text/javascript" src="js/dept.js"></script>
-<style>
-<!--
-body { .p { PADDING-LEFT:18px;
-	FONT-SIZE: 14px;
-	WORD-SPACING: 4px
-}
-}
--->
-</style>
+ 
 </head>
 
 <body>
@@ -156,24 +148,14 @@ body { .p { PADDING-LEFT:18px;
 				name="deleteAll"
 				onclick="deleteAll('<%=deptDeleteAllURL%>','deptno','dept')"
 				value="删除部门信息">
-
-				<button id="gotoFirstPage" name="gotoFirstPage"
-					onclick="gotoPage(1,'<%=deptListSplitJSP%>')"
-					<%=currentPage == 1 ? "disabled" : ""%>>首页</button>
-
-				<button id="gotoPreviousPage" name="gotoPreviousPage"
-					onclick="gotoPage('<%=currentPage - 1%>','<%=deptListSplitJSP%>')"
-					<%=currentPage == 1 ? "disabled" : ""%>>上一页</button>
-
-				<button id="gotoNextPage" name="gotoNextPage"
-					onclick="gotoPage('<%=currentPage + 1%>','<%=deptListSplitJSP%>')"
-					<%=currentPage == pageSize ? "disabled" : ""%>>下一页</button>
-				<button id="gotoLastPage" name="gotoLastPage"
-					onclick="gotoPage('<%=pageSize%>','<%=deptListSplitJSP%>')"
-					<%=currentPage == pageSize ? "disabled" : ""%>>末页</button> <input
-				type="text" id="redirectToPage" name="redirectToPage" size="1"
-				value="<%=currentPage%>/<%=pageSize%>" onfocus="clearContent()" onblur="resetContent('<%=currentPage%>','<%=pageSize%>')">&nbsp;
-				<button onclick="redirectTo('<%=deptListSplitJSP%>')">GO</button> <a href="<%=insertDeptJSP%>">增加部门</a></td>
+			<jsp:include page="/pages/common/page.jsp">
+				<jsp:param value="<%=currentPage %>" name="currentPage"/>
+				<jsp:param value="<%=lineSize %>" name="lineSize"/>
+				<jsp:param value="<%=pageSize %>" name="pageSize"/>
+				<jsp:param value="<%=allRecorders %>" name="allRecorders"/>
+				<jsp:param value="<%=deptListSplitJSP %>" name="splitJSP"/> 
+			</jsp:include>
+				<a href="<%=insertDeptJSP%>">增加部门</a></td>
 		</tr>
 	</table>
 </body>

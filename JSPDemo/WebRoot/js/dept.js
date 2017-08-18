@@ -29,7 +29,8 @@ function gotoPage(cp,url)
 	{
 		cp = 1;
 	}
-	window.location =  url + "?cp=" + cp;
+	var ls = document.getElementById("selectLineSize").value;
+	window.location =  url + "?cp=" + cp + "&ls=" + ls;
 }
 
 function clearContent()
