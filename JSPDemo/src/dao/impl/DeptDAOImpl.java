@@ -3,9 +3,12 @@ package dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+
 
 
 
@@ -26,7 +29,7 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public boolean doCreate(Dept vo) throws Exception
+	public boolean doCreate(Dept vo) throws SQLException
 	{
 		String sql = " INSERT INTO Dept(deptno,dname,loc) VALUES(?,?,?) ";
 		this.ps = this.conn.prepareStatement(sql);
@@ -37,7 +40,7 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public boolean doUpdate(Dept vo) throws Exception
+	public boolean doUpdate(Dept vo) throws SQLException
 	{
 		String sql = " UPDATE Dept SET deptno=?,dname=?,loc=? WHERE deptno=? ";
 		this.ps = this.conn.prepareStatement(sql);
@@ -49,7 +52,7 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public boolean doRemoveBatch(Set<Integer> ids) throws Exception
+	public boolean doRemoveBatch(Set<Integer> ids) throws SQLException
 	{
 		if(ids.size() <= 0)
 			return false;
@@ -79,7 +82,7 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public Dept findById(Integer id) throws Exception
+	public Dept findById(Integer id) throws SQLException
 	{
 		Dept vo = null;
 		String sql = " SELECT deptno,dname,loc FROM DEPT WHERE deptno = ? ";
@@ -97,7 +100,7 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public List<Dept> findAll() throws Exception
+	public List<Dept> findAll() throws SQLException
 	{
 		List<Dept> allDepts = new ArrayList<Dept>();
 		String sql = " SELECT deptno,dname,loc FROM DEPT ";
@@ -115,18 +118,19 @@ public class DeptDAOImpl implements IDeptDAO
 	}
 
 	@Override
-	public List<Dept> findAllSplit(Integer currentPage, Integer lineSize, String column, String keyWord)
-			throws Exception
+	public List<Dept> findAllSplit(Integer currentPage, Integer lineSize) throws SQLException
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Integer getAllCount(String column, String keyWord) throws Exception
+	public Integer getAllCount() throws SQLException
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+ 
 
 }
