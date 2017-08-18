@@ -24,14 +24,14 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	@Override
 	public boolean doCreate(Emp vo) throws SQLException
 	{
-		String sql = " INSERT INTO emp(empno,ename,job,hiredate,sal,comm) VALUES(?,?,?,?,?,?) ";
+		String sql = " INSERT INTO emp(ename,job,hiredate,sal,comm) VALUES(?,?,?,?,?) ";
 		super.ps = super.conn.prepareStatement(sql);
-		super.ps.setInt(1,vo.getEmpno());
-		super.ps.setString(2, vo.getEname());
-		super.ps.setString(3, vo.getJob());
-		super.ps.setTimestamp(4, new Timestamp(vo.getHiredate().getTime()));
-		super.ps.setDouble(5, vo.getSal());
-		super.ps.setDouble(6, vo.getComm());
+		//super.ps.setInt(1,vo.getEmpno());
+		super.ps.setString(1, vo.getEname());
+		super.ps.setString(2, vo.getJob());
+		super.ps.setTimestamp(3, new Timestamp(vo.getHiredate().getTime()));
+		super.ps.setDouble(4, vo.getSal());
+		super.ps.setDouble(5, vo.getComm());
 		return super.ps.executeUpdate() == 1;
 	}
 
@@ -59,7 +59,7 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	public Emp findById(Integer id) throws SQLException
 	{
 		Emp emp = null;
-		String sql = " SELECT empno,ename,job,hiredate,sal,comm WHERE empno=? ";
+		String sql = " SELECT empno,ename,job,hiredate,sal,comm FROM emp WHERE empno=? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, id);
 		ResultSet rs = this.ps.executeQuery();

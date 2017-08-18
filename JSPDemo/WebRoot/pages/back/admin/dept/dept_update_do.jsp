@@ -27,7 +27,7 @@
 
 	if (!ServiceFactory.getDeptServiceInstance().update(dept)) {
 		msg = "部门修改失败";
-	}
+	} 
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

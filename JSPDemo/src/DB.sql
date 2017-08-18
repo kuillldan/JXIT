@@ -22,3 +22,9 @@ CREATE TABLE emp
 	note VARCHAR(100),
 	CONSTRAINT pk_empno PRIMARY KEY(empno)
 );
+
+INSERT INTO emp (ename,job,hiredate,sal,comm) VALUES('sheldon','dev','2011-07-06',3800.00,100.00);
+INSERT INTO emp (ename,job,hiredate,sal,comm) VALUES('yuankui','test','2011-07-06',3800.00,100.00);
+INSERT INTO emp (ename,job,hiredate,sal,comm) VALUES('wenliang','sales','2011-07-06',3800.00,100.00);
+INSERT INTO emp (ename,job,hiredate,sal,comm) VALUES('lanchen','intern','2011-07-06',3800.00,100.00);
+INSERT INTO emp (ename,job,hiredate,sal,comm) VALUES('yanling','support','2011-07-06',3800.00,100.00);

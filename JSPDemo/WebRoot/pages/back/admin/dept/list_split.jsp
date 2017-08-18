@@ -5,8 +5,7 @@
 
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
-			+ request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 
 <%
@@ -19,18 +18,19 @@
 <%
 	Integer currentPage = 1;
 	Integer lineSize = 5;
-	Integer allRecorders = null;
 	Integer pageSize = 0;
+	Integer allRecorders = null;
+
 	try
 	{
-		currentPage = Integer.parseInt(request.getParameter("cp"));
+		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	} catch (Exception e)
 	{
 	}
 
 	try
 	{
-		lineSize = Integer.parseInt(request.getParameter("ls"));
+		lineSize = Integer.parseInt(request.getParameter("lineSize"));
 	} catch (Exception e)
 	{
 	}
@@ -39,13 +39,13 @@
 	{
 		currentPage = 1;
 	}
-	
+
 	if (lineSize <= 0)
 	{
 		lineSize = 5;
 	}
-	
-	if(lineSize >= 50)
+
+	if (lineSize >= 50)
 	{
 		lineSize = 50;
 	}
@@ -56,7 +56,7 @@
 	String sql = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
+
 	sql = "SELECT COUNT(*) FROM dept";
 	ps = conn.prepareStatement(sql);
 	rs = ps.executeQuery();
@@ -64,28 +64,12 @@
 	{
 		allRecorders = rs.getInt(1);
 	}
-	if (allRecorders == null)
-	{
-		allRecorders = 0;
-	}
-	if (allRecorders % lineSize == 0)
-	{
-		pageSize = allRecorders / lineSize;
-	} else
-	{
-		pageSize = allRecorders / lineSize + 1;
-	}
-	
-	if(currentPage >= pageSize)
-	{
-		currentPage = pageSize;
-	}
 	
 	sql = " SELECT deptno,dname,loc FROM dept LIMIT ?,? ";
 	ps = conn.prepareStatement(sql);
 	ps.setInt(1, (lineSize * (currentPage - 1)));
 	ps.setInt(2, lineSize);
-	
+
 	rs = ps.executeQuery();
 	List<Dept> allDepts = new ArrayList<Dept>();
 	while (rs.next())
@@ -97,9 +81,26 @@
 		allDepts.add(vo);
 	}
 
-	
+	DatabaseConnection.close(conn);
+%>
 
-	DatabaseConnection.close(conn); 
+<%
+	if (allRecorders == null)
+	{
+		allRecorders = 0;
+	}
+	if (allRecorders % lineSize == 0)
+	{
+		pageSize = allRecorders / lineSize;
+	} else
+	{
+		pageSize = allRecorders / lineSize + 1;
+	}
+%>
+
+
+<%
+	
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -110,7 +111,7 @@
 <link type="text/css" rel="stylesheet" href="css/lyk.css">
 <script type="text/javascript" src="js/lyk.js"></script>
 <script type="text/javascript" src="js/dept.js"></script>
- 
+
 </head>
 
 <body>
@@ -147,15 +148,14 @@
 			<td colspan="5"><input type="button" id="deleteAll"
 				name="deleteAll"
 				onclick="deleteAll('<%=deptDeleteAllURL%>','deptno','dept')"
-				value="删除部门信息">
-			<jsp:include page="/pages/common/page.jsp">
-				<jsp:param value="<%=currentPage %>" name="currentPage"/>
-				<jsp:param value="<%=lineSize %>" name="lineSize"/>
-				<jsp:param value="<%=pageSize %>" name="pageSize"/>
-				<jsp:param value="<%=allRecorders %>" name="allRecorders"/>
-				<jsp:param value="<%=deptListSplitJSP %>" name="splitJSP"/> 
-			</jsp:include>
-				<a href="<%=insertDeptJSP%>">增加部门</a></td>
+				value="删除部门信息"> 
+				<jsp:include page="/pages/common/page.jsp">
+					<jsp:param value="<%=currentPage%>" name="currentPage" />
+					<jsp:param value="<%=lineSize%>" name="lineSize" />
+					<jsp:param value="<%=pageSize%>" name="pageSize" />
+					<jsp:param value="<%=allRecorders%>" name="allRecorders" />
+					<jsp:param value="<%=deptListSplitJSP%>" name="splitJSP" />
+				</jsp:include> <a href="<%=insertDeptJSP%>">增加部门</a></td>
 		</tr>
 	</table>
 </body>
