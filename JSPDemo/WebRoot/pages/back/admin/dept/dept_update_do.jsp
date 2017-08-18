@@ -16,6 +16,7 @@
 	String deptUpdateJSP = basePath
 			+ "pages/back/admin/dept/update.jsp?deptno="
 			+ request.getParameter("deptno");
+	
 %>
 
 <%

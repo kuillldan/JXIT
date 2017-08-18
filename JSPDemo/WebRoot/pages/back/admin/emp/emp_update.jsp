@@ -13,6 +13,7 @@
 <%
 	String empListJSP = basePath + "pages/back/admin/emp/emp_list.jsp";
 	String empUpdateURL = basePath + "pages/back/admin/emp/emp_update_do.jsp";
+	String currentPage = request.getParameter("currentPage");
  %>
  
  
@@ -43,7 +44,10 @@
 			</tr>
 			<tr >
 				<td>工号</td>
-				<td><input type="text" name="empno" id="empno" disabled value="<%=emp.getEmpno()%>"></td>
+				<td>
+					<input type="text"  disabled value="<%=emp.getEmpno()%>">
+					<input type="hidden" name="empno" value="<%=emp.getEmpno()%>">
+				</td>
 				<td><span id="enameMsg" ></span></td>
 			</tr>
 			<tr >
@@ -79,6 +83,8 @@
 				</td>
 			</tr>
 		</table>
+		
+		<input type="hidden" value="<%=currentPage %>" name="currentPage">
 	</form>
 </body>
 </html>

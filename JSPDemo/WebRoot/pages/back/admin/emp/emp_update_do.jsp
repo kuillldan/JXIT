@@ -8,15 +8,15 @@
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 			+ request.getServerPort() + path + "/";
-			
+	request.setCharacterEncoding("UTF-8");		
 %>
 
 <%
 	String empBackJSP = basePath + "pages/back/admin/emp/emp_update.jsp";
+	String currentPage = request.getParameter("currentPage");
  %>
 
 <%
-	request.setCharacterEncoding("UTF-8");
 	Emp emp = new Emp();
 	emp.setEmpno(Integer.parseInt(request.getParameter("empno")));
 	emp.setEname(request.getParameter("ename"));
@@ -28,13 +28,13 @@
 	emp.setComm(Double.parseDouble(request.getParameter("comm")));
 	String msg = "雇员修改成功";
 	
-	if(!ServiceFactory.getEmpServiceInstance().insert(emp))
+	if(!ServiceFactory.getEmpServiceInstance().update(emp))
 	{
 		msg = "雇员增加失败";
 	}
 	else
 	{
-		empBackJSP = basePath + "pages/back/admin/emp/emp_list.jsp";
+		empBackJSP = basePath + "pages/back/admin/emp/emp_list.jsp?currentPage=" + currentPage;
 	}
 
  %>

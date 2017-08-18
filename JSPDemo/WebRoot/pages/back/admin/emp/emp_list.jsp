@@ -112,7 +112,7 @@
 			<td><%=vo.getJob() %></td>
 			<td><%=vo.getSal() %></td>
 			<td><%=vo.getComm() %></td>
-			<td><a href="<%=empUpdateJSP%>?empno=<%=vo.getEmpno()%>">修改</a></td>
+			<td><a href="<%=empUpdateJSP%>?empno=<%=vo.getEmpno()%>&currentPage=<%=currentPage%>">修改</a></td>
 		</tr>
 		<%
 			}
