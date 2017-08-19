@@ -9,29 +9,21 @@
 %>
 
 <%
-	pageContext.getRequest();
-	pageContext.getResponse();
-	pageContext.getSession();
-	pageContext.getServletContext().getRealPath("");
-	
-	request.getSession();
-	
-	
-	String deptListJSP = basePath + "pages/back/admin/dept/list_split.jsp";
+	String empListJSP = basePath + "pages/back/admin/emp/emp_list.jsp";
  %>
 
 <%
-	String deptno = request.getParameter("deptno");
-	String[] deptnos = deptno.split("\\|");
+	String empno = request.getParameter("empno");
+	String[] empnos = empno.split("\\|");
 	Set<Integer> ids = new HashSet<Integer>();
-	for(String item : deptnos)
+	for(String item : empnos)
 	{
 		ids.add(Integer.parseInt(item));
 	}
-	String msg ="部门信息删除成功";
-	if(!ServiceFactory.getDeptServiceInstance().remove(ids))
+	String msg ="雇员信息删除成功";
+	if(!ServiceFactory.getEmpServiceInstance().delete(ids))
 	{
-		msg = "部门信息删除失败";
+		msg = "雇员信息删除失败";
 	}
  %>
 
@@ -44,7 +36,7 @@
 	<script type="text/javascript" src="js/lyk.js"></script>
 	<script type="text/javascript">
 		alert("<%=msg%>");
-		window.location = "<%=deptListJSP%>";
+		window.location = "<%=empListJSP%>";
 	</script> 
 </head>
 

@@ -35,10 +35,20 @@ public class DeptServiceImpl implements IDeptService
 	{
 		try
 		{
-			return DAOFactory.getDeptDAOInstance(conn).doRemoveBatch(ids);
+			conn.setAutoCommit(false);
+			for(Integer deptno : ids)
+			{
+				DAOFactory.getEmpDAOInstance(conn).doRemoveByDeptno(deptno);
+			}
+			
+			boolean retVal = DAOFactory.getDeptDAOInstance(conn).doRemoveBatch(ids);
+			conn.setAutoCommit(true);
+			return retVal;
 		}
 		catch(Exception e)
 		{
+			conn.rollback();
+			conn.setAutoCommit(false);
 			throw e;
 		}
 		finally

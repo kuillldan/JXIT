@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 
+
 import vo.Emp;
 import dao.AbstractDAOImpl;
 import dao.IEmpDAO;
@@ -120,6 +121,15 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 		emp.setHiredate(rs.getTimestamp("hiredate"));
 		emp.setSal(rs.getDouble("sal"));
 		emp.setComm(rs.getDouble("comm"));
+	}
+
+	@Override
+	public void doRemoveByDeptno(Integer deptno) throws SQLException
+	{
+		String sql = " DELETE FROM emp WHERE deptno =? ";
+		this.ps = this.conn.prepareStatement(sql);
+		this.ps.setInt(1, deptno);
+		this.ps.executeUpdate();
 	}
 
 }
