@@ -15,7 +15,7 @@ public class DatabaseConnection
 {
 	private static DataSource dataSource;
 	private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
-
+	
 	public static Connection getConnection()
 	{
 		Connection conn = null;
@@ -41,6 +41,12 @@ public class DatabaseConnection
 			logger.error(e.getMessage(), e);
 			return null;
 		}
+		
+		if(conn == null)
+		{
+			logger.error("未能获取到连接对象!");
+		}
+		
 		return conn;
 	}
 

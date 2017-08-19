@@ -8,15 +8,7 @@
 			+ request.getServerPort() + path + "/";
 %>
 
-<%
-	pageContext.getRequest();
-	pageContext.getResponse();
-	pageContext.getSession();
-	pageContext.getServletContext().getRealPath("");
-	
-	request.getSession();
-	
-	
+<% 
 	String deptListJSP = basePath + "pages/back/admin/dept/list_split.jsp";
  %>
 

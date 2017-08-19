@@ -25,7 +25,7 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	@Override
 	public boolean doCreate(Emp vo) throws SQLException
 	{
-		String sql = " INSERT INTO emp(ename,job,hiredate,sal,comm) VALUES(?,?,?,?,?) ";
+		String sql = " INSERT INTO EMP(ENAME,JOB,HIREDATE,DAL,COMM) VALUES(?,?,?,?,?) ";
 		super.ps = super.conn.prepareStatement(sql);
 		//super.ps.setInt(1,vo.getEmpno());
 		super.ps.setString(1, vo.getEname());
@@ -39,7 +39,7 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	@Override
 	public boolean doUpdate(Emp vo) throws SQLException
 	{
-		String sql = " UPDATE emp SET ename=?,job=?,hiredate=?,sal=?,comm=? WHERE empno = ? ";
+		String sql = " UPDATE EMP SET ENAME=?,JOB=?,HIREDATE=?,SAL=?,COMM=? WHERE EMPNO = ? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setString(1, vo.getEname());
 		this.ps.setString(2, vo.getJob());
@@ -53,14 +53,14 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	@Override
 	public boolean doRemoveBatch(Set<Integer> ids) throws SQLException
 	{
-		return super.doRemoveHelper(ids, "emp", "empno");
+		return super.doRemoveHelper(ids, "EMP", "EMPNO");
 	}
 
 	@Override
 	public Emp findById(Integer id) throws SQLException
 	{
 		Emp emp = null;
-		String sql = " SELECT empno,ename,job,hiredate,sal,comm FROM emp WHERE empno=? ";
+		String sql = " SELECT EMPNO,ENAME,JOB,HIREDATE,DAL,COMM FROM EMP WHERE EMPNO=? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, id);
 		ResultSet rs = this.ps.executeQuery();
@@ -76,7 +76,7 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	public List<Emp> findAll() throws SQLException
 	{
 		List<Emp> allEmps = new ArrayList<Emp>();
-		String sql = " SELECT empno,ename,job,hiredate,sal,comm FROM emp ";
+		String sql = " SELECT EMPNO,ENAME,JOB,HIREDATE,SAL,COMM FROM EMP ";
 		this.ps = this.conn.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while(rs.next())
@@ -92,7 +92,7 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	public List<Emp> findAllSplit(Integer currentPage, Integer lineSize ) throws SQLException
 	{
 		List<Emp> allEmps = new ArrayList<Emp>();
-		String sql = " SELECT empno,ename,job,hiredate,sal,comm FROM emp LIMIT ?,? ";
+		String sql = " SELECT EMPNO,ENAME,JOB,HIREDATE,SAL,COMM FROM EMP LIMIT ?,? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, (currentPage - 1) * lineSize);
 		this.ps.setInt(2, lineSize);
@@ -109,24 +109,24 @@ public class EmpDAOImpl extends AbstractDAOImpl<Integer,Emp> implements IEmpDAO
 	@Override
 	public Integer getAllCount() throws SQLException
 	{
-		return super.getAllCountHelper("emp");
+		return super.getAllCountHelper("EMP");
 	}
 
 	@Override
 	protected void setVo(ResultSet rs, Emp emp) throws SQLException
 	{
-		emp.setEmpno(rs.getInt("empno"));
-		emp.setEname(rs.getString("ename"));
-		emp.setJob(rs.getString("job"));
-		emp.setHiredate(rs.getTimestamp("hiredate"));
-		emp.setSal(rs.getDouble("sal"));
-		emp.setComm(rs.getDouble("comm"));
+		emp.setEmpno(rs.getInt("EMPNO"));
+		emp.setEname(rs.getString("ENAME"));
+		emp.setJob(rs.getString("JOB"));
+		emp.setHiredate(rs.getTimestamp("HIREDATE"));
+		emp.setSal(rs.getDouble("SAL"));
+		emp.setComm(rs.getDouble("COMM"));
 	}
 
 	@Override
 	public void doRemoveByDeptno(Integer deptno) throws SQLException
 	{
-		String sql = " DELETE FROM emp WHERE deptno =? ";
+		String sql = " DELETE FROM EMP WHERE DEPTNO =? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, deptno);
 		this.ps.executeUpdate();

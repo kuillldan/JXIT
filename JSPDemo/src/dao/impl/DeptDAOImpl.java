@@ -31,7 +31,7 @@ public class DeptDAOImpl implements IDeptDAO
 	@Override
 	public boolean doCreate(Dept vo) throws SQLException
 	{
-		String sql = " INSERT INTO Dept(deptno,dname,loc) VALUES(?,?,?) ";
+		String sql = " INSERT INTO DEPT(DEPTNO,DNAME,LOC) VALUES(?,?,?) ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, vo.getDeptno());
 		this.ps.setString(2, vo.getDname());
@@ -42,7 +42,7 @@ public class DeptDAOImpl implements IDeptDAO
 	@Override
 	public boolean doUpdate(Dept vo) throws SQLException
 	{
-		String sql = " UPDATE Dept SET deptno=?,dname=?,loc=? WHERE deptno=? ";
+		String sql = " UPDATE DEPT SET DEPTNO=?,DNAME=?,LOC=? WHERE DEPTNO=? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, vo.getDeptno());
 		this.ps.setString(2, vo.getDname());
@@ -57,7 +57,7 @@ public class DeptDAOImpl implements IDeptDAO
 		if(ids.size() <= 0)
 			return false;
 		
-		StringBuffer sql = new StringBuffer(" DELETE FROM Dept WHERE deptno IN( ");
+		StringBuffer sql = new StringBuffer(" DELETE FROM DEPT WHERE DEPTNO IN( ");
 		for(Integer id : ids)
 		{
 			sql.append(id).append(",");
@@ -85,16 +85,16 @@ public class DeptDAOImpl implements IDeptDAO
 	public Dept findById(Integer id) throws SQLException
 	{
 		Dept vo = null;
-		String sql = " SELECT deptno,dname,loc FROM DEPT WHERE deptno = ? ";
+		String sql = " SELECT DEPTNO,DNAME,LOC FROM DEPT WHERE DEPTNO = ? ";
 		this.ps = this.conn.prepareStatement(sql);
 		this.ps.setInt(1, id);
 		ResultSet rs = this.ps.executeQuery();
 		if(rs.next())
 		{
 			vo = new Dept();
-			vo.setDeptno(rs.getInt("deptno"));
-			vo.setDname(rs.getString("dname"));
-			vo.setLoc(rs.getString("loc"));
+			vo.setDeptno(rs.getInt("DEPTNO"));
+			vo.setDname(rs.getString("DNAME"));
+			vo.setLoc(rs.getString("LOC"));
 		}
 		return vo;
 	}
@@ -103,15 +103,15 @@ public class DeptDAOImpl implements IDeptDAO
 	public List<Dept> findAll() throws SQLException
 	{
 		List<Dept> allDepts = new ArrayList<Dept>();
-		String sql = " SELECT deptno,dname,loc FROM DEPT ";
+		String sql = " SELECT DEPTNO,DNAME,LOC FROM DEPT ";
 		this.ps = this.conn.prepareStatement(sql);
 		ResultSet rs = this.ps.executeQuery();
 		while(rs.next())
 		{
 			Dept vo = new Dept();
-			vo.setDeptno(rs.getInt("deptno"));
-			vo.setDname(rs.getString("dname"));
-			vo.setLoc(rs.getString("loc"));
+			vo.setDeptno(rs.getInt("DEPTNO"));
+			vo.setDname(rs.getString("DNAME"));
+			vo.setLoc(rs.getString("LOC"));
 			allDepts.add(vo);
 		}
 		return allDepts;
