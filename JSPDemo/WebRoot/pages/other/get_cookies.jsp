@@ -1,28 +1,22 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="javax.servlet.http.*" %>
-
-
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
 <%
-	Cookie c1 = new Cookie("username","root");
-	Cookie c2 = new Cookie("password","admin");
-	c1.setMaxAge(10);
-	c1.setMaxAge(60);
-	response.addCookie(c1);
-	response.addCookie(c2);
+
+	Cookie[] cookies = request.getCookies();
 	
-%>
+ %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'set_cookies.jsp' starting page</title>
+    <title>My JSP 'get_cookies.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -36,6 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    Set Cookies<br>
+    <%
+    	for(Cookie c: cookies)
+    	{
+    	%>
+    		<h3><%=c.getName() %> = <%=c.getValue() %></h3>
+    	<%
+    	}
+     %>
   </body>
 </html>

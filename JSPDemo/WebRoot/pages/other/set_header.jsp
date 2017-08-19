@@ -27,14 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <%
-    	while(headers.hasMoreElements())
-    	{
-    		String headerName = headers.nextElement();
-    	%>
-    		<h3><%= headerName%> --> <%=request.getHeader(headerName) %></h3>
-    	<%
-    	}
-     %>
+    <h1>application.getContextPath() <%=application.getContextPath() %></h1>
+    <h1>application.getRealPath("/") <%=application.getRealPath("/") %></h1>
   </body>
 </html>
