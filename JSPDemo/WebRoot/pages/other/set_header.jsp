@@ -28,6 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <h1>application.getContextPath() <%=application.getContextPath() %></h1>
-    <h1>application.getRealPath("/") <%=application.getRealPath("/") %></h1>
+    <h1>application.getRealPath("/") <%=application.getRealPath(application.getContextPath()) %></h1>
   </body>
 </html>

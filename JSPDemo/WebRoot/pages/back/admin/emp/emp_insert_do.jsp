@@ -1,8 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="java.text.*" %>
 <%@ page import="vo.*" %>
+<%@ page import="java.io.*" %>
 <%@ page import="service.*" %>
 <%@ page import="factory.*" %>
+<%@ page import="com.jspsmart.upload.*" %>
 
 <%
 	String path = request.getContextPath();
@@ -13,23 +15,18 @@
 <%
 	String empInsertJSP = basePath + "pages/back/admin/emp/emp_insert.jsp";
  %>
+ 
+ <%
+ 	SmartUpload smartUpload = new SmartUpload();
+ 	smartUpload.initialize(pageContext.getServletConfig(), request, response);
+ 	smartUpload.upload();
+ 	SmartFiles smartFiles = smartUpload.getFiles();
+ 	System.out.println(smartFiles.getCount());
+ 	String realPath = application.getRealPath("/");
+ 	smartFiles.getFile(0).saveAs(realPath + "/hell.jpg");
+  %>
 
-<%
-	request.setCharacterEncoding("UTF-8");
-	Emp emp = new Emp();
-	emp.setEname(request.getParameter("ename"));
-	emp.setJob(request.getParameter("job"));
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	Date hiredate = sdf.parse(request.getParameter("hiredate"));
-	emp.setHiredate(hiredate);
-	emp.setSal(Double.parseDouble(request.getParameter("sal")));
-	emp.setComm(Double.parseDouble(request.getParameter("comm")));
-	String msg = "雇员增加成功";
-	
-	if(!ServiceFactory.getEmpServiceInstance().insert(emp))
-	{
-		msg = "雇员增加失败";
-	}
+<% 
 
  %>
 
@@ -41,7 +38,7 @@
 	<link type="text/css" rel="stylesheet" href="css/lyk.css">
 	<script type="text/javascript" src="js/lyk.js"></script>
 	<script type="text/javascript">
-		alert("<%=msg%>");
+		alert("<%=empInsertJSP%>");
 		window.location = "<%=empInsertJSP%>";
 	</script> 
 </head>

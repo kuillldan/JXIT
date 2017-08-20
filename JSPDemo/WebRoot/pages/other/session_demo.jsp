@@ -30,7 +30,8 @@
 
 <body>
 	<h1><%=session.isNew() %></h1>
-	<h1><%=sessionId %></h1>
-	<h1><%=cookies[0].getName() %>=<%=cookies[0].getValue() %></h1>
+	<h1><%=sessionId %></h1> 
+	<h1><%=getServletContext() %></h1>
+	<h1><%=request.getServletContext() %></h1>
 </body>
 </html>
