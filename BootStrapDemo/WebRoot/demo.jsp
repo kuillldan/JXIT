@@ -34,16 +34,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-1">栅格11</div>
 			<div class="col-md-1">栅格12</div>  
 		</div>
-		<div class="row">
-			<div class="col-md-3" style="background:red;">栅格1</div>
-			<div class="col-md-3 col-md-push-3" style="background:grey;">栅格2</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3" style="background:red;">栅格1</div>
-			<div class="col-md-6 col-md-pull-2" style="background:grey;">栅格2</div>
-		</div>
-	</div> 
+	 
 	
-	<span class="visible-md"></span>
+	<span class="visible-md">这个可见</span>
+	<span class="hidden-md">这个不可见，如果显示，则说明错误ss</span>
 </body>
 </html>
