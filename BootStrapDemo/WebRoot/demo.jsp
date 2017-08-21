@@ -43,5 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="col-md-6 col-md-pull-2" style="background:grey;">栅格2</div>
 		</div>
 	</div> 
+	
+	<span class="visible-md"></span>
 </body>
 </html>
