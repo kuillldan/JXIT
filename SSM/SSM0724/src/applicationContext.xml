@@ -9,29 +9,22 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-	<context:annotation-config />
-	<context:component-scan base-package="org.lyk" />
-
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		<property name="driverClass" value="org.gjt.mm.mysql.Driver" />	<!-- 驱动程序 -->
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mldn" /><!-- 连接地址 -->
-		<property name="user" value="root" />	<!-- 用户名 -->
-		<property name="password" value="admin" />	<!-- 密码 -->
-		<property name="maxPoolSize" value="1" />	<!-- 最大的可用连接数 -->
-		<property name="minPoolSize" value="1" />	<!-- 最小维持的连接数 -->
-		<property name="initialPoolSize" value="10" />	<!-- 初始化连接数 -->
-		<property name="maxIdleTime" value="20" />	<!-- 最大等待连接 -->
+	<bean name="dept" class="org.lyk.vo.Dept" >
+		<property name="deptno" value="10" />
+		<property name="dname" value="SSIT" />
+		<property name="loc" value="CHONGQING" />
 	</bean>
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:mybatis.cfg.xml"></property>
-	</bean>
-	
-	<bean id="news" class="org.lyk.vo.News">
-	
+	<bean name="emp" class="org.lyk.vo.Emp">
+		<property name="empno" value="2159"/>
+		<property name="ename" value="SHELDON"/>
+		<property name="sal" value="9999.99"/> 
+		<property name="address">
+			<map key-type="java.lang.String" value-type="java.lang.String">
+				<entry key="023" value="重庆"/>
+				<entry key="028" value="成都"/>
+				<entry key="021" value="上海"/>
+				<entry key="027" value="广州"/>
+			</map>
+		</property>
 	</bean>
 </beans>

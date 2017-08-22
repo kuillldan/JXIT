@@ -4,7 +4,11 @@ import java.util.Date;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.vo.Dept;
+import org.lyk.vo.Emp;
 import org.lyk.vo.News;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,18 +16,13 @@ import org.springframework.stereotype.Component;
 
 public class Hello
 {
+	private static ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+	private static Logger logger = LoggerFactory.getLogger(Hello.class);
+	
 	public static void main(String[] args)
 	{
-		News news = new News();
-		news.setTitle("热热热");
-		news.setContent("真的很热");
-		news.setPubdate(new Date());
-
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		SqlSessionFactory sqlSessionFactory = ctx.getBean("sqlSessionFactory", SqlSessionFactory.class);
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		System.out.println(sqlSession.insert("org.lyk.vo.mapping.NewsNS.doCreate",news));
-		System.out.println(sqlSession.selectOne("org.lyk.vo.mapping.NewsNS.findById",1));
+		Emp beanObj = ctx.getBean("emp",Emp.class);
+		logger.info(beanObj.toString());
 		System.out.println("//Main done");
 	}
 }
