@@ -1,0 +1,12 @@
+2017-08-21 21:29:28,607 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5bae0107: startup date [Mon Aug 21 21:29:28 CST 2017]; root of context hierarchy
+2017-08-21 21:29:28,652 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-08-21 21:29:28,849 INFO [test.Hello] - Hello Shit
+2017-08-21 21:41:17,775 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5bae0107: startup date [Mon Aug 21 21:41:17 CST 2017]; root of context hierarchy
+2017-08-21 21:41:17,815 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-08-21 21:41:17,947 INFO [test.Hello] - Dept [deptno=null, dname=null, loc=null]
+2017-08-21 21:42:18,558 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5bae0107: startup date [Mon Aug 21 21:42:18 CST 2017]; root of context hierarchy
+2017-08-21 21:42:18,596 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-08-21 21:42:18,759 INFO [test.Hello] - Dept [deptno=10, dname=SSIT, loc=重庆]
+2017-08-21 21:49:19,777 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5bae0107: startup date [Mon Aug 21 21:49:19 CST 2017]; root of context hierarchy
+2017-08-21 21:49:19,816 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-08-21 21:49:19,989 INFO [test.Hello] - Emp [empno=21591923, ename=sheldon, sal=9999.32, dept=Dept [deptno=10, dname=SSIT, loc=重庆]]
