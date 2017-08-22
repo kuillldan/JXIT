@@ -1,23 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page import="org.lyk.vo.*" %>
-<%@ page import="org.lyk.service.*,org.lyk.service.impl.*" %>
+<%@ page import="org.lyk.vo.*"%>
+<%@ page import="org.lyk.service.*" %>
+<%@ page import="org.lyk.service.impl.*" %>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
 			+ request.getServerPort() + path + "/";
 %>
-
-<%
-
-	System.out.println("**********");
-	Dept dept = new Dept();
-		dept.setDeptno(10);
-		dept.setDname("CMS");
-		dept.setLoc("重庆");
-		IDeptService deptService = new DeptServiceImpl();
-		deptService.insert(dept);
-	System.out.println("**********");
- %>
+ 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
