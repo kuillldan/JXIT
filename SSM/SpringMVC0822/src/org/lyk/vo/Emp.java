@@ -1,11 +1,22 @@
 package org.lyk.vo;
 
+import java.util.Date;
+
 public class Emp
 {
 	private Integer empno;
 	private String ename;
 	private Double sal;
-	private Dept dept;
+	private Date hiredate;
+	 
+	public Date getHiredate()
+	{
+		return hiredate;
+	}
+	public void setHiredate(Date hiredate)
+	{
+		this.hiredate = hiredate;
+	}
 	public Integer getEmpno()
 	{
 		return empno;
@@ -30,17 +41,9 @@ public class Emp
 	{
 		this.sal = sal;
 	}
-	public Dept getDept()
-	{
-		return dept;
-	}
-	public void setDept(Dept dept)
-	{
-		this.dept = dept;
-	}
 	@Override
 	public String toString()
 	{
-		return "Emp [empno=" + empno + ", ename=" + ename + ", sal=" + sal + ", dept=" + dept + "]";
-	} 
+		return "Emp [empno=" + empno + ", ename=" + ename + ", sal=" + sal + ", hiredate=" + hiredate + "]";
+	}  
 }
