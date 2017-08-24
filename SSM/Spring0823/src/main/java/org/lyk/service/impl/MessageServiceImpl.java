@@ -11,6 +11,11 @@ public class MessageServiceImpl implements IMessageService
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+//	@Override
+//	public String getInfo()
+//	{
+//		
+//		return "Hello Shit";
+//	}
 
 }
