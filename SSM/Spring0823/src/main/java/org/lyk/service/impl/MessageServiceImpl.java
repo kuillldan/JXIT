@@ -6,11 +6,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageServiceImpl implements IMessageService
 {
-	@Override
-	public String getInfo()
-	{
-		
-		return "Hello Shit";
+
+	public String getInfo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
+	
 
 }
