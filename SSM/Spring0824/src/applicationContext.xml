@@ -12,10 +12,34 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 	
-	<mvc:annotation-driven />
+	<context:annotation-config/>
+	<context:component-scan base-package="org.lyk"/>
+	
+	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	
-	<context:annotation-config />
-	<context:component-scan base-package="org.lyk" />
-
+	<bean name="resourceUtil" class="org.lyk.main.ResourceUtils">
+		<property name="resource" value="file:c:\\d\\jxit\\temp\\group_auth.csv" />
+	</bean>
+	
+	<bean name="dept" class="org.lyk.vo.Dept">
+		<property name="deptno" value="10"/>
+		<property name="dname" value="开发部"/>
+		<property name="loc" value="北京"/>
+		<property name="addresses">
+			<props>
+				<prop key="北京">北京市宣武区</prop>
+				<prop key="广州">广州市天马区</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean name="serviceProxy" class="org.lyk.aop.ServiceProxy" />
+	<aop:config>
+		<aop:pointcut expression="execution(public * org.lyk.service.impl.*.*(..))" id="genericService"/>
+		<aop:aspect ref="serviceProxy">
+			<aop:before method="before" pointcut-ref="genericService"/>
+			<aop:after method="after" pointcut-ref="genericService"/>
+		</aop:aspect>
+	</aop:config>
 </beans>
