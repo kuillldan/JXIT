@@ -36,10 +36,9 @@
 	
 	<bean name="serviceProxy" class="org.lyk.aop.ServiceProxy" />
 	<aop:config>
-		<aop:pointcut expression="execution(public * org.lyk.service.impl.*.*(..))" id="genericService"/>
+		<aop:pointcut expression="execution(public * org.lyk.service.impl.*.*(..))  " id="genericService"/>
 		<aop:aspect ref="serviceProxy">
-			<aop:before method="before" pointcut-ref="genericService"/>
-			<aop:after method="after" pointcut-ref="genericService"/>
+			<aop:around method="around" pointcut-ref="genericService"  />
 		</aop:aspect>
 	</aop:config>
 </beans>
