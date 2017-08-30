@@ -18,27 +18,23 @@
 	<mvc:annotation-driven/>
 	<mvc:default-servlet-handler/>
 	
-	<bean name="resourceUtil" class="org.lyk.main.ResourceUtils">
-		<property name="resource" value="file:c:\\d\\jxit\\temp\\group_auth.csv" />
+	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hrdb" />
+		<property name="user" value="root" />
+		<property name="password" value="admin" />
+		<property name="maxPoolSize" value="20"/>
+		<property name="minPoolSize" value="5"/>
+		<property name="initialPoolSize" value="10"/>
+		<property name="maxIdleTime" value="1000"/>
 	</bean>
 	
-	<bean name="dept" class="org.lyk.vo.Dept">
-		<property name="deptno" value="10"/>
-		<property name="dname" value="开发部"/>
-		<property name="loc" value="北京"/>
-		<property name="addresses">
-			<props>
-				<prop key="北京">北京市宣武区</prop>
-				<prop key="广州">广州市天马区</prop>
-			</props>
-		</property>
+	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<bean name="serviceProxy" class="org.lyk.aop.ServiceProxy" />
-	<aop:config>
-		<aop:pointcut expression="execution(public * org.lyk.service.impl.*.*(..))  " id="genericService"/>
-		<aop:aspect ref="serviceProxy">
-			<aop:around method="around" pointcut-ref="genericService"  />
-		</aop:aspect>
-	</aop:config>
+	<bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis.cfg.xml"/>
+	</bean>
 </beans>

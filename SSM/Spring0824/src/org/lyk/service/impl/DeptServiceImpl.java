@@ -20,7 +20,6 @@ public class DeptServiceImpl implements IDeptService
 	@Override
 	public boolean insert(Dept dept)
 	{
-		logger.info("【服务层】准备调用数据层进行数据插入操作");
 		return this.deptDaoImpl.doCreate(dept);
 	}
 }

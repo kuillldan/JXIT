@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping(value="/pages/emp/*")
+@RequestMapping(value="/pages/dept/*")
 public class DeptAction
 {
 	private static final Logger logger = LoggerFactory.getLogger(DeptAction.class);
