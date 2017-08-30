@@ -1,103 +1,122 @@
-2017-08-24 19:57:35,758 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12f3bed9: startup date [Thu Aug 24 19:57:35 CST 2017]; root of context hierarchy
-2017-08-24 19:57:35,869 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 19:59:33,098 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4076a247: startup date [Thu Aug 24 19:59:33 CST 2017]; root of context hierarchy
-2017-08-24 19:59:33,198 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:00:33,013 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12f3bed9: startup date [Thu Aug 24 20:00:33 CST 2017]; root of context hierarchy
-2017-08-24 20:00:33,113 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:02:09,642 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12f3bed9: startup date [Thu Aug 24 20:02:09 CST 2017]; root of context hierarchy
-2017-08-24 20:02:09,742 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:04:16,087 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2c980461: startup date [Thu Aug 24 20:04:16 CST 2017]; root of context hierarchy
-2017-08-24 20:04:16,207 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:06:06,518 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4076a247: startup date [Thu Aug 24 20:06:06 CST 2017]; root of context hierarchy
-2017-08-24 20:06:06,628 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:17:36,798 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@12d5e310: startup date [Thu Aug 24 20:17:36 CST 2017]; root of context hierarchy
-2017-08-24 20:17:36,888 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:18:23,285 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2b0dbc8d: startup date [Thu Aug 24 20:18:23 CST 2017]; root of context hierarchy
-2017-08-24 20:18:23,385 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:21:10,201 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2b0dbc8d: startup date [Thu Aug 24 20:21:10 CST 2017]; root of context hierarchy
-2017-08-24 20:21:10,311 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:33:19,481 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a6a4b6: startup date [Thu Aug 24 20:33:19 CST 2017]; root of context hierarchy
-2017-08-24 20:33:19,581 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:33:29,969 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a6a4b6: startup date [Thu Aug 24 20:33:29 CST 2017]; root of context hierarchy
-2017-08-24 20:33:30,070 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:34:24,817 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@182e3919: startup date [Thu Aug 24 20:34:24 CST 2017]; root of context hierarchy
-2017-08-24 20:34:24,939 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-24 20:38:55,548 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2a6a4b6: startup date [Thu Aug 24 20:38:55 CST 2017]; root of context hierarchy
-2017-08-24 20:38:55,658 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 11:30:36,823 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@20105f83: startup date [Tue Aug 29 11:30:36 CST 2017]; root of context hierarchy
-2017-08-29 11:30:36,949 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 11:30:37,847 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 11:30:38,542 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 11:30:38,957 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@20105f83: startup date [Tue Aug 29 11:30:36 CST 2017]; root of context hierarchy
-2017-08-29 11:30:39,075 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@20105f83: startup date [Tue Aug 29 11:30:36 CST 2017]; root of context hierarchy
-2017-08-29 11:30:39,218 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 11:31:06,345 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 11:31:06 CST 2017]; root of context hierarchy
-2017-08-29 11:31:06,447 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 11:31:07,234 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 11:31:07,930 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 11:31:08,305 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 11:31:06 CST 2017]; root of context hierarchy
-2017-08-29 11:31:08,427 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 11:31:06 CST 2017]; root of context hierarchy
-2017-08-29 11:31:08,564 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:02:13,555 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 12:02:13 CST 2017]; root of context hierarchy
-2017-08-29 12:02:13,665 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:02:14,499 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:02:15,273 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:02:15,666 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 12:02:13 CST 2017]; root of context hierarchy
-2017-08-29 12:02:15,812 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@2cec4462: startup date [Tue Aug 29 12:02:13 CST 2017]; root of context hierarchy
-2017-08-29 12:02:15,970 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:02:56,376 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@70c74e66: startup date [Tue Aug 29 12:02:56 CST 2017]; root of context hierarchy
-2017-08-29 12:02:56,475 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:02:57,230 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:02:57,873 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:02:58,245 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@70c74e66: startup date [Tue Aug 29 12:02:56 CST 2017]; root of context hierarchy
-2017-08-29 12:02:58,361 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@70c74e66: startup date [Tue Aug 29 12:02:56 CST 2017]; root of context hierarchy
-2017-08-29 12:02:58,496 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:03:21,501 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:03:21 CST 2017]; root of context hierarchy
-2017-08-29 12:03:21,616 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:03:22,347 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:03:23,006 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:03:23,394 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:03:21 CST 2017]; root of context hierarchy
-2017-08-29 12:03:23,511 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:03:21 CST 2017]; root of context hierarchy
-2017-08-29 12:03:23,661 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:04:08,513 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:04:08 CST 2017]; root of context hierarchy
-2017-08-29 12:04:08,649 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:04:09,379 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:04:10,007 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:04:10,366 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:04:08 CST 2017]; root of context hierarchy
-2017-08-29 12:04:10,481 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:04:08 CST 2017]; root of context hierarchy
-2017-08-29 12:04:10,618 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:04:54,098 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@163778cf: startup date [Tue Aug 29 12:04:54 CST 2017]; root of context hierarchy
-2017-08-29 12:04:54,200 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:04:54,931 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:04:55,562 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:04:55,921 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@163778cf: startup date [Tue Aug 29 12:04:54 CST 2017]; root of context hierarchy
-2017-08-29 12:04:56,035 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@163778cf: startup date [Tue Aug 29 12:04:54 CST 2017]; root of context hierarchy
-2017-08-29 12:04:56,173 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:06:09,477 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:06:09 CST 2017]; root of context hierarchy
-2017-08-29 12:06:09,598 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:06:10,325 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:06:10,965 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:06:11,382 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:06:09 CST 2017]; root of context hierarchy
-2017-08-29 12:06:11,520 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:06:09 CST 2017]; root of context hierarchy
-2017-08-29 12:06:11,659 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:06:45,420 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:06:45 CST 2017]; root of context hierarchy
-2017-08-29 12:06:45,532 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:06:46,281 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:06:46,935 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:06:47,293 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:06:45 CST 2017]; root of context hierarchy
-2017-08-29 12:06:47,410 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:06:45 CST 2017]; root of context hierarchy
-2017-08-29 12:06:47,549 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:12:42,312 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:12:42 CST 2017]; root of context hierarchy
-2017-08-29 12:12:42,407 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:12:43,169 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:12:43,834 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:12:44,205 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:12:42 CST 2017]; root of context hierarchy
-2017-08-29 12:12:44,323 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@21bf4c80: startup date [Tue Aug 29 12:12:42 CST 2017]; root of context hierarchy
-2017-08-29 12:12:44,458 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
-2017-08-29 12:15:22,846 INFO [org.springframework.context.support.ClassPathXmlApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:15:22 CST 2017]; root of context hierarchy
-2017-08-29 12:15:22,979 INFO [org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-08-29 12:15:23,708 INFO [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
-2017-08-29 12:15:24,348 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping] - Mapped "{[/pages/emp/insert],methods=[],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.web.servlet.ModelAndView org.lyk.action.DeptAction.insert(org.lyk.vo.Dept)
-2017-08-29 12:15:24,695 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:15:22 CST 2017]; root of context hierarchy
-2017-08-29 12:15:24,808 INFO [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.context.support.ClassPathXmlApplicationContext@4b7d94f8: startup date [Tue Aug 29 12:15:22 CST 2017]; root of context hierarchy
-2017-08-29 12:15:24,949 INFO [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler 'org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler#0'
+2017-08-30 10:09:12,318 INFO [org.lyk.main.Hello] - //Main Done
+2017-08-30 10:09:47,695 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@35886ba1]
+2017-08-30 10:09:47,696 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES(?,?,?,?,?,'学生'); 
+2017-08-30 10:09:47,781 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==> Parameters: 21591925(String), 远奎(String), 19(Integer), 重庆大学(String), 99.5(Double)
+2017-08-30 10:09:58,962 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@42aa3910]
+2017-08-30 10:09:58,963 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES(?,?,?,?,?,'学生'); 
+2017-08-30 10:09:59,060 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==> Parameters: 21591926(String), 远奎(String), 19(Integer), 重庆大学(String), 99.5(Double)
+2017-08-30 10:09:59,062 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - <==    Updates: 1
+2017-08-30 10:09:59,075 INFO [org.lyk.main.Hello] - //Main Done
+2017-08-30 10:10:16,159 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:10:16,194 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:10:16,194 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:10:16,194 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:10:16,194 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:10:16,400 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:10:16,794 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 733603128.
+2017-08-30 10:10:16,795 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@2bb9e538]
+2017-08-30 10:10:16,797 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@2bb9e538]
+2017-08-30 10:10:16,797 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES(?,?,?,?,?,'学生'); 
+2017-08-30 10:10:16,881 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==> Parameters: 21591927(String), 远奎(String), 19(Integer), 重庆大学(String), 99.5(Double)
+2017-08-30 10:10:16,882 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - <==    Updates: 1
+2017-08-30 10:10:16,882 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@2bb9e538]
+2017-08-30 10:10:16,886 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@2bb9e538]
+2017-08-30 10:10:16,887 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@2bb9e538]
+2017-08-30 10:10:16,888 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Returned connection 733603128 to pool.
+2017-08-30 10:10:16,888 INFO [org.lyk.main.Hello] - //Main Done
+2017-08-30 10:16:38,220 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:16:38,250 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:16:38,250 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:16:38,250 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:16:38,251 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:16:38,455 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:16:38,856 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 1786766668.
+2017-08-30 10:16:38,856 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a7fe54c]
+2017-08-30 10:16:38,859 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@6a7fe54c]
+2017-08-30 10:16:38,859 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES(?,?,?,?,?,?); 
+2017-08-30 10:16:38,947 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - ==> Parameters: 21591928(String), 远奎(String), 19(Integer), 重庆大学(String), 99.5(Double), 学生(String)
+2017-08-30 10:16:38,950 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateStudent] - <==    Updates: 1
+2017-08-30 10:16:38,951 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a7fe54c]
+2017-08-30 10:16:38,953 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a7fe54c]
+2017-08-30 10:16:38,953 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@6a7fe54c]
+2017-08-30 10:16:38,953 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Returned connection 1786766668 to pool.
+2017-08-30 10:16:38,953 INFO [org.lyk.main.Hello] - //Main Done
+2017-08-30 10:19:48,940 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:19:48,980 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:19:48,980 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:19:48,980 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:19:48,980 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:19:49,191 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:19:49,585 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 1850027023.
+2017-08-30 10:19:49,585 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@6e452c0f]
+2017-08-30 10:19:49,588 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@6e452c0f]
+2017-08-30 10:19:49,589 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,COMPANY,SALARY) VALUES(?,?,?,?,?,'工人'); 
+2017-08-30 10:19:49,682 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==> Parameters: 21591930(String), 加爵(String), 35(Integer), 云南大学(String), 9963.3(Double)
+2017-08-30 10:20:31,672 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:20:31,703 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:20:31,703 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:20:31,703 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:20:31,704 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:20:31,916 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:20:32,318 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 2135934295.
+2017-08-30 10:20:32,318 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:20:32,321 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:20:32,322 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,COMPANY,SALARY) VALUES(?,?,?,?,?,'工人'); 
+2017-08-30 10:20:32,407 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==> Parameters: 21591930(String), 加爵(String), 35(Integer), 云南大学(String), 93.3(Double)
+2017-08-30 10:22:03,636 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:22:03,667 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:03,667 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:03,667 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:03,667 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:03,864 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:22:04,247 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 2135934295.
+2017-08-30 10:22:04,248 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:04,250 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:04,251 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,COMPANY,SALARY,FLAG) VALUES(?,?,?,?,?,'工人'); 
+2017-08-30 10:22:04,331 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==> Parameters: 21591930(String), 加爵(String), 35(Integer), 云南大学(String), 93.3(Double)
+2017-08-30 10:22:44,451 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:22:44,485 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:44,486 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:44,486 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:44,486 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:22:44,710 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:22:45,108 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 2135934295.
+2017-08-30 10:22:45,109 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:45,111 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:45,112 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==>  Preparing: INSERT INTO MEMBER(MID,NAME,AGE,COMPANY,SALARY,FLAG) VALUES(?,?,?,?,?,'工人'); 
+2017-08-30 10:22:45,210 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - ==> Parameters: 21591930(String), 加爵(String), 35(Integer), 云南大学(String), 93.3(Double)
+2017-08-30 10:22:45,212 DEBUG [org.lyk.vo.mapping.MemberNS.doCreateWorker] - <==    Updates: 1
+2017-08-30 10:22:45,213 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Committing JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:45,215 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:45,216 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@7f4fc557]
+2017-08-30 10:22:45,216 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Returned connection 2135934295 to pool.
+2017-08-30 10:22:45,217 INFO [org.lyk.main.Hello] - //Main Done
+2017-08-30 10:31:26,105 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:31:26,136 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:31:26,137 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:31:26,137 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:31:26,137 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:31:26,366 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:31:26,786 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 404060973.
+2017-08-30 10:31:26,786 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@18157b2d]
+2017-08-30 10:31:26,789 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@18157b2d]
+2017-08-30 10:31:26,790 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ==>  Preparing: SELECT MID,NAME,AGE,SCHOOL,SCORE,COMPANY,SALARY,FLAG FROM MEMBER WHERE mid=? 
+2017-08-30 10:31:26,875 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ==> Parameters: 21591923(String)
+2017-08-30 10:33:09,585 DEBUG [org.apache.ibatis.logging.LogFactory] - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2017-08-30 10:33:09,617 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:33:09,618 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:33:09,618 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:33:09,618 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - PooledDataSource forcefully closed/removed all connections.
+2017-08-30 10:33:09,844 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Opening JDBC Connection
+2017-08-30 10:33:10,264 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Created connection 591997132.
+2017-08-30 10:33:10,265 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@234928cc]
+2017-08-30 10:33:10,268 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ooo Using Connection [com.mysql.jdbc.JDBC4Connection@234928cc]
+2017-08-30 10:33:10,268 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ==>  Preparing: SELECT MID,NAME,AGE,SCHOOL,SCORE,COMPANY,SALARY,FLAG FROM MEMBER WHERE mid=? 
+2017-08-30 10:33:10,352 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - ==> Parameters: 21591923(String)
+2017-08-30 10:33:10,413 TRACE [org.lyk.vo.mapping.MemberNS.findById] - <==    Columns: MID, NAME, AGE, SCHOOL, SCORE, COMPANY, SALARY, FLAG
+2017-08-30 10:33:10,414 TRACE [org.lyk.vo.mapping.MemberNS.findById] - <==        Row: 21591923, 远奎, 19, 重庆大学, 99.5, null, null, 学生
+2017-08-30 10:33:10,416 DEBUG [org.lyk.vo.mapping.MemberNS.findById] - <==      Total: 1
+2017-08-30 10:33:10,431 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@234928cc]
+2017-08-30 10:33:10,431 DEBUG [org.apache.ibatis.transaction.jdbc.JdbcTransaction] - Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@234928cc]
+2017-08-30 10:33:10,431 DEBUG [org.apache.ibatis.datasource.pooled.PooledDataSource] - Returned connection 591997132 to pool.
+2017-08-30 10:33:10,432 INFO [org.lyk.main.Hello] - //Main Done

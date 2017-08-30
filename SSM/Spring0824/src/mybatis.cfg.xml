@@ -5,6 +5,9 @@
 <configuration>
 <typeAliases>
 	<typeAlias type="org.lyk.vo.Dept" alias="Dept"/>
+	<typeAlias type="org.lyk.vo.Member" alias="Member"/>
+	<typeAlias type="org.lyk.vo.Student" alias="Student"/>
+	<typeAlias type="org.lyk.vo.Worker" alias="Worker"/>
 </typeAliases>
 	<environments default="databaseConnection">		<!-- 配置数据源的相关信息 -->
 		<environment id="databaseConnection">
@@ -20,5 +23,6 @@
 	
 	<mappers>
 		<mapper resource="org/lyk/vo/mapping/Dept.xml"/>
+		<mapper resource="org/lyk/vo/mapping/Member.xml"/>
 	</mappers>
 </configuration>
