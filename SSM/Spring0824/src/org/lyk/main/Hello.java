@@ -33,35 +33,12 @@ import org.springframework.core.io.ResourceLoader;
 
 public class Hello
 {
-	private static final Logger logger = LoggerFactory.getLogger(Hello.class);
+	private static final Logger logger = LoggerFactory.getLogger("bi");
 	private static final String MAPPING = "org.lyk.vo.mapping.MemberNS.";
 	private static final ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 	public static void main(String[] args) throws IOException
-	{ 
-		
-	//	SqlSession sqlSession = MyBatisSessionFactory.getSession();
-//		Student student = new Student();
-//		student.setMid("21591928");
-//		student.setName("远奎");
-//		student.setAge(19);
-//		student.setSchool("重庆大学");
-//		student.setScore(99.5);
-//		student.setFlag("学生");
-//		Worker worker = new Worker();
-//		worker.setMid("21591930");
-//		worker.setName("加爵");
-//		worker.setAge(35);
-//		worker.setCompany("云南大学");
-//		worker.setSalary(93.3);
-//		
-//		sqlSession.insert(MAPPING + "doCreateWorker",worker);
-//		
-		IDeptService deptServiceImpl = ctx.getBean("deptServiceImpl",IDeptService.class);
-		Dept dept = new Dept();
-		dept.setDeptno(55);
-		dept.setDname("SSIT");
-		deptServiceImpl.insert(dept);
-		logger.info("//Main Done");
+	{
+		logger.info("ABC");
 	}
 
 }
