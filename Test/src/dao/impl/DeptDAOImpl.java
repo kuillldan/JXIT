@@ -21,7 +21,7 @@ public class DeptDAOImpl extends AbstractDAOImpl implements IDeptDAO
 	@Override
 	public boolean doCreate(Dept vo) throws SQLException
 	{
-		// TODO Auto-generated method stub
+		System.out.println("【数据层】向数据库中插入数据:" + vo);
 		return false;
 	}
 
@@ -77,25 +77,10 @@ public class DeptDAOImpl extends AbstractDAOImpl implements IDeptDAO
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Dept> findAll() throws SQLException
-	{
-		return (List<Dept>) super.query(() ->
-		{
-			return " SELECT did,dname,current FROM dept ";
-		}, (ps) ->
-		{
-		}, (rs) ->
-		{
-			List<Dept> allDepts = new ArrayList<>();
-			while (rs.next())
-			{
-				Dept dept = new Dept();
-				dept.setDid(rs.getInt("did"));
-				dept.setDname(rs.getString("dname"));
-				dept.setCurrent(rs.getInt("current"));
-				allDepts.add(dept);
-			}
-			return allDepts;
-		});
+	{ 
+		List<Dept> allDepts = new ArrayList<Dept>();
+		Dept d1 = new Dept();
+		return allDepts;
 	}
 
 	@Override
