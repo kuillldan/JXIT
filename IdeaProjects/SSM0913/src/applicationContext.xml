@@ -25,6 +25,5 @@
 			</array>
 		</property>
 	</bean>
-
-
+<bean name="messageReader"></bean>
 </beans>
