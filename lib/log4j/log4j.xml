@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<!-- appender -->
+	<!-- STDOUT -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 设置日志文件 -->
+	<appender name="biFormat" class="org.apache.log4j.rolling.RollingFileAppender">
+		<param name="Encoding" value="UTF-8" />
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern" value="/opt/test/bitool/log/apl/bi_%d{yyyyMMdd}.log" />
+		</rollingPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- <param name="ConversionPattern" value="%d %p [%c] - %m%n" /> -->
+			<param name="ConversionPattern" value="%d{yyyy/MM/dd HH:mm:ss.SSS} : %m [%t]%n" />
+		</layout>
+	</appender>
+
+	<appender name="csvFormat" class="org.apache.log4j.rolling.RollingFileAppender">
+		<param name="Encoding" value="UTF-8" />
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern"
+				value="/opt/test/bitool/log/apl/FILE_DOWNLOAD_%d{yyyyMMdd}.log" />
+		</rollingPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="syslogger" class="org.apache.log4j.net.SyslogAppender">
+		<param name="Threshold" value="ERROR" />
+		<param name="SyslogHost" value="192.168.172.140" />
+		<param name="Facility" value="USER" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="bitool: %m[%t]%n" />
+		</layout>
+	</appender>
+
+	<logger name="logfile">
+		<level value="debug" />
+		<appender-ref ref="biFormat" />
+		<appender-ref ref="syslogger" />
+	</logger>
+
+	<logger name="csv_log">
+		<level value="info" />
+		<appender-ref ref="csvFormat" />
+	</logger>
+</log4j:configuration>
