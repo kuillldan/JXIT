@@ -19,6 +19,7 @@ public class StringToDateConverter implements Converter<String,Date>
     @Override
     public Date convert(String s)
     {
+        logger.info("转换器执行");
         if(s == null || "".equals(s))
             return null;
 

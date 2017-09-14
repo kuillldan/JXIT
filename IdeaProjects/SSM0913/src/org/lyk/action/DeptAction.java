@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.io.*;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -24,32 +26,24 @@ public class DeptAction
     private static final Logger LOGGER = LoggerFactory.getLogger("logfile");
     @Resource(name = "messageReader")
     private MessageSource messageReader;
+    private static final String uploadRule = "deptno:int|dname:String|loc:String|hiredate:Date";
 
     @RequestMapping("upload")
-    public ModelAndView upload(Dept dept, MultipartFile photo)
+    public ModelAndView upload(Dept dept, MultipartFile photo, Date hiredate,String[] workplace)
     {
         try
         {
+            LOGGER.info(dept.toString());
+            LOGGER.info("雇佣日期:"+hiredate.toString());
+            LOGGER.info("工作地点:" + Arrays.toString(workplace));
 
-            ModelAndView mav = new ModelAndView("/page/dept/show.jsp");
-            mav.addObject("dept", dept);
-            if (!photo.isEmpty())
-            {
-                mav.addObject("fileName", photo.getOriginalFilename());
-                mav.addObject("fileSize", photo.getSize());
-                mav.addObject("fileType", photo.getContentType());
+            ModelAndView mav = new ModelAndView("/pages/dept/show.jsp");
 
-                if(this.saveFile(photo))
-                {
-                    LOGGER.info("成功保存上传文件");
-                }
-            }
             return mav;
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             LOGGER.error("系统错误");
-            LOGGER.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(), e);
             return null;
         }
     }
@@ -58,12 +52,12 @@ public class DeptAction
     {
         //todo
         String path = this.getFilePath(multipartFile);
-        if(path == null)
+        if (path == null)
         {
             return false;
         }
         File file = new File(path);
-        if(!file.getParentFile().exists())
+        if (!file.getParentFile().exists())
         {
             file.getParentFile().mkdirs();
         }
@@ -88,24 +82,23 @@ public class DeptAction
         }
 
     }
+
     private String getFilePath(MultipartFile file)
     {
         String filePath = this.messageReader.getMessage("UPLOAD_FILE_SAVE_PATH", null, Locale.getDefault());
         String fileName = UUID.randomUUID().toString();
-        if(file.getContentType().contains("jpeg"))
+        if (file.getContentType().contains("jpeg"))
         {
             fileName += ".jpg";
-        }
-        else if(file.getContentType().contains("png"))
+        } else if (file.getContentType().contains("png"))
         {
             fileName += ".png";
-        }
-        else
+        } else
         {
             LOGGER.info("不允许的文件类型");
             return null;
         }
-        if(!filePath.endsWith("/"))
+        if (!filePath.endsWith("/"))
             filePath += "/";
         String fullPath = filePath + fileName;
         return fullPath;

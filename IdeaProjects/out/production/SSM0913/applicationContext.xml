@@ -43,4 +43,10 @@
     </bean>
     <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/pages/**/*.action"/>
+            <bean class="org.lyk.interceptor.ValidationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
