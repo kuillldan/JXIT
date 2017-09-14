@@ -26,5 +26,6 @@ public class Hello
         {
             logger.error(e.getMessage(),e);
         }
+        System.out.println("//main done");
     }
 }

@@ -12,7 +12,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="org.lyk"/>
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="converterService"/>
     <mvc:default-servlet-handler/>
 
 
@@ -28,9 +28,19 @@
     </bean>
 
     <aop:config>
-        <aop:pointcut id="service" expression="execution(* org.lyk.service*.*(..))"/>
+        <aop:pointcut id="service" expression="execution(* org.lyk.service..*.*(..))"/>
         <aop:aspect ref="serviceProxy">
             <aop:before method="before" pointcut-ref="service"/>
+            <aop:after method="after" pointcut-ref="service"/>
         </aop:aspect>
     </aop:config>
+    <bean name="converterService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+              <ref bean="stringToDateConverter"/>
+            </set>
+        </property>
+    </bean>
+    <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    </bean>
 </beans>
