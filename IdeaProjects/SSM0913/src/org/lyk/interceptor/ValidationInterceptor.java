@@ -28,7 +28,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 //        EnumerationhttpServletRequest.getParameterNames();
         Enumeration<String> allParameterNames = httpServletRequest.getParameterNames();
 
-        while(allParameterNames.hasMoreElements())
+        while (allParameterNames.hasMoreElements())
         {
             String parameterName = allParameterNames.nextElement();
             String parameterValue = httpServletRequest.getParameter(parameterName);
@@ -71,6 +71,10 @@ public class ValidationInterceptor implements HandlerInterceptor
                 errors.put(requiredField, "该字段不能为空");
                 continue;
             }
+            if("String".equalsIgnoreCase(requiredType))
+            {
+                continue;
+            }
 
             if ("int".equalsIgnoreCase(requiredType) || "Integer".equalsIgnoreCase(requiredType))
             {
@@ -92,15 +96,100 @@ public class ValidationInterceptor implements HandlerInterceptor
                 continue;
             }
 
-            if("int[]".equalsIgnoreCase(requiredType) || "Integer[]".equalsIgnoreCase(requiredType))
+            String[] realValues = httpServletRequest.getParameterValues(requiredField);
+            if (realValues == null || realValues.length <= 0)
             {
-                String[] realValues = httpServletRequest.getParameterValues(requiredField);
+                errors.put(requiredField, "该字段不能为空");
             }
 
+            LOGGER.debug("requiredType:" + requiredType);
+            if("String[]".equalsIgnoreCase(requiredType))
+            {
+                for(String eachValue : realValues)
+                {
+                    if(StringUtils.isEmpty(eachValue))
+                    {
+                        errors.put(requiredField,"该字段元素不能为空");
+                        continue;
+                    }
+                }
+                continue;
+            }
 
+            if ("int[]".equalsIgnoreCase(requiredType) || "Integer[]".equalsIgnoreCase(requiredType))
+            {
+                for (String eachValue : realValues)
+                {
+                    if (StringUtils.isEmpty(eachValue))
+                    {
+                        errors.put(requiredField, "该字段的元素不能为空");
+                        continue;
+                    } else
+                    {
+                        if (!this.isInt(eachValue, errors, requiredField))
+                        {
+                            continue;
+                        }
+                    }
+                }
+                continue;
+            }
+
+            if ("double[]".equalsIgnoreCase(requiredType) || "Double[]".equalsIgnoreCase(requiredType) || "float[]".equalsIgnoreCase(requiredType) || "Float[]".equalsIgnoreCase(requiredType))
+            {
+                for (String eachValue : realValues)
+                {
+                    if (StringUtils.isEmpty(eachValue))
+                    {
+                        errors.put(requiredField, "该字段的元素不能为空");
+                        continue;
+                    } else
+                    {
+                        if (!this.isDoubleOrFload(eachValue, errors, requiredField))
+                        {
+                            continue;
+                        }
+                    }
+                }
+                continue;
+            }
+
+            if ("date[]".equalsIgnoreCase(requiredType))
+            {
+                for (String eachValue : realValues)
+                {
+                    if (StringUtils.isEmpty(eachValue))
+                    {
+                        errors.put(requiredField, "该字段的元素不能为空");
+                        continue;
+                    } else
+                    {
+                        if (!this.isDate(eachValue, errors, requiredField))
+                        {
+                            continue;
+                        }
+                    }
+                }
+
+                continue;
+            } else
+            {
+                LOGGER.warn("不支持的数据类型(" + requiredType + "),无法完成数据验证");
+            }
         }
 
-        return true;
+        if (errors.size() <= 0)
+        {
+            return true;
+        } else
+        {
+            LOGGER.warn("数据验证失败");
+            for (String key : errors.keySet())
+            {
+                LOGGER.warn(key + ":" + errors.get(key));
+            }
+            return false;
+        }
     }
 
     private boolean isInt(String realValue, Map<String, String> errors, String requiredField)

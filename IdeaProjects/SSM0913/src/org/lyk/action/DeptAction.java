@@ -26,7 +26,7 @@ public class DeptAction
     private static final Logger LOGGER = LoggerFactory.getLogger("logfile");
     @Resource(name = "messageReader")
     private MessageSource messageReader;
-    private static final String uploadRule = "deptno:int|dname:String|loc:String|hiredate:Date";
+    private static final String uploadRule = "deptno:int|dname:String|loc:String|hiredate:Date|workplace:String[]";
 
     @RequestMapping("upload")
     public ModelAndView upload(Dept dept, MultipartFile photo, Date hiredate,String[] workplace)

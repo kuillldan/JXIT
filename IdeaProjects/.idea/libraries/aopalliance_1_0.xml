@@ -35,6 +35,9 @@
       <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/spring-webmvc-4.1.0.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/spring-webmvc-portlet-4.1.0.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/commons-io-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/mybatis-spring-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/mybatis-3.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/SSM0913/web/WEB-INF/lib/mysql-connector-java-5.1.43-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
