@@ -14,7 +14,7 @@ public class ObjectAnalyzer
 
 	public String toString(Object obj)
 	{
-		if (null == obj)
+		if (obj == null)
 			return "null";
 
 		if (this.visited.contains(obj))
@@ -23,8 +23,6 @@ public class ObjectAnalyzer
 		this.visited.add(obj);
 
 		Class<?> cls = obj.getClass();
-		if (cls == String.class)
-			return (String) obj;
 
 		if (cls.isArray())
 		{
@@ -33,47 +31,40 @@ public class ObjectAnalyzer
 			{
 				if (i > 0)
 					r += ",";
-				Object val = Array.get(obj, i);
-				if (cls.getComponentType().isPrimitive())
-					r += val;
-				else
-					r += toString(val);
-			}
-			return r + "}";
-		}
-
-		String r = cls.getName();
-		do
-		{
-			r += "[";
-			Field[] fields = cls.getDeclaredFields();
-			AccessibleObject.setAccessible(fields, true);
-			for (Field f : fields)
-			{
-				// 非静态字段
-				if (!Modifier.isStatic(f.getModifiers()))
+				if(cls.getComponentType().isPrimitive())
 				{
-					if (!r.endsWith("["))
-						r += ",";
-					r += f.getName() + "=";
-					try
-					{
-						Class<?> t = f.getType();
-						Object val = f.get(obj);
-						if (t.isPrimitive())
-							r += val;
-						else
-							r += toString(val);
-					} catch (Exception e)
-					{
-						e.printStackTrace();
-					}
+					r += Array.get(obj, i);
+				}
+				else
+				{
+					toString(Array.get(obj, i));
 				}
 			}
+			r += "}";
+			return r;
+		}
+		else
+		{
+			String r = cls.getName();
+			r += "[";
+			while(cls != null)
+			{
+				Field[] allFields = cls.getDeclaredFields();
+				for(int i=0; i < allFields.length; i++)
+				{
+					if(!Modifier.isStatic(f.getModifiers()))
+					{
+						if(f.getType().isPrimitive())
+						{ 
+							
+						}
+					}
+				}
+				
+				cls = cls.getSuperclass();
+			}
 			r += "]";
-			cls = cls.getSuperclass();
-		} while (cls != null);
-
-		return r;
+			return r;
+		} 
 	}
 }
