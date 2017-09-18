@@ -1,26 +1,51 @@
 package main;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
-
-import equals.Book;
-import equals.Employee; 
+import java.util.List;
 
 public class Hello
 {
 	public static void main(String[] args)
+	{ 
+		List<String> all = new ArrayList<>();
+		Type t = all.getClass().getGenericSuperclass();
+		Type types = ((ParameterizedType)t).getActualTypeArguments()[0];
+		System.out.println((Class<?>)types);
+//		all.add("Hello");
+//		all.add("shit");
+//		String[] newAll = (String[])toArray(all);
+//		System.out.println(Arrays.toString(newAll));
+	}
+	
+	
+	public static <T> T[] toArray(List<?> a)
 	{
-		Employee e = new Employee();
-		Book b = new Book();
-		b.setName("JAVA鏍稿績鎶�鏈�");
-		b.setOwner(e);
+		if(a == null)
+			return null;
+		if(a.size() == 0)
+			return null;
 		
-		e.setName("yuankui");
-		e.setSalary(99.3);
-		e.setBook(b);
+		System.out.println(a.getClass());
 		
-		Object[] all = new Object[5];
-		all[0] = 1;
-		all[1] = "abc";
-		System.out.println(all.getClass().getComponentType());
+		return null;
+	}
+	
+	public static Object goodCopy(Object a, int newLength)
+	{
+		Class<?> componentType = a.getClass().getComponentType();
+		Object newArray = Array.newInstance(componentType, newLength);
+		System.arraycopy(a, 0, newArray, 0, Math.min(Array.getLength(a), newLength));
+		return newArray;
+	}
+	
+	public static Object[] badCopy(Object[] a, int newLength)
+	{
+		Object[] newArray = new Object[newLength];
+		System.arraycopy(a, 0, newArray, 0, Math.min(a.length, newLength));
+		return newArray;
 	}
 }
