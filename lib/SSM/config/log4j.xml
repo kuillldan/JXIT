@@ -8,7 +8,7 @@
 		<param name="Encoding" value="UTF-8" />
 		<!-- 设置按天滚动方式生成日志文件 -->
 		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
-			<param name="FileNamePattern" value="/opt/SSM0913/log/bi_%d{yyyyMMdd}.log" />
+			<param name="FileNamePattern" value="/opt/SSM0915/log/ssm0915_%d{yyyyMMdd}.log" />
 		</rollingPolicy>
 		<!-- 设置日志内容格式 -->
 		<layout class="org.apache.log4j.PatternLayout">

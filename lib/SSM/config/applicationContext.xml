@@ -7,24 +7,25 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
-
-	<context:annotation-config />
-	<context:component-scan base-package="org.lyk" />
-	
-	<mvc:annotation-driven/>
-	<mvc:default-servlet-handler/>
-	
-	
-	<bean name="messageReader" class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basenames">
-			<array>
-				<value>ApplicationConfiguration</value>
-				<!-- <value>Message</value>
-				<value>Page</value>
-				 -->
-			</array>
-		</property>
+ 
+	<bean name="dept" class="org.lyk.vo.Dept"></bean> 
+	<!-- 配置数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="org.gjt.mm.mysql.Driver" />	<!-- 驱动程序 -->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/hrdb" /><!-- 连接地址 -->
+		<property name="user" value="root" />	<!-- 用户名 -->
+		<property name="password" value="admin" />	<!-- 密码 -->
+		<property name="maxPoolSize" value="20" />	<!-- 最大的可用连接数 -->
+		<property name="minPoolSize" value="10" />	<!-- 最小维持的连接数 -->
+		<property name="initialPoolSize" value="15" />	<!-- 初始化连接数 -->
+		<property name="maxIdleTime" value="20" />	<!-- 最大等待连接 -->
 	</bean>
-
-
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis.cfg.xml" />
+	</bean>
 </beans>

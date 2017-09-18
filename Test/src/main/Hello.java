@@ -1,39 +1,26 @@
 package main;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.util.Arrays;
 
-import dbc.DatabaseConnection;
-
-enum Color
-{
-	RED(1),BLUE(2),YELLOW(3),BLACK(4);
-	
-	private Integer value;
-	private Color(Integer value)
-	{
-		this.value = value;
-	}
-	
-	public Integer getValue()
-	{
-		return value;
-	}
-}
+import equals.Book;
+import equals.Employee; 
 
 public class Hello
 {
-	public static void main(String[] args) throws Exception
+	public static void main(String[] args)
 	{
-		func("aa","bb","cc");
-		System.out.println("//main done");
-	}
-	
-	public static void func(String ... strs)
-	{
-		System.out.println(strs.length);
+		Employee e = new Employee();
+		Book b = new Book();
+		b.setName("JAVA鏍稿績鎶�鏈�");
+		b.setOwner(e);
+		
+		e.setName("yuankui");
+		e.setSalary(99.3);
+		e.setBook(b);
+		
+		Object[] all = new Object[5];
+		all[0] = 1;
+		all[1] = "abc";
+		System.out.println(all.getClass().getComponentType());
 	}
 }
