@@ -22,6 +22,11 @@ public class Employee implements Comparable<Employee>
 	{
 		return name;
 	}
+	
+	public String aaa()
+	{
+		return "xfds";
+	}
 
 	public void setName(String name)
 	{
