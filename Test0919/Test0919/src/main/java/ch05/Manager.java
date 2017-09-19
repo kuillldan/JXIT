@@ -1,5 +1,7 @@
 package ch05;
 
+import java.util.Objects;
+
 public class Manager extends Employee
 {
 	private Double bouns;
@@ -45,17 +47,16 @@ public class Manager extends Employee
 		if(!super.equals(obj))
 			return false;
 		
-		if (bouns == null)
-		{
-			if (other.bouns != null)
-				return false;
-		} else if (!bouns.equals(other.bouns))
+		if(!Objects.equals(this.bouns, other.bouns))
 			return false;
 		
 		return true;
 		 
 	}
-	
-	
-	
+
+	@Override
+	public String toString()
+	{
+		return super.toString() + "[bouns=" + bouns + "]";
+	} 
 }

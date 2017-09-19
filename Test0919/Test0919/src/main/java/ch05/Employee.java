@@ -1,6 +1,7 @@
 package ch05;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Employee 
 { 
@@ -49,27 +50,23 @@ public class Employee
 		
 		Employee other = (Employee) obj;
 		
-		if (hireDate == null)
-		{
-			if (other.hireDate != null)
-				return false;
-		} else if (!hireDate.equals(other.hireDate))
+		if(!Objects.equals(this.hireDate, other.hireDate))
 			return false;
 		
-		if (name == null)
-		{
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
+		if(!Objects.equals(this.name, other.name))
 			return false;
 		
-		if (salary == null)
-		{
-			if (other.salary != null)
-				return false;
-		} else if (!salary.equals(other.salary))
+		if(!Objects.equals(this.salary, other.salary))
 			return false;
 		
 		return true;
+	}
+
+	@Override
+	public String toString()
+	{
+		return this.getClass().getName() + " [name=" + name + ", salary=" + salary + ", hireDate=" + hireDate + "]";
 	} 
+	
+	
 }
