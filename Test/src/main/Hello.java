@@ -3,6 +3,7 @@ package main;
 import java.lang.reflect.Array;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -10,18 +11,19 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+ 
 
 import interfaces.Employee;
+import interfaces.Manager; 
 
 public class Hello
 {
 	public static void main(String[] args) throws NoSuchFieldException, SecurityException
 	{
-		Comparator.comparing(Employee::getName);
-		
-		Function<Employee, String> f = Employee::aaa;
-		
-		f.apply(new Employee("", null));
+		Manager[] allManagers = new Manager[10];
+		Employee[] allEmployees = allManagers;
+		allEmployees[0] = new Manager("sheldo", 22.3, 22.3);
+		System.out.println(Arrays.toString(allManagers));
 	}
 
 	public String aaa()

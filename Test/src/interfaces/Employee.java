@@ -6,6 +6,11 @@ public class Employee implements Comparable<Employee>,Serializable
 {
 	private String name;
 	private Double salary;
+	
+	public static void show()
+	{
+		System.out.println("static import demo");
+	}
 
 	public Employee(String name, Double salary)
 	{
