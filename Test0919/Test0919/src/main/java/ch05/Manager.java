@@ -2,9 +2,14 @@ package ch05;
 
 import java.util.Objects;
 
-public class Manager extends Employee
+public class Manager extends Employee 
 {
 	private Double bouns;
+	
+	public Manager()
+	{
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Manager(String name, Double salary, Integer year, Integer month, Integer day)
 	{

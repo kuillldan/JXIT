@@ -1,10 +1,21 @@
 package org.lyk.Test0919;
 
+import java.util.function.Function;
+
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
@@ -18,8 +29,14 @@ import ch05.Student;
  *
  */
 
-class A<T>
+class A<T> implements Comparable<T>
 {
+	
+	public void showName(Supplier<String> s)
+	{
+		s.get();
+	}
+
 	private T name;
 	private T address;
 	private Integer code;
@@ -59,6 +76,18 @@ class A<T>
 	{
 		return super.getClass().getName() + " [name=" + name + ", address=" + address + ", code=" + code + "]";
 	}
+
+	@Override
+	public int compareTo(T o)
+	{
+		// TODO Auto-generated method stub
+		return 0;
+	}
+}
+
+interface Supplier<T>
+{
+	T get();
 }
 
 enum Color
@@ -66,21 +95,53 @@ enum Color
 	RED, BLUE
 }
 
+class TimePrinter implements ActionListener
+{
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		System.out.println("At the tone, the time is " + new Date());
+		Toolkit.getDefaultToolkit().beep();
+	}
+}
+
+class MyThread implements Runnable
+{
+	@Override
+	public void run()
+	{
+		// TODO Auto-generated method stub
+	}
+}
+
+interface IntConsumer
+{
+	void accept(int value);
+}
+
+
+
 public class App
 {
 	public static void main(String[] args) throws Exception
 	{
-		A a = new A();
-		Class<?> c1 = A.class;
-		Class<?> c2 = a.getClass();
-		Class<?> c3 = Class.forName("org.lyk.Test0919.A");
-		System.out.println(c1 == c2);
-		System.out.println(c2 == c3);
-		System.out.println(c3 == c1);
+		Employee e = new Employee();
+		
+		System.out.println(e.getSalary());
+		
+		System.out.println(e.getName());
+	}
+	
+	public static void repeat(int n, IntConsumer action)
+	{
+		for(int i = 0; i < n; i++)
+		{
+			action.accept(i);
+		}
 	}
 
-	public static void fun(A<?> a)
+	public static void fun(Supplier<String> s)
 	{
-		a.setCode(22);
+		System.out.println(s.get());
 	}
 }
