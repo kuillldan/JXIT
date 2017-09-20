@@ -125,19 +125,53 @@ public class App
 {
 	public static void main(String[] args) throws Exception
 	{
-		Employee e = new Employee();
+		repeat(2,new IntConsumer()
+		{
+			
+			@Override
+			public void accept(int value)
+			{
+				// TODO Auto-generated method stub
+				System.out.println("一个匿名内部类" + this.getClass());
+			}
+		});
+		repeat(2,new IntConsumer()
+		{
+			
+			@Override
+			public void accept(int value)
+			{
+				// TODO Auto-generated method stub
+				System.out.println("又一个匿名内部类" + this.getClass());
+			}
+		});
 		
-		System.out.println(e.getSalary());
-		
+		show(new Employee()
+		{ 
+			public static final String dfas = "";
+			private String fff ; 
+			
+			public String getName()
+			{
+				System.out.println("ABC");
+				return "abc";
+			}
+			
+			public String fdas()
+			{
+				return "fdsa";
+			}
+		});
+	}
+	
+	public static void show(Employee e)
+	{
 		System.out.println(e.getName());
 	}
 	
-	public static void repeat(int n, IntConsumer action)
+	public static void repeat(int n, IntConsumer action) throws InstantiationException, IllegalAccessException
 	{
-		for(int i = 0; i < n; i++)
-		{
-			action.accept(i);
-		}
+		action.getClass().newInstance().accept(1);;
 	}
 
 	public static void fun(Supplier<String> s)
