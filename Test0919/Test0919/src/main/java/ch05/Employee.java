@@ -3,11 +3,23 @@ package ch05;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Employee 
+public class Employee<T>
 { 
+	private T t;
+	
 	private String name;
 	private Double salary;
 	private LocalDate hireDate;
+	
+	public void set(T t)
+	{
+		this.t = t;
+	}
+	
+	public Employee()
+	{
+		// TODO Auto-generated constructor stub
+	}
 	
 	public Employee(String name, Double salary, Integer year,Integer month,Integer day)
 	{
@@ -68,5 +80,9 @@ public class Employee
 		return this.getClass().getName() + " [name=" + name + ", salary=" + salary + ", hireDate=" + hireDate + "]";
 	} 
 	
+	public T getT()
+	{
+		return this.t;
+	}
 	
 }
