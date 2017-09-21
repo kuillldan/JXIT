@@ -1,23 +1,37 @@
 package org.lyk.Test0919;
 
-import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
-import ch05.Student;
+import ch08.Employee;
 import ch08.Pair;
 
 public class App
 {
 	public static void main(String[] args) throws Exception
 	{ 
-		min("ZZZ");
+//		List<Employee> allEmployeesInList = new ArrayList<>();
+		Set<Integer> allHashCode = new HashSet<>();
+		Set<Employee> allEmployeesInSet = new HashSet<>();
+		 
+		for(int i = 1; i <= 100; i++)
+		{
+			Employee e = new Employee();
+			allHashCode.add(e.hashCode());
+			allEmployeesInSet.add(e);
+		}
+		System.out.println(allHashCode.size());
+		System.out.println(allEmployeesInSet.size());
 	}
 	
-	public static <T extends Comparable> void min(T a)
+	public static void show(Pair<? super String> p)
 	{
-		System.out.println(a);
-	}
-	public static void min(Comparable a)
-	{
-		System.out.println("no" + a);
+		p.setFirst("CCC");
+		System.out.println(p.getFirst() + "," + p.getSecond());
 	}
 }

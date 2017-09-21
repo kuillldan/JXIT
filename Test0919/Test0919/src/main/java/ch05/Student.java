@@ -1,6 +1,6 @@
 package ch05;
 
-public class Student implements Comparable<Student>
+public class Student 
 {
 	private String name;
 	private String major;
@@ -20,13 +20,5 @@ public class Student implements Comparable<Student>
 	public String getDescription()
 	{
 		return "a student majoring in " + this.major;
-	}
-
-	@Override
-	public int compareTo(Student o)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
+	} 
 }
