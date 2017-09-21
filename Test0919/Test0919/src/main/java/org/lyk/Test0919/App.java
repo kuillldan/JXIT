@@ -11,171 +11,58 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
-import ch05.Employee;
-import ch05.Manager;
-import ch05.Person;
-import ch05.Student;
-
-/**
- * Hello world!
- *
- */
-
-class A<T> implements Comparable<T>
-{
-	
-	public void showName(Supplier<String> s)
-	{
-		s.get();
-	}
-
-	private T name;
-	private T address;
-	private Integer code;
-
-	public Integer getCode()
-	{
-		return code;
-	}
-
-	public void setCode(Integer code)
-	{
-		this.code = code;
-	}
-
-	public T getName()
-	{
-		return name;
-	}
-
-	public void setName(T name)
-	{
-		this.name = name;
-	}
-
-	public T getAddress()
-	{
-		return address;
-	}
-
-	public void setAddress(T address)
-	{
-		this.address = address;
-	}
-
-	@Override
-	public String toString()
-	{
-		return super.getClass().getName() + " [name=" + name + ", address=" + address + ", code=" + code + "]";
-	}
-
-	@Override
-	public int compareTo(T o)
-	{
-		// TODO Auto-generated method stub
-		return 0;
-	}
-}
-
-interface Supplier<T>
-{
-	T get();
-}
-
-enum Color
-{
-	RED, BLUE
-}
-
-class TimePrinter implements ActionListener
-{
-	@Override
-	public void actionPerformed(ActionEvent e)
-	{
-		System.out.println("At the tone, the time is " + new Date());
-		Toolkit.getDefaultToolkit().beep();
-	}
-}
-
-class MyThread implements Runnable
-{
-	@Override
-	public void run()
-	{
-		// TODO Auto-generated method stub
-	}
-}
-
-interface IntConsumer
-{
-	void accept(int value);
-}
-
+import ch05.UserPrefixCode;
+ 
 
 
 public class App
 {
 	public static void main(String[] args) throws Exception
 	{
-		repeat(2,new IntConsumer()
-		{
-			
-			@Override
-			public void accept(int value)
-			{
-				// TODO Auto-generated method stub
-				System.out.println("一个匿名内部类" + this.getClass());
-			}
-		});
-		repeat(2,new IntConsumer()
-		{
-			
-			@Override
-			public void accept(int value)
-			{
-				// TODO Auto-generated method stub
-				System.out.println("又一个匿名内部类" + this.getClass());
-			}
-		});
+		 UserPrefixCode userPrefixCode1 = new UserPrefixCode();
+		 userPrefixCode1.setPrefixCode("U3001");
+		 userPrefixCode1.setTerminalType("G");
+		 userPrefixCode1.setUserIdSuffix("userPrefixCode1");
+		 
+		 UserPrefixCode userPrefixCode2 = new UserPrefixCode();
+		 userPrefixCode2.setPrefixCode("U3002");
+		 userPrefixCode2.setTerminalType("S");
+		 userPrefixCode2.setUserIdSuffix("userPrefixCode2");
+		 
+		 UserPrefixCode userPrefixCode3 = new UserPrefixCode();
+		 userPrefixCode3.setPrefixCode("U3001");
+		 userPrefixCode3.setTerminalType("G");
+		 userPrefixCode3.setUserIdSuffix("userPrefixCode3");
+		 
+		 UserPrefixCode userPrefixCode4 = new UserPrefixCode();
+		 userPrefixCode4.setPrefixCode("U3002");
+		 userPrefixCode4.setTerminalType("F");
+		 userPrefixCode4.setUserIdSuffix("userPrefixCode4");
+		 
+		 List<UserPrefixCode> userPrefixCodes = new ArrayList<>();
+//		 Set<UserPrefixCode> userPrefixCodes = new HashSet<>();
+		 userPrefixCodes.add(userPrefixCode1);
+		 userPrefixCodes.add(userPrefixCode2);
+		 userPrefixCodes.add(userPrefixCode3);
+		 userPrefixCodes.add(userPrefixCode4);
+		 
+		 UserPrefixCode key = new UserPrefixCode();
+		 key.setPrefixCode("U3001");
+		 key.setTerminalType("G");
+		 Integer index = userPrefixCodes.indexOf(key);
+		 
+		 System.out.println(userPrefixCodes.get(index));
 		
-		show(new Employee()
-		{ 
-			public static final String dfas = "";
-			private String fff ; 
-			
-			public String getName()
-			{
-				System.out.println("ABC");
-				return "abc";
-			}
-			
-			public String fdas()
-			{
-				return "fdsa";
-			}
-		});
-	}
-	
-	public static void show(Employee e)
-	{
-		System.out.println(e.getName());
-	}
-	
-	public static void repeat(int n, IntConsumer action) throws InstantiationException, IllegalAccessException
-	{
-		action.getClass().newInstance().accept(1);;
-	}
-
-	public static void fun(Supplier<String> s)
-	{
-		System.out.println(s.get());
-	}
+	} 
 }

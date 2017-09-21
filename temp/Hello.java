@@ -2,8 +2,6 @@ public class Hello
 {
 	public static void main(String[] args)
 	{
-		Object[] all = new Object[2];
-		String[] strAll = (String[])all;
-		System.out.println(strAll);
+		System.out.println("Hello Fucking Notpad++");
 	}
 }
