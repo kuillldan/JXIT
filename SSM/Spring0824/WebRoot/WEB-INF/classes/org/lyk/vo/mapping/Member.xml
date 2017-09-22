@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设置命名空间，可以与不同表的同类型操作进行区分，使用时以“空间名称.id”的方式调用 -->
+
+<mapper namespace="org.lyk.vo.mapping.MemberNS">
+	<resultMap type="Member" id="MemberResultMap">
+		<id column="mid" property="mid"/>
+		<result column="name" property="name"/>
+		<result column="age" property="age"/>
+		<discriminator javaType="String" column="flag">
+			<case value="学生" resultType="Student">
+				<result column="school" property="school"/>
+				<result column="score" property="score"/>
+			</case>
+			<case value="工人" resultType="Worker">
+				<result column="company" property="company"/>
+				<result column="salary" property="salary"/>
+			</case>
+		</discriminator>
+	</resultMap>
+	
+	<insert id="doCreateStudent" >
+		INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES(#{mid},#{name},#{age},#{school},#{score},'学生');
+	</insert>
+	
+	<insert id="doCreateWorker" >
+		INSERT INTO MEMBER(MID,NAME,AGE,COMPANY,SALARY,FLAG) VALUES(#{mid},#{name},#{age},#{company},#{salary},'工人');
+	</insert>
+	
+	<select id="findById" resultMap="MemberResultMap">
+		SELECT MID,NAME,AGE,SCHOOL,SCORE,COMPANY,SALARY,FLAG FROM MEMBER WHERE mid=#{mid}
+	</select>
+</mapper>
