@@ -2,6 +2,12 @@ package org.lyk.actions;
 
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,8 +19,8 @@ public class HelloAction extends ActionSupport
 	
 	@Override
 	public String execute() throws Exception
-	{
-		logger.debug("HELLO SHIT");
-		return super.execute();
+	{ 
+		System.out.println(super.getText("info.msg",new String[]{"hello","world"}));
+		return SUCCESS;
 	}
 }
