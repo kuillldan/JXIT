@@ -9,10 +9,13 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class EmpAction extends ActionSupport
 {
+	private String showRule = "empno:int|ename:String";
 	private Emp emp = new Emp();
 
+	
 	public EmpAction()
 	{
+//		super.getText(aTextName)
 		System.out.println("创建EmpAction -- " + Thread.currentThread().getName());
 	}
 
