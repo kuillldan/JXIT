@@ -4,13 +4,7 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path ;
-%>
-
-<%
-	String forwardUrl = basePath + (String)request.getAttribute("url");
-	System.out.println((String)request.getAttribute("url"));
-	System.out.println(forwardUrl);
+			+ path + "/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -20,9 +14,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
-		alert("${msg}"); 
-		window.location="<%=forwardUrl%>";
-	</script>
+	<h1>WELCOME${mid}</h1>
 </body>
 </html>

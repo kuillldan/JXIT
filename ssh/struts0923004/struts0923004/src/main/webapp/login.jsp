@@ -9,11 +9,15 @@
 			+ path + "/";
 %>
 <%
-	String loginURL = basePath +  "";
+	String loginURL = basePath +  "loginAction!login.action";
 %>
 <html>
 <body>
 	<h2>登录页面</h2>
-	<form action="<%=loginURL%>" method="post"></form>
+	<form action="<%=loginURL%>" method="post">
+		用户名:<input type="text" name="userName"><br>
+		密&nbsp;码:<input type="password" name="password"><br/>
+		<input type="submit" value="提交">
+	</form>
 </body>
 </html>

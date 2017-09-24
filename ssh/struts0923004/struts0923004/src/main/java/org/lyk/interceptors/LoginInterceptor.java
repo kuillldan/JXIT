@@ -20,7 +20,7 @@ public class LoginInterceptor extends AbstractInterceptor
 		{
 			HttpServletRequest request = ServletActionContext.getRequest();
 			request.setAttribute("msg", "你还没有登录");
-			request.setAttribute("url", "login.jsp");
+			request.setAttribute("url", "/login.jsp");
 			return "forward.page";
 		} else
 		{
