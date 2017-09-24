@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class EmpAction extends ActionSupport
 {
-	private String showRule = "empno:int|ename:String";
+	private String showRule = "emp.empno:int|emp.ename:String";
 	private Emp emp = new Emp();
 
 	
@@ -47,6 +47,7 @@ public class EmpAction extends ActionSupport
 		String ename = this.getEmp().getEname();
 		if(ename == null  || "".equals(ename))
 		{
+			super.getFieldErrors();
 			System.out.println("验证错误:ename不能为空!");
 			super.addFieldError("ename", "ename不能为空!");
 		}

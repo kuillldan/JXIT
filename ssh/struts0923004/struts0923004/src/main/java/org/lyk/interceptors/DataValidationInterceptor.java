@@ -2,8 +2,10 @@ package org.lyk.interceptors;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -22,79 +24,91 @@ public class DataValidationInterceptor extends AbstractInterceptor
 	{
 		ActionContext actionContext = invocation.getInvocationContext();
 		Object action = invocation.getAction();
-		
-		Method addFieldErrorMethod = action.getClass().getMethod("addFieldError", String.class,String.class);
-		//getText(String key, String[] args)
-		Method getTextMethod = action.getClass().getMethod("getText",String.class, String[].class);
-		 
+
+		Method addFieldErrorMethod = action.getClass().getMethod("addFieldError", String.class, String.class);
+		// getText(String key, String[] args)
+		Method getTextMethod = action.getClass().getMethod("getText", String.class, String[].class);
+
 		String rule = this.getValidationRule(invocation);
-		if(!StringUtils.isEmpty(rule))
+		if (!StringUtils.isEmpty(rule))
 		{
 			String[] eachRule = rule.split("\\|");
-			for(String rulePair : eachRule)
+			for (String rulePair : eachRule)
 			{
 				String requiredFieldName = rulePair.split(":")[0];
 				String requiredFieldType = rulePair.split(":")[1];
 				Map<String, Object> requestParameters = actionContext.getParameters();
-				String[] actualFieldValues = (String[])requestParameters.get(requiredFieldName);
-				if(actualFieldValues == null || actualFieldValues.length == 0)
+				String[] actualFieldValues = (String[]) requestParameters.get(requiredFieldName);
+				if (actualFieldValues == null || actualFieldValues.length == 0)
 				{
-					String msg = (String)getTextMethod.invoke(action, "field.not.null",null);
-					addFieldErrorMethod.invoke(action, requiredFieldName,msg);
+					String msg = (String) getTextMethod.invoke(action, "field.not.null", null);
+					addFieldErrorMethod.invoke(action, requiredFieldName, msg);
 					continue;
 				}
-				
-				for(String eachValue : actualFieldValues)
+
+				for (String eachValue : actualFieldValues)
 				{
-					if(StringUtils.isEmpty(eachValue))
+					if (StringUtils.isEmpty(eachValue))
 					{
-						String msg = (String)getTextMethod.invoke(action, "field.not.null",null);
-						addFieldErrorMethod.invoke(action, requiredFieldName,msg);
+						String msg = (String) getTextMethod.invoke(action, "field.not.null", null);
+						addFieldErrorMethod.invoke(action, requiredFieldName, msg);
 						break;
 					}
 					
-					if("Integer".equalsIgnoreCase(requiredFieldType) || "int".equalsIgnoreCase(requiredFieldType))
+					if("String".equalsIgnoreCase(requiredFieldType))
 					{
-						if(!this.validateInteger(eachValue))
+						continue;
+					}
+					
+					if ("Integer".equalsIgnoreCase(requiredFieldType) || "int".equalsIgnoreCase(requiredFieldType))
+					{
+						if (!this.validateInteger(eachValue))
 						{
-							addFieldErrorMethod.invoke(action, requiredFieldName,"该字段必须为整数");
+							addFieldErrorMethod.invoke(action, requiredFieldName, "该字段必须为整数");
 							break;
 						}
-					}
-					else if("double".equalsIgnoreCase(requiredFieldType) || "fload".equalsIgnoreCase(requiredFieldType))
+					} else if ("double".equalsIgnoreCase(requiredFieldType)
+							|| "fload".equalsIgnoreCase(requiredFieldType))
 					{
-						if(!this.validateDouble(eachValue))
+						if (!this.validateDouble(eachValue))
 						{
-							addFieldErrorMethod.invoke(action, requiredFieldName,"该字段必须为小数类型");
+							addFieldErrorMethod.invoke(action, requiredFieldName, "该字段必须为小数类型");
 							break;
 						}
-					}
-					else if("date".equalsIgnoreCase(requiredFieldType))
+					} else if ("date".equalsIgnoreCase(requiredFieldType))
 					{
-						if(!this.validateDate(eachValue))
+						if (!this.validateDate(eachValue))
 						{
-							addFieldErrorMethod.invoke(action, requiredFieldName,"该字段必须为日期");
+							addFieldErrorMethod.invoke(action, requiredFieldName, "该字段必须为日期");
 							break;
 						}
-					}
-					else
+					} else
 					{
-						System.out.println("WARN: 不支持的数据类型("+requiredFieldName+":"+requiredFieldType+"),无法完成验证." );
+						System.out
+								.println("WARN: 不支持的数据类型(" + requiredFieldName + ":" + requiredFieldType + "),无法完成验证.");
 					}
-				} 
+				}
 			}
 		}
-//		super.getFieldErrors()
+		// super.getFieldErrors()
 		Method getFieldErrorsMethod = action.getClass().getMethod("getFieldErrors");
-		Map<String, List<String>> fieldErrors = (Map<String, List<String>>)getFieldErrorsMethod.invoke(action);
-		if(fieldErrors == null )
+		Map<String, List<String>> fieldErrors = (Map<String, List<String>>) getFieldErrorsMethod.invoke(action);
+		if (fieldErrors == null || fieldErrors.size() == 0)
 		{
+			System.out.println("数据验证通过:" + rule);
 			return invocation.invoke();
+		} else
+		{
+			Set<String> keys = fieldErrors.keySet();
+			for (String key : keys)
+			{
+				System.out.println(key + ":" + fieldErrors.get(key));
+			}
+			System.out.println("数据验证未通过:" + rule);
+			return "input";
 		}
-		
-		return null;
 	}
-	
+
 	private String getValidationRule(ActionInvocation invocation)
 	{
 		String rule = null;
@@ -116,11 +130,11 @@ public class DataValidationInterceptor extends AbstractInterceptor
 			e.printStackTrace();
 			return null;
 		}
-		
+
 		ruleField.setAccessible(true);
 		try
 		{
-			rule = (String)ruleField.get(action);
+			rule = (String) ruleField.get(action);
 		} catch (IllegalArgumentException e)
 		{
 			e.printStackTrace();
@@ -130,12 +144,13 @@ public class DataValidationInterceptor extends AbstractInterceptor
 			e.printStackTrace();
 			return null;
 		}
-		
+
 		return rule;
 	}
-	private boolean validateInteger(String value )
+
+	private boolean validateInteger(String value)
 	{
-		if(value.matches("\\d+"))
+		if (value.matches("\\d+"))
 		{
 			return true;
 		}
@@ -143,9 +158,10 @@ public class DataValidationInterceptor extends AbstractInterceptor
 			return false;
 		}
 	}
+
 	private boolean validateDouble(String value)
 	{
-		if(value.matches("\\d+\\.\\d+"))
+		if (value.matches("\\d+\\.\\d+"))
 		{
 			return true;
 		}
@@ -153,10 +169,11 @@ public class DataValidationInterceptor extends AbstractInterceptor
 			return false;
 		}
 	}
-	
+
 	private boolean validateDate(String value)
 	{
-		if(value.matches("\\d{4}-\\d{2}-\\d{2}") || value.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}\\d{2}") || value.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}\\d{2}\\.\\d{3}"))
+		if (value.matches("\\d{4}-\\d{2}-\\d{2}") || value.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}\\d{2}")
+				|| value.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}\\d{2}\\.\\d{3}"))
 		{
 			return true;
 		}
