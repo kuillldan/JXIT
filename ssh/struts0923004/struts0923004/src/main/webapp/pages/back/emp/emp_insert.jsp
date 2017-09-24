@@ -1,5 +1,8 @@
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ page isELIgnored="false" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -7,7 +10,8 @@
 %>
 
 <%
-	String empInsertURL =  basePath + "pages/back/emp/empAction.action";
+	String empInsertURL = basePath + "pages/back/emp/empAction!show.action";
+	pageContext.setAttribute("empInsertURL",empInsertURL);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,8 +20,8 @@
 <title>Insert title here</title>
 
 </head>
-<body>
-	<form action="<%=empInsertURL %>" method="post">
+<body> 
+	<form action="<%=empInsertURL%>" method="post">
 		<table border="1" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
 			<tr>
 				<td>员工号</td>
@@ -25,23 +29,23 @@
 			</tr>
 			<tr>
 				<td>姓名</td>
-				<td><input type="text" name="emp.ename" value="远奎" /></td>
+				<td><input type="text" name="emp.ename" value="远奎" /><span>${fieldErrors['ename'][0] }</span></td>
 			</tr>
 			<tr>
 				<td>入职日期</td>
 				<td><input type="text" name="emp.hiredate" value="2011-07-06" /></td>
 			</tr>
-			
+
 			<tr>
 				<td>部门编号</td>
 				<td><input type="text" name="emp.dept.deptno" value="10" /></td>
 			</tr>
-			
+
 			<tr>
 				<td>部门名称</td>
 				<td><input type="text" name="emp.dept.dname" value="SSIT" /></td>
 			</tr>
-			
+
 			<tr>
 				<td>地址</td>
 				<td><input type="text" name="emp.dept.loc" value="重庆市沙坪坝区" /></td>

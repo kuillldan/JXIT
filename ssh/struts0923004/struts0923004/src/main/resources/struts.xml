@@ -4,9 +4,21 @@
       "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>  
 	<package name="emp" namespace="/pages/back/emp" extends="struts-default">
+		<interceptors>
+			<interceptor name="MyInterceptor" class="org.lyk.interceptors.MyInterceptor"/>
+			<interceptor name="loginValidation" class="org.lyk.interceptors.LoginInterceptor"/>
+		</interceptors>
+		<global-results>
+			<result name="forward.page">/pages/common/forward.jsp</result>
+		</global-results>
 		<action name="empAction_*" class="org.lyk.actions.EmpAction" method="{1}">
 			<result name="emp.show">emp_show.jsp</result>
 			<result name="emp.list">emp_list.jsp</result>
+			<result name="input">emp_insert.jsp</result>
+			<interceptor-ref name="loginValidation"/>
+			<interceptor-ref name="timer" />
+			<interceptor-ref name="MyInterceptor"/>
+			<interceptor-ref name="defaultStack" />
 		</action>
 	</package>
 

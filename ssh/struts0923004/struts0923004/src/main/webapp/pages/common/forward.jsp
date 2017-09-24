@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page isELIgnored="false"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -13,6 +14,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>LIST</h1>
+	<script type="text/javascript">
+		alert("${msg}");
+		window.location="${url}";
+	</script>
 </body>
 </html>
