@@ -3,8 +3,33 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.lyk.vo.mapping.MemberNS">
-	<insert id="doCreate" parameterType="Member">
-		INSERT INTO MEMBER(mid,name,age,salary,birthday,note) 
-		VALUES(#{mid},#{name},#{age},#{salary},#{birthday},#{note});
+	<resultMap type="Member" id="MemberResultMap">
+		<id property="mid" column="MID"/>
+		<result property="name" column="NAME"/>
+		<result property="age" column="AGE"/>
+		<discriminator javaType="String" column="flag">
+			<case value="学生" resultType="Student">
+				<result column="SCORE" property="score"/>
+				<result column="SCHOOL" property="school"/>
+			</case>
+			<case value="工人" resultType="Worker">
+				<result column="SALARY" property="salary"/>
+				<result column="COMPANY" property="company"/>
+			</case>
+		</discriminator>
+	</resultMap>
+	<insert id="doCreateStudent" parameterType="Student">
+		INSERT INTO MEMBER(MID,NAME,AGE,SCHOOL,SCORE,FLAG) VALUES (#{mid},#{name},#{age},#{school},#{score},'学生');
 	</insert>
+	<insert id="doCreateWorker" parameterType="Worker">
+		INSERT INTO MEMBER(MID,NAME,AGE,SALARY,COMPANY,FLAG) VALUES (#{mid},#{name},#{age},#{salary},#{company},'工人');
+	</insert>
+	
+	<select id="findStudentById" parameterType="Integer" resultMap="MemberResultMap">
+		SELECT MID,NAME,AGE,SCHOOL,SCORE,FLAG FROM MEMBER WHERE MID=#{mid} AND FLAG='学生';
+	</select>
+	
+	<select id="findWorkerById" parameterType="Integer" resultMap="MemberResultMap">
+		SELECT MID,NAME,AGE,COMPANY,SALARY,FLAG FROM MEMBER WHERE MID=#{mid} AND FLAG='工人';
+	</select>
 </mapper>

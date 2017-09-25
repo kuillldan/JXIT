@@ -8,67 +8,56 @@ public class Member implements Serializable
 {
 	private String mid;
 	private String name;
-	private Integer age;
-	private Double salary;
-	private Date birthday;
-	private String note;
+	private Integer age; 
+	private String flag;
 	
 	public Member()
 	{
 	}
-	
+
 	public String getMid()
 	{
 		return mid;
 	}
+
 	public void setMid(String mid)
 	{
 		this.mid = mid;
 	}
+
 	public String getName()
 	{
 		return name;
 	}
+
 	public void setName(String name)
 	{
 		this.name = name;
 	}
+
 	public Integer getAge()
 	{
 		return age;
 	}
+
 	public void setAge(Integer age)
 	{
 		this.age = age;
 	}
-	public Double getSalary()
+
+	public String getFlag()
 	{
-		return salary;
+		return flag;
 	}
-	public void setSalary(Double salary)
+
+	public void setFlag(String flag)
 	{
-		this.salary = salary;
+		this.flag = flag;
 	}
-	public Date getBirthday()
-	{
-		return birthday;
-	}
-	public void setBirthday(Date birthday)
-	{
-		this.birthday = birthday;
-	}
-	public String getNote()
-	{
-		return note;
-	}
-	public void setNote(String note)
-	{
-		this.note = note;
-	}
+
 	@Override
 	public String toString()
 	{
-		return "Member [mid=" + mid + ", name=" + name + ", age=" + age + ", salary=" + salary + ", birthday="
-				+ birthday + ", note=" + note + "]";
+		return "Member [mid=" + mid + ", name=" + name + ", age=" + age + ", flag=" + flag + "]";
 	} 
 }

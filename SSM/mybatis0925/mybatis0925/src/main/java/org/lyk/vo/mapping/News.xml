@@ -5,32 +5,56 @@
 <mapper namespace="org.lyk.vo.mapping.NewsNS">
 	<cache />
 	<resultMap type="News" id="NewsResultMap">
-		<id property="nid" column="NID"/>
-		<result property="title" column="TITILE"/>
-		<result property="pubdate" column="PUB_DATE"/>
+		<id property="nid" column="NID" />
+		<result property="title" column="TITILE" />
+		<result property="pubdate" column="PUB_DATE" />
 	</resultMap>
-	
+
 	<insert id="doCreate" parameterType="News">
-		INSERT INTO NEWS(TITLE,PUB_DATE) VALUES (#{title},#{pubdate});
+		INSERT INTO
+		NEWS(TITLE,PUB_DATE) VALUES (#{title},#{pubdate});
 	</insert>
 	<update id="doUpdate" parameterType="News">
-		UPDATE NEWS SET TITLE=#{title} WHERE NID=#{nid}
+		UPDATE NEWS
+		<set>
+			TITLE=#{title}
+		</set>
+		<where>
+			<if test="nid != null">
+				NID=#{nid}
+			</if>
+		</where>
 	</update>
 	<delete id="doRemove" parameterType="Integer">
-		DELETE FROM NEWS WHERE NID=#{nidxxx}
+		DELETE FROM NEWS WHERE
+		NID=#{nidxxx}
 	</delete>
-	
+
 	<select id="findById" parameterType="Integer" resultMap="NewsResultMap">
-		SELECT NID,TITLE,PUB_DATE FROM NEWS WHERE NID=#{nid}
+		SELECT
+		NID,TITLE,PUB_DATE FROM NEWS WHERE NID=#{nid}
 	</select>
 	<select id="findAll" resultMap="NewsResultMap">
-		SELECT NID,TITLE,PUB_DATE FROM NEWS 
+		SELECT NID,TITLE,PUB_DATE FROM
+		NEWS
 	</select>
-	
-	<select id="findByTitle" resultMap="NewsResultMap" parameterType="java.util.Map">
+
+	<select id="findByTitle" resultMap="NewsResultMap"
+		parameterType="java.util.Map">
 		SELECT NID,TITLE,PUB_DATE FROM NEWS
 		<if test="title != null">
 			WHERE TITLE LIKE #{title}
-		</if> 
+		</if>
+	</select>
+
+	<select id="findAllSplit" resultMap="NewsResultMap"
+		parameterType="java.util.Map">
+		SELECT NID,TITLE,PUB_DATE FROM NEWS
+		<if test="column != null">
+			WHERE ${column} LIKE #{keyword}
+		</if>
+		<if test="start &gt; 0 and lineSize &gt; 0">
+			LIMIT #{start},#{lineSize}
+		</if>
 	</select>
 </mapper>
