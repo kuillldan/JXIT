@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyk.vo.mapping.NewsNS">
+
+	<resultMap type="News" id="NewsResultMap">
+		<id property="nid" column="NID"/>
+		<result property="title" column="TITILE"/>
+		<result property="pubdate" column="PUB_DATE"/>
+	</resultMap>
+	
+	<insert id="doCreate" parameterType="News">
+		INSERT INTO NEWS(TITLE,PUB_DATE) VALUES (#{title},#{pubdate});
+	</insert>
+	<update id="doUpdate" parameterType="News">
+		UPDATE NEWS SET TITLE=#{title} WHERE NID=#{nid}
+	</update>
+	<delete id="doRemove" parameterType="Integer">
+		DELETE FROM NEWS WHERE NID=#{nidxxx}
+	</delete>
+	
+	<select id="findById" parameterType="Integer" resultMap="NewsResultMap">
+		SELECT NID,TITLE,PUB_DATE FROM NEWS WHERE NID=#{nid}
+	</select>
+	<select id="findAll" resultMap="NewsResultMap">
+		SELECT NID,TITLE,PUB_DATE FROM NEWS 
+	</select>
+</mapper>

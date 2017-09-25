@@ -15,6 +15,19 @@
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %p (%F.%L): %m%n" />
 		</layout>
 	</appender>
+	
+	<appender name="org.apache.ibatis.logging.LogFactory" class="org.apache.log4j.rolling.RollingFileAppender">
+		<!-- 设置日志编码 -->
+		<param name="Encoding" value="UTF-8" />
+		<!-- 设置按天滚动方式生成日志文件 -->
+		<rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern" value="/opt/mybatis0925/log/my_batis%d{yyyyMMdd}.log" />
+		</rollingPolicy>
+		<!-- 设置日志内容格式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %p (%F.%L): %m%n" />
+		</layout>
+	</appender>
 
 	<!-- 设置按天滚动方式生成日志文件 -->
 	<!-- 将日志写到Linux系统日志中 -->
@@ -32,6 +45,7 @@
 	<logger name="logfile">
 		<!-- 设置日志级别为DEBUG级别 -->
 		<level value="debug" />
+		<appender-ref ref="org.apache.ibatis.logging.LogFactory"/>
 		<appender-ref ref="logFileFormat" />
 		<appender-ref ref="syslogFormat" />
 	</logger>
