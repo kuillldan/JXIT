@@ -13,6 +13,13 @@ public class converterAction extends ActionSupport
 		return hobi;
 	}
 	
+	@Override
+	public void validate()
+	{
+		// TODO Auto-generated method stub
+		super.validate();
+	}
+	
 	public void setHobi(String[] hobi)
 	{
 		this.hobi = hobi;
@@ -20,7 +27,7 @@ public class converterAction extends ActionSupport
 	
 	
 	public String insert()
-	{
+	{ 
 		System.out.println(Arrays.toString(this.hobi));
 		return "success";
 	}
