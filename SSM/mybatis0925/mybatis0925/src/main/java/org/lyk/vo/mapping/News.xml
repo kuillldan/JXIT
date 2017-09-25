@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.lyk.vo.mapping.NewsNS">
-
+	<cache />
 	<resultMap type="News" id="NewsResultMap">
 		<id property="nid" column="NID"/>
 		<result property="title" column="TITILE"/>
@@ -25,5 +25,12 @@
 	</select>
 	<select id="findAll" resultMap="NewsResultMap">
 		SELECT NID,TITLE,PUB_DATE FROM NEWS 
+	</select>
+	
+	<select id="findByTitle" resultMap="NewsResultMap" parameterType="java.util.Map">
+		SELECT NID,TITLE,PUB_DATE FROM NEWS
+		<if test="title != null">
+			WHERE TITLE LIKE #{title}
+		</if> 
 	</select>
 </mapper>
