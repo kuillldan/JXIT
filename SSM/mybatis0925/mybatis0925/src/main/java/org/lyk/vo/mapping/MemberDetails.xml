@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyk.vo.mapping.MemberDetailsNS">
+	<resultMap type="MemberDetails" id="MemberDetailsResultMap">
+		<id property="mid" column="MID"/>
+		<result property="name" column="NAME"/>
+		<result property="age" column="AGE"/>
+	</resultMap>
+	<insert id="doCreate" parameterType="MemberDetails">
+		INSERT INTO MEMBER_DETAILS(MID,NAME,AGE) VALUES(#{mid},#{name},#{age})
+	</insert>
+	<select id="findByMid" resultMap="MemberDetailsResultMap">
+		SELECT MID,NAME,AGE FROM MEMBER_DETAILS WHERE MID=#{mid}
+	</select>
+</mapper>
