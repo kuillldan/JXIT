@@ -63,19 +63,8 @@ public class TestMyBatis
 	public static void main(String[] args) throws Exception
 	{
 		SqlSession session = MyBatisSqlSessionFactory.getSession();
-		MemberLogin ml = new MemberLogin();
-		ml.setMid("21591923");
-		ml.setPassword("admin");
-
-		MemberDetails md = new MemberDetails();
-		md.setMid("21591923");
-		md.setAge(30);
-		md.setName("sheldon");
-
-		// session.insert(MEMEBER_LOGIN_MAPPING_PREFIX + "doCreate",ml);
-		// session.insert(MEMEBER_DETAILS_MAPPING_PREFIX + "doCreate",md);
-
-		System.out.println(session.selectOne(MEMEBER_LOGIN_MAPPING_PREFIX + "findByMid", "21591923").toString());
+		MemberLogin ml = session.selectOne(MEMEBER_LOGIN_MAPPING_PREFIX + "findByMid", "21591923");		 
+		System.out.println(ml.getMemberDetails().getMemberLogin());
 		session.commit();
 
 		MyBatisSqlSessionFactory.close();
