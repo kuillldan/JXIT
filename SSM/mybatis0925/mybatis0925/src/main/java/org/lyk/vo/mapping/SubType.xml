@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.lyk.vo.mapping.SubTypeNS">
+	<resultMap type="SubType" id="SubTypeResultMap">
+		<id property="stid" column="STID"/>
+		<result property="title" column="TITLE"/>
+	</resultMap>
+	<insert id="doCreate" parameterType="SubType">
+		INSERT INTO SUBTYPE(TITLE,TID) VALUES(#{title},#{type.tid})
+	</insert>
+	<select id="findByType" parameterType="Integer" resultMap="SubTypeResultMap">
+		SELECT STID,TITLE,TID FROM SUBTYPE WHERE TID = #{tid}
+	</select>
+</mapper>

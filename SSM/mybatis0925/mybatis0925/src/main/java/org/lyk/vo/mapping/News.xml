@@ -10,7 +10,7 @@
 		<result property="pubdate" column="PUB_DATE" />
 	</resultMap>
 
-	<insert id="doCreate" parameterType="News">
+	<insert id="doCreate" parameterType="News" useGeneratedKeys="true">
 		INSERT INTO
 		NEWS(TITLE,PUB_DATE) VALUES (#{title},#{pubdate});
 	</insert>
