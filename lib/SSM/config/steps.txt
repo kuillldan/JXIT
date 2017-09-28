@@ -1,0 +1,17 @@
+1 配置maven
+	1.1 拷贝pom.xml到项目中
+2 配置项目属性
+	2.1 build path(1.5->1.8). 
+	2.2 compile level
+	2.3 project facet
+3 配置log4j
+	3.1 拷贝log4j.xml到项目中
+	3.2 更改log4j.xml属性，配置日志保存路径
+4 配置mybatis
+	4.1 拷贝mybatis.cfg.xml到项目中
+	4.2 建立mapping(org.lyk.vo.mapping)文件夹，并将Mapper模板(Member.xml)拷贝到项目中
+5 配置spring
+	5.1 将applicationContext.xml拷贝到项目中,并修改其中的数据库链接
+	5.2 将web.xml拷贝到项目中
+6 配置spring mvc
+	6.1 将applicationContext-mvc.xml拷贝到项目中
