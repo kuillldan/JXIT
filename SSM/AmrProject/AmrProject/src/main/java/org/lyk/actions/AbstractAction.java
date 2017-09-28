@@ -19,17 +19,17 @@ public class AbstractAction
 		return this.messageSource.getMessage(key, params, Locale.getDefault());
 	}
 	
-	protected String getMessage(String key,Object ... params)
+	public String getMessage(String key,Object ... params)
 	{
 		return this.getString(key, params);
 	}
 	
-	protected String getPage(String key,Object ... params)
+	public String getPage(String key,Object ... params)
 	{
 		return this.getString(key, params);
 	}
 	
-	protected String getValidation(String key,Object ... params)
+	public String getValidation(String key,Object ... params)
 	{
 		return this.getString(key, params);
 	}

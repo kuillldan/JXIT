@@ -3,6 +3,8 @@ package org.lyk.interceptors;
 import java.lang.invoke.MethodHandle;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,88 +29,148 @@ public class ValidationInterceptor implements HandlerInterceptor
 		HandlerMethod handlerMethod = (HandlerMethod) handler;
 		String actionName = this.getActionName(handlerMethod);
 		logger.debug("请求的Action名称:" + actionName);
-		String validationRuleString = this.getValidationRule(actionName,handlerMethod);
-		
-		if(StringUtils.isEmpty(validationRuleString))
+		String validationRuleString = this.getValidationRule(actionName, handlerMethod);
+
+		if (StringUtils.isEmpty(validationRuleString))
 		{
 			logger.debug("验证规则为空,无需进行验证.");
 			return true;
 		}
-		
+
 		logger.debug("验证规则:" + validationRuleString);
-		boolean validationPassed = false;
-		validationPassed = this.doValidation(request, validationRuleString);
+		Map<String, String> errors = new HashMap<>();
+		boolean validationPassed = this.doValidation(request, validationRuleString,errors);
+		if(validationPassed)
+		{
+			logger.debug("数据合法,验证通过");
+		}
+		else
+		{
+			String msg = "数据不合法,未能通过数据验证";
+			logger.info(msg);
+			request.setAttribute("msg", msg);
+			request.getRequestDispatcher("/pages/common/error.jsp").forward(request, response);
+		}
 		
 		return validationPassed;
 	}
-	
-	private String getValidationRule(String actionName,HandlerMethod handlerMethod)
+
+	private String getValidationRule(String actionName, HandlerMethod handlerMethod)
 	{
 		Object action = handlerMethod.getBean();
 		try
 		{
-			Method method = action.getClass().getMethod("getValidation",String.class, Object[].class);
+			Method method = action.getClass().getMethod("getValidation", String.class, Object[].class);
 			method.setAccessible(true);
-			return (String)method.invoke(action, actionName);
+			return (String) method.invoke(action, actionName,null);
 		} catch (NoSuchMethodException e)
 		{
+			logger.warn(e.getMessage(),e);
 		} catch (SecurityException e)
 		{
+			logger.warn(e.getMessage(),e);
 		} catch (IllegalAccessException e)
 		{
+			logger.warn(e.getMessage(),e);
 		} catch (IllegalArgumentException e)
 		{
+			logger.warn(e.getMessage(),e);
 		} catch (InvocationTargetException e)
 		{
+			logger.warn(e.getMessage(),e);
 		}
 		logger.warn("获取验证规则时发生异常.");
 		return null;
 	}
-	
-	
-	private String getActionName(HandlerMethod handlerMethod )
+
+	private String getActionName(HandlerMethod handlerMethod)
 	{
 		String validationRuleString = null;
 		Object action = handlerMethod.getBean();
 		String actionName = action.getClass().getSimpleName();
-		String methodName = handlerMethod.getMethod().getName(); 
-		
+		String methodName = handlerMethod.getMethod().getName();
+
 		validationRuleString = actionName + "." + methodName;
 		return validationRuleString;
 	}
-	
-	private boolean doValidation(HttpServletRequest request,String validationRuleString)
+
+	private boolean doValidation(HttpServletRequest request, String validationRuleString,Map<String, String> errors)
 	{
 		boolean validationPassed = true;
 		String[] allRules = validationRuleString.split("\\|");
-		for(String eachRule : allRules)
+		for (String eachRule : allRules)
 		{
 			String requiredField = eachRule.split("\\:")[0];
 			String requiredType = eachRule.split("\\:")[1];
-			
+
 			String acturalValue = request.getParameter(requiredField);
-			if(StringUtils.isEmpty(acturalValue))
+			if (StringUtils.isEmpty(acturalValue))
 			{
-				logger.debug("未能获取到指定字段("+requiredField+")的值.");
+				String msg = "未能获取到指定字段(" + requiredField + ")的值.数据验证失败.";
+				errors.put(requiredField, msg);
+				logger.info(msg);
 				validationPassed = false;
 				continue;
 			}
-			
-			if("String".equalsIgnoreCase(requiredType))
+
+			if ("String".equalsIgnoreCase(requiredType))
 			{
 				continue;
 			}
-			
-			if("Integer".equalsIgnoreCase(requiredType) || "int".equalsIgnoreCase(requiredType)) 
+
+			if ("Integer".equalsIgnoreCase(requiredType) || "int".equalsIgnoreCase(requiredType))
 			{
-				if(!this.validateInteger(acturalValue))
+				if (!this.validateInteger(acturalValue))
 				{
+					String msg = "字段("+requiredField+")必须为整型";
+					errors.put(requiredField, msg);
+					logger.info(msg);
 					validationPassed = false;
 				}
+
+				continue;
+			}
+
+			if ("Double".equalsIgnoreCase(requiredType))
+			{
+				if (!this.validateDouble(acturalValue))
+				{
+					String msg = "字段("+requiredField+")必须为Double型";
+					errors.put(requiredField, msg);
+					logger.info(msg);
+					validationPassed = false;
+				}
+				continue;
+			}
+
+			if ("Float".equalsIgnoreCase(requiredType))
+			{
+				if (!this.validateFloat(acturalValue))
+				{
+					String msg = "字段("+requiredField+")必须为Float型";
+					errors.put(requiredField, msg);
+					logger.info(msg);
+					validationPassed = false;
+				}
+
+				continue;
+			}
+
+			if ("Date".equalsIgnoreCase(requiredType))
+			{
+				if (!this.validateDate(acturalValue))
+				{
+					String msg = "字段("+requiredField+")必须为Date型";
+					errors.put(requiredField, msg);
+					logger.info(msg);
+					validationPassed = false;
+				}
+				continue;
 			}
 			
+			logger.warn("不支持的数据类型("+requiredType+"),无法完成数据验证。");
 		}
-		
+
 		return validationPassed;
 	}
 
@@ -134,15 +196,15 @@ public class ValidationInterceptor implements HandlerInterceptor
 
 	private boolean validateDate(String data)
 	{
-		if(data.matches("\\d{4}-\\d{2}-\\d{2}"))
+		if (data.matches("\\d{4}-\\d{2}-\\d{2}"))
 			return true;
-		
-		if(data.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
+
+		if (data.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}"))
 			return true;
-		
-		if(data.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
+
+		if (data.matches("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3}"))
 			return true;
-		
+
 		return false;
 	}
 
