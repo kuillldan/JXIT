@@ -4,17 +4,21 @@
 <!-- 设置命名空间，可以与不同表的同类型操作进行区分，使用时以“空间名称.id”的方式调用 -->
 <mapper namespace="org.lyk.vo.mapping.EmpNS">
 	<resultMap type="Emp" id="EmpResultMap">
-		<id property="eid" column="eid"/>
-		<result property="name" column="name"/>
-		<result property="password" column="password"/>
-		<result property="phone" column="phone"/>
-		<result property="salary" column="salary"/>
-		<result property="note" column="note"/>
-		<result property="aflag" column="aflag"/>
-		<result property="sex" column="sex"/>
-		<result property="photo" column="photo"/>
-	</resultMap> 
+		<id property="eid" column="eid" />
+		<result property="name" column="name" />
+		<result property="password" column="password" />
+		<result property="phone" column="phone" />
+		<result property="salary" column="salary" />
+		<result property="note" column="note" />
+		<result property="aflag" column="aflag" />
+		<result property="sex" column="sex" />
+		<result property="photo" column="photo" />
+		<association property="dept" column="did" javaType="Dept"
+			resultMap="org.lyk.vo.mapping.DeptNS.DeptResultMap" />
+	</resultMap>
 	<select id="findLogin" parameterType="Emp" resultMap="EmpResultMap">
-		SELECT eid,name,aflag,photo FROM emp WHERE eid=#{eid} AND password=#{password}
+		SELECT
+		eid,name,aflag,photo FROM emp WHERE eid=#{eid} AND
+		password=#{password}
 	</select>
 </mapper>

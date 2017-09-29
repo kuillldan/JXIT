@@ -49,18 +49,17 @@
 											class="form-control" placeholder="请输入登录密码...">
 									</div>
 								</div>
-								<!-- 
 								<div class="form-group" id="codeDiv">
 									<div class="col-md-10">
-										 
+
 										<input type="text" id="code" name="code" class="form-control"
 											placeholder="验证码..." size="4" maxlength="4">
 									</div>
 									<div class="col-md-2 col-md-pull-1">
-										<img src="ImageCode" id="imageCode" title="看不清？单击换一张图片">
+										<img src="pages/common/ImageCode" id="imageCode"
+											title="看不清？单击换一张图片">
 									</div>
 								</div>
-								 -->
 								<button type="submit" class="btn">登录系统</button>
 							</form>
 						</div>

@@ -11,7 +11,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="upload/emp/nophoto.png" class="img-circle"
+				<img src="upload/emp/${userInfo.photo }" class="img-circle"
 					alt="User Image">
 			</div>
 			<div class="pull-left info">

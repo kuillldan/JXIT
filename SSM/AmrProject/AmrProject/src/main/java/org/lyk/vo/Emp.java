@@ -13,6 +13,23 @@ public class Emp implements Serializable
 	private Integer aflag;
 	private String sex;
 	private String photo;
+	
+	private Dept dept;
+	 
+	public Dept getDept()
+	{
+		return dept;
+	}
+
+	public void setDept(Dept dept)
+	{
+		this.dept = dept;
+	}
+
+	public Emp()
+	{
+	}
+	
 	public Integer getEid()
 	{
 		return eid;

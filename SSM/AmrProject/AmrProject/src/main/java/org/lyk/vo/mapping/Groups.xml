@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设置命名空间，可以与不同表的同类型操作进行区分，使用时以“空间名称.id”的方式调用 -->
+<mapper namespace="org.lyk.vo.mapping.GroupsNS">
+	<resultMap type="Groups" id="GroupsResultMap">
+		<id property="gid" column="gid" />
+		<result property="title" column="title" />
+		<result property="type" column="type" />
+		<collection property="allDepts" javaType="java.util.List" ofType="Dept"/>
+		<collection property="allActions" javaType="java.util.List" ofType="Action"/>
+	</resultMap>
+</mapper>

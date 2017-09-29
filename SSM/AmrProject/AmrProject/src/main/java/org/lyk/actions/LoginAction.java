@@ -20,6 +20,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginAction extends AbstractAction
 {
 	private static final Logger logger = LoggerFactory.getLogger(CommonConstant.LOGFILE);
+	
+	public LoginAction()
+	{
+		logger.debug("*****Action " + this.getClass().getSimpleName() + "创建");
+	}
 
 	@Resource
 	private IEmpService empServiceImpl;

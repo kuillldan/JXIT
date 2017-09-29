@@ -30,7 +30,7 @@
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/*.action"/>
+			<mvc:mapping path="/**/*.action"/>
 			<bean class="org.lyk.interceptors.ValidationInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

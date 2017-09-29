@@ -12,7 +12,7 @@
 		</rollingPolicy>
 		<!-- 设置日志内容格式 -->
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %p (%F.%L): %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %p\t: %m (%F.%L)%n" />
 		</layout>
 	</appender>
 
@@ -24,7 +24,7 @@
 		<param name="SyslogHost" value="localhost" />
 		<param name="Facility" value="USER" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%p (%F.%L): %m%n" />
+			<param name="ConversionPattern" value="%p\t: %m (%F.%L)%n" />
 		</layout>
 	</appender>
 

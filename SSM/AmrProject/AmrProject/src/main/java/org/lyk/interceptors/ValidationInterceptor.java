@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.lyk.utils.CommonConstant;
 import org.lyk.utils.StringUtils;
@@ -20,7 +21,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class ValidationInterceptor implements HandlerInterceptor
 {
 	private static final Logger logger = LoggerFactory.getLogger(CommonConstant.LOGFILE);
-
+	public ValidationInterceptor()
+	{
+		logger.debug("*****拦截器" + this.getClass().getSimpleName() + "创建");
+	}
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
 	{
@@ -165,6 +169,32 @@ public class ValidationInterceptor implements HandlerInterceptor
 					logger.info(msg);
 					validationPassed = false;
 				}
+				continue;
+			}
+			
+			if("Rand".equalsIgnoreCase(requiredType))
+			{
+				
+				HttpSession session = request.getSession();
+				String codeInSession = (String)session.getAttribute("rand");
+				if(StringUtils.isEmpty(codeInSession))
+				{
+					String msg = "验证规则要求有验证码，但系统内存中找不到验证码。";
+					errors.put(requiredField, msg);
+					logger.info(msg);
+					validationPassed = false;
+					continue;
+				}
+				
+				if(!acturalValue.equalsIgnoreCase(codeInSession))
+				{
+					String msg = "验证码错误";
+					errors.put(requiredField, msg);
+					logger.info(msg);
+					validationPassed = false;
+					continue;
+				}
+				
 				continue;
 			}
 			
