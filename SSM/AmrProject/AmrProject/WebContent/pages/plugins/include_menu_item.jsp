@@ -3,7 +3,7 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+			+ path ;
 %>
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
@@ -26,12 +26,14 @@
 				<li class="treeview"><a href="<%=basePath%>pages/index.jsp"> <i class="fa fa-folder-open"></i> <span>${group.title }</span>
 						<i class="fa fa-angle-left pull-right"></i>
 				</a>
-				<ul class="treeview-menu">
-					<c:forEach items="${group.allActions }" var="action">
-						<li><a href="${action.url }"><i class="fa fa-circle-o"></i>${action.title }</a></li>
-					</c:forEach>
-				</ul>
-			</c:forEach> 
+					<ul class="treeview-menu">
+						<c:forEach items="${group.allActions }" var="action">
+							<c:if test="${action.sflag == 1 }">
+								<li><a href="<%=basePath %>${action.url }"><i class="fa fa-circle-o"></i>${action.title }</a></li>
+							</c:if>
+						</c:forEach>
+					</ul>
+			</c:forEach>
 		</ul>
 	</section>
 	<!-- /.sidebar -->

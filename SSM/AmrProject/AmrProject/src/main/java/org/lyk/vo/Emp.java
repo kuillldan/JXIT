@@ -112,5 +112,13 @@ public class Emp implements Serializable
 	public void setPhoto(String photo)
 	{
 		this.photo = photo;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Emp [eid=" + eid + ", name=" + name + ", password=" + password + ", phone=" + phone + ", salary="
+				+ salary + ", note=" + note + ", aflag=" + aflag + ", sex=" + sex + ", photo=" + photo + ", heid="
+				+ heid + ", level=" + level + ", dept=" + dept + "]";
 	} 
 }

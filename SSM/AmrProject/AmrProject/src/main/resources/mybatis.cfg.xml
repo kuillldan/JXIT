@@ -16,5 +16,6 @@
 		<mapper resource="org/lyk/vo/mapping/Dept.xml"/>
 		<mapper resource="org/lyk/vo/mapping/Groups.xml"/>
 		<mapper resource="org/lyk/vo/mapping/Action.xml"/>
+		<mapper resource="org/lyk/vo/mapping/Level.xml"/>
 	</mappers> 
 </configuration>

@@ -4,6 +4,7 @@ import java.util.Locale;
 
 import javax.annotation.Resource;
 
+import org.lyk.utils.CommonConstant;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,5 +40,13 @@ public class AbstractAction
 		mav.setViewName(this.getPage("forward.jsp"));
 		mav.addObject("msg",msg);
 		mav.addObject("url",url);
+	}
+	
+	protected void setSystemError(ModelAndView mav, String msg,Exception e)
+	{
+		mav.setViewName(this.getPage(CommonConstant.ERROR_JSP));
+		mav.addObject(CommonConstant.MSG,msg);
+		CommonConstant.LOGGER.error(msg);
+		CommonConstant.LOGGER.error(e.getMessage(),e);
 	}
 }
