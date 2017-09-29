@@ -24,14 +24,14 @@ public class AbstractAction
 		return this.getString(key, params);
 	}
 	
-	public String getPage(String key,Object ... params)
+	public String getPage(String key)
 	{
-		return this.getString(key, params);
+		return this.getString(key);
 	}
 	
-	public String getValidation(String key,Object ... params)
+	public String getValidation(String key)
 	{
-		return this.getString(key, params);
+		return this.getString(key );
 	}
 	
 	protected void setForwardMessageAndUrl(ModelAndView mav,String msg, String url)

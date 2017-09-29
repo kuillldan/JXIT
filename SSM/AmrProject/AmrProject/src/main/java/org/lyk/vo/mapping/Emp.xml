@@ -21,4 +21,10 @@
 		eid,name,aflag,photo,did FROM emp WHERE eid=#{eid} AND
 		password=#{password}
 	</select>
+	<insert id="doCreate" parameterType="Emp">
+		INSERT INTO emp
+		(eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo)
+		VALUES
+		(#{eid},#{dept.did},#{level.lid},#{heid},,#{name},#{password},#{phone},#{salary},#{note},#{aflag},,#{sex},#{photo})
+	</insert>
 </mapper>

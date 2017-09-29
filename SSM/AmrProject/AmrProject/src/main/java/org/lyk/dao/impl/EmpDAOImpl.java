@@ -26,8 +26,7 @@ public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
 	@Override
 	public boolean doCreate(Emp vo) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return super.getSqlSession().insert(MAPPING_PREFIX + "doCreate", vo) == 1;
 	}
 
 	@Override

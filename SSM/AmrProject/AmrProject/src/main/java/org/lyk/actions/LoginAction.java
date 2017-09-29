@@ -13,7 +13,6 @@ import org.lyk.vo.Action;
 import org.lyk.vo.Dept;
 import org.lyk.vo.Emp;
 import org.lyk.vo.Groups;
-import org.lyk.vo.UserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

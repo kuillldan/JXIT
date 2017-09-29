@@ -13,9 +13,20 @@ public class Emp implements Serializable
 	private Integer aflag;
 	private String sex;
 	private String photo;
-	
+	private Integer heid;
+	private Level level;
 	private Dept dept;
-	 
+	  
+	public Level getLevel()
+	{
+		return level;
+	}
+
+	public void setLevel(Level level)
+	{
+		this.level = level;
+	}
+
 	public Dept getDept()
 	{
 		return dept;
@@ -101,11 +112,5 @@ public class Emp implements Serializable
 	public void setPhoto(String photo)
 	{
 		this.photo = photo;
-	}
-	@Override
-	public String toString()
-	{
-		return "Emp [eid=" + eid + ", name=" + name + ", password=" + password + ", phone=" + phone + ", salary="
-				+ salary + ", note=" + note + ", aflag=" + aflag + ", sex=" + sex + ", photo=" + photo + "]";
 	} 
 }
