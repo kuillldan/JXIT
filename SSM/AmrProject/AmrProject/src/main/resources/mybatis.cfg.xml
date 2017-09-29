@@ -9,6 +9,7 @@
 		<typeAlias type="org.lyk.vo.Dept" alias="Dept"/>
 		<typeAlias type="org.lyk.vo.Groups" alias="Groups"/>
 		<typeAlias type="org.lyk.vo.Action" alias="Action"/>
+		<typeAlias type="org.lyk.vo.Level" alias="Level"/>
 	</typeAliases> 
 	
 	<mappers>

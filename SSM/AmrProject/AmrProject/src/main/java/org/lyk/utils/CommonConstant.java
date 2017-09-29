@@ -20,4 +20,7 @@ public class CommonConstant
 	public static final Integer ADMIN_ACTID = 1;
 
 	public static final String MSG = "msg";
+
+	public static final String NOPHOTO_JPG = "nophoto.jpg";
+	public static final Integer BUFFER_SIZE = 1024*1024;//1M
 }

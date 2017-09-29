@@ -113,6 +113,17 @@ public class Emp implements Serializable
 	{
 		this.photo = photo;
 	}
+	
+
+	public Integer getHeid()
+	{
+		return heid;
+	}
+
+	public void setHeid(Integer heid)
+	{
+		this.heid = heid;
+	}
 
 	@Override
 	public String toString()

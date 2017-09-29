@@ -25,6 +25,6 @@
 		INSERT INTO emp
 		(eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo)
 		VALUES
-		(#{eid},#{dept.did},#{level.lid},#{heid},,#{name},#{password},#{phone},#{salary},#{note},#{aflag},,#{sex},#{photo})
+		(#{eid},#{dept.did},#{level.lid},#{heid},#{name},#{password},#{phone},#{salary},#{note},#{aflag},#{sex},#{photo})
 	</insert>
 </mapper>
