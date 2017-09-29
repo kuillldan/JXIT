@@ -18,7 +18,7 @@
 	</resultMap>
 	<select id="findLogin" parameterType="Emp" resultMap="EmpResultMap">
 		SELECT
-		eid,name,aflag,photo FROM emp WHERE eid=#{eid} AND
+		eid,name,aflag,photo,did FROM emp WHERE eid=#{eid} AND
 		password=#{password}
 	</select>
 </mapper>

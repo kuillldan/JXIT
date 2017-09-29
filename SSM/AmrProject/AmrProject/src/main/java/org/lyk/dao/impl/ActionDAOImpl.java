@@ -4,34 +4,34 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.lyk.dao.IEmpDAO;
+import org.lyk.dao.IActionDAO;
 import org.lyk.utils.CommonConstant;
-import org.lyk.vo.Emp;
+import org.lyk.vo.Action;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
+public class ActionDAOImpl extends SqlSessionDaoSupport implements IActionDAO
 {
-	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "EmpNS.";
+	
+	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "ActionNS.";
 	
 	@Autowired
-	public EmpDAOImpl(SqlSessionFactory sqlSessionFactory)
+	public ActionDAOImpl(SqlSessionFactory sqlSessionFactory)
 	{
 		super.setSqlSessionFactory(sqlSessionFactory);
 	}
 	
 	@Override
-	public boolean doCreate(Emp vo) throws Exception
+	public boolean doCreate(Action vo) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean doUpdate(Emp vo) throws Exception
+	public boolean doUpdate(Action vo) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return false;
@@ -45,21 +45,22 @@ public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
 	}
 
 	@Override
-	public Emp findById(Integer id) throws Exception
+	public Action findById(Integer id) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Emp> findAll() throws Exception
+	public List<Action> findAll() throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Emp> findAllSplit(String column, String keyWord, Integer currentPage, Integer lineSize) throws Exception
+	public List<Action> findAllSplit(String column, String keyWord, Integer currentPage, Integer lineSize)
+			throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
@@ -73,20 +74,8 @@ public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
 	}
 
 	@Override
-	public boolean findLogin(Emp emp)
+	public List<Action> findAllByGroups(Integer gid) throws Exception
 	{
-		Emp result = super.getSqlSession().selectOne(MAPPING_PREFIX + "findLogin", emp);
-		if(result != null)
-		{
-			emp.setName(result.getName());
-			emp.setPhoto(result.getPhoto());
-			emp.setAflag(result.getAflag());
-			emp.setDept(result.getDept());
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return super.getSqlSession().selectList(MAPPING_PREFIX + "findAllByGroups", gid);
 	}
 }

@@ -10,4 +10,9 @@
 		<collection property="allDepts" javaType="java.util.List" ofType="Dept"/>
 		<collection property="allActions" javaType="java.util.List" ofType="Action"/>
 	</resultMap>
+	
+	<select id="findAllByDept" resultMap="GroupsResultMap" parameterType="Integer">
+		SELECT gid,title,type FROM groups WHERE gid IN 
+		( SELECT gid FROM dept_groups WHERE did=#{did} );
+	</select>
 </mapper>

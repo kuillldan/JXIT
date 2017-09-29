@@ -11,4 +11,8 @@
 		
 		<association property="groups" javaType="Groups"/>
 	</resultMap>
+	
+	<select id="findAllByGroups" resultMap="ActionResultMap" parameterType="Integer">
+		SELECT actid,title,url,sflag,gid FROM action WHERE gid=#{gid}
+	</select>
 </mapper>

@@ -53,7 +53,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 			String msg = "数据不合法,未能通过数据验证";
 			logger.info(msg);
 			request.setAttribute("msg", msg);
-			request.getRequestDispatcher("/pages/common/error.jsp").forward(request, response);
+			request.getRequestDispatcher("/error.jsp").forward(request, response);
 		}
 		
 		return validationPassed;
@@ -64,26 +64,29 @@ public class ValidationInterceptor implements HandlerInterceptor
 		Object action = handlerMethod.getBean();
 		try
 		{
-			Method method = action.getClass().getMethod("getValidation", String.class, Object[].class);
-			method.setAccessible(true);
-			return (String) method.invoke(action, actionName,null);
+			Method getValidationMethod = action.getClass().getMethod("getValidation", String.class, Object[].class);
+			getValidationMethod.setAccessible(true);
+			return (String) getValidationMethod.invoke(action, actionName,null);
 		} catch (NoSuchMethodException e)
 		{
-			logger.warn(e.getMessage(),e);
+			//logger.warn(e.getMessage(),e);
 		} catch (SecurityException e)
 		{
+			logger.warn("获取验证规则时发生异常.");
 			logger.warn(e.getMessage(),e);
 		} catch (IllegalAccessException e)
 		{
-			logger.warn(e.getMessage(),e);
+			//logger.warn(e.getMessage(),e);
 		} catch (IllegalArgumentException e)
 		{
+			logger.warn("获取验证规则时发生异常.");
 			logger.warn(e.getMessage(),e);
 		} catch (InvocationTargetException e)
 		{
-			logger.warn(e.getMessage(),e);
+//			logger.warn("获取验证规则时发生异常.");
+//			logger.warn(e.getMessage(),e);
 		}
-		logger.warn("获取验证规则时发生异常.");
+		//logger.warn("获取验证规则时发生异常.");
 		return null;
 	}
 

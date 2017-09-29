@@ -6,9 +6,15 @@
  
 	<typeAliases>
 		<typeAlias type="org.lyk.vo.Emp" alias="Emp"/>
+		<typeAlias type="org.lyk.vo.Dept" alias="Dept"/>
+		<typeAlias type="org.lyk.vo.Groups" alias="Groups"/>
+		<typeAlias type="org.lyk.vo.Action" alias="Action"/>
 	</typeAliases> 
 	
 	<mappers>
 		<mapper resource="org/lyk/vo/mapping/Emp.xml"/>
+		<mapper resource="org/lyk/vo/mapping/Dept.xml"/>
+		<mapper resource="org/lyk/vo/mapping/Groups.xml"/>
+		<mapper resource="org/lyk/vo/mapping/Action.xml"/>
 	</mappers> 
 </configuration>

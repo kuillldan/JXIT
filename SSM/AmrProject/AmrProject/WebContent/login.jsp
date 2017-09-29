@@ -56,7 +56,7 @@
 											placeholder="验证码..." size="4" maxlength="4">
 									</div>
 									<div class="col-md-2 col-md-pull-1">
-										<img src="pages/common/ImageCode" id="imageCode"
+										<img src="ImageCode" id="imageCode"
 											title="看不清？单击换一张图片">
 									</div>
 								</div>
