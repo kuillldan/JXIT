@@ -68,6 +68,9 @@ public class AdminAction extends AbstractAction
 				emp.setPhoto(super.generatePhotoFileName(pic));
 				emp.setHeid(empInSession.getEid());
 				emp.setPassword(new MD5Code().getMD5ofStr(emp.getPassword()));
+				Dept dept = new Dept();
+				dept.setDid(1);
+				emp.setDept(dept);
 
 				CommonConstant.LOGGER.debug("eid:" + emp.getEid());
 				CommonConstant.LOGGER.debug("ename:" + emp.getName());

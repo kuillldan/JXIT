@@ -31,7 +31,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
-						<li class="user-header"><img src="upload/emp/nophoto.png" class="img-circle" alt="User Image">
+						<li class="user-header"><img src="upload/emp/${emp.photo }" class="img-circle" alt="User Image">
 							</p></li>
 						<!-- Menu Body -->
 						<!-- Menu Footer-->
