@@ -75,8 +75,16 @@ public class AdminAction extends AbstractAction
 				if (this.adminServiceImpl.add(emp))
 				{
 					String photoFullPath = request.getServletContext().getRealPath("/upload/emp/") + emp.getPhoto();
-					super.savePhoto(pic, photoFullPath);
+					if(super.savePhoto(pic, photoFullPath))
+					{
+						CommonConstant.LOGGER.debug("图片保存成功:" + photoFullPath);
+					}
+					else
+					{
+						CommonConstant.LOGGER.debug("图片保存失败:" + photoFullPath);
+					}
 					super.setForwardMessageAndUrl(mav, "增加管理员成功", "/pages/admin/addPre.action");
+					CommonConstant.LOGGER.info("增加管理员成功");
 				} else
 				{
 					super.setForwardMessageAndUrl(mav, "增加管理员失败", "/pages/admin/addPre.action");

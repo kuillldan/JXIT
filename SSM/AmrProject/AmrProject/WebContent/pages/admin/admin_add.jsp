@@ -33,7 +33,7 @@
 						</div>
 						<!-- /.box-header -->
 						<div class="">
-							<form class="form-horizontal" action="<%=addUrl%>" id="myform" method="post">
+							<form class="form-horizontal" action="<%=addUrl%>" id="myform" method="post" enctype="multipart/form-data">
 								<fieldset>
 									<div class="form-group" id="eidDiv">
 										<!-- 定义表单提示文字 -->

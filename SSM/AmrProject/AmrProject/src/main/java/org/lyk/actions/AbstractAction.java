@@ -68,6 +68,9 @@ public class AbstractAction
 			return CommonConstant.NOPHOTO_JPG;
 
 		String photoExt = this.getPhotoExt(pic.getContentType());
+		if(StringUtils.isEmpty(photoExt))
+			return CommonConstant.NOPHOTO_JPG;
+		
 		return UUID.randomUUID().toString() + "." + photoExt;
 	}
 
@@ -87,12 +90,12 @@ public class AbstractAction
 			return "png";
 		}
 
-		return CommonConstant.NOPHOTO_JPG;
+		return null;
 	}
 
 	protected boolean savePhoto(MultipartFile photo, String photoFullPath)
 	{
-		if (photo == null || CommonConstant.NOPHOTO_JPG.equalsIgnoreCase(photoFullPath))
+		if (photo == null || photoFullPath.endsWith(CommonConstant.NOPHOTO_JPG))
 			return false;
 
 		if (photo.getSize() <= 0 || CommonConstant.NOPHOTO_JPG.equalsIgnoreCase(photoFullPath))
