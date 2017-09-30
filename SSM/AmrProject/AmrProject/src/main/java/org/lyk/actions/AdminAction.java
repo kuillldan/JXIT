@@ -1,11 +1,13 @@
 package org.lyk.actions;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.lyk.entities.SplitHandler;
 import org.lyk.service.IAdminService;
 import org.lyk.service.impl.AdminServiceImpl;
 import org.lyk.utils.CommonConstant;
@@ -79,11 +81,10 @@ public class AdminAction extends AbstractAction
 				if (this.adminServiceImpl.add(emp))
 				{
 					String photoFullPath = request.getServletContext().getRealPath("/upload/emp/") + emp.getPhoto();
-					if(super.savePhoto(pic, photoFullPath))
+					if (super.savePhoto(pic, photoFullPath))
 					{
 						CommonConstant.LOGGER.debug("图片保存成功:" + photoFullPath);
-					}
-					else
+					} else
 					{
 						CommonConstant.LOGGER.debug("图片保存失败:" + photoFullPath);
 					}
@@ -103,6 +104,28 @@ public class AdminAction extends AbstractAction
 		} catch (Exception e)
 		{
 			super.setSystemError(mav, "增加管理员失败", e);
+		}
+		return mav;
+	}
+
+	@RequestMapping("list")
+	public ModelAndView list(HttpServletRequest request)
+	{
+		ModelAndView mav = new ModelAndView();
+		try
+		{
+			SplitHandler splitHandler = new SplitHandler(request);
+			Map<String, Object> adminInfos = this.adminServiceImpl.getAllAdmin(splitHandler.getColumn(),
+					splitHandler.getKeyWord(), splitHandler.getCurrentPage(), splitHandler.getLineSize());
+
+			Integer allRecorders = (Integer) adminInfos.get("allRecorders");
+			List<Emp> allItems = (List<Emp>) adminInfos.get("allItems");
+			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems);
+			mav.setViewName("/pages/admin/admin_list.jsp");
+		} catch (Exception e)
+		{
+			String msg = "查询管理员信息发生系统异常";
+			super.setSystemError(mav, msg, e);
 		}
 		return mav;
 	}

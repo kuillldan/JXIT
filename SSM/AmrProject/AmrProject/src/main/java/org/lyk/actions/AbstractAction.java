@@ -5,11 +5,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.lyk.entities.SplitHandler;
 import org.lyk.utils.CommonConstant;
 import org.lyk.utils.StringUtils;
 import org.slf4j.Logger;
@@ -68,12 +71,12 @@ public class AbstractAction
 			return CommonConstant.NOPHOTO_JPG;
 
 		String photoExt = this.getPhotoExt(pic.getContentType());
-		if(StringUtils.isEmpty(photoExt))
+		if (StringUtils.isEmpty(photoExt))
 			return CommonConstant.NOPHOTO_JPG;
-		
+
 		return UUID.randomUUID().toString() + "." + photoExt;
 	}
-
+	
 	private String getPhotoExt(String contentType)
 	{
 		if ("image/bmp".equals(contentType))
@@ -151,5 +154,16 @@ public class AbstractAction
 		}
 
 		return true;
+	}
+	
+	protected void handleSplit(SplitHandler splitHandler,HttpServletRequest request,Integer allRecorders,String url,List<?> allItems)
+	{
+		request.setAttribute("column", splitHandler.getColumn());
+		request.setAttribute("keyWord", splitHandler.getKeyWord());
+		request.setAttribute("currentPage", splitHandler.getCurrentPage());
+		request.setAttribute("lineSize", splitHandler.getLineSize());
+		request.setAttribute("allRecorders", allRecorders);
+		request.setAttribute("url", url);
+		request.setAttribute("allItems", allItems);
 	}
 }

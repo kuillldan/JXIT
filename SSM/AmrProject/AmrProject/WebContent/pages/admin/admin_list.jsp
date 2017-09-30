@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -25,9 +25,12 @@
 				<div class="col-xs-12">
 					<div class="box">
 						<div class="box-header">
-							<h3 class="box-title"><strong>管理员列表</strong></h3>
+							<h3 class="box-title">
+								<strong>管理员列表</strong>
+							</h3>
 						</div>
 						<!-- /.box-header -->
+						<jsp:include page="/pages/plugins/split_page_plugin_search.jsp" />
 						<div class="box-body table-responsive no-padding">
 							<table class="table table-hover">
 								<tr>
@@ -38,6 +41,17 @@
 									<th>基本工资</th>
 									<th>操作</th>
 								</tr>
+								<c:forEach items="${allItems }" var="item">
+									<tr>
+										<td>${item.eid }</td>
+										<td>${item.name }</td>
+										<td>${item.phone }</td>
+										<td>${item.sex }</td>
+										<td>${item.salary }</td>
+										<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
+									</tr>
+								</c:forEach>
+								<!-- 
 								<tr>
 									<td>0000</td>
 									<td>老李</td>
@@ -46,80 +60,10 @@
 									<td>8900.00</td>
 									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
 								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
-								<tr>
-									<td>0000</td>
-									<td>老李</td>
-									<td>110</td>
-									<td>男</td>
-									<td>8900.00</td>
-									<td><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></td>
-								</tr>
+								 -->
 							</table>
 						</div>
+						<jsp:include page="/pages/plugins/split_page_plugin_bar.jsp"/>
 						<!-- /.box-body -->
 					</div>
 					<!-- /.box -->

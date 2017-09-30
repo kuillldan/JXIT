@@ -27,5 +27,21 @@
 		VALUES
 		(#{eid},#{dept.did},#{level.lid},#{heid},#{name},#{password},#{phone},#{salary},#{note},#{aflag},#{sex},#{photo})
 	</insert>
-	<select id="findAllAdmin" resultMap="EmpResultMap" parameterType="java.util.Map" ></select>
+	<select id="findAllAdmin" resultMap="EmpResultMap"
+		parameterType="java.util.Map">
+		SELECT
+		eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM
+		emp WHERE aflag IN (1,2)
+		<if test="column != null">
+			AND ${column} LIKE #{keyWord}
+		</if>
+		LIMIT ${start},${lineSize}
+	</select>
+	<select id="findAllAdminCount" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		SELECT COUNT(*) FROM emp WHERE aflag IN(1,2)
+		<if test="column != null">
+			AND ${column} LIKE #{keyWord}
+		</if>
+	</select>
 </mapper>

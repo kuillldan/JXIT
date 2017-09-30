@@ -1,28 +1,31 @@
 package org.lyk.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IEmpDAO;
 import org.lyk.utils.CommonConstant;
+import org.lyk.utils.StringUtils;
 import org.lyk.vo.Emp;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
+public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "EmpNS.";
-	
+
 	@Autowired
 	public EmpDAOImpl(SqlSessionFactory sqlSessionFactory)
 	{
 		super.setSqlSessionFactory(sqlSessionFactory);
 	}
-	
+
 	@Override
 	public boolean doCreate(Emp vo) throws Exception
 	{
@@ -75,17 +78,28 @@ public class EmpDAOImpl extends SqlSessionDaoSupport implements IEmpDAO
 	public boolean findLogin(Emp emp)
 	{
 		Emp result = super.getSqlSession().selectOne(MAPPING_PREFIX + "findLogin", emp);
-		if(result != null)
+		if (result != null)
 		{
 			emp.setName(result.getName());
 			emp.setPhoto(result.getPhoto());
 			emp.setAflag(result.getAflag());
 			emp.setDept(result.getDept());
 			return true;
-		}
-		else
+		} else
 		{
 			return false;
 		}
+	}
+
+	@Override
+	public List<Emp> findAllAdmin(String column, String keyWord, Integer currentPage, Integer lineSize) throws Exception
+	{
+		return super.findAllSplit(column, keyWord, currentPage, lineSize, MAPPING_PREFIX + "findAllAdmin");
+	}
+
+	@Override
+	public Integer findAllAdminCount(String column, String keyWord) throws Exception
+	{
+		return super.findAllCount(column, keyWord, MAPPING_PREFIX + "findAllAdminCount");
 	}
 }
