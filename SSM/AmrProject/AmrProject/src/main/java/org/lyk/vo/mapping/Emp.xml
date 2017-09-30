@@ -27,4 +27,5 @@
 		VALUES
 		(#{eid},#{dept.did},#{level.lid},#{heid},#{name},#{password},#{phone},#{salary},#{note},#{aflag},#{sex},#{photo})
 	</insert>
+	<select id="findAllAdmin" resultMap="EmpResultMap" parameterType="java.util.Map" ></select>
 </mapper>

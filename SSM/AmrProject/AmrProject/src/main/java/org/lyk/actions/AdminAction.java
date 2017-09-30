@@ -71,6 +71,7 @@ public class AdminAction extends AbstractAction
 				Dept dept = new Dept();
 				dept.setDid(1);
 				emp.setDept(dept);
+				emp.setAflag(2);
 
 				CommonConstant.LOGGER.debug("eid:" + emp.getEid());
 				CommonConstant.LOGGER.debug("ename:" + emp.getName());
