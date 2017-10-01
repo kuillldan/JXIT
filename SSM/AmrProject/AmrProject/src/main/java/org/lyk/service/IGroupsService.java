@@ -6,5 +6,5 @@ import org.lyk.vo.Groups;
 
 public interface IGroupsService
 {
-	public List<Groups> findAllByDept(Integer did);
+	public List<Groups> findAllByDept(Integer did) throws Exception;
 }

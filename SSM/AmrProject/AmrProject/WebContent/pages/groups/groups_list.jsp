@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -25,7 +25,9 @@
 				<div class="col-xs-12">
 					<div class="box">
 						<div class="box-header">
-							<h3 class="box-title"><strong>权限组列表</strong></h3>
+							<h3 class="box-title">
+								<strong>权限组列表</strong>
+							</h3>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
@@ -35,6 +37,13 @@
 									<th>描述</th>
 									<th>操作</th>
 								</tr>
+								<c:forEach items="${allItems }" var="action">
+									<tr>
+										<td>${action.title }</td>
+										<td>管理部-权限组</td>
+										<td><a href="pages/action/action_list.jsp">查看权限</a></td>
+									</tr>
+								</c:forEach>
 								<tr>
 									<td>权限管理</td>
 									<td>管理部-权限组</td>
@@ -71,7 +80,7 @@
 									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
 								</tr>
 							</table>
-							<jsp:include page="/pages/plugins/include_alert.jsp"/> 
+							<jsp:include page="/pages/plugins/include_alert.jsp" />
 						</div>
 						<!-- /.box-body -->
 					</div>

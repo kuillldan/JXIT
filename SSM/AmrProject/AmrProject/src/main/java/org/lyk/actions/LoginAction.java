@@ -40,6 +40,14 @@ public class LoginAction extends AbstractAction
 		{
 			String msg = null;
 			logger.debug("emp:" + emp);
+			
+			if(emp.getEid() == null || emp.getPassword() == null )
+			{
+				msg = "登陆失败,请提供用户名或密码.";
+				logger.info(msg);
+				super.setForwardMessageAndUrl(mav, msg, super.getPage("login.jsp"));
+				return mav;
+			}
 
 			emp.setPassword(new MD5Code().getMD5ofStr(emp.getPassword()));
 			if (this.empServiceImpl.login(emp))

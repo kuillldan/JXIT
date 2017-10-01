@@ -24,4 +24,11 @@ public class CommonConstant
 	public static final Integer BUFFER_SIZE = 1024 * 1024;// 1M
 
 	public static final String EMP_PHOTO_SAVE_PATH = "EMP.PHOTO.SAVE.PATH";
+
+	//Messages
+	public static final String NOT_AUTHORIZED = "not.authorized";
+	public static final String LOGOUT_SUCCESS = "logout.success";
+	public static final String UNKNOWN_ERROR = "unknown.error";
+	public static final String DEPT_LIST_ACTION = "dept.list.action";
+	public static final String GROUPS_LIST_JSP = "groups.list.jsp";
 }
