@@ -3,29 +3,27 @@ package org.lyk.dao.impl;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.lyk.dao.AbstractDAO;
-import org.lyk.dao.ILevelDAO;
+import org.lyk.dao.IDeptDAO;
 import org.lyk.utils.CommonConstant;
-import org.lyk.vo.Level;
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.lyk.vo.Dept;
 import org.springframework.stereotype.Component;
 
-@Component
-public class LevelDAOImpl extends AbstractDAO implements ILevelDAO
-{
-	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "LevelNS.";
 
+@Component
+public class DeptDAOImpl extends AbstractDAO implements IDeptDAO
+{
+	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "DeptNS.";
+	
 	@Override
-	public boolean doCreate(Level vo) throws Exception
+	public boolean doCreate(Dept vo) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean doUpdate(Level vo) throws Exception
+	public boolean doUpdate(Dept vo) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return false;
@@ -39,23 +37,22 @@ public class LevelDAOImpl extends AbstractDAO implements ILevelDAO
 	}
 
 	@Override
-	public Level findById(Integer id) throws Exception
+	public Dept findById(Integer id) throws Exception
 	{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Level> findAll() throws Exception
+	public List<Dept> findAll() throws Exception
 	{
 		return super.getSqlSession().selectList(MAPPING_PREFIX + "findAll");
 	}
 
 	@Override
-	public List<Level> findAllSplit(String column, String keyWord, Integer currentPage, Integer lineSize)
+	public List<Dept> findAllSplit(String column, String keyWord, Integer currentPage, Integer lineSize)
 			throws Exception
 	{
-		// TODO Auto-generated method stub
 		return null;
 	}
 

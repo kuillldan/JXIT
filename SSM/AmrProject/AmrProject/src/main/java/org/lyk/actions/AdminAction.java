@@ -38,7 +38,7 @@ public class AdminAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (this.isAuthcated(request.getSession(), 1))
+			if (this.isAuthcated(request, 1))
 			{
 				mav.setViewName(super.getPage(CommonConstant.ADMIN_ADD_JSP));
 				List<Level> allLevels = this.adminServiceImpl.addPre();
@@ -65,7 +65,7 @@ public class AdminAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (this.isAuthcated(session, 2))
+			if (this.isAuthcated(request, 2))
 			{
 				emp.setPhoto(super.generatePhotoFileName(pic));
 				emp.setHeid(empInSession.getEid());
@@ -120,7 +120,7 @@ public class AdminAction extends AbstractAction
 
 			Integer allRecorders = (Integer) adminInfos.get("allRecorders");
 			List<Emp> allItems = (List<Emp>) adminInfos.get("allItems");
-			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems);
+			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems,"姓名:name|电话:phone");
 			mav.setViewName("/pages/admin/admin_list.jsp");
 		} catch (Exception e)
 		{
@@ -128,33 +128,5 @@ public class AdminAction extends AbstractAction
 			super.setSystemError(mav, msg, e);
 		}
 		return mav;
-	}
-
-	private boolean isAuthcated(HttpSession session, Integer actid)
-	{
-		Emp emp = (Emp) session.getAttribute(CommonConstant.EMP);
-		if (emp == null)
-			return false;
-
-		Dept dept = emp.getDept();
-		if (dept == null)
-			return false;
-		List<Groups> allGroups = dept.getAllGroups();
-		if (allGroups == null || allGroups.size() == 0)
-			return false;
-
-		for (Groups groups : allGroups)
-		{
-			List<Action> allActions = groups.getAllActions();
-			if (allActions == null || allActions.size() == 0)
-				continue;
-			for (Action action : allActions)
-			{
-				if (action.getActid().equals(actid))
-					return true;
-			}
-		}
-
-		return false;
 	}
 }

@@ -11,10 +11,15 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.lyk.entities.SplitHandler;
 import org.lyk.utils.CommonConstant;
 import org.lyk.utils.StringUtils;
+import org.lyk.vo.Action;
+import org.lyk.vo.Dept;
+import org.lyk.vo.Emp;
+import org.lyk.vo.Groups;
 import org.slf4j.Logger;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -156,7 +161,7 @@ public class AbstractAction
 		return true;
 	}
 	
-	protected void handleSplit(SplitHandler splitHandler,HttpServletRequest request,Integer allRecorders,String url,List<?> allItems)
+	protected void handleSplit(SplitHandler splitHandler,HttpServletRequest request,Integer allRecorders,String url,List<?> allItems,String columnData)
 	{
 		request.setAttribute("column", splitHandler.getColumn());
 		request.setAttribute("keyWord", splitHandler.getKeyWord());
@@ -165,5 +170,35 @@ public class AbstractAction
 		request.setAttribute("allRecorders", allRecorders);
 		request.setAttribute("url", url);
 		request.setAttribute("allItems", allItems);
+		request.setAttribute("columnData", columnData);
+	}
+	
+	protected boolean isAuthcated(HttpServletRequest request, Integer actid)
+	{
+		HttpSession session = request.getSession();
+		Emp emp = (Emp) session.getAttribute(CommonConstant.EMP);
+		if (emp == null)
+			return false;
+
+		Dept dept = emp.getDept();
+		if (dept == null)
+			return false;
+		List<Groups> allGroups = dept.getAllGroups();
+		if (allGroups == null || allGroups.size() == 0)
+			return false;
+
+		for (Groups groups : allGroups)
+		{
+			List<Action> allActions = groups.getAllActions();
+			if (allActions == null || allActions.size() == 0)
+				continue;
+			for (Action action : allActions)
+			{
+				if (action.getActid().equals(actid))
+					return true;
+			}
+		}
+
+		return false;
 	}
 }

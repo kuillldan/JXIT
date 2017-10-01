@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IGroupsDAO;
 import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Groups;
@@ -12,15 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class GroupsDAOImpl extends SqlSessionDaoSupport implements IGroupsDAO
+public class GroupsDAOImpl extends AbstractDAO implements IGroupsDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "GroupsNS.";
-	
-	@Autowired
-	public GroupsDAOImpl(SqlSessionFactory sqlSessionFactory)
-	{
-		super.setSqlSessionFactory(sqlSessionFactory);
-	}
 	
 	@Override
 	public boolean doCreate(Groups vo) throws Exception

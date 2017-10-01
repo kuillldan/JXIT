@@ -15,7 +15,7 @@
 	String column = (String) request.getAttribute("column");
 %>
 <div class="row">
-	<form action="<%=url %>" method="post" class="form-group" id="splitSearchForm">
+	<form action="pages/admin/list.action" method="post" class="form-group" id="splitSearchForm">
 		<fieldset>
 			<div class="form-group">
 				<div class="col-md-2">&nbsp;</div>

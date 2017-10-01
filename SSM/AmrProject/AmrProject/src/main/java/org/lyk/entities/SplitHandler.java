@@ -13,7 +13,7 @@ public class SplitHandler
 
 	public SplitHandler(HttpServletRequest request)
 	{
-		this.setColumn(request.getParameter("column"));
+		this.setColumn(request.getParameter("col"));
 		this.setCurrentPage(request.getParameter("cp"));
 		this.setKeyWord(request.getParameter("kw"));
 		this.setLineSize(request.getParameter("ls"));
@@ -28,7 +28,7 @@ public class SplitHandler
 	{
 		if (StringUtils.isEmpty(column))
 		{
-			this.column = null;
+			this.column = "";
 			return;
 		}
 
@@ -42,6 +42,12 @@ public class SplitHandler
 
 	public void setKeyWord(String keyWord)
 	{
+		if(StringUtils.isEmpty(keyWord))
+		{
+			this.keyWord = "";
+			return;
+		}
+		
 		this.keyWord = keyWord;
 	}
 

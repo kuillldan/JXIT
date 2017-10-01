@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IActionDAO;
 import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Action;
@@ -12,16 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ActionDAOImpl extends SqlSessionDaoSupport implements IActionDAO
+public class ActionDAOImpl extends AbstractDAO implements IActionDAO
 {
 	
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "ActionNS.";
 	
-	@Autowired
-	public ActionDAOImpl(SqlSessionFactory sqlSessionFactory)
-	{
-		super.setSqlSessionFactory(sqlSessionFactory);
-	}
 	
 	@Override
 	public boolean doCreate(Action vo) throws Exception

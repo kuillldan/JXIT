@@ -31,11 +31,11 @@
 		parameterType="java.util.Map">
 		SELECT
 		eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM
-		emp WHERE aflag IN (1,2)
+		emp WHERE aflag IN (1,2) 
 		<if test="column != null">
-			AND ${column} LIKE #{keyWord}
+			AND ${column} LIKE #{keyWord} 
 		</if>
-		LIMIT ${start},${lineSize}
+		LIMIT #{start},#{lineSize}
 	</select>
 	<select id="findAllAdminCount" resultType="java.lang.Integer"
 		parameterType="java.util.Map">

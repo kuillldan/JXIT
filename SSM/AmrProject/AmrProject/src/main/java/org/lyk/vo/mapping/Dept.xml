@@ -10,4 +10,7 @@
 		<collection property="allGroups" javaType="java.util.List"
 			ofType="Groups" />
 	</resultMap>
+	<select id="findAll" resultMap="DeptResultMap">
+		SELECT did,title,sflag FROM dept 
+	</select>
 </mapper>
