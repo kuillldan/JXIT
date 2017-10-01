@@ -37,13 +37,13 @@
 									<th>描述</th>
 									<th>操作</th>
 								</tr>
-								<c:forEach items="${allItems }" var="action">
+								<c:forEach items="${allItems }" var="groups">
 									<tr>
-										<td>${action.title }</td>
+										<td>${groups.title }</td>
 										<td>管理部-权限组</td>
-										<td><a href="pages/action/action_list.jsp">查看权限</a></td>
+										<td><a href="pages/action/list.action?gid=${groups.gid }">查看权限</a></td>
 									</tr>
-								</c:forEach> 
+								</c:forEach>
 							</table>
 							<jsp:include page="/pages/plugins/include_alert.jsp" />
 						</div>

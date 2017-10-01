@@ -25,10 +25,12 @@ public class CommonConstant
 
 	public static final String EMP_PHOTO_SAVE_PATH = "EMP.PHOTO.SAVE.PATH";
 
-	//Messages
+	// Messages
 	public static final String NOT_AUTHORIZED = "not.authorized";
 	public static final String LOGOUT_SUCCESS = "logout.success";
 	public static final String UNKNOWN_ERROR = "unknown.error";
 	public static final String DEPT_LIST_ACTION = "dept.list.action";
 	public static final String GROUPS_LIST_JSP = "groups.list.jsp";
+	public static final String SYSTEM_ERROR_WHEN_SEARCHING = "system.error.when.searching";
+	public static final String ACTION_LIST_JSP = "action.list.jsp";
 }
