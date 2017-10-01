@@ -14,7 +14,7 @@
 
 	<!-- Logo -->
 	<a href="pages/index.jsp" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels --> <span
-		class="logo-mini"><b>A</b>MR</span> <!-- logo for regular state and mobile devices --> <span class="logo-lg"><b>Manager</b>Resource</span>
+		class="logo-mini"><b>A</b>MR</span> <!-- logo for regular state and mobile devices --> <span class="logo-lg"><b>Service Anytime</b></span>
 	</a>
 
 	<!-- Header Navbar: style can be found in header.less -->
@@ -27,11 +27,11 @@
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav">
 				<li class="dropdown user user-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img
-						src="upload/emp/${emp.photo }" class="user-image" alt="User Image"> <span class="hidden-xs">${emp.name }</span>
+						src="pages/image/getImage.action?photo=${emp.photo }" class="user-image" alt="User Image"> <span class="hidden-xs">${emp.name }</span>
 				</a>
 					<ul class="dropdown-menu">
 						<!-- User image -->
-						<li class="user-header"><img src="upload/emp/${emp.photo }" class="img-circle" alt="User Image">
+						<li class="user-header"><img src="pages/image/getImage.action?photo=${emp.photo }" class="img-circle" alt="User Image">
 							</p></li>
 						<!-- Menu Body -->
 						<!-- Menu Footer-->

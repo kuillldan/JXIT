@@ -15,7 +15,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ActionDAOImpl extends AbstractDAO implements IActionDAO
 {
-	
+	@Autowired
+	public ActionDAOImpl(SqlSessionFactory sqlSessionFactory)
+	{
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "ActionNS.";
 	
 	

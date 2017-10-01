@@ -14,21 +14,8 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-public abstract class AbstractDAO
-{
-	@Resource(name = "sqlSessionFactory")
-	protected SqlSessionFactory sqlSessionFactory;
-
-	public SqlSessionFactory getFactory()
-	{
-		return this.sqlSessionFactory;
-	}
-
-	public SqlSession getSqlSession()
-	{
-		return this.sqlSessionFactory.openSession();
-	}
-
+public abstract class AbstractDAO extends SqlSessionDaoSupport
+{ 
 	public <T> List<T> findAllSplit(String column, String keyWord, Integer currentPage, Integer lineSize,
 			String namespace)
 	{

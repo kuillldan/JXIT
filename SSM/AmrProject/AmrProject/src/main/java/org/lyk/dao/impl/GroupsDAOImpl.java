@@ -17,6 +17,12 @@ public class GroupsDAOImpl extends AbstractDAO implements IGroupsDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "GroupsNS.";
 	
+	@Autowired
+	public GroupsDAOImpl(SqlSessionFactory sqlSessionFactory)
+	{
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
+	
 	@Override
 	public boolean doCreate(Groups vo) throws Exception
 	{

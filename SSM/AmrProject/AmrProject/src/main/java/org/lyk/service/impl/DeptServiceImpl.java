@@ -30,4 +30,13 @@ public class DeptServiceImpl implements IDeptService
 		}
 	}
 
+	@Override
+	public boolean updateTitleByDid(Integer actid, Dept dept) throws Exception
+	{
+		if(actid == 7)
+			return this.deptDAOImpl.doUpdate(dept);
+		else
+			return false;
+	}
+
 }

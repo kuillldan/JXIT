@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 
@@ -25,7 +25,9 @@
 				<div class="col-xs-12">
 					<div class="box">
 						<div class="box-header">
-							<h3 class="box-title"><strong>部门列表</strong></h3>
+							<h3 class="box-title">
+								<strong>部门列表</strong>
+							</h3>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body table-responsive no-padding">
@@ -34,33 +36,18 @@
 									<th width="80%">名称</th>
 									<th colspan="2">操作</th>
 								</tr>
-								<tr>
-									<td><input type="text" name="title-1" id="title-1" value="管理部" class="form-control"></td>
-									<td><button class="btn btn-info" id="editBtn-1"><span class="fa fa-pencil-square"></span> 修改</button></td>
-									<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td><input type="text" name="title-2" id="title-2" value="人事部" class="form-control"></td>
-									<td><button class="btn btn-info" id="editBtn-2"><span class="fa fa-pencil-square"></span> 修改</button></td>
-									<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td><input type="text" name="title-3" id="title-3" value="行政部" class="form-control"></td>
-									<td><button class="btn btn-info" id="editBtn-3"><span class="fa fa-pencil-square"></span> 修改</button></td>
-									<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td><input type="text" name="title-4" id="title-4" value="市场部" class="form-control"></td>
-									<td><button class="btn btn-info" id="editBtn-4"><span class="fa fa-pencil-square"></span> 修改</button></td>
-									<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td><input type="text" name="title-5" id="title-5" value="财务部" class="form-control"></td>
-									<td><button class="btn btn-info" id="editBtn-5"><span class="fa fa-pencil-square"></span> 修改</button></td>
-									<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
-								</tr>
+								<c:forEach items="${allItems }" var="dept">
+									<tr>
+										<td><input type="text" name="title-${dept.did }" id="title-${dept.did }" value="${dept.title }"
+											class="form-control"></td>
+										<td><button class="btn btn-info" id="editBtn-${dept.did }">
+												<span class="fa fa-pencil-square"></span> 修改
+											</button></td>
+										<td><a class="btn btn-warning" href="pages/groups/groups_list.jsp">查看权限</a></td>
+									</tr>
+								</c:forEach>
 							</table>
-							<jsp:include page="/pages/plugins/include_alert.jsp"/> 
+							<jsp:include page="/pages/plugins/include_alert.jsp" />
 						</div>
 						<!-- /.box-body -->
 					</div>

@@ -32,7 +32,7 @@ public class AbstractAction
 	@Resource
 	private MessageSource messageSource;
 
-	private String getString(String key, Object... params)
+	public String getString(String key, Object... params)
 	{
 		return this.messageSource.getMessage(key, params, Locale.getDefault());
 	}

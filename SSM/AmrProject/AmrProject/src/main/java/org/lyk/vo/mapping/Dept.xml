@@ -13,4 +13,7 @@
 	<select id="findAll" resultMap="DeptResultMap">
 		SELECT did,title,sflag FROM dept 
 	</select>
+	<update id="doUpdate" parameterType="Dept">
+		UPDATE dept SET title=#{title} WHERE did=#{did}
+	</update>
 </mapper>

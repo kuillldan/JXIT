@@ -19,6 +19,12 @@ import org.springframework.stereotype.Component;
 public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "EmpNS.";
+	
+	@Autowired
+	public EmpDAOImpl(SqlSessionFactory sqlSessionFactory)
+	{
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
  
 	@Override
 	public boolean doCreate(Emp vo) throws Exception

@@ -49,6 +49,7 @@
 				<value>Messages</value>
 				<value>Pages</value>
 				<value>Validators</value>
+				<value>ApplicationConfiguration</value>
 			</array>
 		</property>
 	</bean>

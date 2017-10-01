@@ -22,4 +22,6 @@ public class CommonConstant
 
 	public static final String NOPHOTO_JPG = "nophoto.jpg";
 	public static final Integer BUFFER_SIZE = 1024 * 1024;// 1M
+
+	public static final String EMP_PHOTO_SAVE_PATH = "EMP.PHOTO.SAVE.PATH";
 }

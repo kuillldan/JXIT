@@ -1,5 +1,6 @@
 package org.lyk.actions;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -80,7 +81,15 @@ public class AdminAction extends AbstractAction
 
 				if (this.adminServiceImpl.add(emp))
 				{
-					String photoFullPath = request.getServletContext().getRealPath("/upload/emp/") + emp.getPhoto();
+					String parentFolder = super.getString("EMP.PHOTO.SAVE.PATH");
+					if (!parentFolder.endsWith("/"))
+						parentFolder += "/";
+					String photoFullPath = parentFolder + emp.getPhoto();
+					File photoFile = new File(photoFullPath);
+					if(!photoFile.getParentFile().exists())
+						photoFile.getParentFile().mkdirs();
+					
+					
 					if (super.savePhoto(pic, photoFullPath))
 					{
 						CommonConstant.LOGGER.debug("图片保存成功:" + photoFullPath);
@@ -120,7 +129,8 @@ public class AdminAction extends AbstractAction
 
 			Integer allRecorders = (Integer) adminInfos.get("allRecorders");
 			List<Emp> allItems = (List<Emp>) adminInfos.get("allItems");
-			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems,"姓名:name|电话:phone");
+			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems,
+					"姓名:name|电话:phone");
 			mav.setViewName("/pages/admin/admin_list.jsp");
 		} catch (Exception e)
 		{

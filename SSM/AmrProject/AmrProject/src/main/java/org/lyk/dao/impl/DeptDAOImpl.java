@@ -3,18 +3,25 @@ package org.lyk.dao.impl;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IDeptDAO;
 import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Dept;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 
 @Component
 public class DeptDAOImpl extends AbstractDAO implements IDeptDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "DeptNS.";
-	
+
+	@Autowired
+	public DeptDAOImpl(SqlSessionFactory sqlSessionFactory)
+	{
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
+
 	@Override
 	public boolean doCreate(Dept vo) throws Exception
 	{
@@ -25,8 +32,7 @@ public class DeptDAOImpl extends AbstractDAO implements IDeptDAO
 	@Override
 	public boolean doUpdate(Dept vo) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return super.getSqlSession().update(MAPPING_PREFIX + "doUpdate", vo) == 1;
 	}
 
 	@Override

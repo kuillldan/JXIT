@@ -1,9 +1,11 @@
 package org.lyk.actions;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.lyk.service.IDeptService;
 import org.lyk.utils.CommonConstant;
@@ -44,5 +46,37 @@ public class DeptAction extends AbstractAction
 			CommonConstant.LOGGER.error(e.getMessage(), e);
 		}
 		return mav;
+	}
+
+	@RequestMapping("update")
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, Dept dept)
+	{
+		ModelAndView mav = new ModelAndView();
+		try
+		{
+			if (super.isAuthcated(request, 7))
+			{
+				response.getWriter().print(this.deptServiceImpl.updateTitleByDid(7, dept));
+			} else
+			{
+				String msg = super.getMessage("not.authorized");
+				CommonConstant.LOGGER.info(msg);
+				response.getWriter().print(false);
+			}
+		} catch (Exception e)
+		{
+			String msg = "修改部门数据发生系统异常";
+			super.setSystemError(mav, msg, e);
+			CommonConstant.LOGGER.error(msg);
+			CommonConstant.LOGGER.error(e.getMessage(), e);
+			try
+			{
+				response.getWriter().print(false);
+			} catch (IOException e1)
+			{
+				CommonConstant.LOGGER.error(e1.getMessage(), e1);
+			}
+		}
+		return null;
 	}
 }

@@ -16,6 +16,12 @@ import org.springframework.stereotype.Component;
 public class LevelDAOImpl extends AbstractDAO implements ILevelDAO
 {
 	private static final String MAPPING_PREFIX = CommonConstant.MAPPING_PREFIX + "LevelNS.";
+	
+	@Autowired
+	public LevelDAOImpl(SqlSessionFactory sqlSessionFactory)
+	{
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 
 	@Override
 	public boolean doCreate(Level vo) throws Exception
