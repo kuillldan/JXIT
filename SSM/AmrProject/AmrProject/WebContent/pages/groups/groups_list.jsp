@@ -43,42 +43,7 @@
 										<td>管理部-权限组</td>
 										<td><a href="pages/action/action_list.jsp">查看权限</a></td>
 									</tr>
-								</c:forEach>
-								<tr>
-									<td>权限管理</td>
-									<td>管理部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>人事管理</td>
-									<td>管理部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>办公用品</td>
-									<td>管理部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>人事管理</td>
-									<td>人事部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>办公用品</td>
-									<td>非行政部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>办公用品</td>
-									<td>行政部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
-								<tr>
-									<td>办公用品</td>
-									<td>财务部-权限组</td>
-									<td><a href="pages/action/action_list.jsp">查看权限</a></td>
-								</tr>
+								</c:forEach> 
 							</table>
 							<jsp:include page="/pages/plugins/include_alert.jsp" />
 						</div>

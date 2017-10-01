@@ -11,8 +11,10 @@ import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Action;
 import org.lyk.vo.Emp;
 import org.lyk.vo.Groups;
+import org.springframework.stereotype.Service;
 
-public class GroupsService implements IGroupsService
+@Service
+public class GroupsServiceImpl implements IGroupsService
 {
 	@Resource
 	private IGroupsDAO groupsDAOImpl;
