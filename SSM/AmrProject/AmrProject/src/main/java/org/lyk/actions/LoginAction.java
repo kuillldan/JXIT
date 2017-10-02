@@ -6,8 +6,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.lyk.constant.CommonConstant;
+import org.lyk.constant.MessageConstant;
 import org.lyk.service.IEmpService;
-import org.lyk.utils.CommonConstant;
 import org.lyk.utils.MD5Code;
 import org.lyk.vo.Action;
 import org.lyk.vo.Dept;
@@ -66,7 +67,7 @@ public class LoginAction extends AbstractAction
 			}
 		} catch (Exception e)
 		{
-			logger.error(super.getMessage("unknown.error", "登陆"));
+			logger.error(super.getMessage(MessageConstant.SYSTEM_ERROR, "用户登陆"));
 			logger.error(e.getMessage(), e);
 			mav.setViewName(super.getPage("error.jsp"));
 		}
@@ -90,7 +91,7 @@ public class LoginAction extends AbstractAction
 			return mav;
 		}catch(Exception e)
 		{
-			String msg = super.getMessage("unknown.error", "注销");
+			String msg = super.getMessage(MessageConstant.SYSTEM_ERROR, "用户注销");
 			
 			logger.error(msg);
 			mav.addObject("msg",msg);

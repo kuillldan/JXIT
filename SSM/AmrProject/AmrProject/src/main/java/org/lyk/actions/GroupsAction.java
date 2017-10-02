@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
- 
+
+import org.lyk.constant.*;
+import org.lyk.enums.ActionIDEnum;
 import org.lyk.service.IGroupsService;
-import org.lyk.utils.CommonConstant;
-import org.lyk.vo.Action;
-import org.lyk.vo.Groups;
+import org.lyk.vo.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,16 +26,16 @@ public class GroupsAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if(super.isAuthcated(request, 6))
+			if(super.isAuthcated(request, ActionIDEnum.GROUPS_LIST.getValue()))
 			{
 				List<Groups> allGroups = this.groupsServiceImpl.findAllByDept(did);
 				request.setAttribute(CommonConstant.ALLITEMS, allGroups);
-				mav.setViewName(super.getPage(CommonConstant.GROUPS_LIST_JSP));
+				mav.setViewName(super.getPage(PageConstant.GROUPS_LIST_JSP));
 			}
 			else
 			{
-				String msg = super.getMessage(CommonConstant.NOT_AUTHORIZED);
-				super.setForwardMessageAndUrl(mav, msg, super.getPage(CommonConstant.DEPT_LIST_ACTION));
+				String msg = super.getMessage(MessageConstant.NOT_AUTHORIZED);
+				super.setForwardMessageAndUrl(mav, msg, super.getPage(PageConstant.DEPT_LIST_ACTION));
 				CommonConstant.LOGGER.info(msg);
 			}
 		}

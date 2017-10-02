@@ -8,10 +8,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.lyk.entities.SplitHandler;
+import org.lyk.constant.CommonConstant;
+import org.lyk.constant.MessageConstant;
+import org.lyk.constant.PageConstant;
+import org.lyk.enums.ActionIDEnum;
+import org.lyk.helper.SplitHandler;
 import org.lyk.service.IAdminService;
 import org.lyk.service.impl.AdminServiceImpl;
-import org.lyk.utils.CommonConstant;
 import org.lyk.utils.MD5Code;
 import org.lyk.utils.StringUtils;
 import org.lyk.vo.Action;
@@ -39,9 +42,9 @@ public class AdminAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (this.isAuthcated(request, 1))
+			if (this.isAuthcated(request, ActionIDEnum.ADMIN_ADD_PRE.getValue()))
 			{
-				mav.setViewName(super.getPage(CommonConstant.ADMIN_ADD_JSP));
+				mav.setViewName(super.getPage(PageConstant.ADMIN_ADD_JSP));
 				List<Level> allLevels = this.adminServiceImpl.addPre();
 				mav.addObject("allLevels", allLevels);
 			} else
@@ -49,11 +52,11 @@ public class AdminAction extends AbstractAction
 				String msg = "权限不够";
 				mav.addObject("msg", msg);
 				CommonConstant.LOGGER.info(msg);
-				mav.setViewName(super.getPage(CommonConstant.ERROR_JSP));
+				mav.setViewName(super.getPage(PageConstant.ERROR_JSP));
 			}
 		} catch (Exception e)
 		{
-			super.setSystemError(mav, super.getMessage("unknown.error", "增加雇员"), e);
+			super.setSystemError(mav, super.getMessage(MessageConstant.SYSTEM_ERROR, "增加雇员"), e);
 		}
 		return mav;
 	}
@@ -66,7 +69,7 @@ public class AdminAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (this.isAuthcated(request, 2))
+			if (this.isAuthcated(request, ActionIDEnum.ADMIN_ADD.getValue()))
 			{
 				emp.setPhoto(super.generatePhotoFileName(pic));
 				emp.setHeid(empInSession.getEid());
@@ -86,10 +89,9 @@ public class AdminAction extends AbstractAction
 						parentFolder += "/";
 					String photoFullPath = parentFolder + emp.getPhoto();
 					File photoFile = new File(photoFullPath);
-					if(!photoFile.getParentFile().exists())
+					if (!photoFile.getParentFile().exists())
 						photoFile.getParentFile().mkdirs();
-					
-					
+
 					if (super.savePhoto(pic, photoFullPath))
 					{
 						CommonConstant.LOGGER.debug("图片保存成功:" + photoFullPath);
@@ -108,7 +110,7 @@ public class AdminAction extends AbstractAction
 				String msg = "权限不够";
 				mav.addObject("msg", msg);
 				CommonConstant.LOGGER.info(msg);
-				mav.setViewName(super.getPage(CommonConstant.ERROR_JSP));
+				mav.setViewName(super.getPage(PageConstant.ERROR_JSP));
 			}
 		} catch (Exception e)
 		{

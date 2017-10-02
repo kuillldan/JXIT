@@ -2,10 +2,10 @@ package org.lyk.service;
 
 import javax.annotation.Resource;
 
+import org.lyk.constant.CommonConstant;
 import org.lyk.dao.IDeptDAO;
 import org.lyk.dao.IGroupsDAO;
 import org.lyk.service.impl.DeptServiceImpl;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Emp;
 
 public abstract class AbstractService

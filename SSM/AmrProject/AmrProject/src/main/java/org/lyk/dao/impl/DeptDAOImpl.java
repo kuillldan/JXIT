@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.constant.CommonConstant;
 import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IDeptDAO;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -67,6 +67,12 @@ public class DeptDAOImpl extends AbstractDAO implements IDeptDAO
 	{
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Dept> listAllDeptBySflag(Integer sflag) throws Exception
+	{
+		return super.getSqlSession().selectList(MAPPING_PREFIX + "listAllDeptBySflag",sflag);
 	}
 
 }

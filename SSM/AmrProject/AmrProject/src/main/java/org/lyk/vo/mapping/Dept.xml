@@ -16,4 +16,7 @@
 	<update id="doUpdate" parameterType="Dept">
 		UPDATE dept SET title=#{title} WHERE did=#{did}
 	</update>
+	<select id="listAllDeptBySflag" resultMap="DeptResultMap" parameterType="java.lang.Integer">
+		SELECT did,title,sflag FROM dept WHERE sflag = #{sflag}
+	</select>
 </mapper>

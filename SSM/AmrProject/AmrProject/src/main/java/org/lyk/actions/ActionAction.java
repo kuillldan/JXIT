@@ -5,9 +5,12 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.lyk.constant.CommonConstant;
+import org.lyk.constant.MessageConstant;
+import org.lyk.constant.PageConstant;
+import org.lyk.enums.ActionIDEnum;
 import org.lyk.service.IActionService;
 import org.lyk.service.impl.ActionServiceImpl;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Action;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,20 +29,20 @@ public class ActionAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (super.isAuthcated(request, 6))
+			if (super.isAuthcated(request, ActionIDEnum.GROUPS_LIST.getValue()))
 			{
 				List<Action> allActions = this.actionServiceImpl.listAllActionsByGroupsId(gid);
 				request.setAttribute(CommonConstant.ALLITEMS, allActions);
-				mav.setViewName(super.getPage(CommonConstant.ACTION_LIST_JSP));
+				mav.setViewName(super.getPage(PageConstant.ACTION_LIST_JSP));
 			} else
 			{
-				String msg = super.getMessage(CommonConstant.NOT_AUTHORIZED);
+				String msg = super.getMessage(MessageConstant.NOT_AUTHORIZED);
 				CommonConstant.LOGGER.info(msg);
-				super.setForwardMessageAndUrl(mav, msg, CommonConstant.ERROR_JSP);
+				super.setForwardMessageAndUrl(mav, msg, PageConstant.ERROR_JSP);
 			}
 		} catch (Exception e)
 		{
-			String msg = super.getMessage(CommonConstant.SYSTEM_ERROR_WHEN_SEARCHING, "权限");
+			String msg = super.getMessage(MessageConstant.SYSTEM_ERROR, "权限");
 			super.setSystemError(mav, msg, e);
 			CommonConstant.LOGGER.error(msg);
 			CommonConstant.LOGGER.error(e.getMessage(), e);

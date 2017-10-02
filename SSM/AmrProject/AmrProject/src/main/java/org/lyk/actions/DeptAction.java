@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.lyk.constant.CommonConstant;
+import org.lyk.constant.PageConstant;
+import org.lyk.enums.ActionIDEnum;
 import org.lyk.service.IDeptService;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Dept;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +29,15 @@ public class DeptAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (super.isAuthcated(request, 4))
+			if (super.isAuthcated(request, ActionIDEnum.DEPT_LIST.getValue()))
 			{
-				List<Dept> allDepts = this.deptServiceImpl.list(4);
+				List<Dept> allDepts = this.deptServiceImpl.list();
 				request.setAttribute(CommonConstant.ALLITEMS, allDepts);
 				mav.setViewName(super.getPage("dept.list.jsp"));
 			} else
 			{
 				String msg = super.getMessage("not.authorized");
-				mav.setViewName("error.jsp");
+				super.forwardToErrorPage(mav, msg);
 				CommonConstant.LOGGER.info(msg);
 			}
 		} catch (Exception e)
@@ -54,9 +56,9 @@ public class DeptAction extends AbstractAction
 		ModelAndView mav = new ModelAndView();
 		try
 		{
-			if (super.isAuthcated(request, 7))
+			if (super.isAuthcated(request, ActionIDEnum.DEPT_EDIT.getValue()))
 			{
-				response.getWriter().print(this.deptServiceImpl.updateTitleByDid(7, dept));
+				response.getWriter().print(this.deptServiceImpl.updateTitleByDid(dept));
 			} else
 			{
 				String msg = super.getMessage("not.authorized");

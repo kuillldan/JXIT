@@ -16,27 +16,17 @@ public class DeptServiceImpl implements IDeptService
 {
 	@Resource
 	private IDeptDAO deptDAOImpl;
-	
+
 	@Override
-	public List<Dept> list(Integer actid) throws Exception
+	public List<Dept> list() throws Exception
 	{
-		if(actid == 4)
-		{
-			return this.deptDAOImpl.findAll();
-		}
-		else
-		{
-			return new ArrayList<Dept>();
-		}
+		return this.deptDAOImpl.findAll();
 	}
 
 	@Override
-	public boolean updateTitleByDid(Integer actid, Dept dept) throws Exception
+	public boolean updateTitleByDid(Dept dept) throws Exception
 	{
-		if(actid == 7)
-			return this.deptDAOImpl.doUpdate(dept);
-		else
-			return false;
+		return this.deptDAOImpl.doUpdate(dept);
 	}
 
 }

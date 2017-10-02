@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.constant.CommonConstant;
 import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.ILevelDAO;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Level;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,9 +6,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.lyk.constant.CommonConstant;
 import org.lyk.dao.AbstractDAO;
 import org.lyk.dao.IEmpDAO;
-import org.lyk.utils.CommonConstant;
 import org.lyk.utils.StringUtils;
 import org.lyk.vo.Emp;
 import org.mybatis.spring.support.SqlSessionDaoSupport;

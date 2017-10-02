@@ -1,4 +1,4 @@
-package org.lyk.utils;
+package org.lyk.helper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

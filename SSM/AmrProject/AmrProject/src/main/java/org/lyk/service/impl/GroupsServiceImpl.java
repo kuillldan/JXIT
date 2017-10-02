@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
- 
+
+import org.lyk.constant.CommonConstant;
 import org.lyk.dao.IGroupsDAO; 
 import org.lyk.service.IGroupsService;
-import org.lyk.utils.CommonConstant;
 import org.lyk.vo.Action;
 import org.lyk.vo.Emp;
 import org.lyk.vo.Groups;

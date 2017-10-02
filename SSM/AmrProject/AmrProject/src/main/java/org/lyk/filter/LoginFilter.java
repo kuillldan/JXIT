@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.lyk.utils.CommonConstant;
+import org.lyk.constant.CommonConstant;
 import org.lyk.utils.StringUtils;
 import org.lyk.vo.Emp;
 

@@ -8,7 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.lyk.utils.CommonConstant;
+import org.lyk.constant.CommonConstant;
 import org.lyk.utils.StringUtils;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;

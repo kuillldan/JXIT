@@ -41,7 +41,7 @@
 										<th>${action.title }</th>
 										<th>${action.url }</th>
 									</tr>
-								</c:forEach> 
+								</c:forEach>
 							</table>
 							<jsp:include page="/pages/plugins/include_alert.jsp" />
 						</div>

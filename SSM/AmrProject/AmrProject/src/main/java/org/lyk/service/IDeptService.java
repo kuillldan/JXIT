@@ -6,6 +6,6 @@ import org.lyk.vo.Dept;
 
 public interface IDeptService
 {
-	public List<Dept> list(Integer actid)throws Exception;
-	public boolean updateTitleByDid(Integer actid,Dept dept) throws Exception;
+	public List<Dept> list()throws Exception;
+	public boolean updateTitleByDid(Dept dept) throws Exception;
 }

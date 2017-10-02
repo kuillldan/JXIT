@@ -13,8 +13,10 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.lyk.entities.SplitHandler;
-import org.lyk.utils.CommonConstant;
+import org.lyk.constant.CommonConstant;
+import org.lyk.constant.MessageConstant;
+import org.lyk.constant.PageConstant;
+import org.lyk.helper.SplitHandler;
 import org.lyk.utils.StringUtils;
 import org.lyk.vo.Action;
 import org.lyk.vo.Dept;
@@ -59,9 +61,15 @@ public class AbstractAction
 		mav.addObject("url", url);
 	}
 
+	protected void forwardToErrorPage(ModelAndView mav, String msg)
+	{
+		mav.setViewName(PageConstant.ERROR_JSP);
+		mav.addObject(CommonConstant.MSG, msg);
+	}
+
 	protected void setSystemError(ModelAndView mav, String msg, Exception e)
 	{
-		mav.setViewName(this.getPage(CommonConstant.ERROR_JSP));
+		mav.setViewName(this.getPage(PageConstant.ERROR_JSP));
 		mav.addObject(CommonConstant.MSG, msg);
 		CommonConstant.LOGGER.error(msg);
 		CommonConstant.LOGGER.error(e.getMessage(), e);
@@ -81,7 +89,7 @@ public class AbstractAction
 
 		return UUID.randomUUID().toString() + "." + photoExt;
 	}
-	
+
 	private String getPhotoExt(String contentType)
 	{
 		if ("image/bmp".equals(contentType))
@@ -160,8 +168,9 @@ public class AbstractAction
 
 		return true;
 	}
-	
-	protected void handleSplit(SplitHandler splitHandler,HttpServletRequest request,Integer allRecorders,String url,List<?> allItems,String columnData)
+
+	protected void handleSplit(SplitHandler splitHandler, HttpServletRequest request, Integer allRecorders, String url,
+			List<?> allItems, String columnData)
 	{
 		request.setAttribute("column", splitHandler.getColumn());
 		request.setAttribute("keyWord", splitHandler.getKeyWord());
@@ -172,7 +181,7 @@ public class AbstractAction
 		request.setAttribute("allItems", allItems);
 		request.setAttribute("columnData", columnData);
 	}
-	
+
 	protected boolean isAuthcated(HttpServletRequest request, Integer actid)
 	{
 		HttpSession session = request.getSession();

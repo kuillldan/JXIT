@@ -1,4 +1,4 @@
-package org.lyk.entities;
+package org.lyk.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
