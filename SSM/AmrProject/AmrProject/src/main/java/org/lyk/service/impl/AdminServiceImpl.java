@@ -48,4 +48,29 @@ public class AdminServiceImpl implements IAdminService
 		return map;
 	}
 
+	@Override
+	public boolean checkEid(Integer eid) throws Exception
+	{
+		if (this.empDAOImpl.findById(eid) != null)
+		{
+			return false;
+		} else
+		{
+			return true;
+		}
+	}
+
+	@Override
+	public boolean checkSalary(Double salary, Integer lid) throws Exception
+	{
+		Level level = this.levelDAOImpl.findById(lid);
+		if (level == null)
+			return false;
+		
+		if(salary < level.getLosal() || salary > level.getHisal())
+			return false;
+		
+		return true;
+	}
+
 }

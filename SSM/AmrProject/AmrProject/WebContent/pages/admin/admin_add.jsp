@@ -81,8 +81,8 @@
 										<div class="col-md-5">
 											<select id="level.lid" name="level.lid" class="form-control">
 											<c:forEach items="${allLevels }" var="level">
-												<option value="${level.lid }">${level.title }</option>
-											</c:forEach>
+													<option value="${level.lid }">${level.title}&nbsp;${level.losal }-${level.hisal}元</option>
+												</c:forEach>
 											</select>
 										</div>
 										<!-- 定义表单错误提示显示元素 -->

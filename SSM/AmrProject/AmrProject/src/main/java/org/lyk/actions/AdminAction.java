@@ -6,7 +6,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.tagext.TryCatchFinally;
 
 import org.lyk.constant.CommonConstant;
 import org.lyk.constant.MessageConstant;
@@ -49,14 +51,11 @@ public class AdminAction extends AbstractAction
 				mav.addObject("allLevels", allLevels);
 			} else
 			{
-				String msg = "权限不够";
-				mav.addObject("msg", msg);
-				CommonConstant.LOGGER.info(msg);
-				mav.setViewName(super.getPage(PageConstant.ERROR_JSP));
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		} catch (Exception e)
 		{
-			super.setSystemError(mav, super.getMessage(MessageConstant.SYSTEM_ERROR, "增加雇员"), e);
+			super.setSystemError(mav, "预加载管理员信息", e);
 		}
 		return mav;
 	}
@@ -99,22 +98,19 @@ public class AdminAction extends AbstractAction
 					{
 						CommonConstant.LOGGER.debug("图片保存失败:" + photoFullPath);
 					}
-					super.setForwardMessageAndUrl(mav, "增加管理员成功", "/pages/admin/addPre.action");
+					super.setForwardMessageAndUrl(mav, "增加管理员成功", PageConstant.ADMIN_ADD_PRE_ACTION);
 					CommonConstant.LOGGER.info("增加管理员成功");
 				} else
 				{
-					super.setForwardMessageAndUrl(mav, "增加管理员失败", "/pages/admin/addPre.action");
+					super.setForwardMessageAndUrl(mav, "增加管理员失败", PageConstant.ADMIN_ADD_PRE_ACTION);
 				}
 			} else
 			{
-				String msg = "权限不够";
-				mav.addObject("msg", msg);
-				CommonConstant.LOGGER.info(msg);
-				mav.setViewName(super.getPage(PageConstant.ERROR_JSP));
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		} catch (Exception e)
 		{
-			super.setSystemError(mav, "增加管理员失败", e);
+			super.setSystemError(mav, "增加管理员", e);
 		}
 		return mav;
 	}
@@ -136,9 +132,53 @@ public class AdminAction extends AbstractAction
 			mav.setViewName("/pages/admin/admin_list.jsp");
 		} catch (Exception e)
 		{
-			String msg = "查询管理员信息发生系统异常";
-			super.setSystemError(mav, msg, e);
+			super.setSystemError(mav, "查询管理员信息", e);
 		}
 		return mav;
+	}
+
+	@RequestMapping("checkEid")
+	public ModelAndView checkEid(HttpServletRequest request, HttpServletResponse response, Integer eid)
+	{
+		ModelAndView mav = new ModelAndView();
+		try
+		{
+			if (super.isAuthcated(request, ActionIDEnum.ADMIN_ADD_PRE.getValue(), ActionIDEnum.ADMIN_ADD.getValue()))
+			{
+				response.getWriter().print(this.adminServiceImpl.checkEid(eid));
+				return null;
+			} else
+			{
+				super.notAuthorizedThenForwordToErrorPage(mav);
+				return mav;
+			}
+		} catch (Exception e)
+		{
+			super.setSystemError(mav, "检查员工重复性", e);
+			return mav;
+		}
+	}
+
+	@RequestMapping("checkSalary")
+	public ModelAndView checkSalary(HttpServletRequest request, HttpServletResponse response, Integer lid,
+			Double salary)
+	{
+		ModelAndView mav = new ModelAndView();
+		try
+		{
+			if (super.isAuthcated(request, ActionIDEnum.ADMIN_ADD_PRE.getValue(), ActionIDEnum.ADMIN_ADD.getValue()))
+			{
+				response.getWriter().print(this.adminServiceImpl.checkSalary(salary, lid));
+				return null;
+			} else
+			{
+				super.notAuthorizedThenForwordToErrorPage(mav);
+				return mav;
+			}
+		} catch (Exception e)
+		{
+			super.setSystemError(mav, "检查工资水平", e);
+			return mav;
+		}
 	}
 }

@@ -49,8 +49,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 	@Override
 	public Emp findById(Integer id) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return super.getSqlSession().selectOne(MAPPING_PREFIX + "findById", id);
 	}
 
 	@Override

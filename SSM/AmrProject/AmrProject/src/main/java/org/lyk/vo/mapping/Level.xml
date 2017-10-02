@@ -13,4 +13,8 @@
 	<select id="findAll" resultMap="LevelResultMap">
 		SELECT lid,title,losal,hisal FROM level
 	</select>
+	
+	<select id="findById" resultMap="LevelResultMap" parameterType="java.lang.Integer">
+		SELECT lid,title,losal,hisal FROM level WHERE lid=#{lid}
+	</select>
 </mapper>

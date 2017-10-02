@@ -45,7 +45,23 @@ $(function() {
 			},
 			"eid" : {
 				required : true,
-				digits : true
+				digits : true,
+				remote : {
+					url : "pages/emp/checkEid.action", // 后台处理程序
+					type : "post", // 数据发送方式
+					dataType : "html", // 接受数据格式
+					data : { // 要传递的数据
+						eid : function() {
+							return $("#eid").val();
+						} 
+					},
+					dataFilter : function(data, type) {
+						if (data.trim() == "true")
+							return true;
+						else
+							return false;
+					}
+				}
 			},
 			"dept.did" : {
 				required : true
@@ -59,12 +75,31 @@ $(function() {
 			"phone" : {
 				required : true
 			},
-			"photo" : {
+			"pic" : {
 				required : true
 			},
 			"salary" : {
 				required : true ,
-				digits : true
+				digits : true ,
+				remote : {
+					url : "pages/emp/checkSalary.action", // 后台处理程序
+					type : "post", // 数据发送方式
+					dataType : "html", // 接受数据格式
+					data : { // 要传递的数据
+						salary : function() {
+							return $("#salary").val();
+						} ,
+						lid : function() { 
+							return $("#level\\.lid option:selected").val();
+						}
+					},
+					dataFilter : function(data, type) {
+						if (data.trim() == "true")
+							return true;
+						else
+							return false;
+					}
+				}
 			}
 		}
 	});

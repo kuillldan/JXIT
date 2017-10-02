@@ -15,6 +15,7 @@ import org.lyk.dao.impl.DeptDAOImpl;
 import org.lyk.dao.impl.EmpDAOImpl;
 import org.lyk.dao.impl.LevelDAOImpl;
 import org.lyk.enums.SFLAG;
+import org.lyk.service.IAdminService;
 import org.lyk.service.IEmpService;
 import org.lyk.vo.Action;
 import org.lyk.vo.Dept;
@@ -40,6 +41,9 @@ public class EmpServiceImpl implements IEmpService
 
 	@Resource
 	private ILevelDAO levelDAOImpl;
+	
+	@Resource
+	private IAdminService adminServiceImpl;
 
 	@Override
 	public boolean login(Emp emp) throws Exception
@@ -77,6 +81,18 @@ public class EmpServiceImpl implements IEmpService
 		result.put("allDepts", allDepts);
 		result.put("allLevels", allLevels);
 		return result;
+	}
+
+	@Override
+	public boolean checkSalary(Double salary, Integer lid) throws Exception
+	{
+		return this.adminServiceImpl.checkSalary(salary, lid);
+	}
+
+	@Override
+	public boolean checkEid(Integer eid) throws Exception
+	{
+		return this.adminServiceImpl.checkEid(eid);
 	}
 
 }

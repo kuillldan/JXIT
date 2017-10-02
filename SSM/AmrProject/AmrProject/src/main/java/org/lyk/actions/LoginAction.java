@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.lyk.constant.CommonConstant;
 import org.lyk.constant.MessageConstant;
+import org.lyk.constant.PageConstant;
 import org.lyk.service.IEmpService;
 import org.lyk.utils.MD5Code;
 import org.lyk.vo.Action;
@@ -41,8 +42,8 @@ public class LoginAction extends AbstractAction
 		{
 			String msg = null;
 			logger.debug("emp:" + emp);
-			
-			if(emp.getEid() == null || emp.getPassword() == null )
+
+			if (emp.getEid() == null || emp.getPassword() == null)
 			{
 				msg = "登陆失败,请提供用户名或密码.";
 				logger.info(msg);
@@ -54,22 +55,21 @@ public class LoginAction extends AbstractAction
 			if (this.empServiceImpl.login(emp))
 			{
 				msg = "登陆成功";
-//				super.setForwardMessageAndUrl(mav, msg, super.getPage("index.jsp"));
+				// super.setForwardMessageAndUrl(mav, msg,
+				// super.getPage("index.jsp"));
 				mav.setViewName(super.getPage("index.jsp"));
 				HttpSession session = request.getSession();
 				session.setAttribute("emp", emp);
-				logger.info(msg); 
+				logger.info(msg);
 			} else
 			{
 				msg = "登陆失败";
-				super.setForwardMessageAndUrl(mav, msg, super.getPage("login.jsp"));
+				super.setForwardMessageAndUrl(mav, msg, super.getPage(PageConstant.LOGIN_JSP));
 				logger.info(msg);
 			}
 		} catch (Exception e)
 		{
-			logger.error(super.getMessage(MessageConstant.SYSTEM_ERROR, "用户登陆"));
-			logger.error(e.getMessage(), e);
-			mav.setViewName(super.getPage("error.jsp"));
+			super.setSystemError(mav, "用户登陆", e);
 		}
 		return mav;
 	}
@@ -82,21 +82,13 @@ public class LoginAction extends AbstractAction
 		{
 			HttpSession session = request.getSession();
 			session.invalidate();
-			
-//			mav.setViewName(super.getPage("login.jsp"));
 			String msg = super.getMessage("logout.success");
 			super.setForwardMessageAndUrl(mav, msg, super.getPage("login.jsp"));
-//			mav.addObject("msg",msg);
 			logger.info(msg);
-			return mav;
-		}catch(Exception e)
+		} catch (Exception e)
 		{
-			String msg = super.getMessage(MessageConstant.SYSTEM_ERROR, "用户注销");
-			
-			logger.error(msg);
-			mav.addObject("msg",msg);
-			mav.setViewName(super.getPage("error.jsp"));
-			return mav;
+			super.setSystemError(mav, "用户注销", e);
 		}
+		return mav;
 	}
 }

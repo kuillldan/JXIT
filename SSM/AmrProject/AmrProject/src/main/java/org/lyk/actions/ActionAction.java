@@ -36,16 +36,11 @@ public class ActionAction extends AbstractAction
 				mav.setViewName(super.getPage(PageConstant.ACTION_LIST_JSP));
 			} else
 			{
-				String msg = super.getMessage(MessageConstant.NOT_AUTHORIZED);
-				CommonConstant.LOGGER.info(msg);
-				super.setForwardMessageAndUrl(mav, msg, PageConstant.ERROR_JSP);
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		} catch (Exception e)
 		{
-			String msg = super.getMessage(MessageConstant.SYSTEM_ERROR, "权限");
-			super.setSystemError(mav, msg, e);
-			CommonConstant.LOGGER.error(msg);
-			CommonConstant.LOGGER.error(e.getMessage(), e);
+			super.setSystemError(mav, "查询权限信息", e);
 		}
 		return mav;
 	}

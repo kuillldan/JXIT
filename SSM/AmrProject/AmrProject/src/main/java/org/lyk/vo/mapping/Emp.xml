@@ -44,4 +44,8 @@
 			AND ${column} LIKE #{keyWord}
 		</if>
 	</select>
+	
+	<select id="findById" parameterType="java.lang.Integer" resultMap="EmpResultMap">
+		SELECT eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM emp WHERE eid=#{eid}
+	</select>
 </mapper>

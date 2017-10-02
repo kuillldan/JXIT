@@ -61,18 +61,21 @@ public class AbstractAction
 		mav.addObject("url", url);
 	}
 
-	protected void forwardToErrorPage(ModelAndView mav, String msg)
+	protected void notAuthorizedThenForwordToErrorPage(ModelAndView mav)
 	{
-		mav.setViewName(PageConstant.ERROR_JSP);
-		mav.addObject(CommonConstant.MSG, msg);
-	}
-
-	protected void setSystemError(ModelAndView mav, String msg, Exception e)
-	{
+		String msg = this.getMessage(MessageConstant.NOT_AUTHORIZED);
 		mav.setViewName(this.getPage(PageConstant.ERROR_JSP));
 		mav.addObject(CommonConstant.MSG, msg);
-		CommonConstant.LOGGER.error(msg);
-		CommonConstant.LOGGER.error(e.getMessage(), e);
+		CommonConstant.LOGGER.error(msg + "(调用者信息:" + getInvokerInfo() + ")");
+	}
+
+	protected void setSystemError(ModelAndView mav, String msg_core, Exception e)
+	{
+		String msg = this.getMessage(MessageConstant.SYSTEM_ERROR, msg_core);
+		mav.setViewName(this.getPage(PageConstant.ERROR_JSP));
+		mav.addObject(CommonConstant.MSG, msg);
+		CommonConstant.LOGGER.error(msg + "(调用者信息:" + getInvokerInfo() + ")");
+		CommonConstant.LOGGER.error(e.getMessage() + "(调用者信息:" + getInvokerInfo() + ")", e);
 	}
 
 	protected String generatePhotoFileName(MultipartFile pic)
@@ -182,8 +185,11 @@ public class AbstractAction
 		request.setAttribute("columnData", columnData);
 	}
 
-	protected boolean isAuthcated(HttpServletRequest request, Integer actid)
+	protected boolean isAuthcated(HttpServletRequest request, Integer... actids)
 	{
+		if (actids == null || actids.length == 0)
+			return false;
+
 		HttpSession session = request.getSession();
 		Emp emp = (Emp) session.getAttribute(CommonConstant.EMP);
 		if (emp == null)
@@ -203,11 +209,20 @@ public class AbstractAction
 				continue;
 			for (Action action : allActions)
 			{
-				if (action.getActid().equals(actid))
-					return true;
+				for (Integer actid : actids)
+				{
+					if (action.getActid().equals(actid))
+						return true;
+				}
 			}
 		}
 
 		return false;
+	}
+
+	private String getInvokerInfo()
+	{
+		StackTraceElement[] lvStacks = Thread.currentThread().getStackTrace();
+		return lvStacks[3].getClassName() + "->" + lvStacks[3].getMethodName() + "->" + lvStacks[3].getLineNumber();
 	}
 }

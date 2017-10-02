@@ -25,32 +25,35 @@ $(function() {
 		errorClass : "text-danger",
 		rules : {
 			"name" : {
-				required : true,
-				//remote : {
-//									url : "check.jsp", // 后台处理程序
-//									type : "post", // 数据发送方式
-//									dataType : "html", // 接受数据格式
-//									data : { // 要传递的数据
-//										code : function() {
-//											return $("#code").val();
-//										}
-//									},
-//									dataFilter : function(data, type) {
-//										if (data.trim() == "true")
-//											return true;
-//										else
-//											return false;
-//									}
-				//}
+				required : true
 			},
 			"eid" : {
 				required : true,
-				digits : true
+				digits : true,
+				remote : {
+					url : "pages/admin/checkEid.action", // 后台处理程序
+					type : "post", // 数据发送方式
+					dataType : "html", // 接受数据格式
+					data : { // 要传递的数据
+						eid : function() {
+							return $("#eid").val();
+						} 
+					},
+					dataFilter : function(data, type) {
+						if (data.trim() == "true")
+							return true;
+						else
+							return false;
+					}
+				}
 			},
 			"dept.did" : {
 				required : true
 			},
 			"level.lid" : {
+				required : true
+			},
+			"pic" : {
 				required : true
 			},
 			"password" : {
@@ -61,7 +64,26 @@ $(function() {
 			},
 			"salary" : {
 				required : true ,
-				digits : true
+				digits : true ,
+				remote : {
+					url : "pages/admin/checkSalary.action", // 后台处理程序
+					type : "post", // 数据发送方式
+					dataType : "html", // 接受数据格式
+					data : { // 要传递的数据
+						salary : function() {
+							return $("#salary").val();
+						} ,
+						lid : function() { 
+							return $("#level\\.lid option:selected").val();
+						}
+					},
+					dataFilter : function(data, type) {
+						if (data.trim() == "true")
+							return true;
+						else
+							return false;
+					}
+				}
 			}
 		}
 	});

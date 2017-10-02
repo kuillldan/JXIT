@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.lyk.constant.CommonConstant;
+import org.lyk.constant.MessageConstant;
 import org.lyk.constant.PageConstant;
 import org.lyk.enums.ActionIDEnum;
 import org.lyk.service.IDeptService;
@@ -36,16 +37,11 @@ public class DeptAction extends AbstractAction
 				mav.setViewName(super.getPage("dept.list.jsp"));
 			} else
 			{
-				String msg = super.getMessage("not.authorized");
-				super.forwardToErrorPage(mav, msg);
-				CommonConstant.LOGGER.info(msg);
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		} catch (Exception e)
 		{
-			String msg = "查询部门数据发生系统异常";
-			super.setSystemError(mav, msg, e);
-			CommonConstant.LOGGER.info(msg);
-			CommonConstant.LOGGER.error(e.getMessage(), e);
+			super.setSystemError(mav, "查询部门数据", e);
 		}
 		return mav;
 	}
@@ -61,16 +57,11 @@ public class DeptAction extends AbstractAction
 				response.getWriter().print(this.deptServiceImpl.updateTitleByDid(dept));
 			} else
 			{
-				String msg = super.getMessage("not.authorized");
-				CommonConstant.LOGGER.info(msg);
-				response.getWriter().print(false);
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		} catch (Exception e)
 		{
-			String msg = "修改部门数据发生系统异常";
-			super.setSystemError(mav, msg, e);
-			CommonConstant.LOGGER.error(msg);
-			CommonConstant.LOGGER.error(e.getMessage(), e);
+			super.setSystemError(mav, "修改部门数据", e);
 			try
 			{
 				response.getWriter().print(false);

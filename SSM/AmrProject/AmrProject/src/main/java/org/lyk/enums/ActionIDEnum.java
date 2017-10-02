@@ -14,10 +14,11 @@ public enum ActionIDEnum
 	GROUPS_LIST(6),
 	// 部门修改 /pages/dept/edit.action
 	DEPT_EDIT(7),
-	//11 |   4 | 增加员工     | /pages/emp/addPre.action
-	EMP_ADD_PRE(11)
-	;
-	
+	// 11 | 4 | 增加员工 | /pages/emp/addPre.action
+	EMP_ADD_PRE(11),
+	// 12 | 4 | 增加员工 | /pages/emp/add.action
+	EMP_ADD(12);
+
 	private Integer actid;
 
 	private ActionIDEnum(Integer actid)

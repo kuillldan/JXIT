@@ -34,17 +34,12 @@ public class GroupsAction extends AbstractAction
 			}
 			else
 			{
-				String msg = super.getMessage(MessageConstant.NOT_AUTHORIZED);
-				super.setForwardMessageAndUrl(mav, msg, super.getPage(PageConstant.DEPT_LIST_ACTION));
-				CommonConstant.LOGGER.info(msg);
+				super.notAuthorizedThenForwordToErrorPage(mav);
 			}
 		}
 		catch(Exception e)
 		{
-			String msg = "查询部门权限组信息发生系统异常";
-			super.setSystemError(mav, msg, e);
-			CommonConstant.LOGGER.error(msg);
-			CommonConstant.LOGGER.error(e.getMessage(),e);
+			super.setSystemError(mav, "查询部门权限组信息", e);
 		}
 		return mav;
 	}

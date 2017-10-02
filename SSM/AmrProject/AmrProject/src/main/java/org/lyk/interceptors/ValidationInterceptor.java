@@ -21,42 +21,52 @@ import org.springframework.web.servlet.ModelAndView;
 public class ValidationInterceptor implements HandlerInterceptor
 {
 	private static final Logger logger = LoggerFactory.getLogger(CommonConstant.LOGFILE);
+
 	public ValidationInterceptor()
 	{
 		logger.debug("*****拦截器" + this.getClass().getSimpleName() + "创建");
 	}
+
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
 	{
-		logger.debug("*****拦截器" + this.getClass().getSimpleName() + "执行");
-
-		HandlerMethod handlerMethod = (HandlerMethod) handler;
-		String actionName = this.getActionName(handlerMethod);
-		logger.debug("请求的Action名称:" + actionName);
-		String validationRuleString = this.getValidationRule(actionName, handlerMethod);
-
-		if (StringUtils.isEmpty(validationRuleString))
+		try
 		{
-			logger.debug("验证规则为空,无需进行验证.");
-			return true;
-		}
+			HandlerMethod handlerMethod = (HandlerMethod) handler;
+			String actionName = this.getActionName(handlerMethod);
+			logger.debug("请求的Action名称:" + actionName);
+			String validationRuleString = this.getValidationRule(actionName, handlerMethod);
 
-		logger.debug("验证规则:" + validationRuleString);
-		Map<String, String> errors = new HashMap<>();
-		boolean validationPassed = this.doValidation(request, validationRuleString,errors);
-		if(validationPassed)
+			if (StringUtils.isEmpty(validationRuleString))
+			{
+				logger.debug("验证规则为空,无需进行验证.");
+				return true;
+			}
+
+			logger.debug("验证规则:" + validationRuleString);
+			Map<String, String> errors = new HashMap<>();
+			boolean validationPassed = this.doValidation(request, validationRuleString, errors);
+			if (validationPassed)
+			{
+				logger.debug("数据合法,验证通过");
+			} else
+			{
+				String msg = "数据不合法,未能通过数据验证";
+				logger.info(msg);
+				request.setAttribute("msg", msg);
+				request.getRequestDispatcher("/error.jsp").forward(request, response);
+			}
+
+			return validationPassed;
+		} catch (Exception e)
 		{
-			logger.debug("数据合法,验证通过");
-		}
-		else
-		{
-			String msg = "数据不合法,未能通过数据验证";
-			logger.info(msg);
+			String msg = "拦截器执行发生了未知异常";
 			request.setAttribute("msg", msg);
 			request.getRequestDispatcher("/error.jsp").forward(request, response);
+			logger.info(msg);
+			logger.error(e.getMessage(),e);
+			return false;
 		}
-		
-		return validationPassed;
 	}
 
 	private String getValidationRule(String actionName, HandlerMethod handlerMethod)
@@ -66,27 +76,27 @@ public class ValidationInterceptor implements HandlerInterceptor
 		{
 			Method getValidationMethod = action.getClass().getMethod("getValidation", String.class, Object[].class);
 			getValidationMethod.setAccessible(true);
-			return (String) getValidationMethod.invoke(action, actionName,null);
+			return (String) getValidationMethod.invoke(action, actionName, null);
 		} catch (NoSuchMethodException e)
 		{
-			//logger.warn(e.getMessage(),e);
+			// logger.warn(e.getMessage(),e);
 		} catch (SecurityException e)
 		{
 			logger.warn("获取验证规则时发生异常.");
-			logger.warn(e.getMessage(),e);
+			logger.warn(e.getMessage(), e);
 		} catch (IllegalAccessException e)
 		{
-			//logger.warn(e.getMessage(),e);
+			// logger.warn(e.getMessage(),e);
 		} catch (IllegalArgumentException e)
 		{
 			logger.warn("获取验证规则时发生异常.");
-			logger.warn(e.getMessage(),e);
+			logger.warn(e.getMessage(), e);
 		} catch (InvocationTargetException e)
 		{
-//			logger.warn("获取验证规则时发生异常.");
-//			logger.warn(e.getMessage(),e);
+			// logger.warn("获取验证规则时发生异常.");
+			// logger.warn(e.getMessage(),e);
 		}
-		//logger.warn("获取验证规则时发生异常.");
+		// logger.warn("获取验证规则时发生异常.");
 		return null;
 	}
 
@@ -101,7 +111,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 		return validationRuleString;
 	}
 
-	private boolean doValidation(HttpServletRequest request, String validationRuleString,Map<String, String> errors)
+	private boolean doValidation(HttpServletRequest request, String validationRuleString, Map<String, String> errors)
 	{
 		boolean validationPassed = true;
 		String[] allRules = validationRuleString.split("\\|");
@@ -129,7 +139,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 			{
 				if (!this.validateInteger(acturalValue))
 				{
-					String msg = "字段("+requiredField+")必须为整型";
+					String msg = "字段(" + requiredField + ")必须为整型";
 					errors.put(requiredField, msg);
 					logger.info(msg);
 					validationPassed = false;
@@ -142,7 +152,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 			{
 				if (!this.validateDouble(acturalValue))
 				{
-					String msg = "字段("+requiredField+")必须为Double型";
+					String msg = "字段(" + requiredField + ")必须为Double型";
 					errors.put(requiredField, msg);
 					logger.info(msg);
 					validationPassed = false;
@@ -154,7 +164,7 @@ public class ValidationInterceptor implements HandlerInterceptor
 			{
 				if (!this.validateFloat(acturalValue))
 				{
-					String msg = "字段("+requiredField+")必须为Float型";
+					String msg = "字段(" + requiredField + ")必须为Float型";
 					errors.put(requiredField, msg);
 					logger.info(msg);
 					validationPassed = false;
@@ -167,20 +177,20 @@ public class ValidationInterceptor implements HandlerInterceptor
 			{
 				if (!this.validateDate(acturalValue))
 				{
-					String msg = "字段("+requiredField+")必须为Date型";
+					String msg = "字段(" + requiredField + ")必须为Date型";
 					errors.put(requiredField, msg);
 					logger.info(msg);
 					validationPassed = false;
 				}
 				continue;
 			}
-			
-			if("Rand".equalsIgnoreCase(requiredType))
+
+			if ("Rand".equalsIgnoreCase(requiredType))
 			{
-				
+
 				HttpSession session = request.getSession();
-				String codeInSession = (String)session.getAttribute("rand");
-				if(StringUtils.isEmpty(codeInSession))
+				String codeInSession = (String) session.getAttribute("rand");
+				if (StringUtils.isEmpty(codeInSession))
 				{
 					String msg = "验证规则要求有验证码，但系统内存中找不到验证码。";
 					errors.put(requiredField, msg);
@@ -188,8 +198,8 @@ public class ValidationInterceptor implements HandlerInterceptor
 					validationPassed = false;
 					continue;
 				}
-				
-				if(!acturalValue.equalsIgnoreCase(codeInSession))
+
+				if (!acturalValue.equalsIgnoreCase(codeInSession))
 				{
 					String msg = "验证码错误";
 					errors.put(requiredField, msg);
@@ -197,11 +207,11 @@ public class ValidationInterceptor implements HandlerInterceptor
 					validationPassed = false;
 					continue;
 				}
-				
+
 				continue;
 			}
-			
-			logger.warn("不支持的数据类型("+requiredType+"),无法完成数据验证。");
+
+			logger.warn("不支持的数据类型(" + requiredType + "),无法完成数据验证。");
 		}
 
 		return validationPassed;

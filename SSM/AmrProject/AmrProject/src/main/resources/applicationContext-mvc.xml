@@ -37,8 +37,9 @@
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-				<prop
-					key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error.jsp</prop>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error.jsp</prop>
+				<prop key="org.springframework.web.util.NestedServletException">/error.jsp</prop>
+				<prop key="java.lang.ClassCastException">/error.jsp</prop>
 			</props>
 		</property>
 	</bean>
