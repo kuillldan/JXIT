@@ -14,6 +14,8 @@ public class Emp implements Serializable
 	private String sex;
 	private String photo;
 	private Integer heid;
+	
+	
 	private Level level;
 	private Dept dept;
 	  

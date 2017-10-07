@@ -59,6 +59,7 @@ public class AbstractAction
 		mav.setViewName(this.getPage("forward.jsp"));
 		mav.addObject("msg", msg);
 		mav.addObject("url", url);
+		CommonConstant.LOGGER.info(msg + "(调用者信息:" + getInvokerInfo() + ")");
 	}
 
 	protected void notAuthorizedThenForwordToErrorPage(ModelAndView mav)

@@ -17,6 +17,7 @@ import org.lyk.vo.Emp;
 import org.lyk.vo.Level;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -52,21 +53,23 @@ public class EmpAction extends AbstractAction
 	}
 
 	@RequestMapping("add")
-	public ModelAndView add(HttpServletRequest request, Emp emp)
+	public ModelAndView add(HttpServletRequest request, Emp emp, MultipartFile pic)
 	{
+		CommonConstant.LOGGER.debug("****************EmpAction.add执行");
+		CommonConstant.LOGGER.debug(emp.toString());
 		ModelAndView mav = new ModelAndView();
 		try
 		{
 			if (super.isAuthcated(request, ActionIDEnum.EMP_ADD.getValue()))
 			{
-				if(this.empServiceImpl.insert(emp))
+				if (this.empServiceImpl.insert(emp))
 				{
-//					String 
+					super.setForwardMessageAndUrl(mav, "增加雇员成功", super.getPage(PageConstant.EMP_ADD_PRE_ACTION));
+				} else
+				{
+					super.setForwardMessageAndUrl(mav, "增加雇员失败", super.getPage(PageConstant.EMP_ADD_PRE_ACTION));
 				}
-				else
-				{}
-			}
-			else
+			} else
 			{
 				super.notAuthorizedThenForwordToErrorPage(mav);
 			}

@@ -24,7 +24,6 @@ public class ValidationInterceptor implements HandlerInterceptor
 
 	public ValidationInterceptor()
 	{
-		logger.debug("*****拦截器" + this.getClass().getSimpleName() + "创建");
 	}
 
 	@Override
@@ -49,15 +48,16 @@ public class ValidationInterceptor implements HandlerInterceptor
 			if (validationPassed)
 			{
 				logger.debug("数据合法,验证通过");
+				return true;
 			} else
 			{
 				String msg = "数据不合法,未能通过数据验证";
 				logger.info(msg);
 				request.setAttribute("msg", msg);
 				request.getRequestDispatcher("/error.jsp").forward(request, response);
+				return false;
 			}
 
-			return validationPassed;
 		} catch (Exception e)
 		{
 			String msg = "拦截器执行发生了未知异常";
@@ -74,9 +74,9 @@ public class ValidationInterceptor implements HandlerInterceptor
 		Object action = handlerMethod.getBean();
 		try
 		{
-			Method getValidationMethod = action.getClass().getMethod("getValidation", String.class, Object[].class);
+			Method getValidationMethod = action.getClass().getMethod("getValidation", String.class);
 			getValidationMethod.setAccessible(true);
-			return (String) getValidationMethod.invoke(action, actionName, null);
+			return (String) getValidationMethod.invoke(action, actionName);
 		} catch (NoSuchMethodException e)
 		{
 			// logger.warn(e.getMessage(),e);
@@ -93,8 +93,8 @@ public class ValidationInterceptor implements HandlerInterceptor
 			logger.warn(e.getMessage(), e);
 		} catch (InvocationTargetException e)
 		{
-			// logger.warn("获取验证规则时发生异常.");
-			// logger.warn(e.getMessage(),e);
+//			 logger.warn("获取验证规则时发生异常.");
+//			 logger.warn(e.getMessage(),e);
 		}
 		// logger.warn("获取验证规则时发生异常.");
 		return null;
@@ -117,8 +117,8 @@ public class ValidationInterceptor implements HandlerInterceptor
 		String[] allRules = validationRuleString.split("\\|");
 		for (String eachRule : allRules)
 		{
-			String requiredField = eachRule.split("\\:")[0];
-			String requiredType = eachRule.split("\\:")[1];
+			String requiredField = eachRule.split(":")[0];
+			String requiredType = eachRule.split(":")[1];
 
 			String acturalValue = request.getParameter(requiredField);
 			if (StringUtils.isEmpty(acturalValue))
