@@ -123,6 +123,7 @@ public class EmpAction extends AbstractAction
 				List<Emp> allItems = (List<Emp>) empInfos.get("allItems");
 				super.handleSplit(splitHandler, request, allRecorders, super.getPage(PageConstant.EMP_LIST_ACTION), allItems,
 						"姓名:name|电话:phone");
+				mav.setViewName(super.getPage(PageConstant.EMP_LIST_JSP));
 			} else
 			{
 				super.notAuthorizedThenForwordToErrorPage(mav);
