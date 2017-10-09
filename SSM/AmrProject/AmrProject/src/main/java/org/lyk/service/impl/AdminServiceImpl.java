@@ -41,7 +41,7 @@ public class AdminServiceImpl implements IAdminService
 			throws Exception
 	{
 		Map<String, Object> map = new HashMap<>();
-		List<Emp> allItems = this.empDAOImpl.findAllAdmin(column, keyWord, currentPage, lineSize);
+		List<Emp> allItems = this.empDAOImpl.findAllAdminSplit(column, keyWord, currentPage, lineSize);
 		Integer allRecorders = this.empDAOImpl.findAllAdminCount(column, keyWord);
 		map.put("allItems", allItems);
 		map.put("allRecorders", allRecorders);

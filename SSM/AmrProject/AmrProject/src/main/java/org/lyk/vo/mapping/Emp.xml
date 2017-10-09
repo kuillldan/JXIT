@@ -45,6 +45,23 @@
 		</if>
 	</select>
 	
+	<select id="findAllEmp" resultMap="EmpResultMap"
+		parameterType="java.util.Map">
+		SELECT
+		eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM
+		emp WHERE aflag IN (0) 
+		<if test="column != null">
+			AND ${column} LIKE #{keyWord} 
+		</if>
+		LIMIT #{start},#{lineSize}
+	</select>
+	<select id="findAllEmpCount" resultType="java.lang.Integer"
+		parameterType="java.util.Map">
+		SELECT COUNT(*) FROM emp WHERE aflag IN(0)
+		<if test="column != null">
+			AND ${column} LIKE #{keyWord}
+		</if>
+	</select>
 	<select id="findById" parameterType="java.lang.Integer" resultMap="EmpResultMap">
 		SELECT eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM emp WHERE eid=#{eid}
 	</select>

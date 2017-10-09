@@ -8,8 +8,12 @@ public interface IEmpDAO extends IDAO<Integer, Emp>
 {
 	public boolean findLogin(Emp emp);
 
-	public List<Emp> findAllAdmin(String column, String keyWord, Integer currentPage, Integer lineSize)
+	public List<Emp> findAllAdminSplit(String column, String keyWord, Integer currentPage, Integer lineSize)
 			throws Exception;
 
 	public Integer findAllAdminCount(String column, String keyWord) throws Exception;
+	public List<Emp> findAllEmpSplit(String column, String keyWord, Integer currentPage, Integer lineSize)
+			throws Exception;
+
+	public Integer findAllEmpCount(String column, String keyWord) throws Exception;
 }

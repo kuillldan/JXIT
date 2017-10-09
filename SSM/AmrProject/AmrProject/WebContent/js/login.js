@@ -1,7 +1,7 @@
 $(function() {
 	$.backstretch("images/login_back.jpg");
 	$("#imageCode").on("click",function(){
-		$("#imageCode").attr("src","pages/common/ImageCode?p=" + Math.random()) ;
+		$("#imageCode").attr("src","ImageCode?p=" + Math.random()) ;
 	}) ;
 	$("#myform").validate({
 		debug : true, // 取消表单的提交操作

@@ -15,4 +15,8 @@ public interface IEmpService
 	public boolean checkSalary(Double salary, Integer lid) throws Exception;
 
 	public boolean checkEid(Integer eid) throws Exception;
+
+	public Map<String, Object> listAllEmp(String column, String keyWord, Integer currentPage, Integer lineSize)
+			throws Exception;
+
 }

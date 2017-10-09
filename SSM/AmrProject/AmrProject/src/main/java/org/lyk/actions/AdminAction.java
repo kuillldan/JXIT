@@ -14,6 +14,7 @@ import org.lyk.constant.CommonConstant;
 import org.lyk.constant.MessageConstant;
 import org.lyk.constant.PageConstant;
 import org.lyk.enums.ActionIDEnum;
+import org.lyk.enums.AFLAG;
 import org.lyk.helper.SplitHandler;
 import org.lyk.service.IAdminService;
 import org.lyk.service.impl.AdminServiceImpl;
@@ -76,10 +77,8 @@ public class AdminAction extends AbstractAction
 				Dept dept = new Dept();
 				dept.setDid(1);
 				emp.setDept(dept);
-				emp.setAflag(2);
+				emp.setAflag(AFLAG.COMMON_ADMIN.getValue());
 
-				CommonConstant.LOGGER.debug("eid:" + emp.getEid());
-				CommonConstant.LOGGER.debug("ename:" + emp.getName());
 
 				if (this.adminServiceImpl.add(emp))
 				{
@@ -127,9 +126,9 @@ public class AdminAction extends AbstractAction
 
 			Integer allRecorders = (Integer) adminInfos.get("allRecorders");
 			List<Emp> allItems = (List<Emp>) adminInfos.get("allItems");
-			super.handleSplit(splitHandler, request, allRecorders, "pages/admin/list.action", allItems,
+			super.handleSplit(splitHandler, request, allRecorders, super.getPage(PageConstant.ADMIN_LIST_ACTION), allItems,
 					"姓名:name|电话:phone");
-			mav.setViewName("/pages/admin/admin_list.jsp");
+			mav.setViewName(super.getPage(PageConstant.ADMIN_LIST_JSP));
 		} catch (Exception e)
 		{
 			super.setSystemError(mav, "查询管理员信息", e);

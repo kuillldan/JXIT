@@ -14,7 +14,7 @@ import org.lyk.dao.ILevelDAO;
 import org.lyk.dao.impl.DeptDAOImpl;
 import org.lyk.dao.impl.EmpDAOImpl;
 import org.lyk.dao.impl.LevelDAOImpl;
-import org.lyk.enums.SFLAG;
+import org.lyk.enums.AFLAG;
 import org.lyk.service.IAdminService;
 import org.lyk.service.IEmpService;
 import org.lyk.vo.Action;
@@ -76,7 +76,7 @@ public class EmpServiceImpl implements IEmpService
 	public Map<String, Object> insertPre() throws Exception
 	{
 		Map<String, Object> result = new HashMap<>();
-		List<Dept> allDepts = this.deptDAOImpl.listAllDeptBySflag(SFLAG.NORMAL.getValue());
+		List<Dept> allDepts = this.deptDAOImpl.listAllDeptBySflag(AFLAG.NORMAL.getValue());
 		List<Level> allLevels = this.levelDAOImpl.findAll();
 		result.put("allDepts", allDepts);
 		result.put("allLevels", allLevels);
@@ -93,6 +93,18 @@ public class EmpServiceImpl implements IEmpService
 	public boolean checkEid(Integer eid) throws Exception
 	{
 		return this.adminServiceImpl.checkEid(eid);
+	}
+
+	@Override
+	public Map<String, Object> listAllEmp(String column, String keyWord, Integer currentPage, Integer lineSize)
+			throws Exception
+	{
+		Map<String, Object> map = new HashMap<>();
+		List<Emp> allItems = this.empDAOImpl.findAllEmpSplit(column, keyWord, currentPage, lineSize);
+		Integer allRecorders = this.empDAOImpl.findAllEmpCount(column, keyWord);
+		map.put("allItems", allItems);
+		map.put("allRecorders", allRecorders);
+		return map;
 	}
 
 }

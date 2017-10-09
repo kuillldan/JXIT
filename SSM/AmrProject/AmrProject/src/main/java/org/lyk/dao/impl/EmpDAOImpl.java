@@ -91,7 +91,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 	}
 
 	@Override
-	public List<Emp> findAllAdmin(String column, String keyWord, Integer currentPage, Integer lineSize) throws Exception
+	public List<Emp> findAllAdminSplit(String column, String keyWord, Integer currentPage, Integer lineSize) throws Exception
 	{
 		return super.findAllSplit(column, keyWord, currentPage, lineSize, MAPPING_PREFIX + "findAllAdmin");
 	}
@@ -100,5 +100,17 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 	public Integer findAllAdminCount(String column, String keyWord) throws Exception
 	{
 		return super.findAllCount(column, keyWord, MAPPING_PREFIX + "findAllAdminCount");
+	}
+
+	@Override
+	public List<Emp> findAllEmpSplit(String column, String keyWord, Integer currentPage, Integer lineSize) throws Exception
+	{
+		return super.findAllSplit(column, keyWord, currentPage, lineSize, MAPPING_PREFIX + "findAllEmp");
+	}
+
+	@Override
+	public Integer findAllEmpCount(String column, String keyWord) throws Exception
+	{
+		return super.findAllCount(column, keyWord, MAPPING_PREFIX + "findAllEmpCount");
 	}
 }

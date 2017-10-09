@@ -1,11 +1,11 @@
 package org.lyk.enums;
 
-public enum SFLAG
+public enum AFLAG
 {
-	ADMIN(1),NORMAL(0);
+	SUPER_ADMIN(1),NORMAL(0),COMMON_ADMIN(2);
 	
 	private Integer value;
-	private SFLAG(Integer value)
+	private AFLAG(Integer value)
 	{
 		this.value = value;
 	}
