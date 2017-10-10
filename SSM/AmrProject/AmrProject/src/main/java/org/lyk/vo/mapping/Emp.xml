@@ -15,6 +15,8 @@
 		<result property="photo" column="photo" />
 		<association property="dept" column="did" javaType="Dept"
 			resultMap="org.lyk.vo.mapping.DeptNS.DeptResultMap" />
+		<association property="level" column="lid" javaType="Level"
+			resultMap="org.lyk.vo.mapping.LevelNS.LevelResultMap" />
 	</resultMap>
 	<select id="findLogin" parameterType="Emp" resultMap="EmpResultMap">
 		SELECT
