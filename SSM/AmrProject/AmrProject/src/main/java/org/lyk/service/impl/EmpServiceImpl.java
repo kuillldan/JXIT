@@ -107,4 +107,23 @@ public class EmpServiceImpl implements IEmpService
 		return map;
 	}
 
+	@Override
+	public Map<String, Object> editPre(Integer eid) throws Exception
+	{
+		Map<String, Object> map = new HashMap<>();
+		
+		Emp emp = this.empDAOImpl.findById(eid);
+		List<Dept> allDepts = this.deptDAOImpl.findAll();
+		List<Level> allLevels = this.levelDAOImpl.findAll();
+		map.put("emp", emp);
+		map.put("allDepts", allDepts);
+		map.put("allLevels", allLevels);
+		return map;
+	}
+
+	@Override
+	public boolean edit(Emp emp) throws Exception
+	{
+		return empDAOImpl.doUpdate(emp);
+	}
 }

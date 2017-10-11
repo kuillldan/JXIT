@@ -120,7 +120,7 @@ public class AbstractAction
 
 		if (photo.getSize() <= 0 || CommonConstant.NOPHOTO_JPG.equalsIgnoreCase(photoFullPath))
 			return false;
-
+ 
 		InputStream is = null;
 		OutputStream os = null;
 

@@ -52,14 +52,11 @@ $(function() {
 			},
 			"level.lid" : {
 				required : true
-			},
-			"password" : {
-				required : true
-			},
+			}, 
 			"phone" : {
 				required : true
 			},
-			"photo" : {
+			"pic" : {
 				required : true
 			},
 			"salary" : {

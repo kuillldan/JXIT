@@ -19,4 +19,8 @@ public interface IEmpService
 	public Map<String, Object> listAllEmp(String column, String keyWord, Integer currentPage, Integer lineSize)
 			throws Exception;
 
+	public Map<String, Object> editPre(Integer eid) throws Exception;
+
+	public boolean edit(Emp emp) throws Exception;
+
 }

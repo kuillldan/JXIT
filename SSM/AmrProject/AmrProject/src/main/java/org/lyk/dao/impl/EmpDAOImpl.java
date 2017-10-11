@@ -35,8 +35,7 @@ public class EmpDAOImpl extends AbstractDAO implements IEmpDAO
 	@Override
 	public boolean doUpdate(Emp vo) throws Exception
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return super.getSqlSession().update(MAPPING_PREFIX + "doUpdate", vo) == 1;
 	}
 
 	@Override

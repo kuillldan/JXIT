@@ -48,7 +48,7 @@
 										<th>${emp.phone }</th>
 										<th>${emp.sex }</th>
 										<th>${emp.salary }</th>
-										<th><a class="btn btn-warning btn-xs" href="pages/emp/emp_edit.jsp">编辑</a></th>
+										<th><a class="btn btn-warning btn-xs" href="pages/emp/editPre.action?eid=${emp.eid }&cp=${currentPage}">编辑</a></th>
 									</tr>
 								</c:forEach> 
 							</table>

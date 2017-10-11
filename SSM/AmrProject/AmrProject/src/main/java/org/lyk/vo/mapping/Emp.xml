@@ -67,4 +67,12 @@
 	<select id="findById" parameterType="java.lang.Integer" resultMap="EmpResultMap">
 		SELECT eid,did,lid,heid,name,password,phone,salary,note,aflag,sex,photo FROM emp WHERE eid=#{eid}
 	</select>
+	<update id="doUpdate" parameterType="Emp">
+		UPDATE EMP SET did=#{dept.did},lid=#{level.lid},heid=#{heid},name=#{name},
+		<if test="password != null">
+			password=#{password},
+		</if>
+		phone=#{phone},salary=#{salary},note=#{note},aflag=#{aflag},sex=#{sex},photo=#{photo} 
+		WHERE eid=#{eid}
+	</update>
 </mapper>

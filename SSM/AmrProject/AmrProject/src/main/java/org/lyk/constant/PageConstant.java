@@ -27,6 +27,7 @@ public class PageConstant
 	public static final String EMP_ADD_PRE_ACTION = "emp.add.pre.action";
 	public static final String EMP_LIST_ACTION = "emp.list.action";
 	public static final String EMP_LIST_JSP = "emp.list.jsp";
+	public static final String EMP_EDIT_JSP = "emp.edit.jsp";
 	
 	
 }

@@ -19,7 +19,11 @@ public enum ActionIDEnum
 	// 12 | 4 | 增加员工 | /pages/emp/add.action
 	EMP_ADD(12),
 	// 13 4 员工列表 /pages/emp/list.action 1
-	EMP_LIST(13);
+	EMP_LIST(13),
+	// 14 | 4 | 编辑员工 | /pages/emp/editPre.action | 0 |
+	EMP_EDIT_PRE(14),
+	// 15 | 4 | 编辑员工 | /pages/emp/edit.action | 0 |
+	EMP_EDIT(15);
 
 	private Integer actid;
 
