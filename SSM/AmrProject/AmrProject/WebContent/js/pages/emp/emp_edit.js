@@ -55,10 +55,7 @@ $(function() {
 			}, 
 			"phone" : {
 				required : true
-			},
-			"pic" : {
-				required : true
-			},
+			}, 
 			"salary" : {
 				required : true ,
 				digits : true

@@ -159,6 +159,7 @@
 								
 								<input type="hidden" name="cp" value="${currentPage }">
 								<input type="hidden" name="photo" value="${vo.photo }">
+								<input type="hidden" name="heid" value="${vo.heid }" >
 							</form>
 						</div>
 						<!-- /.box-body -->

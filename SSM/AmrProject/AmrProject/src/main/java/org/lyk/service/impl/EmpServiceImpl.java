@@ -76,7 +76,7 @@ public class EmpServiceImpl implements IEmpService
 	public Map<String, Object> insertPre() throws Exception
 	{
 		Map<String, Object> result = new HashMap<>();
-		List<Dept> allDepts = this.deptDAOImpl.listAllDeptBySflag(AFLAG.NORMAL.getValue());
+		List<Dept> allDepts = this.deptDAOImpl.listAllDeptBySflag(AFLAG.NORMAL_EMPLOYEE.getValue());
 		List<Level> allLevels = this.levelDAOImpl.findAll();
 		result.put("allDepts", allDepts);
 		result.put("allLevels", allLevels);

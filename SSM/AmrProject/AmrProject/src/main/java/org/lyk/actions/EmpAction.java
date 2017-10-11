@@ -72,7 +72,7 @@ public class EmpAction extends AbstractAction
 				emp.setPhoto(super.generatePhotoFileName(pic));
 				emp.setHeid(empInSession.getEid());
 				emp.setPassword(new MD5Code().getMD5ofStr(emp.getPassword()));
-				emp.setAflag(AFLAG.NORMAL.getValue());
+				emp.setAflag(AFLAG.NORMAL_EMPLOYEE.getValue());
 
 				if (this.empServiceImpl.insert(emp))
 				{
@@ -201,7 +201,8 @@ public class EmpAction extends AbstractAction
 				mav.addObject("vo", emp);
 				mav.addObject("allDepts", allDepts);
 				mav.addObject("allLevels", allLevels);
-				mav.setViewName(super.getPage(PageConstant.EMP_EDIT_JSP) + "?currentPage=" + cp);
+				mav.addObject("currentPage",cp);
+				mav.setViewName(super.getPage(PageConstant.EMP_EDIT_JSP));
 			} else
 			{
 				super.notAuthorizedThenForwordToErrorPage(mav);
@@ -269,7 +270,10 @@ public class EmpAction extends AbstractAction
 					}
 				}
 
-				String url = super.getPage(PageConstant.EMP_LIST_ACTION) + "?currentPage=" + cp;
+				String url = "/" + super.getPage(PageConstant.EMP_LIST_ACTION);
+				mav.addObject("currentPage",cp);
+				
+				emp.setAflag(AFLAG.NORMAL_EMPLOYEE.getValue());
 				if (this.empServiceImpl.edit(emp))
 				{
 					super.setForwardMessageAndUrl(mav, "编辑员工信息成功", url);
