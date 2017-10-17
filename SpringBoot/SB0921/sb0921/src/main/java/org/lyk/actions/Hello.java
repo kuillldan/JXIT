@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Hello extends AbstractController
 {
 	
-	@Resource(name="messageServiceImpl")
+	@Resource
 	private IMessageService messageServiceImpl;
 	
 	@RequestMapping("welcome")
