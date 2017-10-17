@@ -1,4 +1,4 @@
-package org.lyk.actions;
+package org.lyk;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
