@@ -29,7 +29,10 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e19712ad6151d3815e5b1d127aaf2e4740296cbb
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>springloaded</artifactId>
@@ -38,10 +41,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+=======
+>>>>>>> e19712ad6151d3815e5b1d127aaf2e4740296cbb
 
 
 	</dependencies>
