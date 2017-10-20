@@ -9,7 +9,7 @@
 	<groupId>org.lyk</groupId>
 	<artifactId>sb0921</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>sb0921</name>
 	<url>http://maven.apache.org</url>
@@ -29,7 +29,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>springloaded</artifactId>
@@ -37,16 +37,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency> 
+		</dependency>
 
 
 	</dependencies>
 	<build>
-		<finalName>bootfirst</finalName>
+		<finalName>myfirst</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -57,6 +57,7 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
+			<!-- 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -70,6 +71,14 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<warName>myfirst</warName>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
