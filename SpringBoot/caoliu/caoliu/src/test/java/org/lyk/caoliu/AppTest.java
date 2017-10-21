@@ -14,6 +14,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -49,30 +51,35 @@ public class AppTest
 	// http://www.t66y.com/thread0806.php?fid=22&search=&page=1
 	public static void main(String[] args) throws Exception
 	{
-		// saveAllFile();
-		// "C:\\D\\sources\\caoliu\\"
-		for (int i = 1; i <= 10; i++)
+		Integer max = 100;
+		saveAllFile(max);
+		
+		List<Post> entireSite = new ArrayList<>();
+		for (int i = 1; i <= max; i++)
 		{
 			List<Post> allPosts = showAll(i + ".txt");
-			
-			
+			entireSite.addAll(allPosts);
 		}
+		Collections.sort(entireSite);
+		for(Post post : entireSite)
+			System.out.println(post);
+		
 		System.out.println("done");
 	}
 
-	public static void saveAllFile() throws Exception
+	public static void saveAllFile(Integer max) throws Exception
 	{
 		System.setProperty("proxyPort", "1080");
 		System.setProperty("proxyHost", "127.0.0.1");
 		System.setProperty("proxySet", "true");
 
-		for (int i = 1; i <= 50; i++)
+		for (int i = 1; i <= max; i++)
 		{
 			String sendRecvGet = GetPostTest.sendGet("http://www.t66y.com/thread0806.php", "fid=22&search=&page=" + i);
 			OutputStream os = new FileOutputStream("C:\\D\\sources\\caoliu\\" + i + ".txt");
 			os.write(sendRecvGet.getBytes());
 			os.close();
-			System.out.println("成功保存(" + i + ")个文件.");
+			System.out.println("成功保存(" + i + ")个文件. 源:http://www.t66y.com/thread0806.php?fid=22&search=&page=" + i);
 		}
 
 		// String sendRecvGet =
@@ -132,9 +139,11 @@ public class AppTest
 			countLine = countLine.replaceAll("\t", "");
 			countLine = countLine.replaceAll("<td>", "");
 			countLine = countLine.replaceAll("</td>", "");
-			post.setCommentCount(Integer.parseInt(countLine));
+			Integer commentCount = Integer.parseInt(countLine);
+			post.setCommentCount(commentCount);
 
-			allPosts.add(post);
+			if (commentCount >= 5)
+				allPosts.add(post);
 		}
 
 		return allPosts;

@@ -47,6 +47,6 @@ public class Post implements Serializable , Comparable<Post>
 	@Override
 	public int compareTo(Post o)
 	{
-		return this.commentCount.compareTo(o.commentCount);
+		return o.commentCount.compareTo(this.commentCount);
 	}
 }
