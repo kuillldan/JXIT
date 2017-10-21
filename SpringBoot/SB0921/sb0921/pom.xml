@@ -48,6 +48,7 @@
 	<build>
 		<finalName>myfirst</finalName>
 		<plugins>
+		  
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -56,7 +57,7 @@
 					<target>${jdk.version}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
-			</plugin>
+			</plugin> 
 			<!-- 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

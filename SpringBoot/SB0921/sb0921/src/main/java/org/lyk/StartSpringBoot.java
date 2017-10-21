@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @SpringBootApplication
 public class StartSpringBoot extends SpringBootServletInitializer
 {
-	
-	
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder)
 	{
