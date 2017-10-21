@@ -14,6 +14,7 @@ public class MessageController
 	{
 		model.addAttribute("url", "www.t66y.com");
 		model.addAttribute("mid", mid);
+		model.addAttribute("msg", "今天是周末");
 		return "message/message_show";
 	}
 	

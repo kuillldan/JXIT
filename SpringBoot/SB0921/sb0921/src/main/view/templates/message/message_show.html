@@ -7,5 +7,10 @@
 	<body>
 		<p th:text="'官方网站:' + ${url}" />
 		<p th:text="'用户名:' + ${mid}" />
+		<hr/>
+		<p th:text="${msg}"/>
+		<p th:text="#{welcom.msg(${mid})}"/>
+		<hr/>
+		<a th:href="@{/Hello/welcome}">hello</a>
 	</body>
 </html>
