@@ -11,16 +11,9 @@ import org.hibernate.validator.constraints.Length;
 
 public class Member implements Serializable
 {
-	@NotNull(message="{meggmber.mid.notnull.error}")
-	@Email(message="{member.mid.email.error}")
-	private String mid; 
-	@NotNull(message="{member.age.notnull.error}")
-	@Digits(integer=3,fraction=0,message="{member.age.digits.error}")
+	private String mid;
 	private Integer age;
-	@NotNull(message="{member.salary.notnull.error}")
-	@Digits(integer=10,fraction=2,message="{member.salary.digits.error}")
 	private Double salary;
-	@NotNull(message="{member.birthday.notnull.error}")
 	private Date birthday;
 
 	public String getMid()

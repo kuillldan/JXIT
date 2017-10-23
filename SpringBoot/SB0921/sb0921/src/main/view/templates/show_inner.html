@@ -6,7 +6,7 @@
 </head>
 <body>
 	<p th:text="'request属性:' + *{requestMessage}"/>
-	<p th:text="'session属性:' + *{sessionMessage}"/>
-	<p th:text="'application属性:' + *{applicationMessage}"/>
+	<p th:text="'session属性:' + *{session.sessionMessage}"/>
+	<p th:text="'application属性:' + *{application.applicationMessage}"/>
 </body>
 </html>
