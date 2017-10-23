@@ -24,12 +24,13 @@ public class OnlineResources extends AbstractController
 	{
 		try
 		{
-			Integer max = 10;
+			Integer max = 50;
 
 			List<Post> entireSite = new ArrayList<>();
 			for (int i = 1; i <= max; i++)
 			{
 				List<Post> allPosts = showAll(i + ".txt");
+				System.out.println("读取文件:" + i + "成功");
 				entireSite.addAll(allPosts);
 			}
 			
@@ -46,25 +47,9 @@ public class OnlineResources extends AbstractController
 		{
 			return "error";
 		}
-	}
+	} 
 
-	public static void saveAllFile(Integer max) throws Exception
-	{
-		System.setProperty("proxyPort", "8080");
-		System.setProperty("proxyHost", "web-proxy.jp.hpecorp.net");
-		System.setProperty("proxySet", "true");
-
-		for (int i = 1; i <= max; i++)
-		{
-			String sendRecvGet = HttpClient.sendGet("http://www.t66y.com/thread0806.php", "fid=22&search=&page=" + i);
-			OutputStream os = new FileOutputStream("C:\\D\\JXIT\\temp\\caoliu\\" + i + ".txt");
-			os.write(sendRecvGet.getBytes());
-			os.close();
-			System.out.println("成功保存(" + i + ")个文件. 源:http://www.t66y.com/thread0806.php?fid=22&search=&page=" + i);
-		}
-	}
-
-	private List<Post> showAll(String fileName) throws Exception
+	public static List<Post> showAll(String fileName) throws Exception
 	{
 		List<Post> allPosts = new ArrayList<>();
 
@@ -74,23 +59,24 @@ public class OnlineResources extends AbstractController
 		while (scanner.hasNextLine())
 		{
 			String newLine = scanner.nextLine();
-			sb.append(newLine).append("\r\n");
-			// if(newLine.matches("\t<td>\\d+</td>"))
-			// {
-			// System.out.println(newLine);
-			// }
+			sb.append(newLine).append("\r\n"); 
 		}
 		scanner.close();
 		String content = sb.toString();
 		Pattern pattern = Pattern.compile(
-				"\t<h3><a href=\"htm_data/\\d*/\\d*/\\d*\\.html\" target=\"_blank\" id=\"\">.*</a></h3>  \r\n\r\n\t\r\n\r\n\t</td>\r\n\t<td>.*\r\n\t<td>\\d+</td>");
+				"\t<h3><a href=\"htm_data/\\d*/\\d*/\\d*\\.html\" target=\"_blank\" id=\"\">.*</a></h3>  \r\n\r\n\t\r\n\r\n\t</td>\r\n\t<td>.*\r\n\t<td>\\d+</td>\r\n\t<td><a href=\".*</a><br />by: .*</td>");
 		Matcher matcher = pattern.matcher(content);
 		while (matcher.find())
 		{
 			Post post = new Post();
 
-			String eachOne = matcher.group();
-			String[] eachLine = eachOne.split("\r\n");
+			String group = matcher.group();
+			
+//			System.out.println(group);
+//			System.out.println("================");
+			
+			
+			String[] eachLine = group.split("\r\n");
 
 			String headLine = eachLine[0];
 
@@ -117,6 +103,15 @@ public class OnlineResources extends AbstractController
 			countLine = countLine.replaceAll("</td>", "");
 			Integer commentCount = Integer.parseInt(countLine);
 			post.setCommentCount(commentCount);
+			
+			String authorLine = eachLine[7];
+			Matcher autherMatcher = Pattern.compile("by: .*</td>").matcher(authorLine);
+			if(autherMatcher.find())
+			{
+				String author = autherMatcher.group();
+				author = author.replaceAll("</td>", "");
+				post.setAuthor(author);
+			}
 
 			if (commentCount >= 5)
 				allPosts.add(post);

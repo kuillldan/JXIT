@@ -2457,7 +2457,7 @@
 </div>
 <center class="gray">
 <a href='mobile.php?ismobile=no'>電腦版</a> <a href='mobile.php?ismobile=yes'>手機版</a> <a href='read.php?tid=1648542'>客戶端</a><br>
-用時 0.04(s) x1, 10-23 14:02  <br>
+用時 0.04(s) x1, 10-23 15:53  <br>
 
 
 <div style='margin-left:-9999px;'><script src='//s103.cnzz.com/stat.php?id=950900&web_id=950900&online=1&show=line' language='JavaScript' charset='gb2312'></script></div>
