@@ -1,4 +1,4 @@
-package org.lyk.caoliu;
+package org.lyk.entities;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class GetPostTest
+public class HttpClient
 {
 	public static String sendGet(String url, String param)
 	{

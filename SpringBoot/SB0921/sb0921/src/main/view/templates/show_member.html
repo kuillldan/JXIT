@@ -1,13 +1,25 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>New Page</title>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-	</head>
-	<body>
-		<p th:text="'编号:' + *{member.mid}"/>
-		<p th:text="'薪水:' + *{member.salary}"/>
-		<p th:text="'年龄:' + *{member.age}"/>
-		<p th:text="'生日:' + *{member.birthday}"/>
-	</body>
+<head>
+<title>New Page</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<table border="1" bgcolor="#F2F2F2" cellpadding="5" cellspacing="0">
+		<tr>
+			<td>编号</td>
+			<td>年龄</td>
+			<td>雇佣日期</td>
+			<td>薪水</td>
+		</tr>
+		<tr th:each="memberEntry:*{allItems}">
+			<td th:text="*{memberEntry.key} + '=' + *{memberEntry.value.mid}"></td>
+			<td th:text="*{memberEntry.key} + '=' + *{memberEntry.value.age}"></td>
+			<td th:text="*{memberEntry.key} + '=' + *{memberEntry.value.birthday}"></td>
+			<td th:text="*{memberEntry.key} + '=' + *{memberEntry.value.salary}"></td>
+		</tr>
+	</table>
+	<hr/>
+	
+</body>
 </html>

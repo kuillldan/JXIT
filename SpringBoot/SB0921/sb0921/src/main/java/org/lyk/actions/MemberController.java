@@ -3,7 +3,10 @@ package org.lyk.actions;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -42,6 +45,52 @@ public class MemberController extends AbstractController
 			return allErrors;
 		}
 		return vo;
+	}
+	
+	@RequestMapping("/showMemberList")
+	public String showMemberList(Model model)
+	{
+		Member member1 = new Member();
+		member1.setAge(30);
+		member1.setBirthday(new Date(System.currentTimeMillis()));
+		member1.setMid("21591923");
+		member1.setSalary(8888.2);
+		
+		Member member2 = new Member();
+		member2.setAge(32);
+		member2.setBirthday(new Date(System.currentTimeMillis()));
+		member2.setMid("6748368");
+		member2.setSalary(8576.2);
+		
+		List<Member> allItems = new ArrayList<>();
+		allItems.add(member1);
+		allItems.add(member2);
+		model.addAttribute("allItems", allItems);
+		
+		return "show_member";
+	}
+	
+	@RequestMapping("/showMemberMap")
+	public String showMemberMap(Model model)
+	{
+		Member member1 = new Member();
+		member1.setAge(30);
+		member1.setBirthday(new Date(System.currentTimeMillis()));
+		member1.setMid("21591923");
+		member1.setSalary(8888.2);
+		
+		Member member2 = new Member();
+		member2.setAge(32);
+		member2.setBirthday(new Date(System.currentTimeMillis()));
+		member2.setMid("6748368");
+		member2.setSalary(8576.2);
+		
+		Map<String,Member> allItems = new HashMap<>();
+		allItems.put("member1", member1);
+		allItems.put("member2", member2);
+		model.addAttribute("allItems", allItems);
+		
+		return "show_member";
 	}
 	
 	@RequestMapping("/showMember")
