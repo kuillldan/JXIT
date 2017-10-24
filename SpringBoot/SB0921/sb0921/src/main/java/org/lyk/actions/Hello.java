@@ -1,6 +1,7 @@
 package org.lyk.actions;
 
 import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 import org.lyk.services.IMessageService;
 import org.lyk.services.impl.MessageServiceImpl;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/Hello/*")
 public class Hello extends AbstractController
 {
+	@Resource
+	private DataSource dataSource;
 	
 	@Resource
 	private IMessageService messageServiceImpl;
@@ -33,6 +36,21 @@ public class Hello extends AbstractController
 	public String showMsg()
 	{
 		return this.messageServiceImpl.getInto();
+	}
+	
+	@RequestMapping("testDataSource")
+	@ResponseBody
+	public String testDataSource()
+	{
+		try
+		{
+			System.out.println(this.dataSource.getConnection());
+			return "测试成功";
+		}
+		catch(Exception e)
+		{
+			return "测试失败";
+		}
 	}
 	
 }

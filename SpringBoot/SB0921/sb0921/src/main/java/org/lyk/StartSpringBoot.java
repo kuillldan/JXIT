@@ -5,9 +5,12 @@ import org.springframework.boot.autoconfigure.*;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.*;
 
+
 @SpringBootApplication
+@EnableTransactionManagement
 public class StartSpringBoot extends SpringBootServletInitializer
 {
 	@Override
@@ -15,6 +18,7 @@ public class StartSpringBoot extends SpringBootServletInitializer
 	{
 		// TODO Auto-generated method stub
 		return builder.sources(StartSpringBoot.class);
+		
 	}
 
 	public static void main(String[] args) throws Exception
