@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>SpringBoot模版渲染</title>
+<link rel="icon" type="image/x-icon" href="/images/mldn.ico" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<table border="1" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
+		<tr bgcolor="00B185"> 
+			<td>key</td>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>性别</td>
+			<td>电话</td>
+			<td>雇佣日期</td>
+		</tr>
+		<tr th:each="memberEntry:${allMembers}">
+			<td th:text="${memberEntry.key}"></td>
+			<td th:text="${memberEntry.value.mid}"></td>
+			<td th:text="${memberEntry.value.name}"></td>
+			<td th:text="${memberEntry.value.gender}"></td>
+			<td th:text="${memberEntry.value.phoneNumber}"></td>
+			<td th:text="${memberEntry.value.hireDate}"></td>
+		</tr>
+	</table>
+</body>
+</html>
